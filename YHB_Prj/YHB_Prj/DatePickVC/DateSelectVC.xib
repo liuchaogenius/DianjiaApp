@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DateSelectVC">
+            <connections>
+                <outlet property="benjidu_bt" destination="EFC-p7-LgU" id="gzP-3D-tRb"/>
+                <outlet property="benyue_bt" destination="YPK-eT-FyS" id="Hqa-sI-yb4"/>
+                <outlet property="benzhou_bt" destination="zrY-Ib-hLR" id="1qE-ao-YIP"/>
+                <outlet property="dateEnd_pick" destination="9ho-g2-Xd1" id="r9x-7l-DSf"/>
+                <outlet property="dateStart_Pick" destination="lrw-FS-Qvo" id="9I2-eX-ePU"/>
+                <outlet property="endDatePick_bt" destination="7Lk-qb-n9l" id="WR1-t2-5cO"/>
+                <outlet property="jin10tian_bt" destination="JRp-TG-yhx" id="euU-T9-cbb"/>
+                <outlet property="jin30tian_bt" destination="N1E-Di-5CQ" id="LGw-hI-kTg"/>
+                <outlet property="jin3Tian_bt" destination="6xL-13-EXf" id="DJV-23-7J6"/>
+                <outlet property="jin7tian_bt" destination="in7-Nv-x55" id="rFc-HI-3ro"/>
+                <outlet property="jin90tian_bt" destination="fpQ-t8-OAO" id="a2J-YF-0dk"/>
+                <outlet property="jinTian_BT" destination="ogx-Jr-eWa" id="Jer-Fj-x78"/>
+                <outlet property="okButton" destination="hr0-UI-1EG" id="Bf4-9z-4rn"/>
+                <outlet property="scrollview" destination="NMn-ac-cq8" id="p3K-yF-sle"/>
+                <outlet property="startDatePick_bt" destination="BK1-oN-0bu" id="fbZ-e6-TUl"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="zuoTian_BT" destination="DIh-QG-mfZ" id="uqp-OQ-DPP"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NMn-ac-cq8">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogx-Jr-eWa">
+                            <rect key="frame" x="8" y="31" width="58" height="26"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="今天" backgroundImage="gy_button_bg">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIh-QG-mfZ">
+                            <rect key="frame" x="70" y="31" width="58" height="26"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="昨天" backgroundImage="gy_button_bg">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xL-13-EXf">
+                            <rect key="frame" x="132" y="32" width="58" height="26"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="近3天" backgroundImage="gy_button_bg">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="in7-Nv-x55">
+                            <rect key="frame" x="193" y="32" width="58" height="26"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="近7天" backgroundImage="gy_button_bg">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JRp-TG-yhx">
+                            <rect key="frame" x="254" y="31" width="58" height="26"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="近10天" backgroundImage="gy_button_bg">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPK-eT-FyS">
+                            <rect key="frame" x="70" y="66" width="58" height="26"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="本月" backgroundImage="gy_button_bg">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFC-p7-LgU">
+                            <rect key="frame" x="132" y="66" width="58" height="26"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="本季度" backgroundImage="gy_button_bg">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1E-Di-5CQ">
+                            <rect key="frame" x="193" y="66" width="58" height="26"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="近30天" backgroundImage="gy_button_bg">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpQ-t8-OAO">
+                            <rect key="frame" x="254" y="66" width="58" height="26"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="近90天" backgroundImage="gy_button_bg">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BK1-oN-0bu">
+                            <rect key="frame" x="17" y="116" width="286" height="30"/>
+                            <state key="normal" title="开始时间">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lk-qb-n9l">
+                            <rect key="frame" x="17" y="342" width="286" height="30"/>
+                            <state key="normal" title="结束时间">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="lrw-FS-Qvo">
+                            <rect key="frame" x="0.0" y="154" width="320" height="162"/>
+                            <date key="date" timeIntervalSinceReferenceDate="461744379.44086498">
+                                <!--2015-08-20 06:19:39 +0000-->
+                            </date>
+                        </datePicker>
+                        <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="9ho-g2-Xd1">
+                            <rect key="frame" x="0.0" y="380" width="320" height="116"/>
+                            <date key="date" timeIntervalSinceReferenceDate="461744379.44086498">
+                                <!--2015-08-20 06:19:39 +0000-->
+                            </date>
+                        </datePicker>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrY-Ib-hLR">
+                            <rect key="frame" x="8" y="65" width="58" height="26"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="本周" backgroundImage="gy_button_bg">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hr0-UI-1EG">
+                            <rect key="frame" x="70" y="520" width="181" height="30"/>
+                            <state key="normal" title=" 确定" backgroundImage="gy_bt_style1">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                    </subviews>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <point key="canvasLocation" x="368" y="231"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="gy_bt_style1" width="33" height="13"/>
+        <image name="gy_button_bg" width="45" height="45"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
