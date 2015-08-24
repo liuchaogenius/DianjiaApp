@@ -39,6 +39,23 @@
 
 #define kClearColor [UIColor clearColor]
 
+#define kCreateLabel(outLabel,aRect,aFontsize,aColor,aContent) do{\
+UILabel *label = [[UILabel alloc] initWithFrame:aRect];\
+label.backgroundColor = [UIColor clearColor];\
+label.font = [UIFont systemFontOfSize:aFontsize];\
+label.textColor = aColor;\
+label.text = aContent;\
+outLabel = label;\
+}while(0)
+
+#define kCreateImgView(outImgView,aFrame,aImg) do{\
+UIImageView *imgView = [[UIImageView alloc] initWithFrame:aFrame];\
+if (aImg){\
+imgView.image = aImg;\
+}\
+outImgView = imgView;\
+}while(0)
+
 #define kFont10 [UIFont systemFontOfSize:10]
 #define kFont11 [UIFont systemFontOfSize:11]
 #define kFont12 [UIFont systemFontOfSize:12]

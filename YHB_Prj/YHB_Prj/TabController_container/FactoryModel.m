@@ -36,9 +36,9 @@
 {
     UIViewController *vc1 = [self getFirstViewController];
     UIViewController *vc2 = [self getSecondViewController];
-//    UIViewController *vc3 = [self getThirdViewController];
-//    UIViewController *vc4 = [self getFourthViewController];
-    NSArray *arry = @[vc1,vc2];
+    UIViewController *vc3 = [self getThirdViewController];
+    UIViewController *vc4 = [self getFourthViewController];
+    NSArray *arry = @[vc1,vc2,vc3,vc4];
     return arry;
 }
 

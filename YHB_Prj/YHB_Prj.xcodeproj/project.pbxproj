@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB42ACD01B8B4140001FB93A /* FourthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB42ACCE1B8B4140001FB93A /* FourthTableViewCell.m */; };
+		AB42ACD11B8B4140001FB93A /* FourthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB42ACCF1B8B4140001FB93A /* FourthTableViewCell.xib */; };
 		FF2A6BE01A0F3780001607AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6BDF1A0F3780001607AC /* main.m */; };
 		FF2A6BE31A0F3780001607AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6BE21A0F3780001607AC /* AppDelegate.m */; };
 		FF2A6BE51A0F3780001607AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF2A6BE41A0F3780001607AC /* Images.xcassets */; };
@@ -116,6 +118,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB42ACCD1B8B4140001FB93A /* FourthTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourthTableViewCell.h; sourceTree = "<group>"; };
+		AB42ACCE1B8B4140001FB93A /* FourthTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthTableViewCell.m; sourceTree = "<group>"; };
+		AB42ACCF1B8B4140001FB93A /* FourthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FourthTableViewCell.xib; sourceTree = "<group>"; };
 		FF2A6BDA1A0F3780001607AC /* YHB_Prj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YHB_Prj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2A6BDE1A0F3780001607AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF2A6BDF1A0F3780001607AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -586,6 +591,9 @@
 			children = (
 				FF2A6C9A1A0F3D30001607AC /* FourthViewController.h */,
 				FF2A6C9B1A0F3D30001607AC /* FourthViewController.m */,
+				AB42ACCD1B8B4140001FB93A /* FourthTableViewCell.h */,
+				AB42ACCE1B8B4140001FB93A /* FourthTableViewCell.m */,
+				AB42ACCF1B8B4140001FB93A /* FourthTableViewCell.xib */,
 			);
 			path = FourthViewController;
 			sourceTree = "<group>";
@@ -919,6 +927,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB42ACD11B8B4140001FB93A /* FourthTableViewCell.xib in Resources */,
 				FF4DFD041B85A5DF00617660 /* DateSelectVC.xib in Resources */,
 				FF5C871A1B83024C00F79EC1 /* LICENSE.txt in Resources */,
 				FF5C872E1B83279600F79EC1 /* FirstViewController.xib in Resources */,
@@ -1023,6 +1032,7 @@
 				FF2A6C721A0F3B7B001607AC /* SDWebImageManager.m in Sources */,
 				FF2A6C891A0F3B8A001607AC /* UIScrollView+SVPullToRefresh.m in Sources */,
 				FF2A6C991A0F3D1C001607AC /* ThirdViewController.m in Sources */,
+				AB42ACD01B8B4140001FB93A /* FourthTableViewCell.m in Sources */,
 				FFF391971B846F58007DC652 /* AFNetworkReachabilityManager.m in Sources */,
 				FF4DFCF71B856B9600617660 /* ThreadSafeMutableDictionary.m in Sources */,
 				FF5C86FD1B81B72400F79EC1 /* MASViewConstraint.m in Sources */,

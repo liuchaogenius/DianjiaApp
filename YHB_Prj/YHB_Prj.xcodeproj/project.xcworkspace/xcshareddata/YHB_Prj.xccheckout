@@ -10,6 +10,8 @@
 	<string>YHB_Prj</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>706F4A54D6D98022B9E07F56AD29736D3F1A7ADB</key>
+		<string>https://github.com/liuchaogenius/DianjiaApp.git</string>
 		<key>EAEE6FE440EFEE034D4AFA48F9F902F13C97B8BE</key>
 		<string>https://github.com/liuchaogenius/YiHaoBu.git</string>
 	</dict>
@@ -17,17 +19,27 @@
 	<string>YHB_Prj/YHB_Prj.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>EAEE6FE440EFEE034D4AFA48F9F902F13C97B8BE</key>
+		<key>706F4A54D6D98022B9E07F56AD29736D3F1A7ADB</key>
 		<string>../../..</string>
+		<key>EAEE6FE440EFEE034D4AFA48F9F902F13C97B8BE</key>
+		<string>../../../../YiHaoBu</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/liuchaogenius/YiHaoBu.git</string>
+	<string>https://github.com/liuchaogenius/DianjiaApp.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>EAEE6FE440EFEE034D4AFA48F9F902F13C97B8BE</string>
+	<string>706F4A54D6D98022B9E07F56AD29736D3F1A7ADB</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>706F4A54D6D98022B9E07F56AD29736D3F1A7ADB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DianjiaApp</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
