@@ -1,0 +1,6 @@
+.DS_Store
+*.DS_Store
+YHB_Prj/YHB_Prj.xcodeproj/xcuserdata/
+YHB_Prj/YHB_Prj.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcuserstate/
+
