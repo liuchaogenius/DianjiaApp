@@ -7,8 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB40EAB51B8BF97500DE5ED7 /* ClerkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB40EAB41B8BF97500DE5ED7 /* ClerkViewController.m */; };
+		AB40EABC1B8BFA0100DE5ED7 /* ClerkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB40EABA1B8BFA0100DE5ED7 /* ClerkTableViewCell.m */; };
+		AB40EABD1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB40EABB1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib */; };
+		AB40EAC11B8C020700DE5ED7 /* SupplierViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB40EAC01B8C020700DE5ED7 /* SupplierViewController.m */; };
+		AB40EAC51B8C021800DE5ED7 /* SupplierTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB40EAC31B8C021800DE5ED7 /* SupplierTableViewCell.m */; };
+		AB40EAC61B8C021800DE5ED7 /* SupplierTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB40EAC41B8C021800DE5ED7 /* SupplierTableViewCell.xib */; };
 		AB42ACD01B8B4140001FB93A /* FourthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB42ACCE1B8B4140001FB93A /* FourthTableViewCell.m */; };
 		AB42ACD11B8B4140001FB93A /* FourthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB42ACCF1B8B4140001FB93A /* FourthTableViewCell.xib */; };
+		AB42ACD51B8BE01A001FB93A /* GateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB42ACD41B8BE01A001FB93A /* GateViewController.m */; };
+		AB42ACD91B8BE303001FB93A /* GateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB42ACD71B8BE303001FB93A /* GateTableViewCell.m */; };
+		AB42ACDA1B8BE303001FB93A /* GateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB42ACD81B8BE303001FB93A /* GateTableViewCell.xib */; };
+		AB42ACDD1B8BE97E001FB93A /* GateHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB42ACDC1B8BE97E001FB93A /* GateHeaderView.m */; };
 		FF2A6BE01A0F3780001607AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6BDF1A0F3780001607AC /* main.m */; };
 		FF2A6BE31A0F3780001607AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6BE21A0F3780001607AC /* AppDelegate.m */; };
 		FF2A6BE51A0F3780001607AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF2A6BE41A0F3780001607AC /* Images.xcassets */; };
@@ -122,9 +132,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB40EAB31B8BF97500DE5ED7 /* ClerkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClerkViewController.h; sourceTree = "<group>"; };
+		AB40EAB41B8BF97500DE5ED7 /* ClerkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClerkViewController.m; sourceTree = "<group>"; };
+		AB40EAB91B8BFA0100DE5ED7 /* ClerkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClerkTableViewCell.h; sourceTree = "<group>"; };
+		AB40EABA1B8BFA0100DE5ED7 /* ClerkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClerkTableViewCell.m; sourceTree = "<group>"; };
+		AB40EABB1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClerkTableViewCell.xib; sourceTree = "<group>"; };
+		AB40EABF1B8C020700DE5ED7 /* SupplierViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierViewController.h; sourceTree = "<group>"; };
+		AB40EAC01B8C020700DE5ED7 /* SupplierViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierViewController.m; sourceTree = "<group>"; };
+		AB40EAC21B8C021800DE5ED7 /* SupplierTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierTableViewCell.h; sourceTree = "<group>"; };
+		AB40EAC31B8C021800DE5ED7 /* SupplierTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierTableViewCell.m; sourceTree = "<group>"; };
+		AB40EAC41B8C021800DE5ED7 /* SupplierTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SupplierTableViewCell.xib; sourceTree = "<group>"; };
 		AB42ACCD1B8B4140001FB93A /* FourthTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourthTableViewCell.h; sourceTree = "<group>"; };
 		AB42ACCE1B8B4140001FB93A /* FourthTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthTableViewCell.m; sourceTree = "<group>"; };
 		AB42ACCF1B8B4140001FB93A /* FourthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FourthTableViewCell.xib; sourceTree = "<group>"; };
+		AB42ACD31B8BE01A001FB93A /* GateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GateViewController.h; sourceTree = "<group>"; };
+		AB42ACD41B8BE01A001FB93A /* GateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GateViewController.m; sourceTree = "<group>"; };
+		AB42ACD61B8BE303001FB93A /* GateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GateTableViewCell.h; sourceTree = "<group>"; };
+		AB42ACD71B8BE303001FB93A /* GateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GateTableViewCell.m; sourceTree = "<group>"; };
+		AB42ACD81B8BE303001FB93A /* GateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GateTableViewCell.xib; sourceTree = "<group>"; };
+		AB42ACDB1B8BE97E001FB93A /* GateHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GateHeaderView.h; sourceTree = "<group>"; };
+		AB42ACDC1B8BE97E001FB93A /* GateHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GateHeaderView.m; sourceTree = "<group>"; };
 		FF2A6BDA1A0F3780001607AC /* YHB_Prj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YHB_Prj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2A6BDE1A0F3780001607AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF2A6BDF1A0F3780001607AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -348,6 +375,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB40EAB21B8BF96700DE5ED7 /* ClerkVC */ = {
+			isa = PBXGroup;
+			children = (
+				AB40EAB31B8BF97500DE5ED7 /* ClerkViewController.h */,
+				AB40EAB41B8BF97500DE5ED7 /* ClerkViewController.m */,
+				AB40EAB91B8BFA0100DE5ED7 /* ClerkTableViewCell.h */,
+				AB40EABA1B8BFA0100DE5ED7 /* ClerkTableViewCell.m */,
+				AB40EABB1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib */,
+			);
+			path = ClerkVC;
+			sourceTree = "<group>";
+		};
+		AB40EABE1B8C01FA00DE5ED7 /* SupplierVC */ = {
+			isa = PBXGroup;
+			children = (
+				AB40EABF1B8C020700DE5ED7 /* SupplierViewController.h */,
+				AB40EAC01B8C020700DE5ED7 /* SupplierViewController.m */,
+				AB40EAC21B8C021800DE5ED7 /* SupplierTableViewCell.h */,
+				AB40EAC31B8C021800DE5ED7 /* SupplierTableViewCell.m */,
+				AB40EAC41B8C021800DE5ED7 /* SupplierTableViewCell.xib */,
+			);
+			path = SupplierVC;
+			sourceTree = "<group>";
+		};
+		AB42ACD21B8BE000001FB93A /* GateVC */ = {
+			isa = PBXGroup;
+			children = (
+				AB42ACD31B8BE01A001FB93A /* GateViewController.h */,
+				AB42ACD41B8BE01A001FB93A /* GateViewController.m */,
+				AB42ACD61B8BE303001FB93A /* GateTableViewCell.h */,
+				AB42ACD71B8BE303001FB93A /* GateTableViewCell.m */,
+				AB42ACD81B8BE303001FB93A /* GateTableViewCell.xib */,
+				AB42ACDB1B8BE97E001FB93A /* GateHeaderView.h */,
+				AB42ACDC1B8BE97E001FB93A /* GateHeaderView.m */,
+			);
+			path = GateVC;
+			sourceTree = "<group>";
+		};
 		FF2A6BD11A0F3780001607AC = {
 			isa = PBXGroup;
 			children = (
@@ -600,6 +665,9 @@
 		FF2A6C8D1A0F3CC9001607AC /* FourthViewController */ = {
 			isa = PBXGroup;
 			children = (
+				AB40EABE1B8C01FA00DE5ED7 /* SupplierVC */,
+				AB40EAB21B8BF96700DE5ED7 /* ClerkVC */,
+				AB42ACD21B8BE000001FB93A /* GateVC */,
 				FF2A6C9A1A0F3D30001607AC /* FourthViewController.h */,
 				FF2A6C9B1A0F3D30001607AC /* FourthViewController.m */,
 				AB42ACCD1B8B4140001FB93A /* FourthTableViewCell.h */,
@@ -953,9 +1021,13 @@
 			files = (
 				AB42ACD11B8B4140001FB93A /* FourthTableViewCell.xib in Resources */,
 				FF4DFD041B85A5DF00617660 /* DateSelectVC.xib in Resources */,
+				AB42ACDA1B8BE303001FB93A /* GateTableViewCell.xib in Resources */,
 				FF5C871A1B83024C00F79EC1 /* LICENSE.txt in Resources */,
 				FFD26CF01B8C3F940003F491 /* ZXBJCell.xib in Resources */,
 				FF5C872E1B83279600F79EC1 /* FirstViewController.xib in Resources */,
+				AB40EAC61B8C021800DE5ED7 /* SupplierTableViewCell.xib in Resources */,
+				AB40EABD1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib in Resources */,
+				FFD26CDB1B870D100003F491 /* KCYJViewController.xib in Resources */,
 				FF2A6BE51A0F3780001607AC /* Images.xcassets in Resources */,
 				FF2A6C431A0F3B6D001607AC /* SVProgressHUD.bundle in Resources */,
 				FFD26CE61B8B1BC50003F491 /* KCYJCell.xib in Resources */,
@@ -999,16 +1071,19 @@
 				FF4DFCF41B856B9600617660 /* NSFileManager_Additions.m in Sources */,
 				FFF391991B846F58007DC652 /* AFURLConnectionOperation.m in Sources */,
 				FF2A6C961A0F3D06001607AC /* SecondViewController.m in Sources */,
+				AB42ACD91B8BE303001FB93A /* GateTableViewCell.m in Sources */,
 				FF3C20041A2EE7480081D3C7 /* FactoryModel.m in Sources */,
 				FF4DFCFA1B856C2B00617660 /* LoginMode.m in Sources */,
 				FF5C86FE1B81B72400F79EC1 /* NSArray+MASAdditions.m in Sources */,
 				FF5C871F1B83024C00F79EC1 /* FMDatabaseQueue.m in Sources */,
+				AB42ACD51B8BE01A001FB93A /* GateViewController.m in Sources */,
 				FF5C86FA1B81B72400F79EC1 /* MASConstraintMaker.m in Sources */,
 				FF2A6C031A0F398D001607AC /* RootTabBarController.m in Sources */,
 				FF5C871D1B83024C00F79EC1 /* FMDatabaseAdditions.m in Sources */,
 				FF2A6C741A0F3B7B001607AC /* UIButton+WebCache.m in Sources */,
 				FF2A6C391A0F3B59001607AC /* FBKVOController.m in Sources */,
 				FF2A6C761A0F3B7B001607AC /* UIImage+MultiFormat.m in Sources */,
+				AB40EABC1B8BFA0100DE5ED7 /* ClerkTableViewCell.m in Sources */,
 				FF2A6C6F1A0F3B7B001607AC /* SDWebImageDecoder.m in Sources */,
 				FFF391981B846F58007DC652 /* AFSecurityPolicy.m in Sources */,
 				FF5C87031B81BC6000F79EC1 /* FirstVCManager.m in Sources */,
@@ -1034,6 +1109,7 @@
 				FF5C86DE1B818BE700F79EC1 /* SSWAnimator.m in Sources */,
 				FFF3919E1B846F58007DC652 /* NetManager.m in Sources */,
 				FF2A6C7A1A0F3B7B001607AC /* UIView+WebCacheOperation.m in Sources */,
+				AB40EAC51B8C021800DE5ED7 /* SupplierTableViewCell.m in Sources */,
 				FF4DFD031B85A5DF00617660 /* DateSelectVC.m in Sources */,
 				FF2A6C6E1A0F3B7B001607AC /* SDWebImageCompat.m in Sources */,
 				FFF3919B1B846F58007DC652 /* AFURLResponseSerialization.m in Sources */,
@@ -1048,7 +1124,9 @@
 				FF5C86F81B81B72400F79EC1 /* MASCompositeConstraint.m in Sources */,
 				FF2A6C441A0F3B6D001607AC /* SVProgressHUD.m in Sources */,
 				FF5C871C1B83024C00F79EC1 /* FMDatabase.m in Sources */,
+				AB42ACDD1B8BE97E001FB93A /* GateHeaderView.m in Sources */,
 				FFF391941B846F58007DC652 /* AFHTTPRequestOperation.m in Sources */,
+				AB40EAC11B8C020700DE5ED7 /* SupplierViewController.m in Sources */,
 				FF2A6C731A0F3B7B001607AC /* SDWebImagePrefetcher.m in Sources */,
 				FFF3919A1B846F58007DC652 /* AFURLRequestSerialization.m in Sources */,
 				FF4DFD0B1B85CBFA00617660 /* StoreListView.m in Sources */,
@@ -1066,6 +1144,7 @@
 				FF5C86FD1B81B72400F79EC1 /* MASViewConstraint.m in Sources */,
 				FF2A6C771A0F3B7B001607AC /* UIImage+WebP.m in Sources */,
 				FF2A6C9F1A0F3D41001607AC /* FifthViewController.m in Sources */,
+				AB40EAB51B8BF97500DE5ED7 /* ClerkViewController.m in Sources */,
 				FF2A6C081A0F39EC001607AC /* ViewInteraction.m in Sources */,
 				FF2A6C6D1A0F3B7B001607AC /* SDImageCache.m in Sources */,
 			);

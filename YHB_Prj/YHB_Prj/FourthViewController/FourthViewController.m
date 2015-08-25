@@ -8,6 +8,9 @@
 
 #import "FourthViewController.h"
 #import "FourthTableViewCell.h"
+#import "GateViewController.h"
+#import "ClerkViewController.h"
+#import "SupplierViewController.h"
 
 typedef enum : NSUInteger {
     cellTypeTenant = 0,//商户
@@ -151,7 +154,43 @@ typedef enum : NSUInteger {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    MLOG(@"%ld", indexPath.row);
+    switch (indexPath.row) {
+        case cellTypeTenant:
+            NSLog(@"0");
+            break;
+        case cellTypeGate:
+        {
+            GateViewController *vc = [[GateViewController alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case cellTypeClerk:
+        {
+            ClerkViewController *vc = [[ClerkViewController alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case cellTypeSupplier:
+        {
+            SupplierViewController *vc = [[SupplierViewController alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case cellTypeOption:
+            
+            break;
+        case cellTypeScan:
+            
+            break;
+        case cellTypeMatter:
+            
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)setStarCount:(int)aCount
