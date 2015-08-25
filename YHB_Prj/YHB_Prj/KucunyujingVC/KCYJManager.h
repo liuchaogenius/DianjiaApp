@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class KCYJListMode;
+@class StoreTockList;
 @interface KCYJManager : NSObject
-- (void)getStockWarningDetailPageApp:(BOOL)isRefresh storeId:(NSString *)aStoreId;
+- (void)getStockWarningDetailPageApp:(BOOL)isRefresh storeId:(NSString *)aStoreId finishBlock:(void(^)(KCYJListMode *modelist))aFinishBlock;
+/**
+ *  滞销预警
+ *
+ *  @param isRefresh
+ *  @param aStoreId
+ *  @param aFinishBlock
+ */
+- (void)getSalekWarningDetailPageApp:(BOOL)isRefresh storeId:(NSString *)aStoreId finishBlock:(void(^)(KCYJListMode *modelist))aFinishBlock;
+
+- (void)getStoreStockByStoreCount:(void(^)(StoreTockList *modelist))aFinishBlock;
 @end

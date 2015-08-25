@@ -138,11 +138,14 @@
 
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-
+    NSString *param = nil;
+    NSMutableDictionary *dict = nil;
     manager.requestSerializer.timeoutInterval = 30;
-    NSString *param = [[NetManager shareInstance] basePostDict:aDict apiName:aApiName];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:aDict];
+
+    param = [[NetManager shareInstance] basePostDict:aDict apiName:aApiName];
+    dict = [NSMutableDictionary dictionaryWithDictionary:aDict];
     [dict setValue:param forKey:@"S3CAPI"];
+    
     [NetManager setRequestHeadValue:manager];
     NSString *method = [aMethod uppercaseString];
     if([kBaseUrl compare:@"https://api.chinascrm.com/sapi4app.html"] == 0)
@@ -208,8 +211,11 @@
     {
         [dict setValue:[self getCPID] forKey:@"CPID"];
     }
-     NSString *myJsonString = [NetManager Dic_ToJSONString:aParam];
-    [dict setValue:myJsonString forKey:@"ApiParam"];
+    if(aParam)
+    {
+        NSString *myJsonString = [NetManager Dic_ToJSONString:aParam];
+        [dict setValue:myJsonString forKey:@"ApiParam"];
+    }
     NSString *paramString = [NetManager Dic_ToJSONString:dict];
     return paramString;
 }

@@ -89,12 +89,16 @@
 		FF5C872D1B83279600F79EC1 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5C872B1B83279600F79EC1 /* FirstViewController.m */; };
 		FF5C872E1B83279600F79EC1 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5C872C1B83279600F79EC1 /* FirstViewController.xib */; };
 		FFD26CCE1B86D0D50003F491 /* FirstMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CCD1B86D0D50003F491 /* FirstMode.m */; };
-		FFD26CDA1B870D100003F491 /* KCYJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CD81B870D100003F491 /* KCYJViewController.m */; };
-		FFD26CDB1B870D100003F491 /* KCYJViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFD26CD91B870D100003F491 /* KCYJViewController.xib */; };
 		FFD26CDE1B8B0B4E0003F491 /* KCYJManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CDD1B8B0B4E0003F491 /* KCYJManager.m */; };
 		FFD26CE11B8B10970003F491 /* KCYJMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CE01B8B10970003F491 /* KCYJMode.m */; };
 		FFD26CE51B8B1BC50003F491 /* KCYJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CE31B8B1BC50003F491 /* KCYJCell.m */; };
 		FFD26CE61B8B1BC50003F491 /* KCYJCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFD26CE41B8B1BC50003F491 /* KCYJCell.xib */; };
+		FFD26CEA1B8C1B3B0003F491 /* KCYJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CE81B8C1B3B0003F491 /* KCYJViewController.m */; };
+		FFD26CEB1B8C1B3B0003F491 /* KCYJViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFD26CE91B8C1B3B0003F491 /* KCYJViewController.xib */; };
+		FFD26CEF1B8C3F940003F491 /* ZXBJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CED1B8C3F940003F491 /* ZXBJCell.m */; };
+		FFD26CF01B8C3F940003F491 /* ZXBJCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFD26CEE1B8C3F940003F491 /* ZXBJCell.xib */; };
+		FFD26CF41B8C546F0003F491 /* ZCBCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CF21B8C546F0003F491 /* ZCBCell.m */; };
+		FFD26CF51B8C546F0003F491 /* ZCBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFD26CF31B8C546F0003F491 /* ZCBCell.xib */; };
 		FFF391941B846F58007DC652 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF3917D1B846F58007DC652 /* AFHTTPRequestOperation.m */; };
 		FFF391951B846F58007DC652 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF3917F1B846F58007DC652 /* AFHTTPRequestOperationManager.m */; };
 		FFF391961B846F58007DC652 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF391811B846F58007DC652 /* AFHTTPSessionManager.m */; };
@@ -286,9 +290,6 @@
 		FF5C872C1B83279600F79EC1 /* FirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
 		FFD26CCC1B86D0D50003F491 /* FirstMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstMode.h; sourceTree = "<group>"; };
 		FFD26CCD1B86D0D50003F491 /* FirstMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstMode.m; sourceTree = "<group>"; };
-		FFD26CD71B870D100003F491 /* KCYJViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCYJViewController.h; sourceTree = "<group>"; };
-		FFD26CD81B870D100003F491 /* KCYJViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCYJViewController.m; sourceTree = "<group>"; };
-		FFD26CD91B870D100003F491 /* KCYJViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KCYJViewController.xib; sourceTree = "<group>"; };
 		FFD26CDC1B8B0B4E0003F491 /* KCYJManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCYJManager.h; sourceTree = "<group>"; };
 		FFD26CDD1B8B0B4E0003F491 /* KCYJManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCYJManager.m; sourceTree = "<group>"; };
 		FFD26CDF1B8B10970003F491 /* KCYJMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCYJMode.h; sourceTree = "<group>"; };
@@ -296,6 +297,15 @@
 		FFD26CE21B8B1BC50003F491 /* KCYJCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCYJCell.h; sourceTree = "<group>"; };
 		FFD26CE31B8B1BC50003F491 /* KCYJCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCYJCell.m; sourceTree = "<group>"; };
 		FFD26CE41B8B1BC50003F491 /* KCYJCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KCYJCell.xib; sourceTree = "<group>"; };
+		FFD26CE71B8C1B3B0003F491 /* KCYJViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCYJViewController.h; sourceTree = "<group>"; };
+		FFD26CE81B8C1B3B0003F491 /* KCYJViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCYJViewController.m; sourceTree = "<group>"; };
+		FFD26CE91B8C1B3B0003F491 /* KCYJViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KCYJViewController.xib; sourceTree = "<group>"; };
+		FFD26CEC1B8C3F940003F491 /* ZXBJCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXBJCell.h; sourceTree = "<group>"; };
+		FFD26CED1B8C3F940003F491 /* ZXBJCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXBJCell.m; sourceTree = "<group>"; };
+		FFD26CEE1B8C3F940003F491 /* ZXBJCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZXBJCell.xib; sourceTree = "<group>"; };
+		FFD26CF11B8C546F0003F491 /* ZCBCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCBCell.h; sourceTree = "<group>"; };
+		FFD26CF21B8C546F0003F491 /* ZCBCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCBCell.m; sourceTree = "<group>"; };
+		FFD26CF31B8C546F0003F491 /* ZCBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZCBCell.xib; sourceTree = "<group>"; };
 		FFF3917C1B846F58007DC652 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		FFF3917D1B846F58007DC652 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		FFF3917E1B846F58007DC652 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -797,9 +807,6 @@
 		FFD26CD61B870CD60003F491 /* KucunyujingVC */ = {
 			isa = PBXGroup;
 			children = (
-				FFD26CD71B870D100003F491 /* KCYJViewController.h */,
-				FFD26CD81B870D100003F491 /* KCYJViewController.m */,
-				FFD26CD91B870D100003F491 /* KCYJViewController.xib */,
 				FFD26CDC1B8B0B4E0003F491 /* KCYJManager.h */,
 				FFD26CDD1B8B0B4E0003F491 /* KCYJManager.m */,
 				FFD26CDF1B8B10970003F491 /* KCYJMode.h */,
@@ -807,6 +814,15 @@
 				FFD26CE21B8B1BC50003F491 /* KCYJCell.h */,
 				FFD26CE31B8B1BC50003F491 /* KCYJCell.m */,
 				FFD26CE41B8B1BC50003F491 /* KCYJCell.xib */,
+				FFD26CEC1B8C3F940003F491 /* ZXBJCell.h */,
+				FFD26CED1B8C3F940003F491 /* ZXBJCell.m */,
+				FFD26CEE1B8C3F940003F491 /* ZXBJCell.xib */,
+				FFD26CF11B8C546F0003F491 /* ZCBCell.h */,
+				FFD26CF21B8C546F0003F491 /* ZCBCell.m */,
+				FFD26CF31B8C546F0003F491 /* ZCBCell.xib */,
+				FFD26CE71B8C1B3B0003F491 /* KCYJViewController.h */,
+				FFD26CE81B8C1B3B0003F491 /* KCYJViewController.m */,
+				FFD26CE91B8C1B3B0003F491 /* KCYJViewController.xib */,
 			);
 			path = KucunyujingVC;
 			sourceTree = "<group>";
@@ -930,12 +946,14 @@
 				AB42ACD11B8B4140001FB93A /* FourthTableViewCell.xib in Resources */,
 				FF4DFD041B85A5DF00617660 /* DateSelectVC.xib in Resources */,
 				FF5C871A1B83024C00F79EC1 /* LICENSE.txt in Resources */,
+				FFD26CF01B8C3F940003F491 /* ZXBJCell.xib in Resources */,
 				FF5C872E1B83279600F79EC1 /* FirstViewController.xib in Resources */,
-				FFD26CDB1B870D100003F491 /* KCYJViewController.xib in Resources */,
 				FF2A6BE51A0F3780001607AC /* Images.xcassets in Resources */,
 				FF2A6C431A0F3B6D001607AC /* SVProgressHUD.bundle in Resources */,
 				FFD26CE61B8B1BC50003F491 /* KCYJCell.xib in Resources */,
 				FF5C87091B82FE5200F79EC1 /* LoginViewController.xib in Resources */,
+				FFD26CEB1B8C1B3B0003F491 /* KCYJViewController.xib in Resources */,
+				FFD26CF51B8C546F0003F491 /* ZCBCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -955,6 +973,7 @@
 			files = (
 				FF5C87081B82FE5200F79EC1 /* LoginViewController.m in Sources */,
 				FF2A6C751A0F3B7B001607AC /* UIImage+GIF.m in Sources */,
+				FFD26CEF1B8C3F940003F491 /* ZXBJCell.m in Sources */,
 				FF2A6C881A0F3B8A001607AC /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				FFD26CCE1B86D0D50003F491 /* FirstMode.m in Sources */,
 				FF3C200B1A2F2B330081D3C7 /* NotifyFactoryObject.m in Sources */,
@@ -987,6 +1006,7 @@
 				FF5C87031B81BC6000F79EC1 /* FirstVCManager.m in Sources */,
 				FFD26CE51B8B1BC50003F491 /* KCYJCell.m in Sources */,
 				FF5C86FF1B81B72400F79EC1 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				FFD26CF41B8C546F0003F491 /* ZCBCell.m in Sources */,
 				FF2A6C0C1A0F3A01001607AC /* UIImage+ImageEffects.m in Sources */,
 				FF2A6C791A0F3B7B001607AC /* UIImageView+WebCache.m in Sources */,
 				FF5C86F91B81B72400F79EC1 /* MASConstraint.m in Sources */,
@@ -998,7 +1018,6 @@
 				FF2A6C781A0F3B7B001607AC /* UIImageView+HighlightedWebCache.m in Sources */,
 				FFD26CE11B8B10970003F491 /* KCYJMode.m in Sources */,
 				FF3C20081A2F2A440081D3C7 /* GlobObserverObject.m in Sources */,
-				FFD26CDA1B870D100003F491 /* KCYJViewController.m in Sources */,
 				FF5C86DF1B818BE700F79EC1 /* SSWDirectionalPanGestureRecognizer.m in Sources */,
 				FF5C871E1B83024C00F79EC1 /* FMDatabasePool.m in Sources */,
 				FFF391951B846F58007DC652 /* AFHTTPRequestOperationManager.m in Sources */,
@@ -1031,6 +1050,7 @@
 				FF5C86FB1B81B72400F79EC1 /* MASLayoutConstraint.m in Sources */,
 				FF2A6C721A0F3B7B001607AC /* SDWebImageManager.m in Sources */,
 				FF2A6C891A0F3B8A001607AC /* UIScrollView+SVPullToRefresh.m in Sources */,
+				FFD26CEA1B8C1B3B0003F491 /* KCYJViewController.m in Sources */,
 				FF2A6C991A0F3D1C001607AC /* ThirdViewController.m in Sources */,
 				AB42ACD01B8B4140001FB93A /* FourthTableViewCell.m in Sources */,
 				FFF391971B846F58007DC652 /* AFNetworkReachabilityManager.m in Sources */,
