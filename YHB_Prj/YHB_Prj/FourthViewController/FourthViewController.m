@@ -74,6 +74,7 @@ typedef enum : NSUInteger {
     kCreateLabel(_userNameLabel, CGRectMake(originX, _userComLabel.top-17-interval, kMainScreenWidth/2.0-originX-10, 17), 14, [UIColor whiteColor], @"掌柜:昵称重复");
     [_topImgView addSubview:_userNameLabel];
     
+    //字体
     CGFloat stringWidth = [@"信用:" sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:kFont14,NSFontAttributeName, nil]].width;
     
     kCreateLabel(_userProLabel, CGRectMake(kMainScreenWidth/2.0, _userNameLabel.top, stringWidth, 17), 14, [UIColor whiteColor], @"信用:");

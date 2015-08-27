@@ -9,6 +9,7 @@
 #import "GateViewController.h"
 #import "GateTableViewCell.h"
 #import "GateHeaderView.h"
+#import "GateDetailViewController.h"
 
 @interface GateViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -96,7 +97,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    NSLog(@"%ld", indexPath.section);
+//    NSLog(@"%ld", indexPath.section);
+    GateDetailViewController *vc = [[GateDetailViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
