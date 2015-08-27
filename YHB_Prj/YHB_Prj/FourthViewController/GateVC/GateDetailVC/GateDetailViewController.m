@@ -8,6 +8,14 @@
 
 #import "GateDetailViewController.h"
 
+typedef enum : NSUInteger {
+    FieldTypeGate,
+    FieldTypeContact,
+    FieldTypePhone,
+    FieldTypeLoca,
+    FieldTypeDate
+} FieldType;
+
 @interface GateDetailViewController ()
 {
     UIScrollView *_bgScrollView;
@@ -37,7 +45,7 @@
     _titleArray = @[@"门店名称:",@"联系人:",@"联系电话:",@"门店地址:",@"添加日期:"];
     NSArray *contentArray = @[@"南京母婴乐嘉店",@"董枫",@"13311251225",@"北京市朝阳区团结湖北头条",@"2015-07-14 14:32:34"];
     
-    CGFloat endWidth = 0;
+    CGFloat endHeight = 0;
     for (int i=0; i<_titleArray.count; i++)
     {
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15+45*i, 16, 16)];
@@ -56,6 +64,10 @@
         textField.tag = 100+i;
         [_bgScrollView addSubview:textField];
         textField.text = contentArray[i];
+        if (i==FieldTypePhone)
+        {
+            textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        }
         
         UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(titleLabel.right, textField.bottom+2, textField.width+5, 0.5)];
         lineView.backgroundColor = RGBCOLOR(220, 220, 220);
@@ -65,9 +77,11 @@
         rightView.image = [UIImage imageNamed:@"rightArrow"];
         [_bgScrollView addSubview:rightView];
         
-        endWidth = lineView.bottom;
+        endHeight = lineView.bottom;
     }
-    _bgScrollView.contentSize = CGSizeMake(kMainScreenWidth, endWidth+5);
+    
+    CGFloat contentH = _bgScrollView.height+1>endHeight+5?_bgScrollView.height+1:endHeight+5;
+    _bgScrollView.contentSize = CGSizeMake(kMainScreenWidth, contentH);
 
     
     UIColor *btnColor = [UIColor orangeColor];
@@ -94,13 +108,11 @@
 {
     if (self.isEdit==NO)//执行编辑
     {
-        self.isEdit = YES;
-        [self.leftBtn setTitle:@"保存" forState:UIControlStateNormal];
-        [self.rightBtn setTitle:@"取消" forState:UIControlStateNormal];
+        [self edit];
     }
     else//执行保存
     {
-        
+        [self save];
     }
 }
 
@@ -108,16 +120,37 @@
 {
     if (self.isEdit==NO)//执行删除
     {
-        
+        [self delete];
     }
     else//执行取消
     {
-        self.isEdit = NO;
-        [self.leftBtn setTitle:@"修改" forState:UIControlStateNormal];
-        [self.rightBtn setTitle:@"删除" forState:UIControlStateNormal];
+        [self cancel];
     }
 }
 
+- (void)edit
+{
+    self.isEdit = YES;
+    [self.leftBtn setTitle:@"保存" forState:UIControlStateNormal];
+    [self.rightBtn setTitle:@"取消" forState:UIControlStateNormal];
+}
+
+- (void)save
+{
+    
+}
+
+- (void)delete
+{
+    
+}
+
+- (void)cancel
+{
+    self.isEdit = NO;
+    [self.leftBtn setTitle:@"修改" forState:UIControlStateNormal];
+    [self.rightBtn setTitle:@"删除" forState:UIControlStateNormal];
+}
 
 
 #pragma mark setter isEdit
