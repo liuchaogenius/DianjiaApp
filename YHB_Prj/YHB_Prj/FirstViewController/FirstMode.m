@@ -58,15 +58,15 @@
 - (void)unPacketData:(NSDictionary *)aDataDict
 {
     AssignMentID(self.strUid, [aDataDict objectForKey:@"uid"]);
-    BasLongLongToNSString(self.strUid);
+    BaseLongLongToNSString(self.strUid);
     
     AssignMentID(self.strSid, [aDataDict objectForKey:@"sid"]);
-    BasLongLongToNSString(self.strSid);
+    BaseLongLongToNSString(self.strSid);
     
     AssignMentID(self.strStoreName, [aDataDict objectForKey:@"store_name"]);
     
     AssignMentID(self.strStockQty, [aDataDict objectForKey:@"stock_qty"]);
-    BasLongLongToNSString(self.strStockQty);
+    BaseLongLongToNSString(self.strStockQty);
     
     AssignMentID(self.strStockMoney, [aDataDict objectForKey:@"stock_money"]);
     BaseFloadToNSString(self.strStockMoney);

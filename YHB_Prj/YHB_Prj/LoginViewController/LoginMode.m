@@ -23,17 +23,17 @@
     AssignMentID(self.strAddDate, [aDataDict objectForKey:@"add_date"]);
     
     AssignMentID(self.strAreaCode, [aDataDict objectForKey:@"area_code"]);
-    BasLongLongToNSString(self.strAreaCode);
+    BaseLongLongToNSString(self.strAreaCode);
     
     AssignMentID(self.strCityCode, [aDataDict objectForKey:@"city_code"]);
-    BasLongLongToNSString(self.strCityCode);
+    BaseLongLongToNSString(self.strCityCode);
     
     AssignMentID(self.strCompanyName, [aDataDict objectForKey:@"company_name"]);
     
     AssignMentID(self.strContactAddr, [aDataDict objectForKey:@"contact_addr"]);
     
     AssignMentID(self.strCreditRating, [aDataDict objectForKey:@"credit_rating"]);
-    BasLongLongToNSString(self.strCreditRating);
+    BaseLongLongToNSString(self.strCreditRating);
     
     AssignMentID(self.strEmail, [aDataDict objectForKey:@"email"]);
     
@@ -44,33 +44,33 @@
     AssignMentID(self.strFaceUrl, [aDataDict objectForKey:@"face_url"]);
     
     AssignMentID(self.strId, [aDataDict objectForKey:@"id"]);
-    BasLongLongToNSString(self.strId);
+    BaseLongLongToNSString(self.strId);
     
     AssignMentID(self.strIndustryName, [aDataDict objectForKey:@"industry_name"]);
     
     AssignMentID(self.strLoginUserType, [aDataDict objectForKey:@"loginUserType"]);
     
-    BasLongLongToNSString(self.strLoginUserType);
+    BaseLongLongToNSString(self.strLoginUserType);
     
     AssignMentID(self.strNickName, [aDataDict objectForKey:@"nickname"]);
     
     AssignMentID(self.strPhone, [aDataDict objectForKey:@"phone"]);
     
     AssignMentID(self.strProvinceCode, [aDataDict objectForKey:@"province_code"]);
-    BasLongLongToNSString(self.strProvinceCode);
+    BaseLongLongToNSString(self.strProvinceCode);
     
     AssignMentID(self.strSid, [aDataDict objectForKey:@"sid"]);
-    BasLongLongToNSString(self.strSid);
+    BaseLongLongToNSString(self.strSid);
     
     AssignMentID(self.strToken, [aDataDict objectForKey:@"token"]);
     
     AssignMentID(self.strUid, [aDataDict objectForKey:@"uid"]);
-    BasLongLongToNSString(self.strUid);
+    BaseLongLongToNSString(self.strUid);
     
     AssignMentID(self.strUname, [aDataDict objectForKey:@"uname"]);
     
     AssignMentID(self.strUserCore, [aDataDict objectForKey:@"user_score"]);
-    BasLongLongToNSString(self.strUserCore);
+    BaseLongLongToNSString(self.strUserCore);
     NSArray *storeArry = [aDataDict objectForKey:@"storeList"];
     if(storeArry && storeArry.count>0)
     {
@@ -107,7 +107,7 @@
     AssignMentID(self.strContactPhone, [aDataDict objectForKey:@"contact_phone"]);
     
     AssignMentID(self.strId, [aDataDict objectForKey:@"id"]);
-    BasLongLongToNSString(self.strId);
+    BaseLongLongToNSString(self.strId);
     
     AssignMentID(self.strStoreName, [aDataDict objectForKey:@"store_name"]);
     

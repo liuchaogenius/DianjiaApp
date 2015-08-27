@@ -106,7 +106,7 @@ str = [NSString stringWithFormat:@"%d", a];\
 str=[NSString stringWithFormat:@"%.2f", a];\
 }while(0)
 
-#define BasLongLongToNSString(l){\
+#define BaseLongLongToNSString(l){\
 id V = [NSString stringWithFormat:@"%lld",[l longLongValue]];\
 l = (V && !isNull(V) ? V : nil); \
 }while(0)

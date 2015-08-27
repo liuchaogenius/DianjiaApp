@@ -64,6 +64,7 @@
     [self.head_rbt addTarget:self action:@selector(head_rbtItem:) forControlEvents:UIControlEventTouchUpInside];
     [self requestHomeData];
     [self.bottom_kcjg_BT addTarget:self action:@selector(kcyj_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
+    [self.bottom_hygl_BT addTarget:self action:@selector(hygl_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
 }
 #pragma mark 获取首页数据
 - (void)requestHomeData
@@ -140,6 +141,12 @@
 - (void)kcyj_ButtonItem
 {
     [self pushXIBName:@"KCYJViewController" animated:YES selector:nil param:nil];
+}
+
+#pragma mark 会员管理
+- (void)hygl_ButtonItem
+{
+    [self pushXIBName:@"HYGLViewController" animated:YES selector:nil param:nil];
 }
 
 - (void)didReceiveMemoryWarning {

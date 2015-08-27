@@ -31,6 +31,13 @@
     }
     return self;
 }
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    if(self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
+    {
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -317,7 +324,6 @@
     NSMutableArray *paramArry = [NSMutableArray arrayWithCapacity:0];
     if(vc && sel && [vc respondsToSelector:sel])
     {
-        
         va_list args;
         va_start(args, aParam);
         id firstParam = aParam;
@@ -327,7 +333,11 @@
             while (firstParam) {
                 MLOG(@"firstParam = %@",firstParam);
                 firstParam = va_arg(args, id);
-                MLOG(@"firstParam111 = %@",firstParam);
+                //MLOG(@"firstParam111 = %@",firstParam);
+                if(!firstParam)
+                {
+                    break;
+                }
                 [paramArry addObject:firstParam];
             }
         }

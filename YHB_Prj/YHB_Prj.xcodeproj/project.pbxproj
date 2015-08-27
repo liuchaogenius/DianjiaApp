@@ -19,6 +19,19 @@
 		AB42ACD91B8BE303001FB93A /* GateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB42ACD71B8BE303001FB93A /* GateTableViewCell.m */; };
 		AB42ACDA1B8BE303001FB93A /* GateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB42ACD81B8BE303001FB93A /* GateTableViewCell.xib */; };
 		AB42ACDD1B8BE97E001FB93A /* GateHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB42ACDC1B8BE97E001FB93A /* GateHeaderView.m */; };
+		FF012FA91B8EB92C00AE563C /* VipInfoMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF012F941B8EB92C00AE563C /* VipInfoMode.m */; };
+		FF012FAA1B8EB92C00AE563C /* HYXFJLListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF012F961B8EB92C00AE563C /* HYXFJLListViewController.xib */; };
+		FF012FAB1B8EB92C00AE563C /* HYXFJLListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF012F971B8EB92C00AE563C /* HYXFJLListViewController.m */; };
+		FF012FAC1B8EB92C00AE563C /* HYLSXFCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF012F991B8EB92C00AE563C /* HYLSXFCell.xib */; };
+		FF012FAD1B8EB92C00AE563C /* HYLSXFCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF012F9A1B8EB92C00AE563C /* HYLSXFCell.m */; };
+		FF012FAE1B8EB92C00AE563C /* HYGLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF012F9C1B8EB92C00AE563C /* HYGLViewController.xib */; };
+		FF012FAF1B8EB92C00AE563C /* HYGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF012F9D1B8EB92C00AE563C /* HYGLViewController.m */; };
+		FF012FB01B8EB92C00AE563C /* HYGLOneMothMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF012F9F1B8EB92C00AE563C /* HYGLOneMothMode.m */; };
+		FF012FB11B8EB92C00AE563C /* HYGLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF012FA11B8EB92C00AE563C /* HYGLManager.m */; };
+		FF012FB21B8EB92C00AE563C /* HYDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF012FA31B8EB92C00AE563C /* HYDetailViewController.xib */; };
+		FF012FB31B8EB92C00AE563C /* HYDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF012FA41B8EB92C00AE563C /* HYDetailViewController.m */; };
+		FF012FB41B8EB92C00AE563C /* HYCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF012FA61B8EB92C00AE563C /* HYCell.xib */; };
+		FF012FB51B8EB92C00AE563C /* HYCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF012FA71B8EB92C00AE563C /* HYCell.m */; };
 		FF2A6BE01A0F3780001607AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6BDF1A0F3780001607AC /* main.m */; };
 		FF2A6BE31A0F3780001607AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6BE21A0F3780001607AC /* AppDelegate.m */; };
 		FF2A6BE51A0F3780001607AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF2A6BE41A0F3780001607AC /* Images.xcassets */; };
@@ -152,6 +165,27 @@
 		AB42ACD81B8BE303001FB93A /* GateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GateTableViewCell.xib; sourceTree = "<group>"; };
 		AB42ACDB1B8BE97E001FB93A /* GateHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GateHeaderView.h; sourceTree = "<group>"; };
 		AB42ACDC1B8BE97E001FB93A /* GateHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GateHeaderView.m; sourceTree = "<group>"; };
+		FF012F941B8EB92C00AE563C /* VipInfoMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipInfoMode.m; sourceTree = "<group>"; };
+		FF012F951B8EB92C00AE563C /* VipInfoMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipInfoMode.h; sourceTree = "<group>"; };
+		FF012F961B8EB92C00AE563C /* HYXFJLListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYXFJLListViewController.xib; sourceTree = "<group>"; };
+		FF012F971B8EB92C00AE563C /* HYXFJLListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYXFJLListViewController.m; sourceTree = "<group>"; };
+		FF012F981B8EB92C00AE563C /* HYXFJLListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYXFJLListViewController.h; sourceTree = "<group>"; };
+		FF012F991B8EB92C00AE563C /* HYLSXFCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYLSXFCell.xib; sourceTree = "<group>"; };
+		FF012F9A1B8EB92C00AE563C /* HYLSXFCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLSXFCell.m; sourceTree = "<group>"; };
+		FF012F9B1B8EB92C00AE563C /* HYLSXFCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLSXFCell.h; sourceTree = "<group>"; };
+		FF012F9C1B8EB92C00AE563C /* HYGLViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYGLViewController.xib; sourceTree = "<group>"; };
+		FF012F9D1B8EB92C00AE563C /* HYGLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYGLViewController.m; sourceTree = "<group>"; };
+		FF012F9E1B8EB92C00AE563C /* HYGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYGLViewController.h; sourceTree = "<group>"; };
+		FF012F9F1B8EB92C00AE563C /* HYGLOneMothMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYGLOneMothMode.m; sourceTree = "<group>"; };
+		FF012FA01B8EB92C00AE563C /* HYGLOneMothMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYGLOneMothMode.h; sourceTree = "<group>"; };
+		FF012FA11B8EB92C00AE563C /* HYGLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYGLManager.m; sourceTree = "<group>"; };
+		FF012FA21B8EB92C00AE563C /* HYGLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYGLManager.h; sourceTree = "<group>"; };
+		FF012FA31B8EB92C00AE563C /* HYDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYDetailViewController.xib; sourceTree = "<group>"; };
+		FF012FA41B8EB92C00AE563C /* HYDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYDetailViewController.m; sourceTree = "<group>"; };
+		FF012FA51B8EB92C00AE563C /* HYDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYDetailViewController.h; sourceTree = "<group>"; };
+		FF012FA61B8EB92C00AE563C /* HYCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCell.xib; sourceTree = "<group>"; };
+		FF012FA71B8EB92C00AE563C /* HYCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCell.m; sourceTree = "<group>"; };
+		FF012FA81B8EB92C00AE563C /* HYCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCell.h; sourceTree = "<group>"; };
 		FF2A6BDA1A0F3780001607AC /* YHB_Prj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YHB_Prj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF2A6BDE1A0F3780001607AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF2A6BDF1A0F3780001607AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -899,6 +933,27 @@
 		FFD26CF61B8C69290003F491 /* HuiyuanGuanli */ = {
 			isa = PBXGroup;
 			children = (
+				FF012F941B8EB92C00AE563C /* VipInfoMode.m */,
+				FF012F951B8EB92C00AE563C /* VipInfoMode.h */,
+				FF012F961B8EB92C00AE563C /* HYXFJLListViewController.xib */,
+				FF012F971B8EB92C00AE563C /* HYXFJLListViewController.m */,
+				FF012F981B8EB92C00AE563C /* HYXFJLListViewController.h */,
+				FF012F991B8EB92C00AE563C /* HYLSXFCell.xib */,
+				FF012F9A1B8EB92C00AE563C /* HYLSXFCell.m */,
+				FF012F9B1B8EB92C00AE563C /* HYLSXFCell.h */,
+				FF012F9C1B8EB92C00AE563C /* HYGLViewController.xib */,
+				FF012F9D1B8EB92C00AE563C /* HYGLViewController.m */,
+				FF012F9E1B8EB92C00AE563C /* HYGLViewController.h */,
+				FF012F9F1B8EB92C00AE563C /* HYGLOneMothMode.m */,
+				FF012FA01B8EB92C00AE563C /* HYGLOneMothMode.h */,
+				FF012FA11B8EB92C00AE563C /* HYGLManager.m */,
+				FF012FA21B8EB92C00AE563C /* HYGLManager.h */,
+				FF012FA31B8EB92C00AE563C /* HYDetailViewController.xib */,
+				FF012FA41B8EB92C00AE563C /* HYDetailViewController.m */,
+				FF012FA51B8EB92C00AE563C /* HYDetailViewController.h */,
+				FF012FA61B8EB92C00AE563C /* HYCell.xib */,
+				FF012FA71B8EB92C00AE563C /* HYCell.m */,
+				FF012FA81B8EB92C00AE563C /* HYCell.h */,
 			);
 			path = HuiyuanGuanli;
 			sourceTree = "<group>";
@@ -1024,14 +1079,18 @@
 				AB42ACDA1B8BE303001FB93A /* GateTableViewCell.xib in Resources */,
 				FF5C871A1B83024C00F79EC1 /* LICENSE.txt in Resources */,
 				FFD26CF01B8C3F940003F491 /* ZXBJCell.xib in Resources */,
+				FF012FAA1B8EB92C00AE563C /* HYXFJLListViewController.xib in Resources */,
+				FF012FB41B8EB92C00AE563C /* HYCell.xib in Resources */,
 				FF5C872E1B83279600F79EC1 /* FirstViewController.xib in Resources */,
+				FF012FAE1B8EB92C00AE563C /* HYGLViewController.xib in Resources */,
 				AB40EAC61B8C021800DE5ED7 /* SupplierTableViewCell.xib in Resources */,
 				AB40EABD1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib in Resources */,
-				FFD26CDB1B870D100003F491 /* KCYJViewController.xib in Resources */,
 				FF2A6BE51A0F3780001607AC /* Images.xcassets in Resources */,
 				FF2A6C431A0F3B6D001607AC /* SVProgressHUD.bundle in Resources */,
+				FF012FB21B8EB92C00AE563C /* HYDetailViewController.xib in Resources */,
 				FFD26CE61B8B1BC50003F491 /* KCYJCell.xib in Resources */,
 				FF5C87091B82FE5200F79EC1 /* LoginViewController.xib in Resources */,
+				FF012FAC1B8EB92C00AE563C /* HYLSXFCell.xib in Resources */,
 				FFD26CEB1B8C1B3B0003F491 /* KCYJViewController.xib in Resources */,
 				FFD26CF51B8C546F0003F491 /* ZCBCell.xib in Resources */,
 			);
@@ -1069,7 +1128,9 @@
 				FFF391961B846F58007DC652 /* AFHTTPSessionManager.m in Sources */,
 				FF4DFCF51B856B9600617660 /* SCach.m in Sources */,
 				FF4DFCF41B856B9600617660 /* NSFileManager_Additions.m in Sources */,
+				FF012FA91B8EB92C00AE563C /* VipInfoMode.m in Sources */,
 				FFF391991B846F58007DC652 /* AFURLConnectionOperation.m in Sources */,
+				FF012FB51B8EB92C00AE563C /* HYCell.m in Sources */,
 				FF2A6C961A0F3D06001607AC /* SecondViewController.m in Sources */,
 				AB42ACD91B8BE303001FB93A /* GateTableViewCell.m in Sources */,
 				FF3C20041A2EE7480081D3C7 /* FactoryModel.m in Sources */,
@@ -1089,6 +1150,7 @@
 				FF5C87031B81BC6000F79EC1 /* FirstVCManager.m in Sources */,
 				FFD26CE51B8B1BC50003F491 /* KCYJCell.m in Sources */,
 				FF5C86FF1B81B72400F79EC1 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				FF012FB11B8EB92C00AE563C /* HYGLManager.m in Sources */,
 				FFD26CF41B8C546F0003F491 /* ZCBCell.m in Sources */,
 				FF2A6C0C1A0F3A01001607AC /* UIImage+ImageEffects.m in Sources */,
 				FF2A6C791A0F3B7B001607AC /* UIImageView+WebCache.m in Sources */,
@@ -1104,6 +1166,7 @@
 				FF5C86DF1B818BE700F79EC1 /* SSWDirectionalPanGestureRecognizer.m in Sources */,
 				FF5C871E1B83024C00F79EC1 /* FMDatabasePool.m in Sources */,
 				FFF391951B846F58007DC652 /* AFHTTPRequestOperationManager.m in Sources */,
+				FF012FAF1B8EB92C00AE563C /* HYGLViewController.m in Sources */,
 				FF2A6BE01A0F3780001607AC /* main.m in Sources */,
 				FFF3919C1B846F58007DC652 /* AFURLSessionManager.m in Sources */,
 				FF5C86DE1B818BE700F79EC1 /* SSWAnimator.m in Sources */,
@@ -1117,6 +1180,7 @@
 				FF2A6C6B1A0F3B7B001607AC /* MKAnnotationView+WebCache.m in Sources */,
 				FF5C87271B830F3000F79EC1 /* LoginManager.m in Sources */,
 				FF5C87201B83024C00F79EC1 /* FMResultSet.m in Sources */,
+				FF012FAD1B8EB92C00AE563C /* HYLSXFCell.m in Sources */,
 				FF5C87241B83025600F79EC1 /* YTKKeyValueStore.m in Sources */,
 				FF2A6C3E1A0F3B66001607AC /* UIViewAdditions.m in Sources */,
 				FF3C20011A2EE6D30081D3C7 /* LSNavigationController.m in Sources */,
@@ -1126,11 +1190,14 @@
 				FF5C871C1B83024C00F79EC1 /* FMDatabase.m in Sources */,
 				AB42ACDD1B8BE97E001FB93A /* GateHeaderView.m in Sources */,
 				FFF391941B846F58007DC652 /* AFHTTPRequestOperation.m in Sources */,
+				FF012FB31B8EB92C00AE563C /* HYDetailViewController.m in Sources */,
+				FF012FB01B8EB92C00AE563C /* HYGLOneMothMode.m in Sources */,
 				AB40EAC11B8C020700DE5ED7 /* SupplierViewController.m in Sources */,
 				FF2A6C731A0F3B7B001607AC /* SDWebImagePrefetcher.m in Sources */,
 				FFF3919A1B846F58007DC652 /* AFURLRequestSerialization.m in Sources */,
 				FF4DFD0B1B85CBFA00617660 /* StoreListView.m in Sources */,
 				FF2A6C711A0F3B7B001607AC /* SDWebImageDownloaderOperation.m in Sources */,
+				FF012FAB1B8EB92C00AE563C /* HYXFJLListViewController.m in Sources */,
 				FF5C86DD1B818BE700F79EC1 /* SloppySwiper.m in Sources */,
 				FF4DFCF31B856B9600617660 /* JsonToModel.m in Sources */,
 				FF5C86FB1B81B72400F79EC1 /* MASLayoutConstraint.m in Sources */,
