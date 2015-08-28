@@ -1,29 +1,26 @@
 //
-//  SecondViewController.m
+//  DJProductCheckVC.m
 //  YHB_Prj
 //
-//  Created by  striveliu on 14-11-9.
-//  Copyright (c) 2014年 striveliu. All rights reserved.
+//  Created by yato_kami on 15/8/27.
+//  Copyright (c) 2015年 striveliu. All rights reserved.
 //
 
-#import "SecondViewController.h"
-#import "DJStoryboadManager.h"
+#import "DJProductCheckVC.h"
 
-@interface SecondViewController ()
+@interface DJProductCheckVC ()
 
 @end
 
-@implementation SecondViewController
+@implementation DJProductCheckVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-}
+    //self.view.layer.cornerRadius
+  //  self.view.layer.borderColorFromUIColor
+    
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-//盘点 vc 测试
-    UIViewController *vc = [[DJStoryboadManager sharedInstance] viewControllerWithName:@"DJProductCheckVC"];
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

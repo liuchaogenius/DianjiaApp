@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B1F7F8F1B8F686700763059 /* ProductCheck.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F7F8E1B8F686700763059 /* ProductCheck.storyboard */; };
+		5B1F7F921B8F690400763059 /* DJProductCheckVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7F911B8F690400763059 /* DJProductCheckVC.m */; };
+		5B1F7F951B8F6AAA00763059 /* DJStoryboadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7F941B8F6AAA00763059 /* DJStoryboadManager.m */; };
+		5B1F7F991B8F73C000763059 /* CALayer+CCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7F981B8F73C000763059 /* CALayer+CCAddition.m */; };
+		5B1F7F9C1B90A52300763059 /* DJProductCheckListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7F9B1B90A52300763059 /* DJProductCheckListVC.m */; };
+		5B1F7FA01B90A9C000763059 /* DJProductCheckListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7F9F1B90A9C000763059 /* DJProductCheckListCell.m */; };
+		5B1F7FA31B90B62900763059 /* DJProductCheckListDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7FA21B90B62900763059 /* DJProductCheckListDetailVC.m */; };
 		AB2578DC1B8EFBDE0015039A /* GateDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2578DB1B8EFBDE0015039A /* GateDetailViewController.m */; };
 		AB2579341B8F02010015039A /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2579121B8F02010015039A /* IQNSArray+Sort.m */; };
 		AB2579351B8F02010015039A /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2579141B8F02010015039A /* IQUITextFieldView+Additions.m */; };
@@ -160,6 +167,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B1F7F8E1B8F686700763059 /* ProductCheck.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProductCheck.storyboard; sourceTree = "<group>"; };
+		5B1F7F901B8F690400763059 /* DJProductCheckVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckVC.h; sourceTree = "<group>"; };
+		5B1F7F911B8F690400763059 /* DJProductCheckVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProductCheckVC.m; sourceTree = "<group>"; };
+		5B1F7F931B8F6AAA00763059 /* DJStoryboadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJStoryboadManager.h; sourceTree = "<group>"; };
+		5B1F7F941B8F6AAA00763059 /* DJStoryboadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJStoryboadManager.m; sourceTree = "<group>"; };
+		5B1F7F971B8F73C000763059 /* CALayer+CCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CALayer+CCAddition.h"; path = "../CALayer+CCAddition.h"; sourceTree = "<group>"; };
+		5B1F7F981B8F73C000763059 /* CALayer+CCAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CALayer+CCAddition.m"; path = "../CALayer+CCAddition.m"; sourceTree = "<group>"; };
+		5B1F7F9A1B90A52300763059 /* DJProductCheckListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckListVC.h; sourceTree = "<group>"; };
+		5B1F7F9B1B90A52300763059 /* DJProductCheckListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProductCheckListVC.m; sourceTree = "<group>"; };
+		5B1F7F9E1B90A9C000763059 /* DJProductCheckListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckListCell.h; sourceTree = "<group>"; };
+		5B1F7F9F1B90A9C000763059 /* DJProductCheckListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProductCheckListCell.m; sourceTree = "<group>"; };
+		5B1F7FA11B90B62900763059 /* DJProductCheckListDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckListDetailVC.h; sourceTree = "<group>"; };
+		5B1F7FA21B90B62900763059 /* DJProductCheckListDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProductCheckListDetailVC.m; sourceTree = "<group>"; };
 		AB2578DA1B8EFBDE0015039A /* GateDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GateDetailViewController.h; sourceTree = "<group>"; };
 		AB2578DB1B8EFBDE0015039A /* GateDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GateDetailViewController.m; sourceTree = "<group>"; };
 		AB2579111B8F02010015039A /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
@@ -456,6 +476,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B1F7F871B8F5D1100763059 /* ProductCheck */ = {
+			isa = PBXGroup;
+			children = (
+				5B1F7F9D1B90A99F00763059 /* View */,
+				5B1F7F8E1B8F686700763059 /* ProductCheck.storyboard */,
+				5B1F7F901B8F690400763059 /* DJProductCheckVC.h */,
+				5B1F7F911B8F690400763059 /* DJProductCheckVC.m */,
+				5B1F7F9A1B90A52300763059 /* DJProductCheckListVC.h */,
+				5B1F7F9B1B90A52300763059 /* DJProductCheckListVC.m */,
+				5B1F7FA11B90B62900763059 /* DJProductCheckListDetailVC.h */,
+				5B1F7FA21B90B62900763059 /* DJProductCheckListDetailVC.m */,
+			);
+			path = ProductCheck;
+			sourceTree = "<group>";
+		};
+		5B1F7F961B8F6AB000763059 /* StoryboadManager */ = {
+			isa = PBXGroup;
+			children = (
+				5B1F7F931B8F6AAA00763059 /* DJStoryboadManager.h */,
+				5B1F7F941B8F6AAA00763059 /* DJStoryboadManager.m */,
+			);
+			name = StoryboadManager;
+			sourceTree = "<group>";
+		};
+		5B1F7F9D1B90A99F00763059 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5B1F7F971B8F73C000763059 /* CALayer+CCAddition.h */,
+				5B1F7F981B8F73C000763059 /* CALayer+CCAddition.m */,
+				5B1F7F9E1B90A9C000763059 /* DJProductCheckListCell.h */,
+				5B1F7F9F1B90A9C000763059 /* DJProductCheckListCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		AB2578D91B8EFBCA0015039A /* GateDetailVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -817,6 +872,7 @@
 		FF2A6C8B1A0F3C58001607AC /* UIParty */ = {
 			isa = PBXGroup;
 			children = (
+				5B1F7F871B8F5D1100763059 /* ProductCheck */,
 				FFD26CF61B8C69290003F491 /* HuiyuanGuanli */,
 				FFD26CD61B870CD60003F491 /* KucunyujingVC */,
 				FF4DFCFF1B85A5D100617660 /* DatePickVC */,
@@ -925,6 +981,7 @@
 		FF4DFD051B85B20500617660 /* ToolUnit */ = {
 			isa = PBXGroup;
 			children = (
+				5B1F7F961B8F6AB000763059 /* StoryboadManager */,
 				FFD26CD01B86F3BD0003F491 /* NSDateTool */,
 			);
 			path = ToolUnit;
@@ -1231,6 +1288,7 @@
 				AB40EABD1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib in Resources */,
 				FF2A6BE51A0F3780001607AC /* Images.xcassets in Resources */,
 				FF2A6C431A0F3B6D001607AC /* SVProgressHUD.bundle in Resources */,
+				5B1F7F8F1B8F686700763059 /* ProductCheck.storyboard in Resources */,
 				FF012FB21B8EB92C00AE563C /* HYDetailViewController.xib in Resources */,
 				FFD26CE61B8B1BC50003F491 /* KCYJCell.xib in Resources */,
 				FF5C87091B82FE5200F79EC1 /* LoginViewController.xib in Resources */,
@@ -1267,6 +1325,7 @@
 				FF5C87001B81B72400F79EC1 /* View+MASAdditions.m in Sources */,
 				FF2A6BE31A0F3780001607AC /* AppDelegate.m in Sources */,
 				FF2A6C9C1A0F3D30001607AC /* FourthViewController.m in Sources */,
+				5B1F7F9C1B90A52300763059 /* DJProductCheckListVC.m in Sources */,
 				FF2A6C871A0F3B8A001607AC /* DataOC.mm in Sources */,
 				FF2A6C861A0F3B8A001607AC /* DataCenterDeal.mm in Sources */,
 				FFF391961B846F58007DC652 /* AFHTTPSessionManager.m in Sources */,
@@ -1312,11 +1371,13 @@
 				FF2A6C481A0F3B72001607AC /* JSONKit.m in Sources */,
 				FF2A6C781A0F3B7B001607AC /* UIImageView+HighlightedWebCache.m in Sources */,
 				FFD26CE11B8B10970003F491 /* KCYJMode.m in Sources */,
+				5B1F7FA01B90A9C000763059 /* DJProductCheckListCell.m in Sources */,
 				FF3C20081A2F2A440081D3C7 /* GlobObserverObject.m in Sources */,
 				AB25793A1B8F02010015039A /* IQKeyboardReturnKeyHandler.m in Sources */,
 				FF5C86DF1B818BE700F79EC1 /* SSWDirectionalPanGestureRecognizer.m in Sources */,
 				FF5C871E1B83024C00F79EC1 /* FMDatabasePool.m in Sources */,
 				FFF391951B846F58007DC652 /* AFHTTPRequestOperationManager.m in Sources */,
+				5B1F7F951B8F6AAA00763059 /* DJStoryboadManager.m in Sources */,
 				FF012FAF1B8EB92C00AE563C /* HYGLViewController.m in Sources */,
 				FF2A6BE01A0F3780001607AC /* main.m in Sources */,
 				FFF3919C1B846F58007DC652 /* AFURLSessionManager.m in Sources */,
@@ -1340,6 +1401,7 @@
 				FF3C20011A2EE6D30081D3C7 /* LSNavigationController.m in Sources */,
 				FF5C871B1B83024C00F79EC1 /* README.markdown in Sources */,
 				AB2579401B8F02010015039A /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				5B1F7F921B8F690400763059 /* DJProductCheckVC.m in Sources */,
 				FF5C86F81B81B72400F79EC1 /* MASCompositeConstraint.m in Sources */,
 				FF2A6C441A0F3B6D001607AC /* SVProgressHUD.m in Sources */,
 				FF5C871C1B83024C00F79EC1 /* FMDatabase.m in Sources */,
@@ -1353,10 +1415,12 @@
 				FFF3919A1B846F58007DC652 /* AFURLRequestSerialization.m in Sources */,
 				FF4DFD0B1B85CBFA00617660 /* StoreListView.m in Sources */,
 				FF2A6C711A0F3B7B001607AC /* SDWebImageDownloaderOperation.m in Sources */,
+				5B1F7F991B8F73C000763059 /* CALayer+CCAddition.m in Sources */,
 				FF012FAB1B8EB92C00AE563C /* HYXFJLListViewController.m in Sources */,
 				FF5C86DD1B818BE700F79EC1 /* SloppySwiper.m in Sources */,
 				AB2579371B8F02010015039A /* IQUIViewController+Additions.m in Sources */,
 				FF4DFCF31B856B9600617660 /* JsonToModel.m in Sources */,
+				5B1F7FA31B90B62900763059 /* DJProductCheckListDetailVC.m in Sources */,
 				FF5C86FB1B81B72400F79EC1 /* MASLayoutConstraint.m in Sources */,
 				FF2A6C721A0F3B7B001607AC /* SDWebImageManager.m in Sources */,
 				FF2A6C891A0F3B8A001607AC /* UIScrollView+SVPullToRefresh.m in Sources */,

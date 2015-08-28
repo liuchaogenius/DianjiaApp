@@ -12,6 +12,7 @@
 #import "FirstVCManager.h"
 #import "FirstMode.h"
 #import "LoginManager.h"
+#import "DJStoryboadManager.h"
 @interface FirstViewController ()
 {
     __weak FirstViewController *weakself;
@@ -65,6 +66,7 @@
     [self requestHomeData];
     [self.bottom_kcjg_BT addTarget:self action:@selector(kcyj_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_hygl_BT addTarget:self action:@selector(hygl_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
+    [self.bottom_sppd_BT addTarget:self action:@selector(sppd_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
 }
 #pragma mark 获取首页数据
 - (void)requestHomeData
@@ -147,6 +149,14 @@
 - (void)hygl_ButtonItem
 {
     [self pushXIBName:@"HYGLViewController" animated:YES selector:nil param:nil];
+}
+
+#pragma mark 商品盘点
+- (void)sppd_ButtonItem
+{
+    UIViewController *vc = [[DJStoryboadManager sharedInstance] viewControllerWithName:@"DJProductCheckListVC"];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

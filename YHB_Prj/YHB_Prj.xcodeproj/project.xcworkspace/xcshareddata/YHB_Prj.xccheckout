@@ -12,6 +12,8 @@
 	<dict>
 		<key>706F4A54D6D98022B9E07F56AD29736D3F1A7ADB</key>
 		<string>https://github.com/liuchaogenius/DianjiaApp.git</string>
+		<key>EAEE6FE440EFEE034D4AFA48F9F902F13C97B8BE</key>
+		<string>https://github.com/liuchaogenius/YiHaoBu.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>YHB_Prj/YHB_Prj.xcodeproj</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>706F4A54D6D98022B9E07F56AD29736D3F1A7ADB</key>
 		<string>../../..</string>
+		<key>EAEE6FE440EFEE034D4AFA48F9F902F13C97B8BE</key>
+		<string>../../../../YiHaoBu</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/liuchaogenius/DianjiaApp.git</string>
@@ -35,6 +39,14 @@
 			<string>706F4A54D6D98022B9E07F56AD29736D3F1A7ADB</string>
 			<key>IDESourceControlWCCName</key>
 			<string>DianjiaApp</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EAEE6FE440EFEE034D4AFA48F9F902F13C97B8BE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>YiHaoBu</string>
 		</dict>
 	</array>
 </dict>
