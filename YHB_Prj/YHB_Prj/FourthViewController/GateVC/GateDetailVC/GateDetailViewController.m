@@ -7,6 +7,7 @@
 //
 
 #import "GateDetailViewController.h"
+#import "ChooseLocaViewController.h"
 
 typedef enum : NSUInteger {
     FieldTypeGate,
@@ -16,7 +17,7 @@ typedef enum : NSUInteger {
     FieldTypeDate
 } FieldType;
 
-@interface GateDetailViewController ()
+@interface GateDetailViewController ()<UIScrollViewDelegate,UITextFieldDelegate>
 {
     UIScrollView *_bgScrollView;
     NSArray *_titleArray;
@@ -35,11 +36,17 @@ typedef enum : NSUInteger {
 
 @implementation GateDetailViewController
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.view endEditing:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
 
     _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64-50)];
+    _bgScrollView.delegate = self;
     [self.view addSubview:_bgScrollView];
 
     _titleArray = @[@"门店名称:",@"联系人:",@"联系电话:",@"门店地址:",@"添加日期:"];
@@ -68,6 +75,10 @@ typedef enum : NSUInteger {
         {
             textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         }
+        if (i==FieldTypeLoca)
+        {
+            textField.delegate = self;
+        }
         
         UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(titleLabel.right, textField.bottom+2, textField.width+5, 0.5)];
         lineView.backgroundColor = RGBCOLOR(220, 220, 220);
@@ -75,6 +86,7 @@ typedef enum : NSUInteger {
         
         UIImageView *rightView = [[UIImageView alloc] initWithFrame:CGRectMake(lineView.right+2, imgView.top+3, 6, 10)];
         rightView.image = [UIImage imageNamed:@"rightArrow"];
+        rightView.tag = 300+i;
         [_bgScrollView addSubview:rightView];
         
         endHeight = lineView.bottom;
@@ -102,6 +114,18 @@ typedef enum : NSUInteger {
     [self.rightBtn addTarget:self action:@selector(touchRightBtn) forControlEvents:UIControlEventTouchDown];
     
     self.isEdit = NO;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (textField==self.locaTextfield)
+    {
+        ChooseLocaViewController *vc = [[ChooseLocaViewController alloc] initWithEditBlock:^(NSString *str) {
+            _locaTextfield.text = str;
+        }];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    return NO;
 }
 
 - (void)touchLeftBtn
@@ -159,10 +183,15 @@ typedef enum : NSUInteger {
     _isEdit = isEdit;
     if (_isEdit==YES)
     {
-        for (int i=0; i<_titleArray.count-1; i++)
+        for (int i=0; i<_titleArray.count; i++)
         {
-            UITextField *textfield = (UITextField *)[_bgScrollView viewWithTag:100+i];
-            textfield.enabled = YES;
+            if (i!=FieldTypeDate)
+            {
+                UITextField *textfield = (UITextField *)[_bgScrollView viewWithTag:100+i];
+                textfield.enabled = YES;
+                UIImageView *imgView = (UIImageView *)[_bgScrollView viewWithTag:300+i];
+                imgView.hidden = YES;
+            }
         }
     }
     else if(_isEdit==NO)
@@ -171,6 +200,8 @@ typedef enum : NSUInteger {
         {
             UITextField *textfield = (UITextField *)[_bgScrollView viewWithTag:100+i];
             textfield.enabled = NO;
+            UIImageView *imgView = (UIImageView *)[_bgScrollView viewWithTag:300+i];
+            imgView.hidden = NO;
         }
     }
 }
