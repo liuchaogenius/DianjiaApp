@@ -11,12 +11,31 @@
 
 @interface DJProductCheckListDetailVC ()<UITableViewDelegate,UITableViewDataSource>
 
+@property (nonatomic, strong) UILabel *desNumLabel;
+
 @end
 
 @implementation DJProductCheckListDetailVC
 
+#pragma mark - getter and setter
+- (UILabel *)desNumLabel {
+    if (!_desNumLabel) {
+        _desNumLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, kMainScreenHeight-20., 200, 20)];
+        _desNumLabel.font = kFont12;
+        _desNumLabel.text = @"总共盘点1种";
+    }
+    return _desNumLabel;
+}
+
+#pragma marl - life cycle
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.view addSubview:self.desNumLabel];
+    
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100.;
+    return 80.;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -25,6 +44,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DJProductCheckListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"List" forIndexPath:indexPath];
+
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }

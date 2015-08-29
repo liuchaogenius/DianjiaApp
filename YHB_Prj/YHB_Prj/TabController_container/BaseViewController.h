@@ -10,6 +10,7 @@
 #import "StoreListView.h"
 #import "LoginMode.h"
 #import "LoginManager.h"
+#import "SVProgressHUD.h"
 @interface BaseViewController : UIViewController
 
 @property (nonatomic, assign) CGFloat g_OffsetY;

@@ -69,6 +69,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     StoreMode *sm = [self.storelist objectAtIndex:indexPath.row];
+    [[LoginManager shareLoginManager] setCurrentSelectStore:sm];
     [[LoginManager shareLoginManager] setNetWorkStoreId:sm.strId];
     if(self.storeListDidSelectBlock)
     {

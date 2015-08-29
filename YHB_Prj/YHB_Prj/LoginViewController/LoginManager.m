@@ -140,4 +140,9 @@
     return self.logMode.storeList;
 }
 
+- (void)setCurrentSelectStore:(StoreMode *)currentSelectStore {
+    _currentSelectStore = currentSelectStore;
+    self.currentStoreId = currentSelectStore.strId;
+}
+
 @end

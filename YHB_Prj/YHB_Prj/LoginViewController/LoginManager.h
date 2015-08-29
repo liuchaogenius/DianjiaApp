@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #define LOGINRESULTBLOCK      void(^)(BOOL ret)
 
+@class StoreMode;
 @interface LoginManager : NSObject
 
 + (LoginManager *)shareLoginManager;
@@ -28,5 +29,7 @@
 - (void)setNetWorkSEID:(NSString *)aSEID;
 
 - (NSArray *)getStoreList;
+
+@property (nonatomic, strong) StoreMode *currentSelectStore;
 
 @end

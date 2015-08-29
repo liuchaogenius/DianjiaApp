@@ -116,14 +116,21 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if(isShowSLBT == NO)
-    {
-        [self hiddenSelectStoreButton];
-    }
-    else
+    
+    if(isShowSLBT)
     {
         [self showSelectStoreButton];
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self hiddenSelectStoreButton];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [SVProgressHUD dismiss];
 }
 
 - (void)setBackgroundimg:(UIImage *)aBackgroundimg
@@ -182,15 +189,8 @@
 
 - (void)hiddenSelectStoreButton
 {
-    if(isShowSLBT == NO)
-    {
-        UIView *tview = [self.navigationController.view viewWithTag:101010];
-        if(tview)
-        {
-            [tview removeFromSuperview];
-            tview = nil;
-        }
-    }
+    [self.storeListBT removeFromSuperview];
+    self.storeListBT = nil;
 }
 
 - (void)showSelectStoreButton
@@ -229,10 +229,11 @@
 
 - (void)obserStoreviewResult
 {
+    __weak typeof(self) weakself = self;
     [self.sview didSelectStoreMode:^(StoreMode *aMode) {
         isShowStorelist = NO;
-        [self.sview removeFromSuperview];
-        self.sview = nil;
+        [weakself.sview removeFromSuperview];
+        weakself.sview = nil;
     }];
 }
 

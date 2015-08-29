@@ -68,6 +68,18 @@
     [self.bottom_hygl_BT addTarget:self action:@selector(hygl_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_sppd_BT addTarget:self action:@selector(sppd_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    //同步其他地方更改选中店铺
+    [super viewWillAppear:animated];
+    StoreMode *selectStore = [[LoginManager shareLoginManager] currentSelectStore];
+    NSString *title = [self valueForKeyPath:@"titleLabel.text"];
+    if (selectStore && ![selectStore.strStoreName isEqualToString: title]) {
+        [self settitleLabel:selectStore.strStoreName];
+        [self requestHomeData];
+    }
+}
+
 #pragma mark 获取首页数据
 - (void)requestHomeData
 {

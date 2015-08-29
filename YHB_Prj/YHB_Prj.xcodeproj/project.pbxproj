@@ -14,6 +14,9 @@
 		5B1F7F9C1B90A52300763059 /* DJProductCheckListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7F9B1B90A52300763059 /* DJProductCheckListVC.m */; };
 		5B1F7FA01B90A9C000763059 /* DJProductCheckListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7F9F1B90A9C000763059 /* DJProductCheckListCell.m */; };
 		5B1F7FA31B90B62900763059 /* DJProductCheckListDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7FA21B90B62900763059 /* DJProductCheckListDetailVC.m */; };
+		5B1F7FA61B91C8A600763059 /* DJProductCheckManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7FA51B91C8A600763059 /* DJProductCheckManager.m */; };
+		5B1F7FAC1B91CEB100763059 /* DJProductCheckSrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7FA81B91CEB100763059 /* DJProductCheckSrl.m */; };
+		5B1F7FAD1B91CEB100763059 /* DJProductCheckSrlResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7FA91B91CEB100763059 /* DJProductCheckSrlResult.m */; };
 		AB2578DC1B8EFBDE0015039A /* GateDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2578DB1B8EFBDE0015039A /* GateDetailViewController.m */; };
 		AB2579341B8F02010015039A /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2579121B8F02010015039A /* IQNSArray+Sort.m */; };
 		AB2579351B8F02010015039A /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2579141B8F02010015039A /* IQUITextFieldView+Additions.m */; };
@@ -185,6 +188,12 @@
 		5B1F7F9F1B90A9C000763059 /* DJProductCheckListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProductCheckListCell.m; sourceTree = "<group>"; };
 		5B1F7FA11B90B62900763059 /* DJProductCheckListDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckListDetailVC.h; sourceTree = "<group>"; };
 		5B1F7FA21B90B62900763059 /* DJProductCheckListDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProductCheckListDetailVC.m; sourceTree = "<group>"; };
+		5B1F7FA41B91C8A600763059 /* DJProductCheckManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckManager.h; sourceTree = "<group>"; };
+		5B1F7FA51B91C8A600763059 /* DJProductCheckManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProductCheckManager.m; sourceTree = "<group>"; };
+		5B1F7FA81B91CEB100763059 /* DJProductCheckSrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProductCheckSrl.m; sourceTree = "<group>"; };
+		5B1F7FA91B91CEB100763059 /* DJProductCheckSrlResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProductCheckSrlResult.m; sourceTree = "<group>"; };
+		5B1F7FAA1B91CEB100763059 /* DJProductCheckSrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckSrl.h; sourceTree = "<group>"; };
+		5B1F7FAB1B91CEB100763059 /* DJProductCheckSrlResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckSrlResult.h; sourceTree = "<group>"; };
 		AB2578DA1B8EFBDE0015039A /* GateDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GateDetailViewController.h; sourceTree = "<group>"; };
 		AB2578DB1B8EFBDE0015039A /* GateDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GateDetailViewController.m; sourceTree = "<group>"; };
 		AB2579111B8F02010015039A /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
@@ -494,6 +503,7 @@
 		5B1F7F871B8F5D1100763059 /* ProductCheck */ = {
 			isa = PBXGroup;
 			children = (
+				5B1F7FA71B91CA8600763059 /* Model */,
 				5B1F7F9D1B90A99F00763059 /* View */,
 				5B1F7F8E1B8F686700763059 /* ProductCheck.storyboard */,
 				5B1F7F901B8F690400763059 /* DJProductCheckVC.h */,
@@ -502,6 +512,8 @@
 				5B1F7F9B1B90A52300763059 /* DJProductCheckListVC.m */,
 				5B1F7FA11B90B62900763059 /* DJProductCheckListDetailVC.h */,
 				5B1F7FA21B90B62900763059 /* DJProductCheckListDetailVC.m */,
+				5B1F7FA41B91C8A600763059 /* DJProductCheckManager.h */,
+				5B1F7FA51B91C8A600763059 /* DJProductCheckManager.m */,
 			);
 			path = ProductCheck;
 			sourceTree = "<group>";
@@ -524,6 +536,17 @@
 				5B1F7F9F1B90A9C000763059 /* DJProductCheckListCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		5B1F7FA71B91CA8600763059 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B1F7FAA1B91CEB100763059 /* DJProductCheckSrl.h */,
+				5B1F7FA81B91CEB100763059 /* DJProductCheckSrl.m */,
+				5B1F7FAB1B91CEB100763059 /* DJProductCheckSrlResult.h */,
+				5B1F7FA91B91CEB100763059 /* DJProductCheckSrlResult.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		AB2578D91B8EFBCA0015039A /* GateDetailVC */ = {
@@ -1355,6 +1378,7 @@
 			files = (
 				FF5C87081B82FE5200F79EC1 /* LoginViewController.m in Sources */,
 				FF2A6C751A0F3B7B001607AC /* UIImage+GIF.m in Sources */,
+				5B1F7FAC1B91CEB100763059 /* DJProductCheckSrl.m in Sources */,
 				FFD26CEF1B8C3F940003F491 /* ZXBJCell.m in Sources */,
 				FF2A6C881A0F3B8A001607AC /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				FFD26CCE1B86D0D50003F491 /* FirstMode.m in Sources */,
@@ -1369,6 +1393,7 @@
 				5B1F7F9C1B90A52300763059 /* DJProductCheckListVC.m in Sources */,
 				FF2A6C871A0F3B8A001607AC /* DataOC.mm in Sources */,
 				FF2A6C861A0F3B8A001607AC /* DataCenterDeal.mm in Sources */,
+				5B1F7FA61B91C8A600763059 /* DJProductCheckManager.m in Sources */,
 				FFF391961B846F58007DC652 /* AFHTTPSessionManager.m in Sources */,
 				AB2579361B8F02010015039A /* IQUIView+Hierarchy.m in Sources */,
 				FF4DFCF51B856B9600617660 /* SCach.m in Sources */,
@@ -1418,6 +1443,7 @@
 				FF3C20081A2F2A440081D3C7 /* GlobObserverObject.m in Sources */,
 				AB25793A1B8F02010015039A /* IQKeyboardReturnKeyHandler.m in Sources */,
 				FF5C86DF1B818BE700F79EC1 /* SSWDirectionalPanGestureRecognizer.m in Sources */,
+				5B1F7FAD1B91CEB100763059 /* DJProductCheckSrlResult.m in Sources */,
 				FF5C871E1B83024C00F79EC1 /* FMDatabasePool.m in Sources */,
 				FFF391951B846F58007DC652 /* AFHTTPRequestOperationManager.m in Sources */,
 				5B1F7F951B8F6AAA00763059 /* DJStoryboadManager.m in Sources */,

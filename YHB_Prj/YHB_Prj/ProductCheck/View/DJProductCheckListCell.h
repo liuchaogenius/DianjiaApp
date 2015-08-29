@@ -10,12 +10,11 @@
 
 @interface DJProductCheckListCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *name;
-
-@property (weak, nonatomic) IBOutlet UILabel *totalPrice;
-
-@property (weak, nonatomic) IBOutlet UILabel *checkLittle;
-
-@property (weak, nonatomic) IBOutlet UILabel *checkMuch;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *peopleNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *mainTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *leftTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *middleTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rightTextLabel;
 
 @end
