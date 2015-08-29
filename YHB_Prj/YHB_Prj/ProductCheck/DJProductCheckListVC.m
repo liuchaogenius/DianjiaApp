@@ -115,15 +115,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DJProductCheckListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"List" forIndexPath:indexPath];
-    
-    DJProductCheckSrl *srlModel = self.produceCheckSrls[indexPath.row];
-    cell.dateLabel.text = srlModel.ckTime;
-    cell.peopleNameLabel.text = srlModel.checkName;
-    cell.mainTitleLabel.text = srlModel.storeName;
-    
-    cell.leftTextLabel.text = [NSString stringWithFormat:@"%ld",(NSInteger)srlModel.itemNum];
-    cell.middleTextLabel.text = [NSString stringWithFormat:@"%ld",(NSInteger)srlModel.pankui];
-    cell.rightTextLabel.text = [NSString stringWithFormat:@"%ld",(NSInteger)srlModel.panying];
+    if (indexPath.row < self.produceCheckSrls.count) {
+        DJProductCheckSrl *srlModel = self.produceCheckSrls[indexPath.row];
+        cell.dateLabel.text = srlModel.ckTime;
+        cell.peopleNameLabel.text = srlModel.checkName;
+        cell.mainTitleLabel.text = srlModel.storeName;
+        
+        cell.leftTextLabel.text = [NSString stringWithFormat:@"%ld",(NSInteger)srlModel.itemNum];
+        cell.middleTextLabel.text = [NSString stringWithFormat:@"%ld",(NSInteger)srlModel.pankui];
+        cell.rightTextLabel.text = [NSString stringWithFormat:@"%ld",(NSInteger)srlModel.panying];
+    }
     return cell;
     
 }
@@ -147,6 +148,21 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+#pragma mark - segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"DJShowDetailCheck"]) {
+        UITableViewCell *cell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        if (indexPath && indexPath.row < self.produceCheckSrls.count) {
+            DJProductCheckSrl *model = self.produceCheckSrls[indexPath.row];
+            UIViewController *vc = segue.destinationViewController;
+            [vc setValue:[NSString stringWithFormat:@"%ld",(NSInteger)model.checkId] forKey:@"checkId"];
+        }
+    }else {
+        [super prepareForSegue:segue sender:sender];
+    }
+}
+
 #pragma mark overwrite sel store
 - (void)obserStoreviewResult
 {
@@ -159,8 +175,8 @@
             [weakself.sview removeFromSuperview];
             weakself.sview = nil;
 //            [weakself requestHomeData];
-            weakself.tableView.contentOffset = CGPointZero;
             [weakself getDataWithIsFirst:YES];
+            weakself.tableView.contentOffset = CGPointZero;
         }
     }];
 }

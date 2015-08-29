@@ -17,7 +17,11 @@ typedef void (^failHandler)(id msg);
                          pageSize: (NSInteger)pageSize
                         beginTime: (NSString *)begin
                           endTime: (NSString *)end
-                          success: (successHandler)sHandler
+                          success: (successHandler)successHandler
                              fail: (failHandler)failHandler;
+
++ (void)getProductCheckDetailWithCheckId: (NSString *)checkId
+                                 success: (successHandler)successHandler
+                                    fail: (failHandler)failHandler;
 
 @end

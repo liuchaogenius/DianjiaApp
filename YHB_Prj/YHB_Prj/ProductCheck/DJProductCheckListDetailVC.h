@@ -10,4 +10,6 @@
 
 @interface DJProductCheckListDetailVC : BaseViewController
 
+@property (nonatomic, strong) NSString *checkId;
+
 @end

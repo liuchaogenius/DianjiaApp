@@ -17,6 +17,7 @@
 		5B1F7FA61B91C8A600763059 /* DJProductCheckManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7FA51B91C8A600763059 /* DJProductCheckManager.m */; };
 		5B1F7FAC1B91CEB100763059 /* DJProductCheckSrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7FA81B91CEB100763059 /* DJProductCheckSrl.m */; };
 		5B1F7FAD1B91CEB100763059 /* DJProductCheckSrlResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7FA91B91CEB100763059 /* DJProductCheckSrlResult.m */; };
+		5B54BA1A1B91FCB7002098A4 /* DJProductCheckDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA191B91FCB7002098A4 /* DJProductCheckDetail.m */; };
 		AB2578DC1B8EFBDE0015039A /* GateDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2578DB1B8EFBDE0015039A /* GateDetailViewController.m */; };
 		AB2579341B8F02010015039A /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2579121B8F02010015039A /* IQNSArray+Sort.m */; };
 		AB2579351B8F02010015039A /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2579141B8F02010015039A /* IQUITextFieldView+Additions.m */; };
@@ -194,6 +195,8 @@
 		5B1F7FA91B91CEB100763059 /* DJProductCheckSrlResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProductCheckSrlResult.m; sourceTree = "<group>"; };
 		5B1F7FAA1B91CEB100763059 /* DJProductCheckSrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckSrl.h; sourceTree = "<group>"; };
 		5B1F7FAB1B91CEB100763059 /* DJProductCheckSrlResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckSrlResult.h; sourceTree = "<group>"; };
+		5B54BA181B91FCB7002098A4 /* DJProductCheckDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckDetail.h; sourceTree = "<group>"; };
+		5B54BA191B91FCB7002098A4 /* DJProductCheckDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProductCheckDetail.m; sourceTree = "<group>"; };
 		AB2578DA1B8EFBDE0015039A /* GateDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GateDetailViewController.h; sourceTree = "<group>"; };
 		AB2578DB1B8EFBDE0015039A /* GateDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GateDetailViewController.m; sourceTree = "<group>"; };
 		AB2579111B8F02010015039A /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
@@ -541,6 +544,8 @@
 		5B1F7FA71B91CA8600763059 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5B54BA181B91FCB7002098A4 /* DJProductCheckDetail.h */,
+				5B54BA191B91FCB7002098A4 /* DJProductCheckDetail.m */,
 				5B1F7FAA1B91CEB100763059 /* DJProductCheckSrl.h */,
 				5B1F7FA81B91CEB100763059 /* DJProductCheckSrl.m */,
 				5B1F7FAB1B91CEB100763059 /* DJProductCheckSrlResult.h */,
@@ -1450,6 +1455,7 @@
 				FF012FAF1B8EB92C00AE563C /* HYGLViewController.m in Sources */,
 				FF2A6BE01A0F3780001607AC /* main.m in Sources */,
 				FFF3919C1B846F58007DC652 /* AFURLSessionManager.m in Sources */,
+				5B54BA1A1B91FCB7002098A4 /* DJProductCheckDetail.m in Sources */,
 				FF5C86DE1B818BE700F79EC1 /* SSWAnimator.m in Sources */,
 				FFF3919E1B846F58007DC652 /* NetManager.m in Sources */,
 				FF2A6C7A1A0F3B7B001607AC /* UIView+WebCacheOperation.m in Sources */,

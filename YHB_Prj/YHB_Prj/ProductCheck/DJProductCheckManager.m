@@ -9,6 +9,7 @@
 #import "DJProductCheckManager.h"
 #import "NetManager.h"
 #import "DJProductCheckSrlResult.h"
+#import "DJProductCheckDetail.h"
 
 @implementation DJProductCheckManager
 + (void)getProductCheckSrlWithSid:(NSString *)sid
@@ -34,6 +35,38 @@
             DJProductCheckSrlResult *resultModel = [[DJProductCheckSrlResult alloc] initWithDictionary:result];
             if (sHandler) {
                 sHandler(resultModel);
+            }
+        }else {
+            if (failHandler) {
+                failHandler(successDict[@"msg"]);
+            }
+        }
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        if (failHandler) {
+            failHandler(@"");
+        }
+    }];
+}
+
++ (void)getProductCheckDetailWithCheckId: (NSString *)checkId
+                                 success: (successHandler)successHandler
+                                    fail: (failHandler)failHandler
+{
+    NSMutableDictionary *postDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:checkId?:@"",@"check_id",nil];
+    
+    [NetManager requestWith:postDic apiName:@"getProductCheckDetailBycheckId" method:@"POST" succ:^(NSDictionary *successDict) {
+        NSLog(@"%@",successDict);
+        if ([successDict[@"msg"] isEqualToString:@"success"]) {
+            NSArray *result = successDict[@"result"];
+            NSMutableArray *resultArrays = [NSMutableArray arrayWithCapacity:result.count];
+            for (NSDictionary *dic in result) {
+                DJProductCheckDetail *detail = [[DJProductCheckDetail alloc] initWithDictionary:dic];
+                if (detail) {
+                    [resultArrays addObject:detail];
+                }
+            }
+            if (successHandler) {
+                successHandler(resultArrays);
             }
         }else {
             if (failHandler) {
