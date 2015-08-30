@@ -14,6 +14,8 @@
 #import "DJProductCheckSrl.h"
 #import "SVPullToRefresh.h"
 #import "DateSelectVC.h"
+#import <objc/runtime.h>
+#import <objc/message.h>
 
 #define kPageSize 20
 
@@ -25,6 +27,9 @@
 @property (nonatomic, strong) NSMutableArray            *produceCheckSrls;
 @property (nonatomic, strong) NSString                  *beginTime;
 @property (nonatomic, strong) NSString                  *endTime;
+@property (nonatomic, strong) UIButton                  *checkCartButton;
+@property (nonatomic, strong) UIView                    *dimView;
+@property (nonatomic, assign) BOOL                      isNeedGoCart;
 
 @end
 
@@ -38,6 +43,16 @@
     return _produceCheckSrls;
 }
 
+- (UIView *)dimView {
+    if (!_dimView) {
+        _dimView = [[UIView alloc] initWithFrame:self.view.bounds];
+        _dimView.backgroundColor = [UIColor blackColor];
+        _dimView.alpha = 0.7;
+        [_dimView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchDimView:)]];
+    }
+    return _dimView;
+}
+
 #pragma mark - life cycle
 
 - (void)viewDidLoad {
@@ -47,6 +62,14 @@
     [self addTableViewTragWithTableView:self.tableView];
     [self getDataWithIsFirst:YES];
     [self setExtraCellLineHidden:self.tableView];
+    [self initailCheckCartButton];
+}
+
+- (void)initailCheckCartButton {
+    self.checkCartButton = [[UIButton alloc] initWithFrame:CGRectMake(kMainScreenWidth-70, kMainScreenHeight-64-70., 55., 55.)];
+    [self.checkCartButton setBackgroundImage:[UIImage imageNamed:@"CheckIcon"] forState:UIControlStateNormal];
+    [self.checkCartButton addTarget:self action:@selector(touchCheckCartButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.checkCartButton];
 }
 
 - (void)getDataWithIsFirst: (BOOL)isFirst{
@@ -133,6 +156,30 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark - Action
+#pragma mark checkCart
+- (void)touchCheckCartButton: (UIButton *)sender {
+    if ([[LoginManager shareLoginManager] currentSelectStore]) {
+        //跳转
+        [self performSegueWithIdentifier:@"DJShowCheckCart" sender:self];
+    }else if ([[LoginManager shareLoginManager] getStoreList].count <= 0) {
+        return;
+    }else {
+        _isNeedGoCart = YES;
+        [self.view addSubview:self.dimView];
+        ((void (*)(id, SEL))objc_msgSend)(self,NSSelectorFromString(@"showStoreview"));
+    }
+}
+
+- (void)touchDimView: (UIGestureRecognizer *)gr {
+  //  [self.dimView removeFromSuperview];
+   // _dimView = nil;
+    if (!self.sview.superview) {
+        [_dimView removeFromSuperview];
+        _dimView = nil;
+    }
+}
+
 #pragma mark - filer with date
 
 - (IBAction)touchDateItem:(id)sender {
@@ -174,9 +221,18 @@
             [weakself settitleLabel:aMode.strStoreName];
             [weakself.sview removeFromSuperview];
             weakself.sview = nil;
-//            [weakself requestHomeData];
             [weakself getDataWithIsFirst:YES];
             weakself.tableView.contentOffset = CGPointZero;
+            
+            if (self.isNeedGoCart) {
+                _isNeedGoCart = NO;
+                [self.dimView removeFromSuperview];
+                _dimView = nil;
+                if ([aMode.strId integerValue] > 0) {
+                    //TODO: GOTO CART
+                    [self performSegueWithIdentifier:@"DJShowCheckCart" sender:self];
+                }
+            }
         }
     }];
 }

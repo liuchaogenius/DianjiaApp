@@ -18,6 +18,16 @@
 		5B1F7FAC1B91CEB100763059 /* DJProductCheckSrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7FA81B91CEB100763059 /* DJProductCheckSrl.m */; };
 		5B1F7FAD1B91CEB100763059 /* DJProductCheckSrlResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F7FA91B91CEB100763059 /* DJProductCheckSrlResult.m */; };
 		5B54BA1A1B91FCB7002098A4 /* DJProductCheckDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA191B91FCB7002098A4 /* DJProductCheckDetail.m */; };
+		5B54BA1D1B9213A9002098A4 /* DJProductSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA1C1B9213A9002098A4 /* DJProductSearchBar.m */; };
+		5B54BA201B922210002098A4 /* DJCheckCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA1F1B922210002098A4 /* DJCheckCartViewController.m */; };
+		5B54BA241B9225FD002098A4 /* DJCheckCartEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA231B9225FD002098A4 /* DJCheckCartEngine.m */; };
+		5B54BA2B1B922676002098A4 /* DJCheckCartItemComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA2A1B922676002098A4 /* DJCheckCartItemComponent.m */; };
+		5B54BA351B922AED002098A4 /* DJCheckCartContexManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA341B922AED002098A4 /* DJCheckCartContexManager.m */; };
+		5B54BA381B922CB2002098A4 /* DJCheckCartContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA371B922CB2002098A4 /* DJCheckCartContext.m */; };
+		5B54BA3B1B92B0BC002098A4 /* DJCheckCartNetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA3A1B92B0BC002098A4 /* DJCheckCartNetService.m */; };
+		5B54BA3F1B92F9C0002098A4 /* DJCheckCartSubmitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA3E1B92F9C0002098A4 /* DJCheckCartSubmitRequest.m */; };
+		5B54BA421B9336C7002098A4 /* DJCheckCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA411B9336C7002098A4 /* DJCheckCartCell.m */; };
+		5B54BA481B9348FD002098A4 /* DJProductCheckViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA471B9348FD002098A4 /* DJProductCheckViewManager.m */; };
 		AB2578DC1B8EFBDE0015039A /* GateDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2578DB1B8EFBDE0015039A /* GateDetailViewController.m */; };
 		AB2579341B8F02010015039A /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2579121B8F02010015039A /* IQNSArray+Sort.m */; };
 		AB2579351B8F02010015039A /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2579141B8F02010015039A /* IQUITextFieldView+Additions.m */; };
@@ -200,6 +210,27 @@
 		5B1F7FAB1B91CEB100763059 /* DJProductCheckSrlResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckSrlResult.h; sourceTree = "<group>"; };
 		5B54BA181B91FCB7002098A4 /* DJProductCheckDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckDetail.h; sourceTree = "<group>"; };
 		5B54BA191B91FCB7002098A4 /* DJProductCheckDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProductCheckDetail.m; sourceTree = "<group>"; };
+		5B54BA1B1B9213A9002098A4 /* DJProductSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductSearchBar.h; sourceTree = "<group>"; };
+		5B54BA1C1B9213A9002098A4 /* DJProductSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProductSearchBar.m; sourceTree = "<group>"; };
+		5B54BA1E1B922210002098A4 /* DJCheckCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJCheckCartViewController.h; sourceTree = "<group>"; };
+		5B54BA1F1B922210002098A4 /* DJCheckCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJCheckCartViewController.m; sourceTree = "<group>"; };
+		5B54BA221B9225FD002098A4 /* DJCheckCartEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJCheckCartEngine.h; sourceTree = "<group>"; };
+		5B54BA231B9225FD002098A4 /* DJCheckCartEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJCheckCartEngine.m; sourceTree = "<group>"; };
+		5B54BA291B922676002098A4 /* DJCheckCartItemComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJCheckCartItemComponent.h; sourceTree = "<group>"; };
+		5B54BA2A1B922676002098A4 /* DJCheckCartItemComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJCheckCartItemComponent.m; sourceTree = "<group>"; };
+		5B54BA331B922AED002098A4 /* DJCheckCartContexManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJCheckCartContexManager.h; sourceTree = "<group>"; };
+		5B54BA341B922AED002098A4 /* DJCheckCartContexManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJCheckCartContexManager.m; sourceTree = "<group>"; };
+		5B54BA361B922CB2002098A4 /* DJCheckCartContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJCheckCartContext.h; sourceTree = "<group>"; };
+		5B54BA371B922CB2002098A4 /* DJCheckCartContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJCheckCartContext.m; sourceTree = "<group>"; };
+		5B54BA391B92B0BC002098A4 /* DJCheckCartNetService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJCheckCartNetService.h; sourceTree = "<group>"; };
+		5B54BA3A1B92B0BC002098A4 /* DJCheckCartNetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJCheckCartNetService.m; sourceTree = "<group>"; };
+		5B54BA3C1B92B180002098A4 /* DJCheckCartPublic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DJCheckCartPublic.h; sourceTree = "<group>"; };
+		5B54BA3D1B92F9C0002098A4 /* DJCheckCartSubmitRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJCheckCartSubmitRequest.h; sourceTree = "<group>"; };
+		5B54BA3E1B92F9C0002098A4 /* DJCheckCartSubmitRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJCheckCartSubmitRequest.m; sourceTree = "<group>"; };
+		5B54BA401B9336C7002098A4 /* DJCheckCartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJCheckCartCell.h; sourceTree = "<group>"; };
+		5B54BA411B9336C7002098A4 /* DJCheckCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJCheckCartCell.m; sourceTree = "<group>"; };
+		5B54BA461B9348FD002098A4 /* DJProductCheckViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckViewManager.h; sourceTree = "<group>"; };
+		5B54BA471B9348FD002098A4 /* DJProductCheckViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProductCheckViewManager.m; sourceTree = "<group>"; };
 		AB2578DA1B8EFBDE0015039A /* GateDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GateDetailViewController.h; sourceTree = "<group>"; };
 		AB2578DB1B8EFBDE0015039A /* GateDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GateDetailViewController.m; sourceTree = "<group>"; };
 		AB2579111B8F02010015039A /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
@@ -515,6 +546,7 @@
 		5B1F7F871B8F5D1100763059 /* ProductCheck */ = {
 			isa = PBXGroup;
 			children = (
+				5B54BA211B9225E3002098A4 /* CheckCart */,
 				5B1F7FA71B91CA8600763059 /* Model */,
 				5B1F7F9D1B90A99F00763059 /* View */,
 				5B1F7F8E1B8F686700763059 /* ProductCheck.storyboard */,
@@ -526,6 +558,10 @@
 				5B1F7FA21B90B62900763059 /* DJProductCheckListDetailVC.m */,
 				5B1F7FA41B91C8A600763059 /* DJProductCheckManager.h */,
 				5B1F7FA51B91C8A600763059 /* DJProductCheckManager.m */,
+				5B54BA1E1B922210002098A4 /* DJCheckCartViewController.h */,
+				5B54BA1F1B922210002098A4 /* DJCheckCartViewController.m */,
+				5B54BA461B9348FD002098A4 /* DJProductCheckViewManager.h */,
+				5B54BA471B9348FD002098A4 /* DJProductCheckViewManager.m */,
 			);
 			path = ProductCheck;
 			sourceTree = "<group>";
@@ -546,6 +582,10 @@
 				5B1F7F981B8F73C000763059 /* CALayer+CCAddition.m */,
 				5B1F7F9E1B90A9C000763059 /* DJProductCheckListCell.h */,
 				5B1F7F9F1B90A9C000763059 /* DJProductCheckListCell.m */,
+				5B54BA1B1B9213A9002098A4 /* DJProductSearchBar.h */,
+				5B54BA1C1B9213A9002098A4 /* DJProductSearchBar.m */,
+				5B54BA401B9336C7002098A4 /* DJCheckCartCell.h */,
+				5B54BA411B9336C7002098A4 /* DJCheckCartCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -561,6 +601,58 @@
 				5B1F7FA91B91CEB100763059 /* DJProductCheckSrlResult.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5B54BA211B9225E3002098A4 /* CheckCart */ = {
+			isa = PBXGroup;
+			children = (
+				5B54BA2F1B9226BE002098A4 /* Service */,
+				5B54BA2D1B922698002098A4 /* Processor */,
+				5B54BA2C1B922683002098A4 /* Interface */,
+				5B54BA251B92260C002098A4 /* Model */,
+				5B54BA3C1B92B180002098A4 /* DJCheckCartPublic.h */,
+			);
+			path = CheckCart;
+			sourceTree = "<group>";
+		};
+		5B54BA251B92260C002098A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B54BA291B922676002098A4 /* DJCheckCartItemComponent.h */,
+				5B54BA2A1B922676002098A4 /* DJCheckCartItemComponent.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5B54BA2C1B922683002098A4 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				5B54BA221B9225FD002098A4 /* DJCheckCartEngine.h */,
+				5B54BA231B9225FD002098A4 /* DJCheckCartEngine.m */,
+			);
+			name = Interface;
+			sourceTree = "<group>";
+		};
+		5B54BA2D1B922698002098A4 /* Processor */ = {
+			isa = PBXGroup;
+			children = (
+				5B54BA331B922AED002098A4 /* DJCheckCartContexManager.h */,
+				5B54BA341B922AED002098A4 /* DJCheckCartContexManager.m */,
+				5B54BA361B922CB2002098A4 /* DJCheckCartContext.h */,
+				5B54BA371B922CB2002098A4 /* DJCheckCartContext.m */,
+			);
+			name = Processor;
+			sourceTree = "<group>";
+		};
+		5B54BA2F1B9226BE002098A4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5B54BA391B92B0BC002098A4 /* DJCheckCartNetService.h */,
+				5B54BA3A1B92B0BC002098A4 /* DJCheckCartNetService.m */,
+				5B54BA3D1B92F9C0002098A4 /* DJCheckCartSubmitRequest.h */,
+				5B54BA3E1B92F9C0002098A4 /* DJCheckCartSubmitRequest.m */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 		AB2578D91B8EFBCA0015039A /* GateDetailVC */ = {
@@ -1446,6 +1538,7 @@
 				FFF391991B846F58007DC652 /* AFURLConnectionOperation.m in Sources */,
 				FF012FB51B8EB92C00AE563C /* HYCell.m in Sources */,
 				FF2A6C961A0F3D06001607AC /* SecondViewController.m in Sources */,
+				5B54BA241B9225FD002098A4 /* DJCheckCartEngine.m in Sources */,
 				AB42ACD91B8BE303001FB93A /* GateTableViewCell.m in Sources */,
 				FF3C20041A2EE7480081D3C7 /* FactoryModel.m in Sources */,
 				AB2579341B8F02010015039A /* IQNSArray+Sort.m in Sources */,
@@ -1454,6 +1547,7 @@
 				FF5C86FE1B81B72400F79EC1 /* NSArray+MASAdditions.m in Sources */,
 				AB8844151B913D6300FA526D /* TableViewWithBlock.m in Sources */,
 				FF5C871F1B83024C00F79EC1 /* FMDatabaseQueue.m in Sources */,
+				5B54BA351B922AED002098A4 /* DJCheckCartContexManager.m in Sources */,
 				AB42ACD51B8BE01A001FB93A /* GateViewController.m in Sources */,
 				FF5C86FA1B81B72400F79EC1 /* MASConstraintMaker.m in Sources */,
 				FF2A6C031A0F398D001607AC /* RootTabBarController.m in Sources */,
@@ -1461,12 +1555,15 @@
 				FF2A6C741A0F3B7B001607AC /* UIButton+WebCache.m in Sources */,
 				FF2A6C391A0F3B59001607AC /* FBKVOController.m in Sources */,
 				FF2A6C761A0F3B7B001607AC /* UIImage+MultiFormat.m in Sources */,
+				5B54BA201B922210002098A4 /* DJCheckCartViewController.m in Sources */,
 				AB40EABC1B8BFA0100DE5ED7 /* ClerkTableViewCell.m in Sources */,
 				FF2A6C6F1A0F3B7B001607AC /* SDWebImageDecoder.m in Sources */,
 				FFF391981B846F58007DC652 /* AFSecurityPolicy.m in Sources */,
+				5B54BA481B9348FD002098A4 /* DJProductCheckViewManager.m in Sources */,
 				FF5C87031B81BC6000F79EC1 /* FirstVCManager.m in Sources */,
 				AB2578DC1B8EFBDE0015039A /* GateDetailViewController.m in Sources */,
 				FFD26CE51B8B1BC50003F491 /* KCYJCell.m in Sources */,
+				5B54BA381B922CB2002098A4 /* DJCheckCartContext.m in Sources */,
 				FF5C86FF1B81B72400F79EC1 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				FF012FB11B8EB92C00AE563C /* HYGLManager.m in Sources */,
 				AB25793B1B8F02010015039A /* IQSegmentedNextPrevious.m in Sources */,
@@ -1500,6 +1597,7 @@
 				5B54BA1A1B91FCB7002098A4 /* DJProductCheckDetail.m in Sources */,
 				FF5C86DE1B818BE700F79EC1 /* SSWAnimator.m in Sources */,
 				FFF3919E1B846F58007DC652 /* NetManager.m in Sources */,
+				5B54BA3F1B92F9C0002098A4 /* DJCheckCartSubmitRequest.m in Sources */,
 				FF2A6C7A1A0F3B7B001607AC /* UIView+WebCacheOperation.m in Sources */,
 				AB25793E1B8F02010015039A /* IQTitleBarButtonItem.m in Sources */,
 				AB40EAC51B8C021800DE5ED7 /* SupplierTableViewCell.m in Sources */,
@@ -1516,7 +1614,9 @@
 				FF012FAD1B8EB92C00AE563C /* HYLSXFCell.m in Sources */,
 				FF5C87241B83025600F79EC1 /* YTKKeyValueStore.m in Sources */,
 				FF2A6C3E1A0F3B66001607AC /* UIViewAdditions.m in Sources */,
+				5B54BA1D1B9213A9002098A4 /* DJProductSearchBar.m in Sources */,
 				FF3C20011A2EE6D30081D3C7 /* LSNavigationController.m in Sources */,
+				5B54BA2B1B922676002098A4 /* DJCheckCartItemComponent.m in Sources */,
 				FF5C871B1B83024C00F79EC1 /* README.markdown in Sources */,
 				AB2579401B8F02010015039A /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				5B1F7F921B8F690400763059 /* DJProductCheckVC.m in Sources */,
@@ -1532,7 +1632,9 @@
 				FF2A6C731A0F3B7B001607AC /* SDWebImagePrefetcher.m in Sources */,
 				FFF3919A1B846F58007DC652 /* AFURLRequestSerialization.m in Sources */,
 				FF4DFD0B1B85CBFA00617660 /* StoreListView.m in Sources */,
+				5B54BA421B9336C7002098A4 /* DJCheckCartCell.m in Sources */,
 				FF2A6C711A0F3B7B001607AC /* SDWebImageDownloaderOperation.m in Sources */,
+				5B54BA3B1B92B0BC002098A4 /* DJCheckCartNetService.m in Sources */,
 				5B1F7F991B8F73C000763059 /* CALayer+CCAddition.m in Sources */,
 				FF012FAB1B8EB92C00AE563C /* HYXFJLListViewController.m in Sources */,
 				FF5C86DD1B818BE700F79EC1 /* SloppySwiper.m in Sources */,

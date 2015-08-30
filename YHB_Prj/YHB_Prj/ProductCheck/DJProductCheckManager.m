@@ -10,6 +10,7 @@
 #import "NetManager.h"
 #import "DJProductCheckSrlResult.h"
 #import "DJProductCheckDetail.h"
+#import "JSONKit.h"
 
 @implementation DJProductCheckManager
 + (void)getProductCheckSrlWithSid:(NSString *)sid
@@ -79,5 +80,56 @@
         }
     }];
 }
+
++ (void)getProductCheckWithProductId: (NSString *)pId
+                                 sid:(NSString *)sid
+                             success: (successHandler)successHandler
+                                fail: (failHandler)failHandler {
+    NSMutableDictionary *postDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:pId?:@"",@"productId",sid?:@"",@"sid",nil];
+    
+    [NetManager requestWith:postDic apiName:@"getProductBySidForCheck" method:@"POST" succ:^(NSDictionary *successDict) {
+        NSLog(@"%@",successDict);
+        if ([successDict[@"msg"] isEqualToString:@"success"]) {
+            NSDictionary *result = successDict[@"result"];
+           // DJProductCheckSrlResult *resultModel = [[DJProductCheckSrlResult alloc] initWithDictionary:result];
+        }else {
+            if (failHandler) {
+                failHandler(successDict[@"msg"]);
+            }
+        }
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        if (failHandler) {
+            failHandler(@"");
+        }
+    }];
+}
+
++ (void)submitProductChecksWithCheckDicArray: (NSArray *)checks
+                                     success: (successHandler)successHandler
+                                        fail: (failHandler)failHandler
+{
+//TODO:待补全
+    if (checks.count <= 0) {
+        return;
+    }
+    NSMutableDictionary *postDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:checks,@"list",nil];
+    
+    [NetManager requestWith:postDic apiName:@"getProductBySidForCheck" method:@"POST" succ:^(NSDictionary *successDict) {
+        NSLog(@"%@",successDict);
+        if ([successDict[@"msg"] isEqualToString:@"success"]) {
+           // NSDictionary *result = successDict[@"result"];
+            // DJProductCheckSrlResult *resultModel = [[DJProductCheckSrlResult alloc] initWithDictionary:result];
+        }else {
+            if (failHandler) {
+                failHandler(successDict[@"msg"]);
+            }
+        }
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        if (failHandler) {
+            failHandler(@"");
+        }
+    }];
+}
+
 
 @end

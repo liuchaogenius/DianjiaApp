@@ -22,6 +22,7 @@ typedef NS_ENUM(NSUInteger, DJProductCheckDetailType) {
 
 @property (nonatomic, strong) UILabel                               *desNumLabel;
 @property (nonatomic, strong) NSArray                               *productDetails;
+@property (nonatomic, strong) NSArray                               *currentProductDetails;
 @property (weak, nonatomic) IBOutlet UITableView                    *tableView;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray  *segmentButtons;
 
@@ -56,6 +57,7 @@ typedef NS_ENUM(NSUInteger, DJProductCheckDetailType) {
         [btn setTitleColor:KColor forState:UIControlStateSelected];
     }
     ((UIButton *)self.segmentButtons.firstObject).selected = YES;
+    self.currentProductDetails = self.productDetails;
 }
 
 #pragma mark - net work
@@ -65,6 +67,7 @@ typedef NS_ENUM(NSUInteger, DJProductCheckDetailType) {
         [SVProgressHUD dismiss];
         self.productDetails = resultArray;
         self.desNumLabel.text = [NSString stringWithFormat:@"总计盘点%ld种",resultArray.count];
+        self.currentProductDetails = self.productDetails;
         [self.tableView reloadData];
     } fail:^(id msg) {
         [SVProgressHUD dismissWithError:@"加载失败"];
@@ -78,13 +81,13 @@ typedef NS_ENUM(NSUInteger, DJProductCheckDetailType) {
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.productDetails.count;
+    return self.currentProductDetails.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DJProductCheckListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"List" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    DJProductCheckDetail *detail = self.productDetails[indexPath.row];
+    DJProductCheckDetail *detail = self.currentProductDetails[indexPath.row];
     cell.detailTextLabel.text = detail.orderTime;
     cell.mainTitleLabel.text = detail.productName;
     cell.rightTextLabel.text = [NSString stringWithFormat:@"%ld",(NSInteger) detail.realQty];
@@ -101,34 +104,55 @@ typedef NS_ENUM(NSUInteger, DJProductCheckDetailType) {
 #pragma mark - segemnt
 - (IBAction)changeSegment:(UIButton *)sender {
     for (UIButton *btn in self.segmentButtons) {
+        if (btn.selected == YES && btn == sender) {
+            return;
+        }
         btn.selected = NO;
     }
     sender.selected = YES;
-#warning 带询问具体逻辑
     switch (sender.tag) {
         case DJProductCheckDetailTypeALL:
         {
-            
+            self.currentProductDetails = self.productDetails;
         }
             break;
         case DJProductCheckDetailTypeLess:
         {
-            
+            NSMutableArray *array = [NSMutableArray array];
+            for (DJProductCheckDetail *detial in self.productDetails) {
+                if (detial.diffNum < 0) {
+                    [array addObject:detial];
+                }
+            }
+            self.currentProductDetails = array;
         }
             break;
         case DJProductCheckDetailTypeMore:
         {
-            
+            NSMutableArray *array = [NSMutableArray array];
+            for (DJProductCheckDetail *detial in self.productDetails) {
+                if (detial.diffNum > 0) {
+                    [array addObject:detial];
+                }
+            }
+            self.currentProductDetails = array;
         }
             break;
         case DJProductCheckDetailTypeNormal:
         {
-            
+            NSMutableArray *array = [NSMutableArray array];
+            for (DJProductCheckDetail *detial in self.productDetails) {
+                if (detial.diffNum == 0) {
+                    [array addObject:detial];
+                }
+            }
+            self.currentProductDetails = array;
         }
             break;
         default:
             break;
     }
+    [self.tableView reloadData];
 }
 
 - (void)setExtraCellLineHidden: (UITableView *)tableView

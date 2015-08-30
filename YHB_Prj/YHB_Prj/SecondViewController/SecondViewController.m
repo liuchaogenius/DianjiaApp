@@ -8,6 +8,7 @@
 
 #import "SecondViewController.h"
 #import "DJStoryboadManager.h"
+#import "DJProductCheckViewManager.h"
 
 @interface SecondViewController ()
 
@@ -22,8 +23,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 //盘点 vc 测试
-    UIViewController *vc = [[DJStoryboadManager sharedInstance] viewControllerWithName:@"DJProductCheckVC"];
-    [self.navigationController pushViewController:vc animated:YES];
+    [[DJProductCheckViewManager sharedInstance] showCheckViewFromViewController:self];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -24,4 +24,13 @@ typedef void (^failHandler)(id msg);
                                  success: (successHandler)successHandler
                                     fail: (failHandler)failHandler;
 
++ (void)getProductCheckWithProductId: (NSString *)pId
+                                 sid:(NSString *)sid
+                             success: (successHandler)successHandler
+                                fail: (failHandler)failHandler;
+
++ (void)submitProductChecksWithCheckDicArray: (NSArray *)checks
+                                     success: (successHandler)successHandler
+                                        fail: (failHandler)failHandler;
+
 @end
