@@ -78,6 +78,8 @@
         
         UITextField *tf = [[UITextField alloc] initWithFrame:CGRectMake(3, 0, bgView.width-3-11, 16)];
         tf.delegate = self;
+        tf.font = kFont12;
+        tf.textAlignment = NSTextAlignmentCenter;
         tf.tag = 100+i;
         [bgView addSubview:tf];
         
@@ -96,7 +98,7 @@
     NSString *title = @"详细地址:";
     CGSize stringSize = [title sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:kFont12,NSFontAttributeName, nil]];
     CGFloat stringWidth = stringSize.width;
-    kCreateLabel(detailLabel, CGRectMake(15, endHeight+20, stringWidth, 16), 12, [UIColor blackColor], title);
+    kCreateLabel(detailLabel, CGRectMake(15, endHeight+25, stringWidth, 16), 12, [UIColor blackColor], title);
     [self.view addSubview:detailLabel];
     
     _detailTF = [[UITextField alloc] initWithFrame:CGRectMake(detailLabel.right+3, detailLabel.top, kMainScreenWidth-detailLabel.right-20, 16)];
@@ -111,7 +113,7 @@
     UIColor *btnColor = [UIColor orangeColor];
     for (int i=0; i<2; i++)
     {
-        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(15+kMainScreenWidth/2.0*i, lineView.bottom+40, kMainScreenWidth/2.0-30, 30)];
+        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(15+kMainScreenWidth/2.0*i, lineView.bottom+35, kMainScreenWidth/2.0-30, 30)];
         btn.tag = 500+i;
         [btn setTitleColor:btnColor forState:UIControlStateNormal];
         btn.layer.borderColor = [btnColor CGColor];
@@ -158,12 +160,29 @@
 
 - (void)touchLeftBtn
 {
-    NSLog(@"%s",__func__);
+    BOOL haveText = [self haveText];
+    if (haveText==YES)
+    {
+        NSString *locaStr = [NSString stringWithFormat:@"%@%@%@%@", _aTextField.text,_bTextField.text,_cTextField.text,_detailTF.text];
+        _myBlock(locaStr);
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else
+    {
+        [SVProgressHUD showErrorWithStatus:@"请核对输入信息" cover:YES offsetY:kMainScreenHeight/2.0];
+    }
+}
+
+- (BOOL)haveText
+{
+    BOOL detailHaveText;
+    kStringIsNotEmpty(detailHaveText, _detailTF.text);
+    return detailHaveText;
 }
 
 - (void)touchRightBtn
 {
-    NSLog(@"%s",__func__);
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)touchBtn:(UIButton *)sender

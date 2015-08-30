@@ -8,6 +8,7 @@
 
 #import "SupplierViewController.h"
 #import "SupplierTableViewCell.h"
+#import "SupplierDetailViewController.h"
 
 @interface SupplierViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -61,7 +62,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    NSLog(@"%ld", indexPath.row);
+//    NSLog(@"%ld", indexPath.row);
+    SupplierDetailViewController *vc = [[SupplierDetailViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

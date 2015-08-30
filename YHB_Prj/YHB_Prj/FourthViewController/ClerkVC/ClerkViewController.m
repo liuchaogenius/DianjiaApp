@@ -8,6 +8,7 @@
 
 #import "ClerkViewController.h"
 #import "ClerkTableViewCell.h"
+#import "ClerkDetailViewController.h"
 
 @interface ClerkViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -61,7 +62,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    NSLog(@"%ld", indexPath.row);
+//    NSLog(@"%ld", indexPath.row);
+    ClerkDetailViewController *vc= [[ClerkDetailViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

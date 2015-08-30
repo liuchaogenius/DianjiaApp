@@ -90,6 +90,20 @@ outImgView = imgView;\
 #define kFontBold24 [UIFont fontWithName:@"Helvetica-Bold" size:24]
 #define kFontBold25 [UIFont fontWithName:@"Helvetica-Bold" size:25]
 
+#define kStringIsNotEmpty(aBool, str) do{\
+if (!str) {\
+aBool=false;\
+} else {\
+NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];\
+NSString *trimedString = [str stringByTrimmingCharactersInSet:set];\
+if ([trimedString length] == 0) {\
+aBool=false;\
+} else {\
+aBool=true;\
+}\
+}\
+}while(0)
+
 #define kNSUDefaultSaveVauleAndKey(value,key) [[NSUserDefaults standardUserDefaults] setObject:value forKey:key]
 #define kNSUDefaultReadKey(key) [[NSUserDefaults standardUserDefaults] valueForKey:key]
 #define kSafeid(id)  do{\

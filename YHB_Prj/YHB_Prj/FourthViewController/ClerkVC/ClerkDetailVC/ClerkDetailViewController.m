@@ -6,18 +6,22 @@
 //  Copyright (c) 2015年 striveliu. All rights reserved.
 //
 
-#import "GateDetailViewController.h"
-#import "ChooseLocaViewController.h"
+#import "ClerkDetailViewController.h"
 
 typedef enum : NSUInteger {
     FieldTypeGate,
-    FieldTypeContact,
+    FieldTypeWork,
+    FieldTypeWorkId,
+    FieldTypeMima,
+    FieldTypeName,
     FieldTypePhone,
-    FieldTypeLoca,
-    FieldTypeDate
+    FieldTypeBirth,
+    FieldTypeSex,
+    FieldTypeWeChat,
+    FieldTypeQQ
 } FieldType;
 
-@interface GateDetailViewController ()<UIScrollViewDelegate>
+@interface ClerkDetailViewController ()<UIScrollViewDelegate>
 {
     UIScrollView *_bgScrollView;
     NSArray *_titleArray;
@@ -34,7 +38,7 @@ typedef enum : NSUInteger {
 @property(nonatomic) BOOL isEdit;
 @end
 
-@implementation GateDetailViewController
+@implementation ClerkDetailViewController
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -44,19 +48,19 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-
+    
     _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64-50)];
     _bgScrollView.delegate = self;
     [self.view addSubview:_bgScrollView];
-
-    _titleArray = @[@"门店名称:",@"联系人:",@"联系电话:",@"门店地址:",@"添加日期:"];
-    NSArray *contentArray = @[@"南京母婴乐嘉店",@"董枫",@"13311251225",@"北京市朝阳区团结湖北头条",@"2015-07-14 14:32:34"];
+    
+    _titleArray = @[@"门店:",@"职务:",@"工号:",@"密码:",@"姓名:",@"手机:",@"生日:",@"性别:",@"微信:",@"QQ:"];
+    NSArray *contentArray = @[@"南京母婴乐嘉店",@"店员",@"No.000001",@"XXXXXX",@"mike",@"13456765243",@"7月12日",@"女",@"12213",@"12123"];
     
     CGFloat endHeight = 0;
     for (int i=0; i<_titleArray.count; i++)
     {
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15+45*i, 16, 16)];
-        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"menicon_%d", i]];
+        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"clerk_%d", i]];
         [_bgScrollView addSubview:imgView];
         
         NSString *title = _titleArray[i];
@@ -67,49 +71,35 @@ typedef enum : NSUInteger {
         [_bgScrollView addSubview:titleLabel];
         
         CGRect textFrame = CGRectMake(titleLabel.right+5, imgView.top-1, kMainScreenWidth-titleLabel.right-5-23, 17);
-        if (i!=FieldTypeLoca)
+        UITextField *textField = [[UITextField alloc] initWithFrame:textFrame];
+        textField.font = kFont12;
+        textField.tag = 100+i;
+        [_bgScrollView addSubview:textField];
+        textField.text = contentArray[i];
+        if (i==FieldTypePhone || i==FieldTypeQQ || i==FieldTypeWeChat)
         {
-            UITextField *textField = [[UITextField alloc] initWithFrame:textFrame];
-            textField.font = kFont12;
-            textField.tag = 100+i;
-            [_bgScrollView addSubview:textField];
-            textField.text = contentArray[i];
-            if (i==FieldTypePhone)
-            {
-                textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
-            }
-        }
-        else
-        {
-            self.locaBtn = [[UIButton alloc] initWithFrame:textFrame];
-            self.locaBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-            self.locaBtn.contentEdgeInsets = UIEdgeInsetsMake(0,5, 0, 0);
-            [self.locaBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            self.locaBtn.titleLabel.font = kFont12;
-            [self.locaBtn setTitle:contentArray[i] forState:UIControlStateNormal];
-            [self.locaBtn addTarget:self action:@selector(touchLoca) forControlEvents:UIControlEventTouchDown];
-            [_bgScrollView addSubview:self.locaBtn];
-        }
-
-        
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(titleLabel.right, textFrame.origin.y+textFrame.size.height+2, textFrame.size.width+5, 0.5)];
-        lineView.backgroundColor = RGBCOLOR(220, 220, 220);
-        [_bgScrollView addSubview:lineView];
-        
-        if (i!=FieldTypeDate)
-        {
-            UIImageView *rightView = [[UIImageView alloc] initWithFrame:CGRectMake(lineView.right+2, imgView.top+3, 6, 10)];
-            rightView.image = [UIImage imageNamed:@"rightArrow"];
-            rightView.tag = 300+i;
-            [_bgScrollView addSubview:rightView];
+            textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         }
         
-        endHeight = lineView.bottom;
+        CGRect lineFrame = CGRectMake(titleLabel.right, textFrame.origin.y+textFrame.size.height+2, textFrame.size.width+5, 0.5);
+        if (i!=FieldTypeGate && i!=FieldTypeWork && i!=FieldTypeSex)
+        {
+            UIView *lineView = [[UIView alloc] initWithFrame:lineFrame];
+            lineView.backgroundColor = RGBCOLOR(220, 220, 220);
+            [_bgScrollView addSubview:lineView];
+        }
+        
+        UIImageView *rightView = [[UIImageView alloc] initWithFrame:CGRectMake(lineFrame.origin.x+lineFrame.size.width+2, imgView.top+3, 6, 10)];
+        rightView.image = [UIImage imageNamed:@"rightArrow"];
+        rightView.tag = 300+i;
+        [_bgScrollView addSubview:rightView];
+        
+        endHeight = lineFrame.size.height+lineFrame.origin.y;
     }
     
     CGFloat contentH = _bgScrollView.height+1>endHeight+5?_bgScrollView.height+1:endHeight+5;
     _bgScrollView.contentSize = CGSizeMake(kMainScreenWidth, contentH);
-
+    
     
     UIColor *btnColor = [UIColor orangeColor];
     for (int i=0; i<2; i++)
@@ -129,14 +119,6 @@ typedef enum : NSUInteger {
     [self.rightBtn addTarget:self action:@selector(touchRightBtn) forControlEvents:UIControlEventTouchDown];
     
     self.isEdit = NO;
-}
-
-- (void)touchLoca
-{
-    ChooseLocaViewController *vc = [[ChooseLocaViewController alloc] initWithEditBlock:^(NSString *str) {
-        [self.locaBtn setTitle:str forState:UIControlStateNormal];
-    }];
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)touchLeftBtn
@@ -197,16 +179,10 @@ typedef enum : NSUInteger {
         self.locaBtn.enabled = YES;
         for (int i=0; i<_titleArray.count; i++)
         {
-            if (i!=FieldTypeDate)
-            {
-                if (i!=FieldTypeLoca)
-                {
-                    UITextField *textfield = (UITextField *)[_bgScrollView viewWithTag:100+i];
-                    textfield.enabled = YES;
-                }
-                UIImageView *imgView = (UIImageView *)[_bgScrollView viewWithTag:300+i];
-                imgView.hidden = NO;
-            }
+            UITextField *textfield = (UITextField *)[_bgScrollView viewWithTag:100+i];
+            textfield.enabled = YES;
+            UIImageView *imgView = (UIImageView *)[_bgScrollView viewWithTag:300+i];
+            imgView.hidden = NO;
         }
     }
     else if(_isEdit==NO)
@@ -214,11 +190,8 @@ typedef enum : NSUInteger {
         self.locaBtn.enabled = NO;
         for (int i=0; i<_titleArray.count; i++)
         {
-            if (i!=FieldTypeLoca)
-            {
-                UITextField *textfield = (UITextField *)[_bgScrollView viewWithTag:100+i];
-                textfield.enabled = NO;
-            }
+            UITextField *textfield = (UITextField *)[_bgScrollView viewWithTag:100+i];
+            textfield.enabled = NO;
             UIImageView *imgView = (UIImageView *)[_bgScrollView viewWithTag:300+i];
             imgView.hidden = YES;
         }
@@ -286,13 +259,13 @@ typedef enum : NSUInteger {
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

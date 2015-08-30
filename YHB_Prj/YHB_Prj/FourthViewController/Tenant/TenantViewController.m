@@ -6,18 +6,21 @@
 //  Copyright (c) 2015年 striveliu. All rights reserved.
 //
 
-#import "GateDetailViewController.h"
+#import "TenantViewController.h"
 #import "ChooseLocaViewController.h"
 
 typedef enum : NSUInteger {
-    FieldTypeGate,
+    FieldTypeTenant,
+    FieldTypeName,
     FieldTypeContact,
     FieldTypePhone,
+    FieldTypeMail,
     FieldTypeLoca,
+    FieldTypeHang,
     FieldTypeDate
 } FieldType;
 
-@interface GateDetailViewController ()<UIScrollViewDelegate>
+@interface TenantViewController ()<UIScrollViewDelegate>
 {
     UIScrollView *_bgScrollView;
     NSArray *_titleArray;
@@ -34,7 +37,7 @@ typedef enum : NSUInteger {
 @property(nonatomic) BOOL isEdit;
 @end
 
-@implementation GateDetailViewController
+@implementation TenantViewController
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -44,19 +47,19 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-
+    
     _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64-50)];
     _bgScrollView.delegate = self;
     [self.view addSubview:_bgScrollView];
-
-    _titleArray = @[@"门店名称:",@"联系人:",@"联系电话:",@"门店地址:",@"添加日期:"];
-    NSArray *contentArray = @[@"南京母婴乐嘉店",@"董枫",@"13311251225",@"北京市朝阳区团结湖北头条",@"2015-07-14 14:32:34"];
+    
+    _titleArray = @[@"商户名称:",@"昵称:",@"联系人:",@"联系电话:",@"电子邮件",@"商户地址:",@"所属行业:",@"注册日期:"];
+    NSArray *contentArray = @[@"南京母婴乐嘉店",@"追梦人",@"董枫",@"13311251225",@"323@gmail.com",@"北京市朝阳区团结湖北头条",@"母婴",@"2015-07-14 14:32:34"];
     
     CGFloat endHeight = 0;
     for (int i=0; i<_titleArray.count; i++)
     {
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15+45*i, 16, 16)];
-        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"menicon_%d", i]];
+        imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"tenant_%d", i]];
         [_bgScrollView addSubview:imgView];
         
         NSString *title = _titleArray[i];
@@ -74,7 +77,7 @@ typedef enum : NSUInteger {
             textField.tag = 100+i;
             [_bgScrollView addSubview:textField];
             textField.text = contentArray[i];
-            if (i==FieldTypePhone)
+            if (i==FieldTypePhone || i==FieldTypeMail)
             {
                 textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
             }
@@ -90,7 +93,7 @@ typedef enum : NSUInteger {
             [self.locaBtn addTarget:self action:@selector(touchLoca) forControlEvents:UIControlEventTouchDown];
             [_bgScrollView addSubview:self.locaBtn];
         }
-
+        
         
         UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(titleLabel.right, textFrame.origin.y+textFrame.size.height+2, textFrame.size.width+5, 0.5)];
         lineView.backgroundColor = RGBCOLOR(220, 220, 220);
@@ -109,7 +112,7 @@ typedef enum : NSUInteger {
     
     CGFloat contentH = _bgScrollView.height+1>endHeight+5?_bgScrollView.height+1:endHeight+5;
     _bgScrollView.contentSize = CGSizeMake(kMainScreenWidth, contentH);
-
+    
     
     UIColor *btnColor = [UIColor orangeColor];
     for (int i=0; i<2; i++)
@@ -286,13 +289,13 @@ typedef enum : NSUInteger {
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

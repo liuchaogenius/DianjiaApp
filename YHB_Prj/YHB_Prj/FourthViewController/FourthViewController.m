@@ -11,6 +11,7 @@
 #import "GateViewController.h"
 #import "ClerkViewController.h"
 #import "SupplierViewController.h"
+#import "TenantViewController.h"
 
 typedef enum : NSUInteger {
     cellTypeTenant = 0,//商户
@@ -157,8 +158,12 @@ typedef enum : NSUInteger {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     switch (indexPath.row) {
         case cellTypeTenant:
-            NSLog(@"0");
+        {
+            TenantViewController *vc = [[TenantViewController alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
             break;
+        }
         case cellTypeGate:
         {
             GateViewController *vc = [[GateViewController alloc] init];
