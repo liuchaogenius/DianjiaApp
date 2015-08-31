@@ -55,11 +55,14 @@
 		AB42ACD91B8BE303001FB93A /* GateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB42ACD71B8BE303001FB93A /* GateTableViewCell.m */; };
 		AB42ACDA1B8BE303001FB93A /* GateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB42ACD81B8BE303001FB93A /* GateTableViewCell.xib */; };
 		AB42ACDD1B8BE97E001FB93A /* GateHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB42ACDC1B8BE97E001FB93A /* GateHeaderView.m */; };
+		AB79DB591B93FF6000CC1894 /* ChooseBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = AB79DB581B93FF6000CC1894 /* ChooseBtn.m */; };
 		AB8844151B913D6300FA526D /* TableViewWithBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8844101B913D6300FA526D /* TableViewWithBlock.m */; };
 		AB8844161B913D6300FA526D /* UITableView+DataSourceBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8844121B913D6300FA526D /* UITableView+DataSourceBlocks.m */; };
 		AB8844171B913D6300FA526D /* UITableView+DelegateBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8844141B913D6300FA526D /* UITableView+DelegateBlocks.m */; };
 		AB88441B1B913DBB00FA526D /* ChooseLocaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB88441A1B913DBB00FA526D /* ChooseLocaViewController.m */; };
 		AB88441E1B914D0F00FA526D /* CLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB88441D1B914D0F00FA526D /* CLTableViewCell.m */; };
+		AB9F43E91B92E45900914C85 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9F43E81B92E45900914C85 /* SettingViewController.m */; };
+		AB9F43EC1B92E58400914C85 /* SetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9F43EB1B92E58400914C85 /* SetTableViewCell.m */; };
 		ABEF1DA71B929D5400C1C2EA /* SupplierDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DA61B929D5400C1C2EA /* SupplierDetailViewController.m */; };
 		ABEF1DAB1B92A18E00C1C2EA /* ClerkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DAA1B92A18E00C1C2EA /* ClerkDetailViewController.m */; };
 		ABEF1DAF1B92AD2700C1C2EA /* TenantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DAE1B92AD2700C1C2EA /* TenantViewController.m */; };
@@ -296,6 +299,8 @@
 		AB42ACD81B8BE303001FB93A /* GateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GateTableViewCell.xib; sourceTree = "<group>"; };
 		AB42ACDB1B8BE97E001FB93A /* GateHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GateHeaderView.h; sourceTree = "<group>"; };
 		AB42ACDC1B8BE97E001FB93A /* GateHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GateHeaderView.m; sourceTree = "<group>"; };
+		AB79DB571B93FF6000CC1894 /* ChooseBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseBtn.h; sourceTree = "<group>"; };
+		AB79DB581B93FF6000CC1894 /* ChooseBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseBtn.m; sourceTree = "<group>"; };
 		AB88440F1B913D6300FA526D /* TableViewWithBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewWithBlock.h; sourceTree = "<group>"; };
 		AB8844101B913D6300FA526D /* TableViewWithBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewWithBlock.m; sourceTree = "<group>"; };
 		AB8844111B913D6300FA526D /* UITableView+DataSourceBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+DataSourceBlocks.h"; sourceTree = "<group>"; };
@@ -306,6 +311,10 @@
 		AB88441A1B913DBB00FA526D /* ChooseLocaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseLocaViewController.m; sourceTree = "<group>"; };
 		AB88441C1B914D0F00FA526D /* CLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTableViewCell.h; sourceTree = "<group>"; };
 		AB88441D1B914D0F00FA526D /* CLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTableViewCell.m; sourceTree = "<group>"; };
+		AB9F43E71B92E45900914C85 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		AB9F43E81B92E45900914C85 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		AB9F43EA1B92E58400914C85 /* SetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetTableViewCell.h; sourceTree = "<group>"; };
+		AB9F43EB1B92E58400914C85 /* SetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetTableViewCell.m; sourceTree = "<group>"; };
 		ABEF1DA51B929D5400C1C2EA /* SupplierDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierDetailViewController.h; sourceTree = "<group>"; };
 		ABEF1DA61B929D5400C1C2EA /* SupplierDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierDetailViewController.m; sourceTree = "<group>"; };
 		ABEF1DA91B92A18E00C1C2EA /* ClerkDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClerkDetailViewController.h; sourceTree = "<group>"; };
@@ -848,6 +857,17 @@
 			path = ChooseLocaVC;
 			sourceTree = "<group>";
 		};
+		AB9F43E61B92E45000914C85 /* SettingVC */ = {
+			isa = PBXGroup;
+			children = (
+				AB9F43E71B92E45900914C85 /* SettingViewController.h */,
+				AB9F43E81B92E45900914C85 /* SettingViewController.m */,
+				AB9F43EA1B92E58400914C85 /* SetTableViewCell.h */,
+				AB9F43EB1B92E58400914C85 /* SetTableViewCell.m */,
+			);
+			path = SettingVC;
+			sourceTree = "<group>";
+		};
 		ABEF1DA41B929D4100C1C2EA /* SupplierDetailVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -862,6 +882,8 @@
 			children = (
 				ABEF1DA91B92A18E00C1C2EA /* ClerkDetailViewController.h */,
 				ABEF1DAA1B92A18E00C1C2EA /* ClerkDetailViewController.m */,
+				AB79DB571B93FF6000CC1894 /* ChooseBtn.h */,
+				AB79DB581B93FF6000CC1894 /* ChooseBtn.m */,
 			);
 			path = ClerkDetailVC;
 			sourceTree = "<group>";
@@ -1130,6 +1152,7 @@
 		FF2A6C8D1A0F3CC9001607AC /* FourthViewController */ = {
 			isa = PBXGroup;
 			children = (
+				AB9F43E61B92E45000914C85 /* SettingVC */,
 				ABEF1DAC1B92AD1800C1C2EA /* Tenant */,
 				AB8844181B913DA500FA526D /* ChooseLocaVC */,
 				AB88440E1B913D5A00FA526D /* DropDownView */,
@@ -1598,7 +1621,9 @@
 				FF2A6C871A0F3B8A001607AC /* DataOC.mm in Sources */,
 				FF2A6C861A0F3B8A001607AC /* DataCenterDeal.mm in Sources */,
 				5B1F7FA61B91C8A600763059 /* DJProductCheckManager.m in Sources */,
+				AB9F43EC1B92E58400914C85 /* SetTableViewCell.m in Sources */,
 				FFF391961B846F58007DC652 /* AFHTTPSessionManager.m in Sources */,
+				AB9F43E91B92E45900914C85 /* SettingViewController.m in Sources */,
 				AB2579361B8F02010015039A /* IQUIView+Hierarchy.m in Sources */,
 				FF4DFCF51B856B9600617660 /* SCach.m in Sources */,
 				FF4DFCF41B856B9600617660 /* NSFileManager_Additions.m in Sources */,
@@ -1711,6 +1736,7 @@
 				5B54BA3B1B92B0BC002098A4 /* DJCheckCartNetService.m in Sources */,
 				5B1F7F991B8F73C000763059 /* CALayer+CCAddition.m in Sources */,
 				FF012FAB1B8EB92C00AE563C /* HYXFJLListViewController.m in Sources */,
+				AB79DB591B93FF6000CC1894 /* ChooseBtn.m in Sources */,
 				FF5C86DD1B818BE700F79EC1 /* SloppySwiper.m in Sources */,
 				AB2579371B8F02010015039A /* IQUIViewController+Additions.m in Sources */,
 				FF5CC6FC1B93EE5300F55713 /* RKSPManager.m in Sources */,

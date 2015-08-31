@@ -11,6 +11,5 @@
 @interface CLTableViewCell : UITableViewCell
 @property(nonatomic, strong) UILabel *titleLabel;
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
-
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier andWidth:(CGFloat)aWidth;
 @end

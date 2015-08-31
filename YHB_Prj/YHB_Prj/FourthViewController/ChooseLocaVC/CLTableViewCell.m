@@ -10,16 +10,16 @@
 
 @implementation CLTableViewCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier andWidth:(CGFloat)aWidth
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
         self.backgroundColor = [UIColor whiteColor];
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, aWidth, 30)];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.titleLabel];
         
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 29, 50, 0.5)];
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 29, aWidth, 0.5)];
         lineView.backgroundColor = RGBCOLOR(220, 220, 220);
         [self addSubview:lineView];
     }

@@ -72,7 +72,7 @@ typedef enum : NSUInteger {
         titleLabel.text = title;
         [_bgScrollView addSubview:titleLabel];
         
-        CGRect textFrame = CGRectMake(titleLabel.right+5, imgView.top-1, kMainScreenWidth-titleLabel.right-5-23, 17);
+        CGRect textFrame = CGRectMake(titleLabel.right+5, imgView.top, kMainScreenWidth-titleLabel.right-5-23, 16);
         if (i!=FieldTypeLoca)
         {
             UITextField *textField = [[UITextField alloc] initWithFrame:textFrame];

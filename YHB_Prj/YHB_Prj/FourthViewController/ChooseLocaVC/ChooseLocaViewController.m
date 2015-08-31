@@ -312,7 +312,7 @@
     } setCellForIndexPathBlock:^(UITableView *tableView,NSIndexPath *indexPath){
         CLTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:aIdent];
         if (!cell) {
-            cell= [[CLTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:aIdent];
+            cell= [[CLTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:aIdent andWidth:atb.width];
             [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
         }
         cell.height = 30;

@@ -12,6 +12,7 @@
 #import "ClerkViewController.h"
 #import "SupplierViewController.h"
 #import "TenantViewController.h"
+#import "SettingViewController.h"
 
 typedef enum : NSUInteger {
     cellTypeTenant = 0,//商户
@@ -186,7 +187,12 @@ typedef enum : NSUInteger {
             break;
         }
         case cellTypeOption:
-            
+        {
+            SettingViewController *vc = [[SettingViewController alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
             break;
         case cellTypeScan:
             
