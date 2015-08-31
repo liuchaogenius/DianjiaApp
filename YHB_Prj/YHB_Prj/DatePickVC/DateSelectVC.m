@@ -53,14 +53,20 @@ typedef NS_ENUM(int, dateBtTag)
 @end
 
 @implementation DateSelectVC
-
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    if(self=[super initWithNibName:nibNameOrNil bundle:nil])
+    {
+        self.hidesBottomBarWhenPushed = YES;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     btTag = -1;
     // Do any additional setup after loading the view from its nib.
-    CGFloat height = self.dateEnd_pick.bottom;
+    CGFloat height = self.okButton.bottom;
     [self.scrollview setContentSize:CGSizeMake(kMainScreenWidth, height+20)];
-    
     self.jinTian_BT.tag = jt_enum;
     [self.jinTian_BT addTarget:self action:@selector(dateButtonItem:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -168,14 +174,38 @@ typedef NS_ENUM(int, dateBtTag)
     if(aDatePicker.tag == 0)
     {
         NSDate *select = [aDatePicker date]; // 获取被选中的时间
-        startDate = [NSDateTool dateToNSString:select formate:@"yyyy-MM-dd HH:mm:ss"];
+        startDate = [NSDateTool dateToNSString:select formate:@"yyyy-MM-dd"];
+        if(startDate)
+        {
+            startDate = [NSString stringWithFormat:@"%@ 00:00:00",startDate];
+        }
         showStartDate = [NSDateTool dateToNSString:select formate:@"yyyy-MM-dd"];
+        
+        NSDate *selectend = [self.dateEnd_pick date]; // 获取被选中的时间
+        endDate = [NSDateTool dateToNSString:selectend formate:@"yyyy-MM-dd"];
+        if(endDate)
+        {
+            endDate = [NSString stringWithFormat:@"%@ 23:59:59",endDate];
+        }
+        showEndDate = [NSDateTool dateToNSString:selectend formate:@"yyyy-MM-dd"];
     }
     else if(aDatePicker.tag == 1)
     {
         NSDate *select = [aDatePicker date]; // 获取被选中的时间
-        endDate = [NSDateTool dateToNSString:select formate:@"yyyy-MM-dd HH:mm:ss"];
+        endDate = [NSDateTool dateToNSString:select formate:@"yyyy-MM-dd"];
+        if(endDate)
+        {
+            endDate = [NSString stringWithFormat:@"%@ 23:59:59",endDate];
+        }
         showEndDate = [NSDateTool dateToNSString:select formate:@"yyyy-MM-dd"];
+        
+        NSDate *selectstart = [aDatePicker date]; // 获取被选中的时间
+        startDate = [NSDateTool dateToNSString:selectstart formate:@"yyyy-MM-dd"];
+        if(startDate)
+        {
+            startDate = [NSString stringWithFormat:@"%@ 00:00:00",startDate];
+        }
+        showStartDate = [NSDateTool dateToNSString:selectstart formate:@"yyyy-MM-dd"];
     }
 }
 

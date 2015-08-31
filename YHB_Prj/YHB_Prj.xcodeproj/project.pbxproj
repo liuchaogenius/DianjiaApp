@@ -155,6 +155,19 @@
 		FF5C87291B8318C500F79EC1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5C87281B8318C500F79EC1 /* libsqlite3.dylib */; };
 		FF5C872D1B83279600F79EC1 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5C872B1B83279600F79EC1 /* FirstViewController.m */; };
 		FF5C872E1B83279600F79EC1 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5C872C1B83279600F79EC1 /* FirstViewController.xib */; };
+		FF5CC6F91B93EE5300F55713 /* GysMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC6E51B93EE5300F55713 /* GysMode.m */; };
+		FF5CC6FA1B93EE5300F55713 /* RKSPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC6E71B93EE5300F55713 /* RKSPCell.m */; };
+		FF5CC6FB1B93EE5300F55713 /* RKSPCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC6E81B93EE5300F55713 /* RKSPCell.xib */; };
+		FF5CC6FC1B93EE5300F55713 /* RKSPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC6EA1B93EE5300F55713 /* RKSPManager.m */; };
+		FF5CC6FD1B93EE5300F55713 /* RKSPMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC6EC1B93EE5300F55713 /* RKSPMode.m */; };
+		FF5CC6FE1B93EE5300F55713 /* RukuDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC6EE1B93EE5300F55713 /* RukuDetailCell.m */; };
+		FF5CC6FF1B93EE5300F55713 /* RukuDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC6EF1B93EE5300F55713 /* RukuDetailCell.xib */; };
+		FF5CC7001B93EE5300F55713 /* RukuDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC6F11B93EE5300F55713 /* RukuDetailViewController.m */; };
+		FF5CC7011B93EE5300F55713 /* RukuDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC6F21B93EE5300F55713 /* RukuDetailViewController.xib */; };
+		FF5CC7021B93EE5300F55713 /* RuKushenpinVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC6F41B93EE5300F55713 /* RuKushenpinVC.m */; };
+		FF5CC7031B93EE5300F55713 /* RuKushenpinVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC6F51B93EE5300F55713 /* RuKushenpinVC.xib */; };
+		FF5CC7041B93EE5300F55713 /* SXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC6F71B93EE5300F55713 /* SXViewController.m */; };
+		FF5CC7051B93EE5300F55713 /* SXViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC6F81B93EE5300F55713 /* SXViewController.xib */; };
 		FFD26CCE1B86D0D50003F491 /* FirstMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CCD1B86D0D50003F491 /* FirstMode.m */; };
 		FFD26CDE1B8B0B4E0003F491 /* KCYJManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CDD1B8B0B4E0003F491 /* KCYJManager.m */; };
 		FFD26CE11B8B10970003F491 /* KCYJMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CE01B8B10970003F491 /* KCYJMode.m */; };
@@ -483,6 +496,27 @@
 		FF5C872A1B83279600F79EC1 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		FF5C872B1B83279600F79EC1 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		FF5C872C1B83279600F79EC1 /* FirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
+		FF5CC6E41B93EE5300F55713 /* GysMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GysMode.h; sourceTree = "<group>"; };
+		FF5CC6E51B93EE5300F55713 /* GysMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GysMode.m; sourceTree = "<group>"; };
+		FF5CC6E61B93EE5300F55713 /* RKSPCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKSPCell.h; sourceTree = "<group>"; };
+		FF5CC6E71B93EE5300F55713 /* RKSPCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKSPCell.m; sourceTree = "<group>"; };
+		FF5CC6E81B93EE5300F55713 /* RKSPCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKSPCell.xib; sourceTree = "<group>"; };
+		FF5CC6E91B93EE5300F55713 /* RKSPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKSPManager.h; sourceTree = "<group>"; };
+		FF5CC6EA1B93EE5300F55713 /* RKSPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKSPManager.m; sourceTree = "<group>"; };
+		FF5CC6EB1B93EE5300F55713 /* RKSPMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKSPMode.h; sourceTree = "<group>"; };
+		FF5CC6EC1B93EE5300F55713 /* RKSPMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKSPMode.m; sourceTree = "<group>"; };
+		FF5CC6ED1B93EE5300F55713 /* RukuDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RukuDetailCell.h; sourceTree = "<group>"; };
+		FF5CC6EE1B93EE5300F55713 /* RukuDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RukuDetailCell.m; sourceTree = "<group>"; };
+		FF5CC6EF1B93EE5300F55713 /* RukuDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RukuDetailCell.xib; sourceTree = "<group>"; };
+		FF5CC6F01B93EE5300F55713 /* RukuDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RukuDetailViewController.h; sourceTree = "<group>"; };
+		FF5CC6F11B93EE5300F55713 /* RukuDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RukuDetailViewController.m; sourceTree = "<group>"; };
+		FF5CC6F21B93EE5300F55713 /* RukuDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RukuDetailViewController.xib; sourceTree = "<group>"; };
+		FF5CC6F31B93EE5300F55713 /* RuKushenpinVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuKushenpinVC.h; sourceTree = "<group>"; };
+		FF5CC6F41B93EE5300F55713 /* RuKushenpinVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuKushenpinVC.m; sourceTree = "<group>"; };
+		FF5CC6F51B93EE5300F55713 /* RuKushenpinVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RuKushenpinVC.xib; sourceTree = "<group>"; };
+		FF5CC6F61B93EE5300F55713 /* SXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXViewController.h; sourceTree = "<group>"; };
+		FF5CC6F71B93EE5300F55713 /* SXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXViewController.m; sourceTree = "<group>"; };
+		FF5CC6F81B93EE5300F55713 /* SXViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SXViewController.xib; sourceTree = "<group>"; };
 		FFD26CCC1B86D0D50003F491 /* FirstMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstMode.h; sourceTree = "<group>"; };
 		FFD26CCD1B86D0D50003F491 /* FirstMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstMode.m; sourceTree = "<group>"; };
 		FFD26CDC1B8B0B4E0003F491 /* KCYJManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCYJManager.h; sourceTree = "<group>"; };
@@ -1069,6 +1103,7 @@
 		FF2A6C8B1A0F3C58001607AC /* UIParty */ = {
 			isa = PBXGroup;
 			children = (
+				FF5CC6E31B93EE5300F55713 /* Rukushenpi */,
 				5B1F7F871B8F5D1100763059 /* ProductCheck */,
 				FFD26CF61B8C69290003F491 /* HuiyuanGuanli */,
 				FFD26CD61B870CD60003F491 /* KucunyujingVC */,
@@ -1298,6 +1333,34 @@
 			path = YTKeyValueStore;
 			sourceTree = "<group>";
 		};
+		FF5CC6E31B93EE5300F55713 /* Rukushenpi */ = {
+			isa = PBXGroup;
+			children = (
+				FF5CC6E41B93EE5300F55713 /* GysMode.h */,
+				FF5CC6E51B93EE5300F55713 /* GysMode.m */,
+				FF5CC6E61B93EE5300F55713 /* RKSPCell.h */,
+				FF5CC6E71B93EE5300F55713 /* RKSPCell.m */,
+				FF5CC6E81B93EE5300F55713 /* RKSPCell.xib */,
+				FF5CC6E91B93EE5300F55713 /* RKSPManager.h */,
+				FF5CC6EA1B93EE5300F55713 /* RKSPManager.m */,
+				FF5CC6EB1B93EE5300F55713 /* RKSPMode.h */,
+				FF5CC6EC1B93EE5300F55713 /* RKSPMode.m */,
+				FF5CC6ED1B93EE5300F55713 /* RukuDetailCell.h */,
+				FF5CC6EE1B93EE5300F55713 /* RukuDetailCell.m */,
+				FF5CC6EF1B93EE5300F55713 /* RukuDetailCell.xib */,
+				FF5CC6F01B93EE5300F55713 /* RukuDetailViewController.h */,
+				FF5CC6F11B93EE5300F55713 /* RukuDetailViewController.m */,
+				FF5CC6F21B93EE5300F55713 /* RukuDetailViewController.xib */,
+				FF5CC6F31B93EE5300F55713 /* RuKushenpinVC.h */,
+				FF5CC6F41B93EE5300F55713 /* RuKushenpinVC.m */,
+				FF5CC6F51B93EE5300F55713 /* RuKushenpinVC.xib */,
+				FF5CC6F61B93EE5300F55713 /* SXViewController.h */,
+				FF5CC6F71B93EE5300F55713 /* SXViewController.m */,
+				FF5CC6F81B93EE5300F55713 /* SXViewController.xib */,
+			);
+			path = Rukushenpi;
+			sourceTree = "<group>";
+		};
 		FFD26CD01B86F3BD0003F491 /* NSDateTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -1478,22 +1541,27 @@
 				FF4DFD041B85A5DF00617660 /* DateSelectVC.xib in Resources */,
 				AB42ACDA1B8BE303001FB93A /* GateTableViewCell.xib in Resources */,
 				FF5C871A1B83024C00F79EC1 /* LICENSE.txt in Resources */,
+				FF5CC7031B93EE5300F55713 /* RuKushenpinVC.xib in Resources */,
 				FFD26CF01B8C3F940003F491 /* ZXBJCell.xib in Resources */,
 				FF012FAA1B8EB92C00AE563C /* HYXFJLListViewController.xib in Resources */,
 				FF012FB41B8EB92C00AE563C /* HYCell.xib in Resources */,
 				FF5C872E1B83279600F79EC1 /* FirstViewController.xib in Resources */,
 				FF012FAE1B8EB92C00AE563C /* HYGLViewController.xib in Resources */,
+				FF5CC6FB1B93EE5300F55713 /* RKSPCell.xib in Resources */,
 				AB40EAC61B8C021800DE5ED7 /* SupplierTableViewCell.xib in Resources */,
 				AB2579411B8F02010015039A /* IQKeyboardManager.bundle in Resources */,
+				FF5CC7051B93EE5300F55713 /* SXViewController.xib in Resources */,
 				AB40EABD1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib in Resources */,
 				FF2A6BE51A0F3780001607AC /* Images.xcassets in Resources */,
 				FF2A6C431A0F3B6D001607AC /* SVProgressHUD.bundle in Resources */,
 				5B1F7F8F1B8F686700763059 /* ProductCheck.storyboard in Resources */,
+				FF5CC6FF1B93EE5300F55713 /* RukuDetailCell.xib in Resources */,
 				FF012FB21B8EB92C00AE563C /* HYDetailViewController.xib in Resources */,
 				FFD26CE61B8B1BC50003F491 /* KCYJCell.xib in Resources */,
 				FF5C87091B82FE5200F79EC1 /* LoginViewController.xib in Resources */,
 				FF012FAC1B8EB92C00AE563C /* HYLSXFCell.xib in Resources */,
 				FFD26CEB1B8C1B3B0003F491 /* KCYJViewController.xib in Resources */,
+				FF5CC7011B93EE5300F55713 /* RukuDetailViewController.xib in Resources */,
 				FFD26CF51B8C546F0003F491 /* ZCBCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1542,6 +1610,7 @@
 				AB42ACD91B8BE303001FB93A /* GateTableViewCell.m in Sources */,
 				FF3C20041A2EE7480081D3C7 /* FactoryModel.m in Sources */,
 				AB2579341B8F02010015039A /* IQNSArray+Sort.m in Sources */,
+				FF5CC6FD1B93EE5300F55713 /* RKSPMode.m in Sources */,
 				AB25793D1B8F02010015039A /* IQBarButtonItem.m in Sources */,
 				FF4DFCFA1B856C2B00617660 /* LoginMode.m in Sources */,
 				FF5C86FE1B81B72400F79EC1 /* NSArray+MASAdditions.m in Sources */,
@@ -1571,8 +1640,10 @@
 				FFD26CF41B8C546F0003F491 /* ZCBCell.m in Sources */,
 				FF2A6C0C1A0F3A01001607AC /* UIImage+ImageEffects.m in Sources */,
 				FF2A6C791A0F3B7B001607AC /* UIImageView+WebCache.m in Sources */,
+				FF5CC7021B93EE5300F55713 /* RuKushenpinVC.m in Sources */,
 				AB2579381B8F02010015039A /* IQUIWindow+Hierarchy.m in Sources */,
 				FF5C86F91B81B72400F79EC1 /* MASConstraint.m in Sources */,
+				FF5CC6FA1B93EE5300F55713 /* RKSPCell.m in Sources */,
 				FFD26CDE1B8B0B4E0003F491 /* KCYJManager.m in Sources */,
 				FF2A6C021A0F398D001607AC /* BaseViewController.m in Sources */,
 				ABEF1DAB1B92A18E00C1C2EA /* ClerkDetailViewController.m in Sources */,
@@ -1592,6 +1663,7 @@
 				5B1F7F951B8F6AAA00763059 /* DJStoryboadManager.m in Sources */,
 				FF012FAF1B8EB92C00AE563C /* HYGLViewController.m in Sources */,
 				ABEF1DAF1B92AD2700C1C2EA /* TenantViewController.m in Sources */,
+				FF5CC6FE1B93EE5300F55713 /* RukuDetailCell.m in Sources */,
 				FF2A6BE01A0F3780001607AC /* main.m in Sources */,
 				FFF3919C1B846F58007DC652 /* AFURLSessionManager.m in Sources */,
 				5B54BA1A1B91FCB7002098A4 /* DJProductCheckDetail.m in Sources */,
@@ -1609,6 +1681,7 @@
 				FF4DFD081B85B21C00617660 /* NSDateTool.m in Sources */,
 				FF2A6C6B1A0F3B7B001607AC /* MKAnnotationView+WebCache.m in Sources */,
 				FF5C87271B830F3000F79EC1 /* LoginManager.m in Sources */,
+				FF5CC6F91B93EE5300F55713 /* GysMode.m in Sources */,
 				FF5C87201B83024C00F79EC1 /* FMResultSet.m in Sources */,
 				AB88441B1B913DBB00FA526D /* ChooseLocaViewController.m in Sources */,
 				FF012FAD1B8EB92C00AE563C /* HYLSXFCell.m in Sources */,
@@ -1618,6 +1691,7 @@
 				FF3C20011A2EE6D30081D3C7 /* LSNavigationController.m in Sources */,
 				5B54BA2B1B922676002098A4 /* DJCheckCartItemComponent.m in Sources */,
 				FF5C871B1B83024C00F79EC1 /* README.markdown in Sources */,
+				FF5CC7001B93EE5300F55713 /* RukuDetailViewController.m in Sources */,
 				AB2579401B8F02010015039A /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				5B1F7F921B8F690400763059 /* DJProductCheckVC.m in Sources */,
 				FF5C86F81B81B72400F79EC1 /* MASCompositeConstraint.m in Sources */,
@@ -1639,6 +1713,7 @@
 				FF012FAB1B8EB92C00AE563C /* HYXFJLListViewController.m in Sources */,
 				FF5C86DD1B818BE700F79EC1 /* SloppySwiper.m in Sources */,
 				AB2579371B8F02010015039A /* IQUIViewController+Additions.m in Sources */,
+				FF5CC6FC1B93EE5300F55713 /* RKSPManager.m in Sources */,
 				FF4DFCF31B856B9600617660 /* JsonToModel.m in Sources */,
 				AB8844171B913D6300FA526D /* UITableView+DelegateBlocks.m in Sources */,
 				5B1F7FA31B90B62900763059 /* DJProductCheckListDetailVC.m in Sources */,
@@ -1656,6 +1731,7 @@
 				FF2A6C9F1A0F3D41001607AC /* FifthViewController.m in Sources */,
 				AB25793F1B8F02010015039A /* IQToolbar.m in Sources */,
 				AB40EAB51B8BF97500DE5ED7 /* ClerkViewController.m in Sources */,
+				FF5CC7041B93EE5300F55713 /* SXViewController.m in Sources */,
 				FF2A6C081A0F39EC001607AC /* ViewInteraction.m in Sources */,
 				FF2A6C6D1A0F3B7B001607AC /* SDImageCache.m in Sources */,
 			);

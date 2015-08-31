@@ -52,6 +52,7 @@
     {
         self.navigationController.navigationBar.tintColor = KColor;
     }
+    //self.view.frame = CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64);
     self.navigationController.navigationBar.alpha = 1;
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
@@ -295,7 +296,11 @@
             while (firstParam) {
                 MLOG(@"firstParam = %@",firstParam);
                 firstParam = va_arg(args, id);
-                MLOG(@"firstParam111 = %@",firstParam);
+                //MLOG(@"firstParam111 = %@",firstParam);
+                if(!firstParam)
+                {
+                    break;
+                }
                 [paramArry addObject:firstParam];
             }
         }

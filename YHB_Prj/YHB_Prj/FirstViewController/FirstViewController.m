@@ -67,6 +67,7 @@
     [self.bottom_kcjg_BT addTarget:self action:@selector(kcyj_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_hygl_BT addTarget:self action:@selector(hygl_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_sppd_BT addTarget:self action:@selector(sppd_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
+    [self.bottom_sprk_BT addTarget:self action:@selector(rksp_buttonItem) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -151,6 +152,15 @@
     }];
 }
 
+#pragma mark 获取用户选择的开始时间和结束时间
+- (NSString *)getStartTime
+{
+    return self.strStartTime;
+}
+- (NSString *)getEndTime
+{
+    return self.strEndTime;
+}
 #pragma mark 库存预警按钮点击
 - (void)kcyj_ButtonItem
 {
@@ -169,6 +179,10 @@
     UIViewController *vc = [[DJStoryboadManager sharedInstance] viewControllerWithName:@"DJProductCheckListVC"];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
+}
+- (void)rksp_buttonItem
+{
+    [self pushXIBName:@"RuKushenpinVC" animated:YES selector:nil param:nil];
 }
 
 - (void)didReceiveMemoryWarning {

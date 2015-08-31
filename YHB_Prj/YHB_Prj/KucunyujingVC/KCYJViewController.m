@@ -55,7 +55,7 @@
     [self.manager getStockWarningDetailPageApp:YES storeId:[[LoginManager shareLoginManager] getStoreId] finishBlock:^(KCYJListMode *modelist) {
         if(modelist && modelist.kcyjModeArry && modelist.kcyjModeArry.count>0)
         {
-            self.kcyjMutArry = modelist.kcyjModeArry;
+            [self.kcyjMutArry addObjectsFromArray:modelist.kcyjModeArry] ;
             [self.tableview reloadData];
         }
     }];
@@ -76,38 +76,58 @@
 - (void)kcyjBTItem
 {
     self.pageType = 0;
-    [self.manager getStockWarningDetailPageApp:YES storeId:[[LoginManager shareLoginManager] getStoreId] finishBlock:^(KCYJListMode *modelist) {
-        if(modelist && modelist.kcyjModeArry && modelist.kcyjModeArry.count>0)
-        {
-            [self.tableview setContentOffset:CGPointMake(0, 0)];
-            self.kcyjMutArry = modelist.kcyjModeArry;
-            [self.tableview reloadData];
-        }
-    }];
+    if(self.kcyjMutArry.count == 0)
+    {
+        [self.manager getStockWarningDetailPageApp:YES storeId:[[LoginManager shareLoginManager] getStoreId] finishBlock:^(KCYJListMode *modelist) {
+            if(modelist && modelist.kcyjModeArry && modelist.kcyjModeArry.count>0)
+            {
+                [self.tableview setContentOffset:CGPointMake(0, 0)];
+                [self.kcyjMutArry addObjectsFromArray:modelist.kcyjModeArry];
+                [self.tableview reloadData];
+            }
+        }];
+    }
+    else
+    {
+        [self.tableview reloadData];
+    }
 }
 - (void)zxyjBTItem
 {
     self.pageType = 1;
-    [self.manager getSalekWarningDetailPageApp:YES storeId:[[LoginManager shareLoginManager] getStoreId] finishBlock:^(KCYJListMode *modelist) {
-        if(modelist && modelist.kcyjModeArry && modelist.kcyjModeArry.count>0)
-        {
-            [self.tableview setContentOffset:CGPointMake(0, 0)];
-            self.zxyjMutArry = modelist.kcyjModeArry;
-            [self.tableview reloadData];
-        }
-    }];
-    
+    if(self.zxyjMutArry.count == 0)
+    {
+        [self.manager getSalekWarningDetailPageApp:YES storeId:[[LoginManager shareLoginManager] getStoreId] finishBlock:^(KCYJListMode *modelist) {
+            if(modelist && modelist.kcyjModeArry && modelist.kcyjModeArry.count>0)
+            {
+                [self.tableview setContentOffset:CGPointMake(0, 0)];
+                [self.zxyjMutArry addObjectsFromArray:modelist.kcyjModeArry];
+                [self.tableview reloadData];
+            }
+        }];
+    }
+    else
+    {
+        [self.tableview reloadData];
+    }
 }
 - (void)zkcBTItem
 {
     self.pageType = 2;
-    [self.manager getStoreStockByStoreCount:^(StoreTockList *modelist) {
-        if(modelist && modelist.storeStockArry && modelist.storeStockArry.count>0)
-        {
-            self.zkcMutArry = modelist.storeStockArry;
-            [self.tableview reloadData];
-        }
-    }];
+    if(self.zkcMutArry.count == 0)
+    {
+        [self.manager getStoreStockByStoreCount:^(StoreTockList *modelist) {
+            if(modelist && modelist.storeStockArry && modelist.storeStockArry.count>0)
+            {
+                [self.zkcMutArry addObjectsFromArray:modelist.storeStockArry];
+                [self.tableview reloadData];
+            }
+        }];
+    }
+    else
+    {
+        [self.tableview reloadData];
+    }
 }
 #pragma mark 显示和隐藏底部滞销商品的
 - (void)showBottomBar:(NSString *)aPNum stockMoney:(NSString *)aStockMoney

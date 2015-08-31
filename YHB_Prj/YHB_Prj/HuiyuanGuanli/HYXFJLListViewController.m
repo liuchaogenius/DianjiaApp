@@ -26,6 +26,7 @@
     {
         self.hidesBottomBarWhenPushed = YES;
         self.manager = [[HYGLManager alloc] init];
+        self.modeListArry = [NSMutableArray arrayWithCapacity:0];
     }
     return self;
 }
@@ -38,7 +39,7 @@
     [self.manager getVipSaleOneMonth:self.mode.strId finishBlock:^(HYGLDataModeList *mode) {
         if(mode)
         {
-            self.modeListArry = mode.HYGLDataArry;
+            [self.modeListArry addObjectsFromArray:mode.HYGLDataArry];
             [self.tableview reloadData];
         }
     }];

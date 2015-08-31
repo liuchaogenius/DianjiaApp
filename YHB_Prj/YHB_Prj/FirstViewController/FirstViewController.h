@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FirstViewController : BaseViewController
+- (NSString *)getStartTime;
 
+- (NSString *)getEndTime;
 @end
