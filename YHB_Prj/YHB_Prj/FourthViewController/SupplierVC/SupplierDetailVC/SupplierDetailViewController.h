@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+@class SupplierMode;
 
 @interface SupplierDetailViewController : BaseViewController
+
+- (instancetype)initWithSupplierMode:(SupplierMode *)aMode withDeleteBlock:(void(^)(void))aDeleteBlock withChangeBlock:(void(^)(SupplierMode *aMode))aChangeBlock;
 
 @end

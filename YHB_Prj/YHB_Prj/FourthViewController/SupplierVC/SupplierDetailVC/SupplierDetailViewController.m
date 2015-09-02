@@ -8,6 +8,9 @@
 
 #import "SupplierDetailViewController.h"
 #import "ChooseLocaViewController.h"
+#import "SupplierDetailViewController.h"
+#import "SupplierMode.h"
+#import "SupplierManage.h"
 
 typedef enum : NSUInteger {
     FieldTypeSupplier,
@@ -20,7 +23,7 @@ typedef enum : NSUInteger {
     FieldTypeDate
 } FieldType;
 
-@interface SupplierDetailViewController ()<UIScrollViewDelegate>
+@interface SupplierDetailViewController ()<UIScrollViewDelegate, UIAlertViewDelegate>
 {
     UIScrollView *_bgScrollView;
     NSArray *_titleArray;
@@ -38,9 +41,25 @@ typedef enum : NSUInteger {
 @property(nonatomic,strong) UIButton *rightBtn;
 
 @property(nonatomic) BOOL isEdit;
+
+@property(nonatomic, strong) SupplierMode *myMode;
+@property(nonatomic, strong) SupplierManage *manage;
+@property(nonatomic, strong) void(^deleteBlock)(void);
+@property(nonatomic, strong) void(^changeBlock)(SupplierMode *aMode);
 @end
 
 @implementation SupplierDetailViewController
+
+- (instancetype)initWithSupplierMode:(SupplierMode *)aMode withDeleteBlock:(void (^)(void))aDeleteBlock withChangeBlock:(void (^)(SupplierMode *aMode))aChangeBlock
+{
+    if (self = [super init])
+    {
+        _myMode = aMode;
+        _deleteBlock = aDeleteBlock;
+        _changeBlock = aChangeBlock;
+    }
+    return self;
+}
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -56,7 +75,6 @@ typedef enum : NSUInteger {
     [self.view addSubview:_bgScrollView];
     
     _titleArray = @[@"供货商名称:",@"联系人:",@"联系电话:",@"传真:",@"电子邮件:",@"商户地址:",@"备注:",@"添加日期:"];
-    NSArray *contentArray = @[@"南京母婴乐嘉店",@"董枫",@"13311251225",@"010-23123121",@"123@123.com",@"北京市朝阳区团结湖北头条",@"发动后尽快发货",@"2015-07-14 14:32:34"];
     
     CGFloat endHeight = 0;
     for (int i=0; i<_titleArray.count; i++)
@@ -79,7 +97,7 @@ typedef enum : NSUInteger {
             textField.font = kFont12;
             textField.tag = 100+i;
             [_bgScrollView addSubview:textField];
-            textField.text = contentArray[i];
+//            textField.text = contentArray[i];
             if (i==FieldTypePhone || i==FieldTypeChuan || i==FieldTypeMail)
             {
                 textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
@@ -92,7 +110,7 @@ typedef enum : NSUInteger {
             self.locaBtn.contentEdgeInsets = UIEdgeInsetsMake(0,5, 0, 0);
             [self.locaBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             self.locaBtn.titleLabel.font = kFont12;
-            [self.locaBtn setTitle:contentArray[i] forState:UIControlStateNormal];
+//            [self.locaBtn setTitle:contentArray[i] forState:UIControlStateNormal];
             [self.locaBtn addTarget:self action:@selector(touchLoca) forControlEvents:UIControlEventTouchDown];
             [_bgScrollView addSubview:self.locaBtn];
         }
@@ -135,6 +153,19 @@ typedef enum : NSUInteger {
     [self.rightBtn addTarget:self action:@selector(touchRightBtn) forControlEvents:UIControlEventTouchDown];
     
     self.isEdit = NO;
+    [self reloadScrollView];
+}
+
+- (void)reloadScrollView
+{
+    self.supplierTextfield.text = _myMode.strSupName;
+    self.contactTextfield.text = _myMode.strContact;
+    self.phoneTextfield.text = _myMode.strTel;
+    self.chuanTextfield.text = _myMode.strFax;
+    self.mailTextfield.text = _myMode.strEmail;
+    self.beiTextfield.text = _myMode.strRemark;
+    self.dateTextfield.text = @"2015-07-14 14:32:34";
+    [self.locaBtn setTitle:_myMode.strAddress forState:UIControlStateNormal];
 }
 
 - (void)touchLoca
@@ -161,7 +192,7 @@ typedef enum : NSUInteger {
 {
     if (self.isEdit==NO)//执行删除
     {
-        [self delete];
+        [self showdeleteAlertView];
     }
     else//执行取消
     {
@@ -178,12 +209,59 @@ typedef enum : NSUInteger {
 
 - (void)save
 {
-    
+    _myMode.strSupName = self.supplierTextfield.text;
+    _myMode.strContact = self.contactTextfield.text;
+    _myMode.strTel = self.phoneTextfield.text;
+    _myMode.strFax = self.chuanTextfield.text;
+    _myMode.strEmail = self.mailTextfield.text;
+    _myMode.strRemark = self.beiTextfield.text;
+    self.dateTextfield.text = @"2015-07-14 14:32:34";
+    _myMode.strAddress = self.locaBtn.titleLabel.text;
+    [self.manage changeSupplier:_myMode withFinishBlock:^(NSString *aCode) {
+        if ([aCode isEqualToString:@"1"])
+        {
+            [SVProgressHUD showSuccessWithStatus:@"修改成功" cover:YES offsetY:kMainScreenHeight/2.0];
+            self.isEdit = NO;
+            [self.leftBtn setTitle:@"修改" forState:UIControlStateNormal];
+            [self.rightBtn setTitle:@"删除" forState:UIControlStateNormal];
+            _changeBlock(_myMode);
+        }
+        else
+        {
+            [SVProgressHUD showErrorWithStatus:@"修改失败" cover:YES offsetY:kMainScreenHeight/2.0];
+        }
+    }];
+}
+
+- (void)showdeleteAlertView
+{
+    UIAlertView *deleteAlert = [[UIAlertView alloc] initWithTitle:nil message:@"确定要删除此供货商吗" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    deleteAlert.delegate = self;
+    [deleteAlert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==1)
+    {
+        [self delete];
+    }
 }
 
 - (void)delete
 {
-    
+    [self.manage deleteSupplier:_myMode.strid withFinishBlock:^(NSString *aCode) {
+        if ([aCode isEqualToString:@"1"])
+        {
+            [SVProgressHUD showSuccessWithStatus:@"删除成功" cover:YES offsetY:kMainScreenHeight/2.0];
+            _deleteBlock();
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            [SVProgressHUD showErrorWithStatus:@"删除失败" cover:YES offsetY:kMainScreenHeight/2.0];
+        }
+    }];
 }
 
 - (void)cancel
@@ -191,6 +269,7 @@ typedef enum : NSUInteger {
     self.isEdit = NO;
     [self.leftBtn setTitle:@"修改" forState:UIControlStateNormal];
     [self.rightBtn setTitle:@"删除" forState:UIControlStateNormal];
+    [self reloadScrollView];
 }
 
 
@@ -311,6 +390,15 @@ typedef enum : NSUInteger {
         _rightBtn = (UIButton *)[self.view viewWithTag:201];
     }
     return _rightBtn;
+}
+
+- (SupplierManage *)manage
+{
+    if (!_manage)
+    {
+        _manage = [[SupplierManage alloc] init];
+    }
+    return _manage;
 }
 
 - (void)didReceiveMemoryWarning {

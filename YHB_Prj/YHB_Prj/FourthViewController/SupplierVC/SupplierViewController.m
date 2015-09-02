@@ -9,11 +9,14 @@
 #import "SupplierViewController.h"
 #import "SupplierTableViewCell.h"
 #import "SupplierDetailViewController.h"
+#import "SupplierManage.h"
+#import "SVPullToRefresh.h"
 
 @interface SupplierViewController ()<UITableViewDataSource,UITableViewDelegate>
-{
-    UITableView *_supplierTableView;
-}
+
+@property(nonatomic, strong) UITableView *supplierTableView;
+@property(nonatomic, strong) SupplierManage *manage;
+@property(nonatomic, strong) NSMutableArray *dataArray;
 @end
 
 @implementation SupplierViewController
@@ -28,11 +31,39 @@
     _supplierTableView.dataSource = self;
     _supplierTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_supplierTableView];
+    
+    self.dataArray = [NSMutableArray arrayWithCapacity:0];
+    
+    [self addTableViewTrag];
+    
+    _manage = [[SupplierManage alloc] init];
+    [_manage getSupplierListWithFinishBlock:^(NSArray *resultArr) {
+        self.dataArray = [resultArr mutableCopy];
+        [_supplierTableView reloadData];
+    }];
+}
+
+#pragma mark 增加上拉下拉
+- (void)addTableViewTrag
+{
+    __weak SupplierViewController *weakself = self;
+    [weakself.supplierTableView addPullToRefreshWithActionHandler:^{
+        [self.manage getSupplierListWithFinishBlock:^(NSArray *resultArr) {
+            self.dataArray = [resultArr mutableCopy];
+            [_supplierTableView reloadData];
+            [weakself.supplierTableView.pullToRefreshView stopAnimating];
+        }];
+    }];
+    
+    
+//    [weakself.supplierTableView addInfiniteScrollingWithActionHandler:^{
+//        [weakself.supplierTableView.infiniteScrollingView stopAnimating];
+//    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -49,7 +80,8 @@
         [tableView registerNib:[UINib nibWithNibName:@"SupplierTableViewCell" bundle:nil] forCellReuseIdentifier:cellId];
         cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     }
-    
+    SupplierMode *mode = [self.dataArray objectAtIndex:indexPath.row];
+    [cell setCellWithSupplierMode:mode];
     return cell;
 }
 
@@ -62,8 +94,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-//    NSLog(@"%ld", indexPath.row);
-    SupplierDetailViewController *vc = [[SupplierDetailViewController alloc] init];
+    SupplierMode *mode = [self.dataArray objectAtIndex:indexPath.row];
+    SupplierDetailViewController *vc = [[SupplierDetailViewController alloc] initWithSupplierMode:mode withDeleteBlock:^{
+        [_dataArray removeObjectAtIndex:indexPath.row];
+        [_supplierTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    } withChangeBlock:^(SupplierMode *aMode) {
+        [_dataArray replaceObjectAtIndex:indexPath.row withObject:aMode];
+        [_supplierTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -63,6 +63,8 @@
 		AB88441E1B914D0F00FA526D /* CLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB88441D1B914D0F00FA526D /* CLTableViewCell.m */; };
 		AB9F43E91B92E45900914C85 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9F43E81B92E45900914C85 /* SettingViewController.m */; };
 		AB9F43EC1B92E58400914C85 /* SetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9F43EB1B92E58400914C85 /* SetTableViewCell.m */; };
+		ABAACA071B95B5EC00305080 /* SupplierManage.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAACA061B95B5EC00305080 /* SupplierManage.m */; };
+		ABAACA0A1B95BE7600305080 /* SupplierMode.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAACA091B95BE7600305080 /* SupplierMode.m */; };
 		ABEF1DA71B929D5400C1C2EA /* SupplierDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DA61B929D5400C1C2EA /* SupplierDetailViewController.m */; };
 		ABEF1DAB1B92A18E00C1C2EA /* ClerkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DAA1B92A18E00C1C2EA /* ClerkDetailViewController.m */; };
 		ABEF1DAF1B92AD2700C1C2EA /* TenantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DAE1B92AD2700C1C2EA /* TenantViewController.m */; };
@@ -315,6 +317,10 @@
 		AB9F43E81B92E45900914C85 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		AB9F43EA1B92E58400914C85 /* SetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetTableViewCell.h; sourceTree = "<group>"; };
 		AB9F43EB1B92E58400914C85 /* SetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetTableViewCell.m; sourceTree = "<group>"; };
+		ABAACA051B95B5EC00305080 /* SupplierManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierManage.h; sourceTree = "<group>"; };
+		ABAACA061B95B5EC00305080 /* SupplierManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierManage.m; sourceTree = "<group>"; };
+		ABAACA081B95BE7600305080 /* SupplierMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierMode.h; sourceTree = "<group>"; };
+		ABAACA091B95BE7600305080 /* SupplierMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierMode.m; sourceTree = "<group>"; };
 		ABEF1DA51B929D5400C1C2EA /* SupplierDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierDetailViewController.h; sourceTree = "<group>"; };
 		ABEF1DA61B929D5400C1C2EA /* SupplierDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierDetailViewController.m; sourceTree = "<group>"; };
 		ABEF1DA91B92A18E00C1C2EA /* ClerkDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClerkDetailViewController.h; sourceTree = "<group>"; };
@@ -814,6 +820,10 @@
 				AB40EAC21B8C021800DE5ED7 /* SupplierTableViewCell.h */,
 				AB40EAC31B8C021800DE5ED7 /* SupplierTableViewCell.m */,
 				AB40EAC41B8C021800DE5ED7 /* SupplierTableViewCell.xib */,
+				ABAACA051B95B5EC00305080 /* SupplierManage.h */,
+				ABAACA061B95B5EC00305080 /* SupplierManage.m */,
+				ABAACA081B95BE7600305080 /* SupplierMode.h */,
+				ABAACA091B95BE7600305080 /* SupplierMode.m */,
 			);
 			path = SupplierVC;
 			sourceTree = "<group>";
@@ -1627,6 +1637,7 @@
 				AB2579361B8F02010015039A /* IQUIView+Hierarchy.m in Sources */,
 				FF4DFCF51B856B9600617660 /* SCach.m in Sources */,
 				FF4DFCF41B856B9600617660 /* NSFileManager_Additions.m in Sources */,
+				ABAACA071B95B5EC00305080 /* SupplierManage.m in Sources */,
 				FF012FA91B8EB92C00AE563C /* VipInfoMode.m in Sources */,
 				FFF391991B846F58007DC652 /* AFURLConnectionOperation.m in Sources */,
 				FF012FB51B8EB92C00AE563C /* HYCell.m in Sources */,
@@ -1730,6 +1741,7 @@
 				AB40EAC11B8C020700DE5ED7 /* SupplierViewController.m in Sources */,
 				FF2A6C731A0F3B7B001607AC /* SDWebImagePrefetcher.m in Sources */,
 				FFF3919A1B846F58007DC652 /* AFURLRequestSerialization.m in Sources */,
+				ABAACA0A1B95BE7600305080 /* SupplierMode.m in Sources */,
 				FF4DFD0B1B85CBFA00617660 /* StoreListView.m in Sources */,
 				5B54BA421B9336C7002098A4 /* DJCheckCartCell.m in Sources */,
 				FF2A6C711A0F3B7B001607AC /* SDWebImageDownloaderOperation.m in Sources */,

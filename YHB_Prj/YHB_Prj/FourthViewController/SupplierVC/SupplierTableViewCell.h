@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SupplierMode;
 
 @interface SupplierTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
@@ -17,5 +18,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *locaLabel;
 
 + (CGFloat)heightForSupplierCell;
+- (void)resetCell;
+- (void)setCellWithSupplierMode:(SupplierMode *)aMode;
 
 @end
