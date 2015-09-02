@@ -25,13 +25,14 @@ typedef enum : NSUInteger {
 @property(nonatomic,strong) UITextField *gateTextfield;
 @property(nonatomic,strong) UITextField *contactTextfield;
 @property(nonatomic,strong) UITextField *phoneTextfield;
-@property(nonatomic,strong) UIButton *locaBtn;
+//@property(nonatomic,strong) UIButton *locaBtn;
 @property(nonatomic,strong) UITextField *dateTextfield;
 
 @property(nonatomic,strong) UIButton *leftBtn;
 @property(nonatomic,strong) UIButton *rightBtn;
 
 @property(nonatomic) BOOL isEdit;
+@property(nonatomic,strong) StoreMode *myMode;
 @end
 
 @implementation GateDetailViewController
@@ -41,16 +42,26 @@ typedef enum : NSUInteger {
     [self.view endEditing:YES];
 }
 
+- (instancetype)initWithMode:(StoreMode *)aMode
+{
+    if (self = [super init])
+    {
+        _myMode = aMode;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"门店详情";
     self.view.backgroundColor = [UIColor whiteColor];
 
-    _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64-50)];
+    _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64)];
     _bgScrollView.delegate = self;
     [self.view addSubview:_bgScrollView];
 
     _titleArray = @[@"门店名称:",@"联系人:",@"联系电话:",@"门店地址:",@"添加日期:"];
-    NSArray *contentArray = @[@"南京母婴乐嘉店",@"董枫",@"13311251225",@"北京市朝阳区团结湖北头条",@"2015-07-14 14:32:34"];
+    NSArray *contentArray = @[_myMode.strStoreName,_myMode.strContactName,_myMode.strContactPhone,_myMode.strContactAddr,[self getNowTime]];
     
     CGFloat endHeight = 0;
     for (int i=0; i<_titleArray.count; i++)
@@ -67,8 +78,8 @@ typedef enum : NSUInteger {
         [_bgScrollView addSubview:titleLabel];
         
         CGRect textFrame = CGRectMake(titleLabel.right+5, imgView.top, kMainScreenWidth-titleLabel.right-5-23, 16);
-        if (i!=FieldTypeLoca)
-        {
+//        if (i!=FieldTypeLoca)
+//        {
             UITextField *textField = [[UITextField alloc] initWithFrame:textFrame];
             textField.font = kFont12;
             textField.tag = 100+i;
@@ -78,18 +89,18 @@ typedef enum : NSUInteger {
             {
                 textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
             }
-        }
-        else
-        {
-            self.locaBtn = [[UIButton alloc] initWithFrame:textFrame];
-            self.locaBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-            self.locaBtn.contentEdgeInsets = UIEdgeInsetsMake(0,5, 0, 0);
-            [self.locaBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            self.locaBtn.titleLabel.font = kFont12;
-            [self.locaBtn setTitle:contentArray[i] forState:UIControlStateNormal];
-            [self.locaBtn addTarget:self action:@selector(touchLoca) forControlEvents:UIControlEventTouchDown];
-            [_bgScrollView addSubview:self.locaBtn];
-        }
+//        }
+//        else
+//        {
+//            self.locaBtn = [[UIButton alloc] initWithFrame:textFrame];
+//            self.locaBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//            self.locaBtn.contentEdgeInsets = UIEdgeInsetsMake(0,5, 0, 0);
+//            [self.locaBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//            self.locaBtn.titleLabel.font = kFont12;
+//            [self.locaBtn setTitle:contentArray[i] forState:UIControlStateNormal];
+//            [self.locaBtn addTarget:self action:@selector(touchLoca) forControlEvents:UIControlEventTouchDown];
+//            [_bgScrollView addSubview:self.locaBtn];
+//        }
 
         
         UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(titleLabel.right, textFrame.origin.y+textFrame.size.height+2, textFrame.size.width+5, 0.5)];
@@ -111,30 +122,42 @@ typedef enum : NSUInteger {
     _bgScrollView.contentSize = CGSizeMake(kMainScreenWidth, contentH);
 
     
-    UIColor *btnColor = [UIColor orangeColor];
-    for (int i=0; i<2; i++)
-    {
-        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(15+kMainScreenWidth/2.0*i, kMainScreenHeight-64-50, kMainScreenWidth/2.0-30, 30)];
-        btn.tag = 200+i;
-        [btn setTitleColor:btnColor forState:UIControlStateNormal];
-        btn.layer.borderColor = [btnColor CGColor];
-        btn.layer.cornerRadius = 3;
-        btn.titleLabel.font = kFont13;
-        btn.layer.borderWidth = 1;
-        [self.view addSubview:btn];
-    }
-    [self.leftBtn setTitle:@"修改" forState:UIControlStateNormal];
-    [self.leftBtn addTarget:self action:@selector(touchLeftBtn) forControlEvents:UIControlEventTouchDown];
-    [self.rightBtn setTitle:@"删除" forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(touchRightBtn) forControlEvents:UIControlEventTouchDown];
+//    UIColor *btnColor = [UIColor orangeColor];
+//    for (int i=0; i<2; i++)
+//    {
+//        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(15+kMainScreenWidth/2.0*i, kMainScreenHeight-64-50, kMainScreenWidth/2.0-30, 30)];
+//        btn.tag = 200+i;
+//        [btn setTitleColor:btnColor forState:UIControlStateNormal];
+//        btn.layer.borderColor = [btnColor CGColor];
+//        btn.layer.cornerRadius = 3;
+//        btn.titleLabel.font = kFont13;
+//        btn.layer.borderWidth = 1;
+//        [self.view addSubview:btn];
+//    }
+//    [self.leftBtn setTitle:@"修改" forState:UIControlStateNormal];
+//    [self.leftBtn addTarget:self action:@selector(touchLeftBtn) forControlEvents:UIControlEventTouchDown];
+//    [self.rightBtn setTitle:@"删除" forState:UIControlStateNormal];
+//    [self.rightBtn addTarget:self action:@selector(touchRightBtn) forControlEvents:UIControlEventTouchDown];
     
     self.isEdit = NO;
+}
+
+- (NSString *)getNowTime
+{
+    NSDate *  senddate=[NSDate date];
+    
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    
+    [dateformatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    
+    NSString *  locationString=[dateformatter stringFromDate:senddate];
+    return locationString;
 }
 
 - (void)touchLoca
 {
     ChooseLocaViewController *vc = [[ChooseLocaViewController alloc] initWithEditBlock:^(NSString *str) {
-        [self.locaBtn setTitle:str forState:UIControlStateNormal];
+//        [self.locaBtn setTitle:str forState:UIControlStateNormal];
     }];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -194,7 +217,7 @@ typedef enum : NSUInteger {
     _isEdit = isEdit;
     if (_isEdit==YES)
     {
-        self.locaBtn.enabled = YES;
+//        self.locaBtn.enabled = YES;
         for (int i=0; i<_titleArray.count; i++)
         {
             if (i!=FieldTypeDate)
@@ -211,7 +234,7 @@ typedef enum : NSUInteger {
     }
     else if(_isEdit==NO)
     {
-        self.locaBtn.enabled = NO;
+//        self.locaBtn.enabled = NO;
         for (int i=0; i<_titleArray.count; i++)
         {
             if (i!=FieldTypeLoca)

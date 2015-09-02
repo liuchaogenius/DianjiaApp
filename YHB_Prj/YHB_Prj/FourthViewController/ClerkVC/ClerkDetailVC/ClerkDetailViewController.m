@@ -10,6 +10,7 @@
 #import "ChooseBtn.h"
 #import "TableViewWithBlock.h"
 #import "CLTableViewCell.h"
+#import "EmpMode.h"
 
 static const CGFloat cellHeight = 30;
 
@@ -45,13 +46,19 @@ typedef enum : NSUInteger {
     BOOL _workBool;
     NSArray *_workArray;
 }
-@property(nonatomic,strong) UIButton *gateBtn;
-@property(nonatomic,strong) UIButton *workBtn;
+//@property(nonatomic,strong) UIButton *gateBtn;
+@property(nonatomic,strong) UITextField *gateTextfield;
+//@property(nonatomic,strong) UIButton *workBtn;
+@property(nonatomic,strong) UITextField *workTextfield;
+
 @property(nonatomic,strong) UITextField *workIdTextfield;
 @property(nonatomic,strong) UITextField *mimaTextfield;
 @property(nonatomic,strong) UITextField *nameTextfield;
 @property(nonatomic,strong) UITextField *phoneTextfield;
-@property(nonatomic,strong) UIButton *birthBtn;
+
+//@property(nonatomic,strong) UIButton *birthBtn;
+@property(nonatomic,strong) UITextField *birthTextfield;
+
 @property(nonatomic,strong) UITextField *sexTextfield;
 @property(nonatomic,strong) UITextField *weChatTextfield;
 @property(nonatomic,strong) UITextField *qqTextfield;
@@ -62,9 +69,19 @@ typedef enum : NSUInteger {
 @property(nonatomic) BOOL isEdit;
 
 @property(nonatomic, strong) UIDatePicker *datePicker;
+@property(nonatomic,strong) EmpMode *myMode;
 @end
 
 @implementation ClerkDetailViewController
+
+- (instancetype)initWithMode:(EmpMode *)aMode
+{
+    if (self =[super init])
+    {
+        _myMode = aMode;
+    }
+    return self;
+}
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
@@ -101,17 +118,19 @@ typedef enum : NSUInteger {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"店员详情";
     self.view.backgroundColor = [UIColor whiteColor];
     
     _gateArray = @[@"22",@"12",@"34"];
     _workArray = @[@"2",@"2",@"4"];
     
-    _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64-50)];
+    _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64)];
     _bgScrollView.delegate = self;
     [self.view addSubview:_bgScrollView];
     
+    
     _titleArray = @[@"门店:",@"职务:",@"工号:",@"密码:",@"姓名:",@"手机:",@"生日:",@"性别:",@"微信:",@"QQ:"];
-    NSArray *contentArray = @[@"南京母婴乐嘉店",@"店员",@"No.000001",@"XXXXXX",@"mike",@"13456765243",@"7月12日",@"女",@"12213",@"12123"];
+//    NSArray *contentArray = @[_myMode.strstore_name,_myMode.stremp_type_name,_myMode.strsid,_myMode.strpassword,_myMode.stremp_name,_myMode.strphone,_myMode.strbirthday,sex,_myMode.strweixin,_myMode.strqq];
     
     CGFloat endHeight = 0;
     for (int i=0; i<_titleArray.count; i++)
@@ -128,88 +147,88 @@ typedef enum : NSUInteger {
         [_bgScrollView addSubview:titleLabel];
         
         CGRect textFrame = CGRectMake(titleLabel.right+5, imgView.top, kMainScreenWidth-titleLabel.right-5-23, 16);
-        if (i!=FieldTypeGate && i!=FieldTypeWork && i!=FieldTypeBirth)
-        {
-            if (i==FieldTypeSex)
-            {
-                _sexBgView = [[UIView alloc] initWithFrame:textFrame];
-                _sexBgView.hidden = YES;
-                [_bgScrollView addSubview:_sexBgView];
-                
-                UILabel *wLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 13, _sexBgView.height)];
-                wLabel.font = kFont12;
-                wLabel.text = @"女";
-                [_sexBgView addSubview:wLabel];
-                _wBtn = [[ChooseBtn alloc] initWithFrame:CGRectMake(wLabel.right+3, 0, _sexBgView.height, _sexBgView.height)];
-                [_wBtn addTarget:self action:@selector(touchWBtn) forControlEvents:UIControlEventTouchDown];
-                [_sexBgView addSubview:_wBtn];
-                
-                UILabel *mLabel = [[UILabel alloc] initWithFrame:CGRectMake(_wBtn.right+15, 0, _sexBgView.height, _sexBgView.height)];
-                mLabel.font = kFont12;
-                mLabel.text = @"男";
-                [_sexBgView addSubview:mLabel];
-                _mBtn = [[ChooseBtn alloc] initWithFrame:CGRectMake(mLabel.right+3, 0, _sexBgView.height, _sexBgView.height)];
-                [_mBtn addTarget:self action:@selector(touchMBtn) forControlEvents:UIControlEventTouchDown];
-                [_sexBgView addSubview:_mBtn];
-                
-            }
+//        if (i!=FieldTypeGate && i!=FieldTypeWork && i!=FieldTypeBirth)
+//        {
+//            if (i==FieldTypeSex)
+//            {
+//                _sexBgView = [[UIView alloc] initWithFrame:textFrame];
+//                _sexBgView.hidden = YES;
+//                [_bgScrollView addSubview:_sexBgView];
+//                
+//                UILabel *wLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 13, _sexBgView.height)];
+//                wLabel.font = kFont12;
+//                wLabel.text = @"女";
+//                [_sexBgView addSubview:wLabel];
+//                _wBtn = [[ChooseBtn alloc] initWithFrame:CGRectMake(wLabel.right+3, 0, _sexBgView.height, _sexBgView.height)];
+//                [_wBtn addTarget:self action:@selector(touchWBtn) forControlEvents:UIControlEventTouchDown];
+//                [_sexBgView addSubview:_wBtn];
+//                
+//                UILabel *mLabel = [[UILabel alloc] initWithFrame:CGRectMake(_wBtn.right+15, 0, _sexBgView.height, _sexBgView.height)];
+//                mLabel.font = kFont12;
+//                mLabel.text = @"男";
+//                [_sexBgView addSubview:mLabel];
+//                _mBtn = [[ChooseBtn alloc] initWithFrame:CGRectMake(mLabel.right+3, 0, _sexBgView.height, _sexBgView.height)];
+//                [_mBtn addTarget:self action:@selector(touchMBtn) forControlEvents:UIControlEventTouchDown];
+//                [_sexBgView addSubview:_mBtn];
+//                
+//            }
             UITextField *textField = [[UITextField alloc] initWithFrame:textFrame];
             textField.font = kFont12;
             textField.tag = 100+i;
             [_bgScrollView addSubview:textField];
             textField.delegate =self;
-            textField.text = contentArray[i];
+//            textField.text = contentArray[i];
             if (i==FieldTypePhone || i==FieldTypeQQ || i==FieldTypeWeChat)
             {
                 textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
             }
-        }
-        else
-        {
-            NSString *title = contentArray[i];
-            CGFloat stringWidth = [title sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:kFont12,NSFontAttributeName, nil]].width+5;
-            if (i==FieldTypeGate)
-            {
-                self.gateBtn = [[UIButton alloc] initWithFrame:CGRectMake(titleLabel.right+5, imgView.top, stringWidth, 16)];
-                [self.gateBtn setTitle:title forState:UIControlStateNormal];
-                self.gateBtn.titleLabel.font = kFont12;
-                [self.gateBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                self.gateBtn.tag = 1000;
-                [self.gateBtn addTarget:self action:@selector(touchBtn:) forControlEvents:UIControlEventTouchDown];
-                self.gateBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-                self.gateBtn.contentEdgeInsets = UIEdgeInsetsMake(0,5, 0, 0);
-                [_bgScrollView addSubview:self.gateBtn];
-                
-                _gateDownBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.gateBtn.right, imgView.top+(16-9)/2.0+2, 15, 9)];
-                [_gateDownBtn setImage:[UIImage imageNamed:@"downArrow2"] forState:UIControlStateNormal];
-                [_bgScrollView addSubview:_gateDownBtn];
-            }
-            else if(i==FieldTypeWork)
-            {
-                self.workBtn = [[UIButton alloc] initWithFrame:CGRectMake(titleLabel.right+5, imgView.top, stringWidth, 16)];
-                [self.workBtn setTitle:title forState:UIControlStateNormal];
-                self.workBtn.titleLabel.font = kFont12;
-                [self.workBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                self.workBtn.tag = 1001;
-                [self.workBtn addTarget:self action:@selector(touchBtn:) forControlEvents:UIControlEventTouchDown];
-                [_bgScrollView addSubview:self.workBtn];
-                
-                _workDownBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.workBtn.right, imgView.top+(16-9)/2.0+2, 15, 9)];
-                [_workDownBtn setImage:[UIImage imageNamed:@"downArrow2"] forState:UIControlStateNormal];
-                [_bgScrollView addSubview:_workDownBtn];
-            }
-            else if(i==FieldTypeBirth)
-            {
-                self.birthBtn = [[UIButton alloc] initWithFrame:textFrame];
-                [self.birthBtn setTitle:title forState:UIControlStateNormal];
-                self.birthBtn.titleLabel.font = kFont12;
-                [self.birthBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                [self.birthBtn addTarget:self action:@selector(touchBirth) forControlEvents:UIControlEventTouchDown];
-                self.birthBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-                self.birthBtn.contentEdgeInsets = UIEdgeInsetsMake(0,5, 0, 0);
-                [_bgScrollView addSubview:self.birthBtn];
-            }
-        }
+//        }
+//        else
+//        {
+//            NSString *title = contentArray[i];
+//            CGFloat stringWidth = [title sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:kFont12,NSFontAttributeName, nil]].width+5;
+//            if (i==FieldTypeGate)
+//            {
+//                self.gateBtn = [[UIButton alloc] initWithFrame:CGRectMake(titleLabel.right+5, imgView.top, stringWidth, 16)];
+//                [self.gateBtn setTitle:title forState:UIControlStateNormal];
+//                self.gateBtn.titleLabel.font = kFont12;
+//                [self.gateBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//                self.gateBtn.tag = 1000;
+//                [self.gateBtn addTarget:self action:@selector(touchBtn:) forControlEvents:UIControlEventTouchDown];
+//                self.gateBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//                self.gateBtn.contentEdgeInsets = UIEdgeInsetsMake(0,5, 0, 0);
+//                [_bgScrollView addSubview:self.gateBtn];
+//                
+//                _gateDownBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.gateBtn.right, imgView.top+(16-9)/2.0+2, 15, 9)];
+//                [_gateDownBtn setImage:[UIImage imageNamed:@"downArrow2"] forState:UIControlStateNormal];
+//                [_bgScrollView addSubview:_gateDownBtn];
+//            }
+//            else if(i==FieldTypeWork)
+//            {
+//                self.workBtn = [[UIButton alloc] initWithFrame:CGRectMake(titleLabel.right+5, imgView.top, stringWidth, 16)];
+//                [self.workBtn setTitle:title forState:UIControlStateNormal];
+//                self.workBtn.titleLabel.font = kFont12;
+//                [self.workBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//                self.workBtn.tag = 1001;
+//                [self.workBtn addTarget:self action:@selector(touchBtn:) forControlEvents:UIControlEventTouchDown];
+//                [_bgScrollView addSubview:self.workBtn];
+//                
+//                _workDownBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.workBtn.right, imgView.top+(16-9)/2.0+2, 15, 9)];
+//                [_workDownBtn setImage:[UIImage imageNamed:@"downArrow2"] forState:UIControlStateNormal];
+//                [_bgScrollView addSubview:_workDownBtn];
+//            }
+//            else if(i==FieldTypeBirth)
+//            {
+//                self.birthBtn = [[UIButton alloc] initWithFrame:textFrame];
+//                [self.birthBtn setTitle:title forState:UIControlStateNormal];
+//                self.birthBtn.titleLabel.font = kFont12;
+//                [self.birthBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//                [self.birthBtn addTarget:self action:@selector(touchBirth) forControlEvents:UIControlEventTouchDown];
+//                self.birthBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//                self.birthBtn.contentEdgeInsets = UIEdgeInsetsMake(0,5, 0, 0);
+//                [_bgScrollView addSubview:self.birthBtn];
+//            }
+//        }
         
         CGRect lineFrame = CGRectMake(titleLabel.right, textFrame.origin.y+textFrame.size.height+2, textFrame.size.width+5, 0.5);
         if (i!=FieldTypeGate && i!=FieldTypeWork && i!=FieldTypeSex)
@@ -231,31 +250,31 @@ typedef enum : NSUInteger {
     _bgScrollView.contentSize = CGSizeMake(kMainScreenWidth, contentH);
     
     
-    UIColor *btnColor = [UIColor orangeColor];
-    for (int i=0; i<2; i++)
-    {
-        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(15+kMainScreenWidth/2.0*i, kMainScreenHeight-64-50, kMainScreenWidth/2.0-30, 30)];
-        btn.tag = 200+i;
-        [btn setTitleColor:btnColor forState:UIControlStateNormal];
-        btn.layer.borderColor = [btnColor CGColor];
-        btn.layer.cornerRadius = 3;
-        btn.titleLabel.font = kFont13;
-        btn.layer.borderWidth = 1;
-        [self.view addSubview:btn];
-    }
-    [self.leftBtn setTitle:@"修改" forState:UIControlStateNormal];
-    [self.leftBtn addTarget:self action:@selector(touchLeftBtn) forControlEvents:UIControlEventTouchDown];
-    [self.rightBtn setTitle:@"删除" forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(touchRightBtn) forControlEvents:UIControlEventTouchDown];
+//    UIColor *btnColor = [UIColor orangeColor];
+//    for (int i=0; i<2; i++)
+//    {
+//        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(15+kMainScreenWidth/2.0*i, kMainScreenHeight-64-50, kMainScreenWidth/2.0-30, 30)];
+//        btn.tag = 200+i;
+//        [btn setTitleColor:btnColor forState:UIControlStateNormal];
+//        btn.layer.borderColor = [btnColor CGColor];
+//        btn.layer.cornerRadius = 3;
+//        btn.titleLabel.font = kFont13;
+//        btn.layer.borderWidth = 1;
+//        [self.view addSubview:btn];
+//    }
+//    [self.leftBtn setTitle:@"修改" forState:UIControlStateNormal];
+//    [self.leftBtn addTarget:self action:@selector(touchLeftBtn) forControlEvents:UIControlEventTouchDown];
+//    [self.rightBtn setTitle:@"删除" forState:UIControlStateNormal];
+//    [self.rightBtn addTarget:self action:@selector(touchRightBtn) forControlEvents:UIControlEventTouchDown];
     
     
-    _gateTB = [[TableViewWithBlock alloc] initWithFrame:CGRectMake(self.gateBtn.left, self.gateBtn.bottom, self.gateBtn.width+_gateDownBtn.width, 0)];
-    [self initTableWith:_gateTB dataArray:_gateArray btn:self.gateBtn ident:@"gateCell"];
-    [_bgScrollView addSubview:_gateTB];
-    
-    _workTB = [[TableViewWithBlock alloc] initWithFrame:CGRectMake(self.workBtn.left, self.workBtn.bottom, self.workBtn.width+_workDownBtn.width, 0)];
-    [self initTableWith:_workTB dataArray:_workArray btn:self.workBtn ident:@"workCell"];
-    [_bgScrollView addSubview:_workTB];
+//    _gateTB = [[TableViewWithBlock alloc] initWithFrame:CGRectMake(self.gateBtn.left, self.gateBtn.bottom, self.gateBtn.width+_gateDownBtn.width, 0)];
+//    [self initTableWith:_gateTB dataArray:_gateArray btn:self.gateBtn ident:@"gateCell"];
+//    [_bgScrollView addSubview:_gateTB];
+//    
+//    _workTB = [[TableViewWithBlock alloc] initWithFrame:CGRectMake(self.workBtn.left, self.workBtn.bottom, self.workBtn.width+_workDownBtn.width, 0)];
+//    [self initTableWith:_workTB dataArray:_workArray btn:self.workBtn ident:@"workCell"];
+//    [_bgScrollView addSubview:_workTB];
 
     self.isEdit = NO;
     _gateBool = NO;
@@ -280,6 +299,24 @@ typedef enum : NSUInteger {
 //    self.datePicker.maximumDate = newdate;
     self.datePicker.backgroundColor = [UIColor whiteColor];
     [self.datePicker addTarget:self action:@selector(chooseDate:) forControlEvents:UIControlEventValueChanged];
+    
+    [self reloadScorllView];
+}
+
+- (void)reloadScorllView
+{
+    //    NSArray *contentArray = @[_myMode.strstore_name,_myMode.stremp_type_name,_myMode.strsid,_myMode.strpassword,_myMode.stremp_name,_myMode.strphone,_myMode.strbirthday,sex,_myMode.strweixin,_myMode.strqq];
+    self.gateTextfield.text = _myMode.strstore_name;
+    self.workTextfield.text = _myMode.stremp_type_name;
+    self.workIdTextfield.text = _myMode.strsid;
+    self.mimaTextfield.text = _myMode.strpassword;
+    self.nameTextfield.text = _myMode.stremp_name;
+    self.phoneTextfield.text = _myMode.strphone;
+    self.birthTextfield.text = _myMode.strbirthday;
+    NSString *sex = [_myMode.stremp_sex isEqualToString:@"1"]?@"男":@"女";
+    self.sexTextfield.text = sex;
+    self.weChatTextfield.text = _myMode.strweixin;
+    self.qqTextfield.text = _myMode.strqq;
 }
 
 - (void)touchLeftBtn
@@ -332,17 +369,17 @@ typedef enum : NSUInteger {
 
 
 
-- (void)touchArrow:(UIButton *)sender
-{
-    if (sender == _gateDownBtn)
-    {
-        [_gateBtn sendActionsForControlEvents:UIControlEventTouchDown];
-    }
-    else
-    {
-        [_workBtn sendActionsForControlEvents:UIControlEventTouchDown];
-    }
-}
+//- (void)touchArrow:(UIButton *)sender
+//{
+//    if (sender == _gateDownBtn)
+//    {
+//        [_gateBtn sendActionsForControlEvents:UIControlEventTouchDown];
+//    }
+//    else
+//    {
+//        [_workBtn sendActionsForControlEvents:UIControlEventTouchDown];
+//    }
+//}
 
 - (void)touchBtn:(UIButton *)sender
 {
@@ -476,7 +513,7 @@ typedef enum : NSUInteger {
     NSString *dateString = [formatter stringFromDate:selectedDate];
     //    [self.timeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     //    [self.timeBtn setTitle:dateString forState:UIControlStateNormal];
-    [self.birthBtn setTitle:dateString forState:UIControlStateNormal];
+//    [self.birthBtn setTitle:dateString forState:UIControlStateNormal];
     
 }
 
@@ -504,8 +541,8 @@ typedef enum : NSUInteger {
     _isEdit = isEdit;
     if (_isEdit==YES)
     {
-        self.gateBtn.enabled = YES;
-        self.workBtn.enabled = YES;
+//        self.gateBtn.enabled = YES;
+//        self.workBtn.enabled = YES;
         _gateDownBtn.hidden = NO;
         _workDownBtn.hidden = NO;
         self.sexTextfield.hidden = YES;
@@ -523,8 +560,8 @@ typedef enum : NSUInteger {
     }
     else if(_isEdit==NO)
     {
-        self.gateBtn.enabled = NO;
-        self.workBtn.enabled = NO;
+//        self.gateBtn.enabled = NO;
+//        self.workBtn.enabled = NO;
         _gateDownBtn.hidden = YES;
         _workDownBtn.hidden = YES;
         self.sexTextfield.hidden = NO;
@@ -540,6 +577,24 @@ typedef enum : NSUInteger {
 }
 
 #pragma mark getter
+-(UITextField *)gateTextfield
+{
+    if (!_gateTextfield)
+    {
+        _gateTextfield = (UITextField *)[_bgScrollView viewWithTag:100];
+    }
+    return _gateTextfield;
+}
+
+-(UITextField *)workTextfield
+{
+    if (!_workTextfield)
+    {
+        _workTextfield = (UITextField *)[_bgScrollView viewWithTag:101];
+    }
+    return _workTextfield;
+}
+
 -(UITextField *)workIdTextfield
 {
     if (!_workIdTextfield)
@@ -574,6 +629,15 @@ typedef enum : NSUInteger {
         _phoneTextfield = (UITextField *)[_bgScrollView viewWithTag:105];
     }
     return _phoneTextfield;
+}
+
+- (UITextField *)birthTextfield
+{
+    if (!_birthTextfield)
+    {
+        _birthTextfield = (UITextField *)[_bgScrollView viewWithTag:106];
+    }
+    return _birthTextfield;
 }
 
 - (UITextField *)sexTextfield

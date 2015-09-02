@@ -12,5 +12,5 @@
 
 + (CGFloat)HeightForGateHeaderView;
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier;
-
+- (void)setTitle:(NSString *)aTitle;
 @end

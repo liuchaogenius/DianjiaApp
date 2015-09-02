@@ -8,6 +8,9 @@
 
 #import "BaseViewController.h"
 
+@class EmpMode;
 @interface ClerkDetailViewController : BaseViewController
+
+- (instancetype)initWithMode:(EmpMode *)aMode;
 
 @end

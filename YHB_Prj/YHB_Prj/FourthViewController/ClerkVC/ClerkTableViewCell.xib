@@ -73,7 +73,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="店长" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O33-sA-fdL">
-                        <rect key="frame" x="180" y="15" width="35" height="17"/>
+                        <rect key="frame" x="180" y="15" width="90" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -87,7 +87,7 @@
                 <outlet property="numLabel" destination="WeS-BL-RPw" id="SIF-ZF-SS7"/>
                 <outlet property="phoneLabel" destination="Tv4-MQ-yqk" id="Ghb-OT-DNb"/>
             </connections>
-            <point key="canvasLocation" x="301" y="326"/>
+            <point key="canvasLocation" x="183" y="315"/>
         </tableViewCell>
     </objects>
 </document>

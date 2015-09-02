@@ -56,6 +56,8 @@
 		AB42ACDA1B8BE303001FB93A /* GateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB42ACD81B8BE303001FB93A /* GateTableViewCell.xib */; };
 		AB42ACDD1B8BE97E001FB93A /* GateHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB42ACDC1B8BE97E001FB93A /* GateHeaderView.m */; };
 		AB79DB591B93FF6000CC1894 /* ChooseBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = AB79DB581B93FF6000CC1894 /* ChooseBtn.m */; };
+		AB8071C21B96C5CD002114C9 /* EmpMode.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8071C11B96C5CD002114C9 /* EmpMode.m */; };
+		AB8071C51B96C7AA002114C9 /* EmpManage.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8071C41B96C7AA002114C9 /* EmpManage.m */; };
 		AB8844151B913D6300FA526D /* TableViewWithBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8844101B913D6300FA526D /* TableViewWithBlock.m */; };
 		AB8844161B913D6300FA526D /* UITableView+DataSourceBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8844121B913D6300FA526D /* UITableView+DataSourceBlocks.m */; };
 		AB8844171B913D6300FA526D /* UITableView+DelegateBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8844141B913D6300FA526D /* UITableView+DelegateBlocks.m */; };
@@ -303,6 +305,10 @@
 		AB42ACDC1B8BE97E001FB93A /* GateHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GateHeaderView.m; sourceTree = "<group>"; };
 		AB79DB571B93FF6000CC1894 /* ChooseBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseBtn.h; sourceTree = "<group>"; };
 		AB79DB581B93FF6000CC1894 /* ChooseBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseBtn.m; sourceTree = "<group>"; };
+		AB8071C01B96C5CD002114C9 /* EmpMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmpMode.h; sourceTree = "<group>"; };
+		AB8071C11B96C5CD002114C9 /* EmpMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmpMode.m; sourceTree = "<group>"; };
+		AB8071C31B96C7AA002114C9 /* EmpManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmpManage.h; sourceTree = "<group>"; };
+		AB8071C41B96C7AA002114C9 /* EmpManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmpManage.m; sourceTree = "<group>"; };
 		AB88440F1B913D6300FA526D /* TableViewWithBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewWithBlock.h; sourceTree = "<group>"; };
 		AB8844101B913D6300FA526D /* TableViewWithBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewWithBlock.m; sourceTree = "<group>"; };
 		AB8844111B913D6300FA526D /* UITableView+DataSourceBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+DataSourceBlocks.h"; sourceTree = "<group>"; };
@@ -807,6 +813,10 @@
 				AB40EAB91B8BFA0100DE5ED7 /* ClerkTableViewCell.h */,
 				AB40EABA1B8BFA0100DE5ED7 /* ClerkTableViewCell.m */,
 				AB40EABB1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib */,
+				AB8071C31B96C7AA002114C9 /* EmpManage.h */,
+				AB8071C41B96C7AA002114C9 /* EmpManage.m */,
+				AB8071C01B96C5CD002114C9 /* EmpMode.h */,
+				AB8071C11B96C5CD002114C9 /* EmpMode.m */,
 			);
 			path = ClerkVC;
 			sourceTree = "<group>";
@@ -1688,6 +1698,7 @@
 				FF2A6C481A0F3B72001607AC /* JSONKit.m in Sources */,
 				FF2A6C781A0F3B7B001607AC /* UIImageView+HighlightedWebCache.m in Sources */,
 				FFD26CE11B8B10970003F491 /* KCYJMode.m in Sources */,
+				AB8071C51B96C7AA002114C9 /* EmpManage.m in Sources */,
 				ABEF1DA71B929D5400C1C2EA /* SupplierDetailViewController.m in Sources */,
 				5B1F7FA01B90A9C000763059 /* DJProductCheckListCell.m in Sources */,
 				FF3C20081A2F2A440081D3C7 /* GlobObserverObject.m in Sources */,
@@ -1720,6 +1731,7 @@
 				FF5CC6F91B93EE5300F55713 /* GysMode.m in Sources */,
 				FF5C87201B83024C00F79EC1 /* FMResultSet.m in Sources */,
 				AB88441B1B913DBB00FA526D /* ChooseLocaViewController.m in Sources */,
+				AB8071C21B96C5CD002114C9 /* EmpMode.m in Sources */,
 				FF012FAD1B8EB92C00AE563C /* HYLSXFCell.m in Sources */,
 				FF5C87241B83025600F79EC1 /* YTKKeyValueStore.m in Sources */,
 				FF2A6C3E1A0F3B66001607AC /* UIViewAdditions.m in Sources */,

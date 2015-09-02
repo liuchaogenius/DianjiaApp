@@ -19,6 +19,16 @@
     return 80;
 }
 
+- (void)setCellWithMode:(StoreMode *)aMode
+{
+    self.locaLabel.text = @"";
+    self.nameLabel.text = @"";
+    self.phoneLabel.text = @"";
+    self.locaLabel.text = aMode.strContactAddr;
+    self.nameLabel.text = aMode.strContactName;
+    self.phoneLabel.text = aMode.strContactPhone;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

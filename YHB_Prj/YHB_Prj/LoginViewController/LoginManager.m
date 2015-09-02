@@ -140,6 +140,11 @@
     return self.logMode.storeList;
 }
 
+- (LoginMode *)getLoginMode
+{
+    return self.logMode;
+}
+
 - (void)setCurrentSelectStore:(StoreMode *)currentSelectStore {
     _currentSelectStore = currentSelectStore;
     self.currentStoreId = currentSelectStore.strId;

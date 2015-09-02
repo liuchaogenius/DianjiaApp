@@ -33,7 +33,8 @@ typedef enum : NSUInteger {
 @property(nonatomic,strong) UITextField *phoneTextfield;
 @property(nonatomic,strong) UITextField *chuanTextfield;
 @property(nonatomic,strong) UITextField *mailTextfield;
-@property(nonatomic,strong) UIButton *locaBtn;
+//@property(nonatomic,strong) UIButton *locaBtn;
+@property(nonatomic,strong) UITextField *locaTextfield;
 @property(nonatomic,strong) UITextField *beiTextfield;
 @property(nonatomic,strong) UITextField *dateTextfield;
 
@@ -68,9 +69,11 @@ typedef enum : NSUInteger {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"供货商详情";
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64-50)];
+//    _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64-50)];
+    _bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64)];
     _bgScrollView.delegate = self;
     [self.view addSubview:_bgScrollView];
     
@@ -91,8 +94,8 @@ typedef enum : NSUInteger {
         [_bgScrollView addSubview:titleLabel];
         
         CGRect textFrame = CGRectMake(titleLabel.right+5, imgView.top, kMainScreenWidth-titleLabel.right-5-23, 16);
-        if (i!=FieldTypeLoca)
-        {
+//        if (i!=FieldTypeLoca)
+//        {
             UITextField *textField = [[UITextField alloc] initWithFrame:textFrame];
             textField.font = kFont12;
             textField.tag = 100+i;
@@ -102,18 +105,18 @@ typedef enum : NSUInteger {
             {
                 textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
             }
-        }
-        else
-        {
-            self.locaBtn = [[UIButton alloc] initWithFrame:textFrame];
-            self.locaBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-            self.locaBtn.contentEdgeInsets = UIEdgeInsetsMake(0,5, 0, 0);
-            [self.locaBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            self.locaBtn.titleLabel.font = kFont12;
-//            [self.locaBtn setTitle:contentArray[i] forState:UIControlStateNormal];
-            [self.locaBtn addTarget:self action:@selector(touchLoca) forControlEvents:UIControlEventTouchDown];
-            [_bgScrollView addSubview:self.locaBtn];
-        }
+//        }
+//        else
+//        {
+//            self.locaBtn = [[UIButton alloc] initWithFrame:textFrame];
+//            self.locaBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//            self.locaBtn.contentEdgeInsets = UIEdgeInsetsMake(0,5, 0, 0);
+//            [self.locaBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//            self.locaBtn.titleLabel.font = kFont12;
+////            [self.locaBtn setTitle:contentArray[i] forState:UIControlStateNormal];
+//            [self.locaBtn addTarget:self action:@selector(touchLoca) forControlEvents:UIControlEventTouchDown];
+//            [_bgScrollView addSubview:self.locaBtn];
+//        }
         
         
         UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(titleLabel.right, textFrame.origin.y+textFrame.size.height+2, textFrame.size.width+5, 0.5)];
@@ -135,25 +138,37 @@ typedef enum : NSUInteger {
     _bgScrollView.contentSize = CGSizeMake(kMainScreenWidth, contentH);
     
     
-    UIColor *btnColor = [UIColor orangeColor];
-    for (int i=0; i<2; i++)
-    {
-        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(15+kMainScreenWidth/2.0*i, kMainScreenHeight-64-50, kMainScreenWidth/2.0-30, 30)];
-        btn.tag = 200+i;
-        [btn setTitleColor:btnColor forState:UIControlStateNormal];
-        btn.layer.borderColor = [btnColor CGColor];
-        btn.layer.cornerRadius = 3;
-        btn.titleLabel.font = kFont13;
-        btn.layer.borderWidth = 1;
-        [self.view addSubview:btn];
-    }
-    [self.leftBtn setTitle:@"修改" forState:UIControlStateNormal];
-    [self.leftBtn addTarget:self action:@selector(touchLeftBtn) forControlEvents:UIControlEventTouchDown];
-    [self.rightBtn setTitle:@"删除" forState:UIControlStateNormal];
-    [self.rightBtn addTarget:self action:@selector(touchRightBtn) forControlEvents:UIControlEventTouchDown];
+//    UIColor *btnColor = [UIColor orangeColor];
+//    for (int i=0; i<2; i++)
+//    {
+//        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(15+kMainScreenWidth/2.0*i, kMainScreenHeight-64-50, kMainScreenWidth/2.0-30, 30)];
+//        btn.tag = 200+i;
+//        [btn setTitleColor:btnColor forState:UIControlStateNormal];
+//        btn.layer.borderColor = [btnColor CGColor];
+//        btn.layer.cornerRadius = 3;
+//        btn.titleLabel.font = kFont13;
+//        btn.layer.borderWidth = 1;
+//        [self.view addSubview:btn];
+//    }
+//    [self.leftBtn setTitle:@"修改" forState:UIControlStateNormal];
+//    [self.leftBtn addTarget:self action:@selector(touchLeftBtn) forControlEvents:UIControlEventTouchDown];
+//    [self.rightBtn setTitle:@"删除" forState:UIControlStateNormal];
+//    [self.rightBtn addTarget:self action:@selector(touchRightBtn) forControlEvents:UIControlEventTouchDown];
     
     self.isEdit = NO;
     [self reloadScrollView];
+}
+
+- (NSString *)getNowTime
+{
+    NSDate *  senddate=[NSDate date];
+    
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    
+    [dateformatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    
+    NSString *  locationString=[dateformatter stringFromDate:senddate];
+    return locationString;
 }
 
 - (void)reloadScrollView
@@ -164,14 +179,15 @@ typedef enum : NSUInteger {
     self.chuanTextfield.text = _myMode.strFax;
     self.mailTextfield.text = _myMode.strEmail;
     self.beiTextfield.text = _myMode.strRemark;
-    self.dateTextfield.text = @"2015-07-14 14:32:34";
-    [self.locaBtn setTitle:_myMode.strAddress forState:UIControlStateNormal];
+    self.dateTextfield.text = [self getNowTime];
+//    [self.locaBtn setTitle:_myMode.strAddress forState:UIControlStateNormal];
+    self.locaTextfield.text = _myMode.strAddress;
 }
 
 - (void)touchLoca
 {
     ChooseLocaViewController *vc = [[ChooseLocaViewController alloc] initWithEditBlock:^(NSString *str) {
-        [self.locaBtn setTitle:str forState:UIControlStateNormal];
+//        [self.locaBtn setTitle:str forState:UIControlStateNormal];
     }];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -216,7 +232,8 @@ typedef enum : NSUInteger {
     _myMode.strEmail = self.mailTextfield.text;
     _myMode.strRemark = self.beiTextfield.text;
     self.dateTextfield.text = @"2015-07-14 14:32:34";
-    _myMode.strAddress = self.locaBtn.titleLabel.text;
+//    _myMode.strAddress = self.locaBtn.titleLabel.text;
+    _myMode.strAddress = self.locaTextfield.text;
     [self.manage changeSupplier:_myMode withFinishBlock:^(NSString *aCode) {
         if ([aCode isEqualToString:@"1"])
         {
@@ -279,16 +296,16 @@ typedef enum : NSUInteger {
     _isEdit = isEdit;
     if (_isEdit==YES)
     {
-        self.locaBtn.enabled = YES;
+//        self.locaBtn.enabled = YES;
         for (int i=0; i<_titleArray.count; i++)
         {
             if (i!=FieldTypeDate)
             {
-                if (i!=FieldTypeLoca)
-                {
+//                if (i!=FieldTypeLoca)
+//                {
                     UITextField *textfield = (UITextField *)[_bgScrollView viewWithTag:100+i];
                     textfield.enabled = YES;
-                }
+//                }
                 UIImageView *imgView = (UIImageView *)[_bgScrollView viewWithTag:300+i];
                 imgView.hidden = NO;
             }
@@ -296,14 +313,14 @@ typedef enum : NSUInteger {
     }
     else if(_isEdit==NO)
     {
-        self.locaBtn.enabled = NO;
+//        self.locaBtn.enabled = NO;
         for (int i=0; i<_titleArray.count; i++)
         {
-            if (i!=FieldTypeLoca)
-            {
+//            if (i!=FieldTypeLoca)
+//            {
                 UITextField *textfield = (UITextField *)[_bgScrollView viewWithTag:100+i];
                 textfield.enabled = NO;
-            }
+//            }
             UIImageView *imgView = (UIImageView *)[_bgScrollView viewWithTag:300+i];
             imgView.hidden = YES;
         }
@@ -354,6 +371,15 @@ typedef enum : NSUInteger {
         _mailTextfield = (UITextField *)[_bgScrollView viewWithTag:104];
     }
     return _mailTextfield;
+}
+
+-(UITextField *)locaTextfield
+{
+    if (!_locaTextfield)
+    {
+        _locaTextfield = (UITextField *)[_bgScrollView viewWithTag:105];
+    }
+    return _locaTextfield;
 }
 
 -(UITextField *)beiTextfield

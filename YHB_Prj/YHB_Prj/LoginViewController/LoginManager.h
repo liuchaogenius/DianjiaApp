@@ -22,6 +22,8 @@
 
 - (NSString *)getStoreId;
 
+- (LoginMode *)getLoginMode;
+
 - (void)setNetWorkParam:(NSString *)aUserid userToke:(NSString *)aUserToke;
 
 - (void)setNetWorkStoreId:(NSString *)astoreID;

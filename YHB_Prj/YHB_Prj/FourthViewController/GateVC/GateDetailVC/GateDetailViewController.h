@@ -10,4 +10,6 @@
 
 @interface GateDetailViewController : BaseViewController
 
+- (instancetype)initWithMode:(StoreMode *)aMode;
+
 @end

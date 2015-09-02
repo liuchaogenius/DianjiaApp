@@ -42,8 +42,14 @@
     kCreateLabel(_textLabel, CGRectMake(15, cellHeight/2.0-8, 30, 16), 12, [UIColor blackColor], @"店名:");
     [self addSubview:_textLabel];
     
-    kCreateLabel(_titleLabel, CGRectMake(50, _textLabel.top, 150, 16), 12, [UIColor blackColor], @"团结湖烟酒店");
+    kCreateLabel(_titleLabel, CGRectMake(50, _textLabel.top, kMainScreenWidth-50-15, 16), 12, [UIColor blackColor], @"团结湖烟酒店");
     [self addSubview:_titleLabel];
+}
+
+- (void)setTitle:(NSString *)aTitle
+{
+    _titleLabel.text = @"";
+    _titleLabel.text = aTitle;
 }
 
 @end

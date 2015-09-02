@@ -19,6 +19,21 @@
     return 100;
 }
 
+- (void)setCellWithMode:(EmpMode *)aMode
+{
+    self.nameLabel.text = @"";
+    self.locaLabel.text = @"";
+    self.numLabel.text = @"";
+    self.jobLabel.text = @"";
+    self.phoneLabel.text = @"";
+
+    self.nameLabel.text = aMode.stremp_name;
+    self.numLabel.text = aMode.strsid;
+    self.jobLabel.text = aMode.stremp_type_name;
+    self.phoneLabel.text = aMode.strphone;
+    self.locaLabel.text = aMode.strstore_name;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

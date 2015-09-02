@@ -14,5 +14,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *phoneLabel;
 
 + (CGFloat)heightForGateCell;
-
+- (void)setCellWithMode:(StoreMode *)aMode;
 @end

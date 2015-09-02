@@ -13,6 +13,11 @@
 #import "SupplierViewController.h"
 #import "TenantViewController.h"
 #import "SettingViewController.h"
+#import "SDImageCache.h"
+#import "LoginManager.h"
+#import "SDWebImageManager.h"
+
+#define userFace @"userFace"
 
 typedef enum : NSUInteger {
     cellTypeTenant = 0,//商户
@@ -59,6 +64,8 @@ typedef enum : NSUInteger {
     [super viewDidLoad];
     [self settitleLabel:@"我的"];
     
+    LoginMode *mode = [[LoginManager shareLoginManager] getLoginMode];
+    
     CGFloat topImgViewH = kMainScreenWidth/320*206;
     _topImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, topImgViewH)];
     _topImgView.image = [UIImage imageNamed:@"mine_bg_1"];
@@ -70,10 +77,12 @@ typedef enum : NSUInteger {
     
     CGFloat originX = 15;
     CGFloat interval = 10;
-    kCreateLabel(_userComLabel, CGRectMake(originX, topImgViewH-30, kMainScreenWidth-2*originX, 17), 14, [UIColor whiteColor], @"公司名称:好邻居贸易公司");
+    NSString *comStr = [NSString stringWithFormat:@"公司名称:%@", mode.strCompanyName];
+    kCreateLabel(_userComLabel, CGRectMake(originX, topImgViewH-30, kMainScreenWidth-2*originX, 17), 14, [UIColor whiteColor], comStr);
     [_topImgView addSubview:_userComLabel];
     
-    kCreateLabel(_userNameLabel, CGRectMake(originX, _userComLabel.top-17-interval, kMainScreenWidth/2.0-originX-10, 17), 14, [UIColor whiteColor], @"掌柜:昵称重复");
+    NSString *userStr = [NSString stringWithFormat:@"掌柜:%@", mode.strNickName];
+    kCreateLabel(_userNameLabel, CGRectMake(originX, _userComLabel.top-17-interval, kMainScreenWidth/2.0-originX-10, 17), 14, [UIColor whiteColor], userStr);
     [_topImgView addSubview:_userNameLabel];
     
     //字体
@@ -84,11 +93,36 @@ typedef enum : NSUInteger {
     
     _proBgView = [[UIView alloc] initWithFrame:CGRectMake(_userProLabel.right, _userProLabel.top+3.5, 100, 11)];
     [_topImgView addSubview:_proBgView];
-    [self setStarCount:5];
+    for (int i=0; i<5; i++)
+    {
+        UIImageView *starImg = [[UIImageView alloc] initWithFrame:CGRectMake(15*i, 0, 13, 11)];
+        starImg.image = [UIImage imageNamed:@"mine_icon_2"];
+        [_proBgView addSubview:starImg];
+    }
+    [self setStarCount:[mode.strCreditRating floatValue]];
     
     CGFloat imgWidth = 59;
     _userImgBtn = [[UIButton alloc] initWithFrame:CGRectMake(originX, _userNameLabel.top-50-imgWidth, imgWidth, imgWidth)];
     [_userImgBtn setImage:[UIImage imageNamed:@"mine_icon_1"] forState:UIControlStateNormal];
+    if ([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:userFace])
+    {
+        UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:userFace];
+        [_userImgBtn setImage:image forState:UIControlStateNormal];
+    }
+    else
+    {
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:[NSURL URLWithString:mode.strFaceUrl]
+                              options:0
+                             progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                             } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                 if (image) {
+                                     [[SDImageCache sharedImageCache] storeImage:image
+                                                                          forKey:userStr
+                                                                          toDisk:YES];
+                                 }
+                             }];
+    }
     _userImgBtn.layer.cornerRadius = imgWidth/2.0;
     _userImgBtn.layer.masksToBounds = YES;
     [_userImgBtn addTarget:self action:@selector(plusImageClicked) forControlEvents:UIControlEventTouchUpInside];
@@ -205,15 +239,26 @@ typedef enum : NSUInteger {
     }
 }
 
-- (void)setStarCount:(int)aCount
+- (void)setStarCount:(float)aCount
 {
-    [self removeSubviews:_proBgView];
-    for (int i=0; i<aCount; i++)
+    if (aCount - (int)aCount>0)
     {
-        UIImageView *starImg = [[UIImageView alloc] initWithFrame:CGRectMake(15*i, 0, 13, 11)];
-        starImg.image = [UIImage imageNamed:@"mine_icon_2"];
-        [_proBgView addSubview:starImg];
+        int i = (int)aCount;
+        float j = aCount-i;
+        _proBgView.width = i*15+j*13;
+        _proBgView.layer.masksToBounds = YES;
     }
+    else
+    {
+        _proBgView.width = aCount*15;
+        _proBgView.layer.masksToBounds = YES;
+    }
+}
+
+- (BOOL)isPureFloat:(NSString*)string{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    float val;
+    return[scan scanFloat:&val] && [scan isAtEnd];
 }
 
 - (void)removeSubviews:(UIView *)aView
@@ -306,8 +351,11 @@ typedef enum : NSUInteger {
 #pragma mark - image picker delegte
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     [_userImgBtn setImage:image forState:UIControlStateNormal];
+    [[SDImageCache sharedImageCache] storeImage:image
+                                         forKey:userFace
+                                         toDisk:YES];
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
         UIImage * oriImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         // 保存图片到相册中

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EmpMode.h"
 
 @interface ClerkTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
@@ -16,5 +17,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *locaLabel;
 
 + (CGFloat)heightForClerkCell;
-
+- (void)setCellWithMode:(EmpMode *)aMode;
 @end

@@ -10,11 +10,13 @@
 #import "GateTableViewCell.h"
 #import "GateHeaderView.h"
 #import "GateDetailViewController.h"
+#import "LoginManager.h"
 
 @interface GateViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *_gateTableView;
 }
+@property(nonatomic, strong) NSArray *gateArr;
 @end
 
 @implementation GateViewController
@@ -22,6 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"门店管理";
+    
+    LoginMode *myMode = [[LoginManager shareLoginManager] getLoginMode];
+    _gateArr = myMode.storeList;
     
     _gateTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64) style:UITableViewStyleGrouped];
     _gateTableView.backgroundColor = [UIColor whiteColor];
@@ -38,7 +43,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return _gateArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -71,6 +76,8 @@
     {
         headerView = [[GateHeaderView alloc] initWithReuseIdentifier:headerId];
     }
+    StoreMode *mode = _gateArr[section];
+    [headerView setTitle:mode.strStoreName];
     
     return headerView;
 }
@@ -90,15 +97,16 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(GateTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    cell.cellImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"mine_menu_%d", (int)indexPath.row]];
-//    cell.cellTitleLabel.text = _cellTitleArray[indexPath.row];
+    StoreMode *mode = _gateArr[indexPath.row];
+    [cell setCellWithMode:mode];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 //    NSLog(@"%ld", indexPath.section);
-    GateDetailViewController *vc = [[GateDetailViewController alloc] init];
+    StoreMode *mode = _gateArr[indexPath.section];
+    GateDetailViewController *vc = [[GateDetailViewController alloc] initWithMode:mode];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

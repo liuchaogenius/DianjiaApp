@@ -52,6 +52,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"地址";
     self.view.backgroundColor = [UIColor whiteColor];
     
     _aArray = @[@"fa",@"fa",@"fa",@"fad",@"hjkda"];
