@@ -38,6 +38,7 @@
 
 + (void)uploadImg:(UIImage*)aImg
        parameters:(NSDictionary*)aParam
+          apiName:(NSString *)aApidName
         uploadUrl:(NSString*)aUrl
     uploadimgName:(NSString*)aImgname
     progressBlock:(PROGRESSBLOCK)block
