@@ -175,6 +175,12 @@
 		FF5CC7031B93EE5300F55713 /* RuKushenpinVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC6F51B93EE5300F55713 /* RuKushenpinVC.xib */; };
 		FF5CC7041B93EE5300F55713 /* SXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC6F71B93EE5300F55713 /* SXViewController.m */; };
 		FF5CC7051B93EE5300F55713 /* SXViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC6F81B93EE5300F55713 /* SXViewController.xib */; };
+		FF5CC70A1B93FA0B00F55713 /* JCCXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC7081B93FA0B00F55713 /* JCCXViewController.m */; };
+		FF5CC70B1B93FA0B00F55713 /* JCCXViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC7091B93FA0B00F55713 /* JCCXViewController.xib */; };
+		FF5CC70F1B9420E000F55713 /* JCCXCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC70D1B9420E000F55713 /* JCCXCell.m */; };
+		FF5CC7101B9420E000F55713 /* JCCXCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC70E1B9420E000F55713 /* JCCXCell.xib */; };
+		FF5CC7131B94262F00F55713 /* JCCXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC7121B94262F00F55713 /* JCCXManager.m */; };
+		FF5CC7161B94264D00F55713 /* JCCXMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC7151B94264D00F55713 /* JCCXMode.m */; };
 		FFD26CCE1B86D0D50003F491 /* FirstMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CCD1B86D0D50003F491 /* FirstMode.m */; };
 		FFD26CDE1B8B0B4E0003F491 /* KCYJManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CDD1B8B0B4E0003F491 /* KCYJManager.m */; };
 		FFD26CE11B8B10970003F491 /* KCYJMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CE01B8B10970003F491 /* KCYJMode.m */; };
@@ -538,6 +544,16 @@
 		FF5CC6F61B93EE5300F55713 /* SXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXViewController.h; sourceTree = "<group>"; };
 		FF5CC6F71B93EE5300F55713 /* SXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXViewController.m; sourceTree = "<group>"; };
 		FF5CC6F81B93EE5300F55713 /* SXViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SXViewController.xib; sourceTree = "<group>"; };
+		FF5CC7071B93FA0B00F55713 /* JCCXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCXViewController.h; sourceTree = "<group>"; };
+		FF5CC7081B93FA0B00F55713 /* JCCXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCXViewController.m; sourceTree = "<group>"; };
+		FF5CC7091B93FA0B00F55713 /* JCCXViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JCCXViewController.xib; sourceTree = "<group>"; };
+		FF5CC70C1B9420E000F55713 /* JCCXCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCXCell.h; sourceTree = "<group>"; };
+		FF5CC70D1B9420E000F55713 /* JCCXCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCXCell.m; sourceTree = "<group>"; };
+		FF5CC70E1B9420E000F55713 /* JCCXCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JCCXCell.xib; sourceTree = "<group>"; };
+		FF5CC7111B94262F00F55713 /* JCCXManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCXManager.h; sourceTree = "<group>"; };
+		FF5CC7121B94262F00F55713 /* JCCXManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCXManager.m; sourceTree = "<group>"; };
+		FF5CC7141B94264D00F55713 /* JCCXMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCXMode.h; sourceTree = "<group>"; };
+		FF5CC7151B94264D00F55713 /* JCCXMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCXMode.m; sourceTree = "<group>"; };
 		FFD26CCC1B86D0D50003F491 /* FirstMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstMode.h; sourceTree = "<group>"; };
 		FFD26CCD1B86D0D50003F491 /* FirstMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstMode.m; sourceTree = "<group>"; };
 		FFD26CDC1B8B0B4E0003F491 /* KCYJManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCYJManager.h; sourceTree = "<group>"; };
@@ -1145,6 +1161,7 @@
 		FF2A6C8B1A0F3C58001607AC /* UIParty */ = {
 			isa = PBXGroup;
 			children = (
+				FF5CC7061B93F9B500F55713 /* Jicunchaxun */,
 				FF5CC6E31B93EE5300F55713 /* Rukushenpi */,
 				5B1F7F871B8F5D1100763059 /* ProductCheck */,
 				FFD26CF61B8C69290003F491 /* HuiyuanGuanli */,
@@ -1404,6 +1421,23 @@
 			path = Rukushenpi;
 			sourceTree = "<group>";
 		};
+		FF5CC7061B93F9B500F55713 /* Jicunchaxun */ = {
+			isa = PBXGroup;
+			children = (
+				FF5CC7071B93FA0B00F55713 /* JCCXViewController.h */,
+				FF5CC7081B93FA0B00F55713 /* JCCXViewController.m */,
+				FF5CC7091B93FA0B00F55713 /* JCCXViewController.xib */,
+				FF5CC7111B94262F00F55713 /* JCCXManager.h */,
+				FF5CC7121B94262F00F55713 /* JCCXManager.m */,
+				FF5CC70C1B9420E000F55713 /* JCCXCell.h */,
+				FF5CC70D1B9420E000F55713 /* JCCXCell.m */,
+				FF5CC70E1B9420E000F55713 /* JCCXCell.xib */,
+				FF5CC7141B94264D00F55713 /* JCCXMode.h */,
+				FF5CC7151B94264D00F55713 /* JCCXMode.m */,
+			);
+			path = Jicunchaxun;
+			sourceTree = "<group>";
+		};
 		FFD26CD01B86F3BD0003F491 /* NSDateTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -1590,6 +1624,7 @@
 				FF012FB41B8EB92C00AE563C /* HYCell.xib in Resources */,
 				FF5C872E1B83279600F79EC1 /* FirstViewController.xib in Resources */,
 				FF012FAE1B8EB92C00AE563C /* HYGLViewController.xib in Resources */,
+				FF5CC70B1B93FA0B00F55713 /* JCCXViewController.xib in Resources */,
 				FF5CC6FB1B93EE5300F55713 /* RKSPCell.xib in Resources */,
 				AB40EAC61B8C021800DE5ED7 /* SupplierTableViewCell.xib in Resources */,
 				AB2579411B8F02010015039A /* IQKeyboardManager.bundle in Resources */,
@@ -1604,6 +1639,7 @@
 				FF5C87091B82FE5200F79EC1 /* LoginViewController.xib in Resources */,
 				FF012FAC1B8EB92C00AE563C /* HYLSXFCell.xib in Resources */,
 				FFD26CEB1B8C1B3B0003F491 /* KCYJViewController.xib in Resources */,
+				FF5CC7101B9420E000F55713 /* JCCXCell.xib in Resources */,
 				FF5CC7011B93EE5300F55713 /* RukuDetailViewController.xib in Resources */,
 				FFD26CF51B8C546F0003F491 /* ZCBCell.xib in Resources */,
 			);
@@ -1635,6 +1671,7 @@
 				FF4DFCF61B856B9600617660 /* ThreadSafeMutableArry.m in Sources */,
 				FF5C86FC1B81B72400F79EC1 /* MASViewAttribute.m in Sources */,
 				FF5C87001B81B72400F79EC1 /* View+MASAdditions.m in Sources */,
+				FF5CC7131B94262F00F55713 /* JCCXManager.m in Sources */,
 				FF2A6BE31A0F3780001607AC /* AppDelegate.m in Sources */,
 				FF2A6C9C1A0F3D30001607AC /* FourthViewController.m in Sources */,
 				5B1F7F9C1B90A52300763059 /* DJProductCheckListVC.m in Sources */,
@@ -1712,6 +1749,7 @@
 				ABEF1DAF1B92AD2700C1C2EA /* TenantViewController.m in Sources */,
 				FF5CC6FE1B93EE5300F55713 /* RukuDetailCell.m in Sources */,
 				FF2A6BE01A0F3780001607AC /* main.m in Sources */,
+				FF5CC70F1B9420E000F55713 /* JCCXCell.m in Sources */,
 				FFF3919C1B846F58007DC652 /* AFURLSessionManager.m in Sources */,
 				5B54BA1A1B91FCB7002098A4 /* DJProductCheckDetail.m in Sources */,
 				FF5C86DE1B818BE700F79EC1 /* SSWAnimator.m in Sources */,
@@ -1750,6 +1788,7 @@
 				FF012FB31B8EB92C00AE563C /* HYDetailViewController.m in Sources */,
 				FF012FB01B8EB92C00AE563C /* HYGLOneMothMode.m in Sources */,
 				AB2579391B8F02010015039A /* IQKeyboardManager.m in Sources */,
+				FF5CC7161B94264D00F55713 /* JCCXMode.m in Sources */,
 				AB40EAC11B8C020700DE5ED7 /* SupplierViewController.m in Sources */,
 				FF2A6C731A0F3B7B001607AC /* SDWebImagePrefetcher.m in Sources */,
 				FFF3919A1B846F58007DC652 /* AFURLRequestSerialization.m in Sources */,
@@ -1773,6 +1812,7 @@
 				FFD26CEA1B8C1B3B0003F491 /* KCYJViewController.m in Sources */,
 				AB8844161B913D6300FA526D /* UITableView+DataSourceBlocks.m in Sources */,
 				FF2A6C991A0F3D1C001607AC /* ThirdViewController.m in Sources */,
+				FF5CC70A1B93FA0B00F55713 /* JCCXViewController.m in Sources */,
 				AB42ACD01B8B4140001FB93A /* FourthTableViewCell.m in Sources */,
 				FFF391971B846F58007DC652 /* AFNetworkReachabilityManager.m in Sources */,
 				FF4DFCF71B856B9600617660 /* ThreadSafeMutableDictionary.m in Sources */,

@@ -35,7 +35,7 @@
         [dict setValue:aStoreId forKey:@"sid"];
         [dict setValue:[NSNumber numberWithInt:currentPage] forKey:@"pageNo"];
         [dict setValue:[NSNumber numberWithInt:20] forKey:@"pageSize"];
-        [dict setValue:@"1" forKey:@"needPage"];
+        [dict setValue:@"false" forKey:@"needPage"];
     }
     if(isRefresh)
     {
@@ -69,7 +69,7 @@
         [dict setValue:aStoreId forKey:@"sid"];
         [dict setValue:[NSNumber numberWithInt:saleWarningCurrentPage] forKey:@"pageNo"];
         [dict setValue:[NSNumber numberWithInt:20] forKey:@"pageSize"];
-        [dict setValue:@"1" forKey:@"needPage"];
+        [dict setValue:@"false" forKey:@"needPage"];
     }
     if(isRefresh)
     {
@@ -82,7 +82,7 @@
             NSDictionary *resutlDict = [successDict objectForKey:@"result"];
             [kcyjModeList unPacketData:resutlDict];
             aFinishBlock(kcyjModeList);
-            currentPage++;
+            saleWarningCurrentPage++;
         }
         else
         {

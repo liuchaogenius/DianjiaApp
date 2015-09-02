@@ -11,7 +11,9 @@
 #import "RKSPMode.h"
 @interface RKSPManager()
 {
-    int stockSrlCurrentPage;
+    int stockSrlCurrentPage_1;
+    int stockSrlCurrentPage_2;
+    int stockSrlCurrentPage__1;
     NSString *strStartTime;
     NSString *strEndTime;
     NSString *strSupId;
@@ -22,9 +24,20 @@
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
     [dict setValue:[NSNumber numberWithInt:selId] forKey:@"sid"];
-    [dict setValue:[NSNumber numberWithInt:stockSrlCurrentPage] forKey:@"pageNo"];
+    if(selId == 1)
+    {
+        [dict setValue:[NSNumber numberWithInt:stockSrlCurrentPage_1] forKey:@"pageNo"];
+    }
+    else if(selId == 2)
+    {
+        [dict setValue:[NSNumber numberWithInt:stockSrlCurrentPage_2] forKey:@"pageNo"];
+    }
+    else if(selId == -1)
+    {
+        [dict setValue:[NSNumber numberWithInt:stockSrlCurrentPage__1] forKey:@"pageNo"];
+    }
     [dict setValue:[NSNumber numberWithInt:20] forKey:@"pageSize"];
-    [dict setValue:@"1" forKey:@"needPage"];
+    [dict setValue:@"false" forKey:@"needPage"];
     if(strStartTime)
     {
         [dict setValue:strStartTime forKey:@"BeginDate"];
@@ -45,6 +58,18 @@
             RKSPModeListList *llist = [[RKSPModeListList alloc] init];
             [llist unPacketData:dict];
             aFinishBlock(llist);
+            if(selId == 1)
+            {
+                stockSrlCurrentPage_1++;
+            }
+            else if(selId == 2)
+            {
+                stockSrlCurrentPage_2++;
+            }
+            else if(selId == -1)
+            {
+                stockSrlCurrentPage__1++;
+            }
         }
         else
         {
@@ -64,7 +89,7 @@
     [dict setValue:aProductId forKey:@"sid"];
     [dict setValue:[NSNumber numberWithInt:0] forKey:@"pageNo"];
     [dict setValue:[NSNumber numberWithInt:20] forKey:@"pageSize"];
-    [dict setValue:@"0" forKey:@"needPage"];
+    [dict setValue:@"false" forKey:@"needPage"];
     [dict setValue:aStatus forKey:@"status"];
     [NetManager requestWith:dict apiName:@"appGetProductStockDetail" method:@"post" succ:^(NSDictionary *successDict) {
         MLOG(@"%@",successDict);

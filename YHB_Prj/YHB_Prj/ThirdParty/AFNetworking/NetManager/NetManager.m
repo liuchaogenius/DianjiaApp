@@ -262,33 +262,44 @@
 
 + (void)uploadImg:(UIImage*)aImg
        parameters:(NSDictionary*)aParam
+          apiName:(NSString *)aApidName
         uploadUrl:(NSString*)aUrl
     uploadimgName:(NSString*)aImgname
     progressBlock:(PROGRESSBLOCK)block
              succ:(SUCCESSBLOCK)success
           failure:(FAILUREBLOCK)failure
 {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSData *imageData = UIImageJPEGRepresentation(aImg, 1);
+    NSString *param = nil;
+    NSMutableDictionary *dict = nil;
+    manager.requestSerializer.timeoutInterval = 30;
     
-//    AFHTTPClient *httpClient = [MyHttpClient shareHttpClient];
-//    httpClient.parameterEncoding = aEncoding;
-//    NSData *imageData = UIImageJPEGRepresentation(aImg, 1);
-//    
-//    NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:aUrl parameters:aParam constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
-//        
-//        [formData appendPartWithFileData:imageData name:@"cardImage" fileName:aImgname mimeType:@"image/jpeg"];
-//        
-//    }];
-//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-//    [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-//        block(bytesWritten,totalBytesWritten,totalBytesExpectedToWrite);
-//    }];
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSDictionary *Dict = [operation.responseString objectFromJSONString];
-//        success(Dict);
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSDictionary *resultDictionary = [operation.responseString objectFromJSONString];
-//        failure(resultDictionary, nil);
-//    }];
-//    [operation start];
+    param = [[NetManager shareInstance] basePostDict:aParam apiName:aApidName];
+    dict = [NSMutableDictionary dictionaryWithDictionary:aParam];
+    [dict setValue:param forKey:@"S3CAPI"];
+    
+    [NetManager setRequestHeadValue:manager];
+    if([kBaseUrl compare:@"https://api.chinascrm.com/sapi4app.html"] == 0)
+    {
+        manager.securityPolicy.allowInvalidCertificates = YES;
+    }
+    
+    [manager POST:aUrl parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        if(aImgname)
+        {
+            [formData appendPartWithFormData:imageData name:aImgname];
+        }
+        else
+        {
+            [formData appendPartWithFormData:imageData name:@"image"];
+        }
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *Dict = [operation.responseString objectFromJSONString];
+        success(Dict);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSDictionary *Dict = [operation.responseString objectFromJSONString];
+        success(Dict);
+    }];
 }
 @end

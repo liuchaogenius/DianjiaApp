@@ -68,6 +68,7 @@
     [self.bottom_hygl_BT addTarget:self action:@selector(hygl_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_sppd_BT addTarget:self action:@selector(sppd_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_sprk_BT addTarget:self action:@selector(rksp_buttonItem) forControlEvents:UIControlEventTouchUpInside];
+    [self.bottom_chcx_BT addTarget:self action:@selector(jccx_buttonItem) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -180,9 +181,16 @@
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
+#pragma mark 入库审批
 - (void)rksp_buttonItem
 {
     [self pushXIBName:@"RuKushenpinVC" animated:YES selector:nil param:nil];
+}
+
+#pragma mark 寄存查询
+- (void)jccx_buttonItem
+{
+    [self pushXIBName:@"JCCXViewController" animated:YES selector:nil param:nil];
 }
 
 - (void)didReceiveMemoryWarning {

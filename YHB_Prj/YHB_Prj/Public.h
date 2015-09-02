@@ -11,7 +11,7 @@
 
 #define kMainScreenHeight [UIScreen mainScreen].bounds.size.height
 #define kMainScreenWidth  [UIScreen mainScreen].bounds.size.width
-#define kBaseUrl @"http://115.28.136.170:8080/sapi4app.html"
+#define kBaseUrl @"http://testapi.chinascrm.com/sapi4app.html"
 #define kHubRequestUrl(path,outUrl) do{\
   outUrl = [NSString stringWithFormat:@"%@%@",kHubBaseUrl,path];\
 }while(0)
