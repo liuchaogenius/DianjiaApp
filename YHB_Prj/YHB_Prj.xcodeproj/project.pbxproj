@@ -28,6 +28,8 @@
 		5B54BA3F1B92F9C0002098A4 /* DJCheckCartSubmitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA3E1B92F9C0002098A4 /* DJCheckCartSubmitRequest.m */; };
 		5B54BA421B9336C7002098A4 /* DJCheckCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA411B9336C7002098A4 /* DJCheckCartCell.m */; };
 		5B54BA481B9348FD002098A4 /* DJProductCheckViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA471B9348FD002098A4 /* DJProductCheckViewManager.m */; };
+		5BA5AA311B98297400329677 /* DJScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA5AA301B98297400329677 /* DJScanViewController.m */; };
+		5BA5AA331B98299D00329677 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA5AA321B98299D00329677 /* AVFoundation.framework */; };
 		AB2578DC1B8EFBDE0015039A /* GateDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2578DB1B8EFBDE0015039A /* GateDetailViewController.m */; };
 		AB2579341B8F02010015039A /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2579121B8F02010015039A /* IQNSArray+Sort.m */; };
 		AB2579351B8F02010015039A /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2579141B8F02010015039A /* IQUITextFieldView+Additions.m */; };
@@ -257,6 +259,9 @@
 		5B54BA411B9336C7002098A4 /* DJCheckCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJCheckCartCell.m; sourceTree = "<group>"; };
 		5B54BA461B9348FD002098A4 /* DJProductCheckViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckViewManager.h; sourceTree = "<group>"; };
 		5B54BA471B9348FD002098A4 /* DJProductCheckViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProductCheckViewManager.m; sourceTree = "<group>"; };
+		5BA5AA2F1B98297400329677 /* DJScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJScanViewController.h; sourceTree = "<group>"; };
+		5BA5AA301B98297400329677 /* DJScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJScanViewController.m; sourceTree = "<group>"; };
+		5BA5AA321B98299D00329677 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AB2578DA1B8EFBDE0015039A /* GateDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GateDetailViewController.h; sourceTree = "<group>"; };
 		AB2578DB1B8EFBDE0015039A /* GateDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GateDetailViewController.m; sourceTree = "<group>"; };
 		AB2579111B8F02010015039A /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
@@ -600,6 +605,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BA5AA331B98299D00329677 /* AVFoundation.framework in Frameworks */,
 				FF5C87291B8318C500F79EC1 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -724,6 +730,15 @@
 				5B54BA3E1B92F9C0002098A4 /* DJCheckCartSubmitRequest.m */,
 			);
 			name = Service;
+			sourceTree = "<group>";
+		};
+		5BA5AA2E1B98293600329677 /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				5BA5AA2F1B98297400329677 /* DJScanViewController.h */,
+				5BA5AA301B98297400329677 /* DJScanViewController.m */,
+			);
+			path = Scan;
 			sourceTree = "<group>";
 		};
 		AB2578D91B8EFBCA0015039A /* GateDetailVC */ = {
@@ -936,6 +951,7 @@
 		FF2A6BD11A0F3780001607AC = {
 			isa = PBXGroup;
 			children = (
+				5BA5AA321B98299D00329677 /* AVFoundation.framework */,
 				FF5C87281B8318C500F79EC1 /* libsqlite3.dylib */,
 				FF2A6BDC1A0F3780001607AC /* YHB_Prj */,
 				FF2A6BF01A0F3780001607AC /* YHB_PrjTests */,
@@ -1161,6 +1177,7 @@
 		FF2A6C8B1A0F3C58001607AC /* UIParty */ = {
 			isa = PBXGroup;
 			children = (
+				5BA5AA2E1B98293600329677 /* Scan */,
 				FF5CC7061B93F9B500F55713 /* Jicunchaxun */,
 				FF5CC6E31B93EE5300F55713 /* Rukushenpi */,
 				5B1F7F871B8F5D1100763059 /* ProductCheck */,
@@ -1792,6 +1809,7 @@
 				AB40EAC11B8C020700DE5ED7 /* SupplierViewController.m in Sources */,
 				FF2A6C731A0F3B7B001607AC /* SDWebImagePrefetcher.m in Sources */,
 				FFF3919A1B846F58007DC652 /* AFURLRequestSerialization.m in Sources */,
+				5BA5AA311B98297400329677 /* DJScanViewController.m in Sources */,
 				ABAACA0A1B95BE7600305080 /* SupplierMode.m in Sources */,
 				FF4DFD0B1B85CBFA00617660 /* StoreListView.m in Sources */,
 				5B54BA421B9336C7002098A4 /* DJCheckCartCell.m in Sources */,

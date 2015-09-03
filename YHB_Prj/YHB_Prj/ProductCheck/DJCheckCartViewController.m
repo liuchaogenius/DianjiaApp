@@ -11,6 +11,7 @@
 #import "DJCheckCartEngine.h"
 #import "LoginManager.h"
 #import "DJCheckCartCell.h"
+#import "DJScanViewController.h"
 
 #define StringValueWithNum(a) [NSString stringWithFormat:@"%ld",(NSInteger)a]
 
@@ -28,6 +29,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setExtraCellLineHidden:self.tableView];
+    
+    [self.searchBar setNeedShowSearchVCHandler:^{
+        //TODO:跳转搜索框
+    } andShowScanVCHandler:^{
+        DJScanViewController *vc=  [[DJScanViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
     
 }
 
