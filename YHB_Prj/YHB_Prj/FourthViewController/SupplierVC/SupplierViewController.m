@@ -37,10 +37,7 @@
     [self addTableViewTrag];
     
     _manage = [[SupplierManage alloc] init];
-    [_manage getSupplierListWithFinishBlock:^(NSArray *resultArr) {
-        self.dataArray = [resultArr mutableCopy];
-        [_supplierTableView reloadData];
-    }];
+    [_supplierTableView triggerPullToRefresh];
 }
 
 #pragma mark 增加上拉下拉
@@ -49,8 +46,15 @@
     __weak SupplierViewController *weakself = self;
     [weakself.supplierTableView addPullToRefreshWithActionHandler:^{
         [self.manage getSupplierListWithFinishBlock:^(NSArray *resultArr) {
-            self.dataArray = [resultArr mutableCopy];
-            [_supplierTableView reloadData];
+            if (resultArr && resultArr.count>0)
+            {
+                self.dataArray = [resultArr mutableCopy];
+                [_supplierTableView reloadData];
+            }
+            else
+            {
+                [SVProgressHUD showErrorWithStatus:@"加载失败" cover:YES offsetY:kMainScreenHeight/2.0];
+            }
             [weakself.supplierTableView.pullToRefreshView stopAnimating];
         }];
     }];

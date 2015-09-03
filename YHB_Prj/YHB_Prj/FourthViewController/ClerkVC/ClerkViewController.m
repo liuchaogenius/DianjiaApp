@@ -10,11 +10,11 @@
 #import "ClerkTableViewCell.h"
 #import "ClerkDetailViewController.h"
 #import "EmpManage.h"
+#import "SVPullToRefresh.h"
 
 @interface ClerkViewController ()<UITableViewDataSource,UITableViewDelegate>
-{
-    UITableView *_clerkTableView;
-}
+
+@property(nonatomic, strong) UITableView *clerkTableView;
 @property(nonatomic, strong) EmpManage *manage;
 @property(nonatomic,strong) NSMutableArray *dataArray;
 @end
@@ -34,10 +34,33 @@
     
     _dataArray = [NSMutableArray arrayWithCapacity:0];
     _manage = [[EmpManage alloc] init];
-    [_manage getEmpListWithFinishBlock:^(NSArray *resultArr) {
-        _dataArray = [resultArr mutableCopy];
-        [_clerkTableView reloadData];
+    [self addTableViewTrag];
+    [_clerkTableView triggerPullToRefresh];
+}
+
+#pragma mark 增加上拉下拉
+- (void)addTableViewTrag
+{
+    __weak ClerkViewController *weakself = self;
+    [weakself.clerkTableView addPullToRefreshWithActionHandler:^{
+        [self.manage getEmpListWithFinishBlock:^(NSArray *resultArr) {
+            if (resultArr && resultArr.count>0)
+            {
+                _dataArray = [resultArr mutableCopy];
+                [_clerkTableView reloadData];
+            }
+            else
+            {
+                [SVProgressHUD showErrorWithStatus:@"加载失败" cover:YES offsetY:kMainScreenHeight/2.0];
+            }
+            [weakself.clerkTableView.pullToRefreshView stopAnimating];
+        }];
     }];
+    
+    
+    //    [weakself.supplierTableView addInfiniteScrollingWithActionHandler:^{
+    //        [weakself.supplierTableView.infiniteScrollingView stopAnimating];
+    //    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

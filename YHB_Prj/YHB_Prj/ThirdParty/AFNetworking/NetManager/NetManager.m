@@ -285,7 +285,7 @@
         manager.securityPolicy.allowInvalidCertificates = YES;
     }
     
-    [manager POST:aUrl parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [manager POST:kBaseUrl parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         if(aImgname)
         {
             [formData appendPartWithFormData:imageData name:aImgname];

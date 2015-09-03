@@ -16,6 +16,7 @@
 #import "SDImageCache.h"
 #import "LoginManager.h"
 #import "SDWebImageManager.h"
+#import "NetManager.h"
 
 #define userFace @"userFace"
 
@@ -112,7 +113,8 @@ typedef enum : NSUInteger {
     else
     {
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
-        [manager downloadImageWithURL:[NSURL URLWithString:mode.strFaceUrl]
+        NSString *imgUrl = [NSString stringWithFormat:@"%@%@", mode.strFaceDomain,mode.strFaceUrl];
+        [manager downloadImageWithURL:[NSURL URLWithString:imgUrl]
                               options:0
                              progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                              } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
@@ -120,6 +122,7 @@ typedef enum : NSUInteger {
                                      [[SDImageCache sharedImageCache] storeImage:image
                                                                           forKey:userStr
                                                                           toDisk:YES];
+                                     [_userImgBtn setImage:image forState:UIControlStateNormal];
                                  }
                              }];
     }
@@ -356,6 +359,13 @@ typedef enum : NSUInteger {
     [[SDImageCache sharedImageCache] storeImage:image
                                          forKey:userFace
                                          toDisk:YES];
+    [NetManager uploadImg:image parameters:nil apiName:@"uploadUserFacePic" uploadUrl:nil uploadimgName:nil progressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        MLOG(@"%f", (float)totalBytesExpectedToWrite/totalBytesWritten);
+    } succ:^(NSDictionary *successDict) {
+        MLOG(@"1");
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        MLOG(@"2");
+    }];
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
         UIImage * oriImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         // 保存图片到相册中
