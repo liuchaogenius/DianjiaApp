@@ -20,7 +20,7 @@
 @property (nonatomic, assign) double discountRate;
 @property (nonatomic, assign) double srlStatus;
 @property (nonatomic, assign) double saleNum;
-@property (nonatomic, strong) NSString *salePrice;
+@property (nonatomic, assign) double salePrice;
 @property (nonatomic, assign) double productId;
 @property (nonatomic, assign) double sid;
 @property (nonatomic, strong) NSString *realMoney;

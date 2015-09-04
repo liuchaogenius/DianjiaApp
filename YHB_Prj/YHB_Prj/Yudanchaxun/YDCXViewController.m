@@ -10,8 +10,10 @@
 #import "YDCXCell.h"
 #import "YDCXManager.h"
 #import "DJYDCXRows.h"
+#import "YDCXDetailViewController.h"
 
 static const CGFloat topBtnHeight = 44;
+static const CGFloat bottomViewHeight = 44;
 
 @interface YDCXViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -29,6 +31,8 @@ static const CGFloat topBtnHeight = 44;
 @property(nonatomic,strong) NSMutableArray *arrYes;
 @property(nonatomic,strong) NSMutableArray *arrAll;
 @property(nonatomic,strong) NSMutableArray *currentArray;
+
+@property(nonatomic,strong) UILabel *labelSum;
 @end
 
 @implementation YDCXViewController
@@ -41,11 +45,13 @@ static const CGFloat topBtnHeight = 44;
     
     [self createTopView];
     
-    _tableviewYudan = [[UITableView alloc] initWithFrame:CGRectMake(0, topBtnHeight, kMainScreenWidth, kMainScreenHeight-topBtnHeight-64)];
+    _tableviewYudan = [[UITableView alloc] initWithFrame:CGRectMake(0, topBtnHeight, kMainScreenWidth, kMainScreenHeight-topBtnHeight-64-bottomViewHeight)];
     _tableviewYudan.delegate = self;
     _tableviewYudan.dataSource = self;
     _tableviewYudan.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableviewYudan];
+    
+    [self createBottomView];
     
     _arrNo = [NSMutableArray arrayWithCapacity:0];
     _arrYes = [NSMutableArray arrayWithCapacity:0];
@@ -78,6 +84,32 @@ static const CGFloat topBtnHeight = 44;
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, topBtnHeight-0.5, kMainScreenWidth, 0.5)];
     lineView.backgroundColor = RGBCOLOR(220, 220, 220);
     [self.view addSubview:lineView];
+}
+
+- (void)createBottomView
+{
+    kCreateLabel(_labelSum, CGRectMake(0, kMainScreenHeight-64-bottomViewHeight+(bottomViewHeight-21)/2.0, kMainScreenWidth, 21), 12, [UIColor blackColor], @"");
+    _labelSum.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:_labelSum];
+}
+
+- (void)reloadBottomView;
+{
+    NSString *str;
+    if (_currentArray && _currentArray.count>0)
+    {
+        DJYDCXRows *mode = _currentArray[0];
+        if (mode && mode.payableMoney) str = [NSString stringWithFormat:@"总金额:%@", mode.payrelMoneySum];
+        else str = @"总金额:0";
+    }
+    else str = @"总金额:0";
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:str];
+    NSRange preRange = NSMakeRange(0, 4);
+    CGFloat length = attStr.length;
+    [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:preRange];
+    NSRange boRange = NSMakeRange(4, length-4);
+    [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:boRange];
+    _labelSum.attributedText = attStr;
 }
 
 - (void)touchBtn:(UIButton *)sender
@@ -117,14 +149,19 @@ static const CGFloat topBtnHeight = 44;
     {
         [SVProgressHUD show:YES offsetY:kMainScreenHeight/2.0];
         [self.manage appGetVipCerditListArr:_currentStatus finishBlock:^(NSArray *list) {
-            if (list && list.count!=0) [SVProgressHUD dismiss];
+            if (list && list.count!=0)
+            {
+                [SVProgressHUD dismiss];
+                [aArray addObjectsFromArray:list];
+            }
             else [SVProgressHUD showErrorWithStatus:@"无数据" cover:YES offsetY:kMainScreenHeight/2.0];
-            [aArray addObjectsFromArray:list];
+            [self reloadBottomView];
             [_tableviewYudan reloadData];
         }];
     }
     else
     {
+        [self reloadBottomView];
         [_tableviewYudan reloadData];
     }
 }
@@ -180,6 +217,25 @@ static const CGFloat topBtnHeight = 44;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    DJYDCXRows *mode;
+    if (_currentStatus==VipCerditStatusAll)
+    {
+        mode = _arrAll[indexPath.row];
+    }
+    else if (_currentStatus==VipCerditStatusNo)
+    {
+        mode = _arrNo[indexPath.row];
+    }
+    else if (_currentStatus==VipCerditStatusYes)
+    {
+        mode = _arrYes[indexPath.row];
+    }
+    NSArray *dataArr = mode.detailList;
+    if (dataArr && dataArr.count>0)
+    {
+        YDCXDetailViewController *vc = [[YDCXDetailViewController alloc] initWithDataArray:mode.detailList];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark getter

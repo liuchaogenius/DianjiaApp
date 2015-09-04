@@ -45,6 +45,9 @@
 		AB25793F1B8F02010015039A /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AB25792E1B8F02010015039A /* IQToolbar.m */; };
 		AB2579401B8F02010015039A /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2579301B8F02010015039A /* IQUIView+IQKeyboardToolbar.m */; };
 		AB2579411B8F02010015039A /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AB2579331B8F02010015039A /* IQKeyboardManager.bundle */; };
+		AB358E431B99855C007D62E9 /* YDCXDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB358E421B99855C007D62E9 /* YDCXDetailViewController.m */; };
+		AB358E471B99B47B007D62E9 /* YDCXDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB358E451B99B47B007D62E9 /* YDCXDetailCell.m */; };
+		AB358E481B99B47B007D62E9 /* YDCXDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB358E461B99B47B007D62E9 /* YDCXDetailCell.xib */; };
 		AB3877A61B97D0F500DD7468 /* YDCXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3877A51B97D0F500DD7468 /* YDCXViewController.m */; };
 		AB3877AA1B97D7F700DD7468 /* YDCXCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3877A81B97D7F700DD7468 /* YDCXCell.m */; };
 		AB3877AB1B97D7F700DD7468 /* YDCXCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB3877A91B97D7F700DD7468 /* YDCXCell.xib */; };
@@ -302,6 +305,11 @@
 		AB2579301B8F02010015039A /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		AB2579311B8F02010015039A /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
 		AB2579331B8F02010015039A /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		AB358E411B99855C007D62E9 /* YDCXDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCXDetailViewController.h; sourceTree = "<group>"; };
+		AB358E421B99855C007D62E9 /* YDCXDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCXDetailViewController.m; sourceTree = "<group>"; };
+		AB358E441B99B47B007D62E9 /* YDCXDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCXDetailCell.h; sourceTree = "<group>"; };
+		AB358E451B99B47B007D62E9 /* YDCXDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCXDetailCell.m; sourceTree = "<group>"; };
+		AB358E461B99B47B007D62E9 /* YDCXDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDCXDetailCell.xib; sourceTree = "<group>"; };
 		AB3877A41B97D0F500DD7468 /* YDCXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCXViewController.h; sourceTree = "<group>"; };
 		AB3877A51B97D0F500DD7468 /* YDCXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCXViewController.m; sourceTree = "<group>"; };
 		AB3877A71B97D7F700DD7468 /* YDCXCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCXCell.h; sourceTree = "<group>"; };
@@ -863,6 +871,11 @@
 			children = (
 				AB3877A41B97D0F500DD7468 /* YDCXViewController.h */,
 				AB3877A51B97D0F500DD7468 /* YDCXViewController.m */,
+				AB358E411B99855C007D62E9 /* YDCXDetailViewController.h */,
+				AB358E421B99855C007D62E9 /* YDCXDetailViewController.m */,
+				AB358E441B99B47B007D62E9 /* YDCXDetailCell.h */,
+				AB358E451B99B47B007D62E9 /* YDCXDetailCell.m */,
+				AB358E461B99B47B007D62E9 /* YDCXDetailCell.xib */,
 				AB3877A71B97D7F700DD7468 /* YDCXCell.h */,
 				AB3877A81B97D7F700DD7468 /* YDCXCell.m */,
 				AB3877A91B97D7F700DD7468 /* YDCXCell.xib */,
@@ -1697,6 +1710,7 @@
 				FF5C872E1B83279600F79EC1 /* FirstViewController.xib in Resources */,
 				FF012FAE1B8EB92C00AE563C /* HYGLViewController.xib in Resources */,
 				FF5CC70B1B93FA0B00F55713 /* JCCXViewController.xib in Resources */,
+				AB358E481B99B47B007D62E9 /* YDCXDetailCell.xib in Resources */,
 				FF5CC6FB1B93EE5300F55713 /* RKSPCell.xib in Resources */,
 				AB40EAC61B8C021800DE5ED7 /* SupplierTableViewCell.xib in Resources */,
 				AB2579411B8F02010015039A /* IQKeyboardManager.bundle in Resources */,
@@ -1767,6 +1781,7 @@
 				AB42ACD91B8BE303001FB93A /* GateTableViewCell.m in Sources */,
 				FF3C20041A2EE7480081D3C7 /* FactoryModel.m in Sources */,
 				AB2579341B8F02010015039A /* IQNSArray+Sort.m in Sources */,
+				AB358E471B99B47B007D62E9 /* YDCXDetailCell.m in Sources */,
 				FF5CC6FD1B93EE5300F55713 /* RKSPMode.m in Sources */,
 				AB25793D1B8F02010015039A /* IQBarButtonItem.m in Sources */,
 				FF4DFCFA1B856C2B00617660 /* LoginMode.m in Sources */,
@@ -1844,6 +1859,7 @@
 				FF4DFD081B85B21C00617660 /* NSDateTool.m in Sources */,
 				FF2A6C6B1A0F3B7B001607AC /* MKAnnotationView+WebCache.m in Sources */,
 				FF5C87271B830F3000F79EC1 /* LoginManager.m in Sources */,
+				AB358E431B99855C007D62E9 /* YDCXDetailViewController.m in Sources */,
 				FF5CC6F91B93EE5300F55713 /* GysMode.m in Sources */,
 				FF5C87201B83024C00F79EC1 /* FMResultSet.m in Sources */,
 				AB88441B1B913DBB00FA526D /* ChooseLocaViewController.m in Sources */,
