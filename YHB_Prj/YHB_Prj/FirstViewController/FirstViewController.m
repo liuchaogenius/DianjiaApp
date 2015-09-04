@@ -13,6 +13,7 @@
 #import "FirstMode.h"
 #import "LoginManager.h"
 #import "DJStoryboadManager.h"
+#import "YDCXViewController.h"
 @interface FirstViewController ()
 {
     __weak FirstViewController *weakself;
@@ -40,6 +41,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *bottom_chcx_BT;
 @property (strong, nonatomic) IBOutlet UIButton *bottom_hygl_BT;
 @property (strong, nonatomic) IBOutlet UIButton *bottom_wydh_BT;
+@property (strong, nonatomic) IBOutlet UIButton *bottom_gdcx_BT;
 
 @property (strong, nonatomic) DateSelectVC *dateVC;
 @property (strong, nonatomic) FirstVCManager *manager;
@@ -69,6 +71,7 @@
     [self.bottom_sppd_BT addTarget:self action:@selector(sppd_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_sprk_BT addTarget:self action:@selector(rksp_buttonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_chcx_BT addTarget:self action:@selector(jccx_buttonItem) forControlEvents:UIControlEventTouchUpInside];
+    [self.bottom_gdcx_BT addTarget:self action:@selector(gdcx_buttonItem) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -191,6 +194,14 @@
 - (void)jccx_buttonItem
 {
     [self pushXIBName:@"JCCXViewController" animated:YES selector:nil param:nil];
+}
+
+#pragma mark 挂单查询
+- (void)gdcx_buttonItem
+{
+    YDCXViewController *vc = [[YDCXViewController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

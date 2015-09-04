@@ -45,6 +45,11 @@
 		AB25793F1B8F02010015039A /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AB25792E1B8F02010015039A /* IQToolbar.m */; };
 		AB2579401B8F02010015039A /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2579301B8F02010015039A /* IQUIView+IQKeyboardToolbar.m */; };
 		AB2579411B8F02010015039A /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AB2579331B8F02010015039A /* IQKeyboardManager.bundle */; };
+		AB3877A61B97D0F500DD7468 /* YDCXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3877A51B97D0F500DD7468 /* YDCXViewController.m */; };
+		AB3877AA1B97D7F700DD7468 /* YDCXCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3877A81B97D7F700DD7468 /* YDCXCell.m */; };
+		AB3877AB1B97D7F700DD7468 /* YDCXCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB3877A91B97D7F700DD7468 /* YDCXCell.xib */; };
+		AB3877AE1B97DF8200DD7468 /* YDCXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3877AD1B97DF8200DD7468 /* YDCXManager.m */; };
+		AB3877B11B97DFD300DD7468 /* YDCXMode.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3877B01B97DFD300DD7468 /* YDCXMode.m */; };
 		AB40EAB51B8BF97500DE5ED7 /* ClerkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB40EAB41B8BF97500DE5ED7 /* ClerkViewController.m */; };
 		AB40EABC1B8BFA0100DE5ED7 /* ClerkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB40EABA1B8BFA0100DE5ED7 /* ClerkTableViewCell.m */; };
 		AB40EABD1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB40EABB1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib */; };
@@ -69,6 +74,9 @@
 		AB9F43EC1B92E58400914C85 /* SetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9F43EB1B92E58400914C85 /* SetTableViewCell.m */; };
 		ABAACA071B95B5EC00305080 /* SupplierManage.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAACA061B95B5EC00305080 /* SupplierManage.m */; };
 		ABAACA0A1B95BE7600305080 /* SupplierMode.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAACA091B95BE7600305080 /* SupplierMode.m */; };
+		ABAAFB6D1B996B250012D1C6 /* DJYDCXDetailList.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAAFB681B996B250012D1C6 /* DJYDCXDetailList.m */; };
+		ABAAFB6E1B996B250012D1C6 /* DJYDCXResult.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAAFB6A1B996B250012D1C6 /* DJYDCXResult.m */; };
+		ABAAFB6F1B996B250012D1C6 /* DJYDCXRows.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAAFB6C1B996B250012D1C6 /* DJYDCXRows.m */; };
 		ABEF1DA71B929D5400C1C2EA /* SupplierDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DA61B929D5400C1C2EA /* SupplierDetailViewController.m */; };
 		ABEF1DAB1B92A18E00C1C2EA /* ClerkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DAA1B92A18E00C1C2EA /* ClerkDetailViewController.m */; };
 		ABEF1DAF1B92AD2700C1C2EA /* TenantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DAE1B92AD2700C1C2EA /* TenantViewController.m */; };
@@ -294,6 +302,15 @@
 		AB2579301B8F02010015039A /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		AB2579311B8F02010015039A /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
 		AB2579331B8F02010015039A /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		AB3877A41B97D0F500DD7468 /* YDCXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCXViewController.h; sourceTree = "<group>"; };
+		AB3877A51B97D0F500DD7468 /* YDCXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCXViewController.m; sourceTree = "<group>"; };
+		AB3877A71B97D7F700DD7468 /* YDCXCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCXCell.h; sourceTree = "<group>"; };
+		AB3877A81B97D7F700DD7468 /* YDCXCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCXCell.m; sourceTree = "<group>"; };
+		AB3877A91B97D7F700DD7468 /* YDCXCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDCXCell.xib; sourceTree = "<group>"; };
+		AB3877AC1B97DF8200DD7468 /* YDCXManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCXManager.h; sourceTree = "<group>"; };
+		AB3877AD1B97DF8200DD7468 /* YDCXManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCXManager.m; sourceTree = "<group>"; };
+		AB3877AF1B97DFD300DD7468 /* YDCXMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCXMode.h; sourceTree = "<group>"; };
+		AB3877B01B97DFD300DD7468 /* YDCXMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCXMode.m; sourceTree = "<group>"; };
 		AB40EAB31B8BF97500DE5ED7 /* ClerkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClerkViewController.h; sourceTree = "<group>"; };
 		AB40EAB41B8BF97500DE5ED7 /* ClerkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClerkViewController.m; sourceTree = "<group>"; };
 		AB40EAB91B8BFA0100DE5ED7 /* ClerkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClerkTableViewCell.h; sourceTree = "<group>"; };
@@ -338,6 +355,12 @@
 		ABAACA061B95B5EC00305080 /* SupplierManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierManage.m; sourceTree = "<group>"; };
 		ABAACA081B95BE7600305080 /* SupplierMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierMode.h; sourceTree = "<group>"; };
 		ABAACA091B95BE7600305080 /* SupplierMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierMode.m; sourceTree = "<group>"; };
+		ABAAFB671B996B250012D1C6 /* DJYDCXDetailList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJYDCXDetailList.h; sourceTree = "<group>"; };
+		ABAAFB681B996B250012D1C6 /* DJYDCXDetailList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJYDCXDetailList.m; sourceTree = "<group>"; };
+		ABAAFB691B996B250012D1C6 /* DJYDCXResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJYDCXResult.h; sourceTree = "<group>"; };
+		ABAAFB6A1B996B250012D1C6 /* DJYDCXResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJYDCXResult.m; sourceTree = "<group>"; };
+		ABAAFB6B1B996B250012D1C6 /* DJYDCXRows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJYDCXRows.h; sourceTree = "<group>"; };
+		ABAAFB6C1B996B250012D1C6 /* DJYDCXRows.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJYDCXRows.m; sourceTree = "<group>"; };
 		ABEF1DA51B929D5400C1C2EA /* SupplierDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierDetailViewController.h; sourceTree = "<group>"; };
 		ABEF1DA61B929D5400C1C2EA /* SupplierDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierDetailViewController.m; sourceTree = "<group>"; };
 		ABEF1DA91B92A18E00C1C2EA /* ClerkDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClerkDetailViewController.h; sourceTree = "<group>"; };
@@ -835,6 +858,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		AB3877A31B97D06E00DD7468 /* Yudanchaxun */ = {
+			isa = PBXGroup;
+			children = (
+				AB3877A41B97D0F500DD7468 /* YDCXViewController.h */,
+				AB3877A51B97D0F500DD7468 /* YDCXViewController.m */,
+				AB3877A71B97D7F700DD7468 /* YDCXCell.h */,
+				AB3877A81B97D7F700DD7468 /* YDCXCell.m */,
+				AB3877A91B97D7F700DD7468 /* YDCXCell.xib */,
+				AB3877AC1B97DF8200DD7468 /* YDCXManager.h */,
+				AB3877AD1B97DF8200DD7468 /* YDCXManager.m */,
+				ABAAFB661B996B1B0012D1C6 /* Model */,
+				AB3877AF1B97DFD300DD7468 /* YDCXMode.h */,
+				AB3877B01B97DFD300DD7468 /* YDCXMode.m */,
+			);
+			path = Yudanchaxun;
+			sourceTree = "<group>";
+		};
 		AB40EAB21B8BF96700DE5ED7 /* ClerkVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -917,6 +957,19 @@
 				AB9F43EB1B92E58400914C85 /* SetTableViewCell.m */,
 			);
 			path = SettingVC;
+			sourceTree = "<group>";
+		};
+		ABAAFB661B996B1B0012D1C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABAAFB671B996B250012D1C6 /* DJYDCXDetailList.h */,
+				ABAAFB681B996B250012D1C6 /* DJYDCXDetailList.m */,
+				ABAAFB691B996B250012D1C6 /* DJYDCXResult.h */,
+				ABAAFB6A1B996B250012D1C6 /* DJYDCXResult.m */,
+				ABAAFB6B1B996B250012D1C6 /* DJYDCXRows.h */,
+				ABAAFB6C1B996B250012D1C6 /* DJYDCXRows.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		ABEF1DA41B929D4100C1C2EA /* SupplierDetailVC */ = {
@@ -1178,6 +1231,7 @@
 			isa = PBXGroup;
 			children = (
 				5BA5AA2E1B98293600329677 /* Scan */,
+				AB3877A31B97D06E00DD7468 /* Yudanchaxun */,
 				FF5CC7061B93F9B500F55713 /* Jicunchaxun */,
 				FF5CC6E31B93EE5300F55713 /* Rukushenpi */,
 				5B1F7F871B8F5D1100763059 /* ProductCheck */,
@@ -1635,6 +1689,7 @@
 				FF4DFD041B85A5DF00617660 /* DateSelectVC.xib in Resources */,
 				AB42ACDA1B8BE303001FB93A /* GateTableViewCell.xib in Resources */,
 				FF5C871A1B83024C00F79EC1 /* LICENSE.txt in Resources */,
+				AB3877AB1B97D7F700DD7468 /* YDCXCell.xib in Resources */,
 				FF5CC7031B93EE5300F55713 /* RuKushenpinVC.xib in Resources */,
 				FFD26CF01B8C3F940003F491 /* ZXBJCell.xib in Resources */,
 				FF012FAA1B8EB92C00AE563C /* HYXFJLListViewController.xib in Resources */,
@@ -1688,6 +1743,7 @@
 				FF4DFCF61B856B9600617660 /* ThreadSafeMutableArry.m in Sources */,
 				FF5C86FC1B81B72400F79EC1 /* MASViewAttribute.m in Sources */,
 				FF5C87001B81B72400F79EC1 /* View+MASAdditions.m in Sources */,
+				ABAAFB6D1B996B250012D1C6 /* DJYDCXDetailList.m in Sources */,
 				FF5CC7131B94262F00F55713 /* JCCXManager.m in Sources */,
 				FF2A6BE31A0F3780001607AC /* AppDelegate.m in Sources */,
 				FF2A6C9C1A0F3D30001607AC /* FourthViewController.m in Sources */,
@@ -1699,6 +1755,7 @@
 				FFF391961B846F58007DC652 /* AFHTTPSessionManager.m in Sources */,
 				AB9F43E91B92E45900914C85 /* SettingViewController.m in Sources */,
 				AB2579361B8F02010015039A /* IQUIView+Hierarchy.m in Sources */,
+				AB3877B11B97DFD300DD7468 /* YDCXMode.m in Sources */,
 				FF4DFCF51B856B9600617660 /* SCach.m in Sources */,
 				FF4DFCF41B856B9600617660 /* NSFileManager_Additions.m in Sources */,
 				ABAACA071B95B5EC00305080 /* SupplierManage.m in Sources */,
@@ -1714,6 +1771,7 @@
 				AB25793D1B8F02010015039A /* IQBarButtonItem.m in Sources */,
 				FF4DFCFA1B856C2B00617660 /* LoginMode.m in Sources */,
 				FF5C86FE1B81B72400F79EC1 /* NSArray+MASAdditions.m in Sources */,
+				AB3877A61B97D0F500DD7468 /* YDCXViewController.m in Sources */,
 				AB8844151B913D6300FA526D /* TableViewWithBlock.m in Sources */,
 				FF5C871F1B83024C00F79EC1 /* FMDatabaseQueue.m in Sources */,
 				5B54BA351B922AED002098A4 /* DJCheckCartContexManager.m in Sources */,
@@ -1750,12 +1808,14 @@
 				FF2A6C6C1A0F3B7B001607AC /* NSData+ImageContentType.m in Sources */,
 				FF2A6C701A0F3B7B001607AC /* SDWebImageDownloader.m in Sources */,
 				FF2A6C481A0F3B72001607AC /* JSONKit.m in Sources */,
+				AB3877AE1B97DF8200DD7468 /* YDCXManager.m in Sources */,
 				FF2A6C781A0F3B7B001607AC /* UIImageView+HighlightedWebCache.m in Sources */,
 				FFD26CE11B8B10970003F491 /* KCYJMode.m in Sources */,
 				AB8071C51B96C7AA002114C9 /* EmpManage.m in Sources */,
 				ABEF1DA71B929D5400C1C2EA /* SupplierDetailViewController.m in Sources */,
 				5B1F7FA01B90A9C000763059 /* DJProductCheckListCell.m in Sources */,
 				FF3C20081A2F2A440081D3C7 /* GlobObserverObject.m in Sources */,
+				ABAAFB6E1B996B250012D1C6 /* DJYDCXResult.m in Sources */,
 				AB25793A1B8F02010015039A /* IQKeyboardReturnKeyHandler.m in Sources */,
 				FF5C86DF1B818BE700F79EC1 /* SSWDirectionalPanGestureRecognizer.m in Sources */,
 				5B1F7FAD1B91CEB100763059 /* DJProductCheckSrlResult.m in Sources */,
@@ -1775,6 +1835,7 @@
 				FF2A6C7A1A0F3B7B001607AC /* UIView+WebCacheOperation.m in Sources */,
 				AB25793E1B8F02010015039A /* IQTitleBarButtonItem.m in Sources */,
 				AB40EAC51B8C021800DE5ED7 /* SupplierTableViewCell.m in Sources */,
+				AB3877AA1B97D7F700DD7468 /* YDCXCell.m in Sources */,
 				FF4DFD031B85A5DF00617660 /* DateSelectVC.m in Sources */,
 				AB2579351B8F02010015039A /* IQUITextFieldView+Additions.m in Sources */,
 				FF2A6C6E1A0F3B7B001607AC /* SDWebImageCompat.m in Sources */,
@@ -1831,6 +1892,7 @@
 				AB8844161B913D6300FA526D /* UITableView+DataSourceBlocks.m in Sources */,
 				FF2A6C991A0F3D1C001607AC /* ThirdViewController.m in Sources */,
 				FF5CC70A1B93FA0B00F55713 /* JCCXViewController.m in Sources */,
+				ABAAFB6F1B996B250012D1C6 /* DJYDCXRows.m in Sources */,
 				AB42ACD01B8B4140001FB93A /* FourthTableViewCell.m in Sources */,
 				FFF391971B846F58007DC652 /* AFNetworkReachabilityManager.m in Sources */,
 				FF4DFCF71B856B9600617660 /* ThreadSafeMutableDictionary.m in Sources */,

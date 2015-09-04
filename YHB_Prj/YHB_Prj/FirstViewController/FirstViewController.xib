@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FirstViewController">
             <connections>
                 <outlet property="bottom_chcx_BT" destination="RaL-op-D5q" id="nbu-TG-ord"/>
+                <outlet property="bottom_gdcx_BT" destination="JOc-qh-hfJ" id="So0-Dv-0Iu"/>
                 <outlet property="bottom_hygl_BT" destination="dTf-vN-sv3" id="O22-SO-qsh"/>
                 <outlet property="bottom_kcjg_BT" destination="psn-g7-W40" id="xNm-ou-TLT"/>
                 <outlet property="bottom_spgl_BT" destination="VVV-QP-IWJ" id="7kN-iw-6QA"/>
