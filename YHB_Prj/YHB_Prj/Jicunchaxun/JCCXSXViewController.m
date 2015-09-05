@@ -169,25 +169,29 @@
             [self.manager setCurrentVipid:_strVipeId];
         }
     }
+    BOOL isHaveChange = NO;
     if (_YDCXmanager)
     {
         if (self.strEndTime&& _strEndTime.length > 0)
         {
+            isHaveChange = YES;
             [_YDCXmanager setEndTime:_strEndTime];
         }
         if(self.strStartTime &&self.strStartTime.length>0)
         {
+            isHaveChange = YES;
             [_YDCXmanager setStartTime:self.strStartTime];
         }
         if(self.strVipeId)
         {
+            isHaveChange = YES;
             [_YDCXmanager setCurrentVipid:_strVipeId];
         }
     }
-    if (_myPopBlock) {
+    if (_myPopBlock && isHaveChange==YES) {
         _myPopBlock();
-        [self.navigationController popViewControllerAnimated:YES];
     }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
