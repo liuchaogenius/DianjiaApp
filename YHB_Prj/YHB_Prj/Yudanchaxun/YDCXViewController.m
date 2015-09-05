@@ -11,6 +11,7 @@
 #import "YDCXManager.h"
 #import "DJYDCXRows.h"
 #import "YDCXDetailViewController.h"
+#import "JCCXSXViewController.h"
 
 static const CGFloat topBtnHeight = 44;
 static const CGFloat bottomViewHeight = 44;
@@ -147,8 +148,7 @@ static const CGFloat bottomViewHeight = 44;
     _currentArray = aArray;
     if (aArray.count==0)
     {
-        [SVProgressHUD show:YES offsetY:kMainScreenHeight/2.0];
-        [self.manage appGetVipCerditListArr:_currentStatus finishBlock:^(NSArray *list) {
+        [self.manage appGetVipCerditListArr:_currentStatus isRefresh:NO finishBlock:^(NSArray *list) {
             if (list && list.count!=0)
             {
                 [SVProgressHUD dismiss];
@@ -169,7 +169,24 @@ static const CGFloat bottomViewHeight = 44;
 #pragma mark 筛选按钮
 - (void)touchChose
 {
-    MLOG(@"%s筛选按钮", __func__);
+    void(^popBlock)(void) = ^{
+        [_arrAll removeAllObjects];
+        [_arrNo removeAllObjects];
+        [_arrYes removeAllObjects];
+        [_tableviewYudan reloadData];
+        [SVProgressHUD show:YES offsetY:kMainScreenHeight/2.0];
+        [_manage appGetVipCerditListArr:_currentStatus isRefresh:YES finishBlock:^(NSArray *list) {
+            if (list && list.count!=0)
+            {
+                [SVProgressHUD dismiss];
+                [_currentArray addObjectsFromArray:list];
+            }
+            else [SVProgressHUD showErrorWithStatus:@"无数据" cover:YES offsetY:kMainScreenHeight/2.0];
+            [self reloadBottomView];
+            [_tableviewYudan reloadData];
+        }];
+    };
+    [self pushXIBName:@"JCCXSXViewController" animated:YES selector:@"setYDCXManager:andPopBlock:" param:self.manage,popBlock];
 }
 
 #pragma mark tableView

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3dv-Qy-IrM">
+                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3dv-Qy-IrM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="31"/>
                         <color key="backgroundColor" red="0.85098039215686272" green="0.8666666666666667" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -102,11 +103,17 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KhN-oF-mDJ">
+                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KhN-oF-mDJ">
                         <rect key="frame" x="0.0" y="171.5" width="320" height="0.5"/>
                         <color key="backgroundColor" red="0.85098039219999999" green="0.86666666670000003" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="KhN-oF-mDJ" secondAttribute="trailing" constant="-16" id="5Fn-TH-yQa"/>
+                    <constraint firstItem="KhN-oF-mDJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-16" id="8kA-R3-HMe"/>
+                    <constraint firstItem="3dv-Qy-IrM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-16" id="B2E-M3-ZKc"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="3dv-Qy-IrM" secondAttribute="trailing" constant="-16" id="if3-JA-Iiu"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="labelMoney" destination="dCE-JM-Vih" id="YMl-fu-mHn"/>
@@ -117,6 +124,7 @@
                 <outlet property="labelType" destination="8HM-2G-yxO" id="Yei-mz-EmV"/>
                 <outlet property="lableName" destination="kG3-ca-2jQ" id="hsI-Gb-VBY"/>
             </connections>
+            <point key="canvasLocation" x="245" y="290"/>
         </tableViewCell>
     </objects>
 </document>

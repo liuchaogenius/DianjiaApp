@@ -25,10 +25,16 @@
 
 @implementation YDCXManager
 
-- (void)appGetVipCerditListArr:(int)aStatus finishBlock:(void (^)(NSArray *))aFinishBlock
+- (void)appGetVipCerditListArr:(int)aStatus isRefresh:(BOOL)aIsRefresh finishBlock:(void (^)(NSArray *))aFinishBlock
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
     [dict setValue:[NSNumber numberWithInt:aStatus] forKey:@"Status"];
+    if (aIsRefresh==YES)
+    {
+        _currentPage_yes = 0;
+        _currentPage_no = 0;
+        _currentPage_all = 0;
+    }
     if(aStatus == VipCerditStatusAll)
     {
         [dict setValue:[NSNumber numberWithInt:_currentPage_all] forKey:@"pageNo"];

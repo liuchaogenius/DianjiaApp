@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, VipCerditStatus) {
 };
 
 @interface YDCXManager : NSObject
-- (void)appGetVipCerditListArr:(int)aStatus finishBlock:(void(^)(NSArray *llist))aFinishBlock;
+- (void)appGetVipCerditListArr:(int)aStatus isRefresh:(BOOL)aIsRefresh finishBlock:(void (^)(NSArray *))aFinishBlock;
 - (void)setCurrentVipid:(NSString *)aVipId;
 - (void)setStartTime:(NSString *)aStartTime;
 - (void)setEndTime:(NSString *)aEndTime;

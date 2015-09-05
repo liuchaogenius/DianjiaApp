@@ -22,8 +22,8 @@
 
 - (void)setCellWithMode:(DJYDCXRows *)aMode
 {
-    self.labelMoney.text = [NSString stringWithFormat:@"%f", aMode.realMoney];
-    self.labelNum.text = [NSString stringWithFormat:@"%f", aMode.rowsIdentifier];
+    self.labelMoney.text = [NSString stringWithFormat:@"%.2f", aMode.realMoney];
+    self.labelNum.text = [NSString stringWithFormat:@"%d", (int)aMode.rowsIdentifier];
     self.labelOdd.text = aMode.srl;
     NSString *proStr;
     if ([aMode.profitMoney isKindOfClass:[NSString class]]) proStr = aMode.profitMoney;

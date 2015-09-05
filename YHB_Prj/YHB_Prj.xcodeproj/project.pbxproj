@@ -52,7 +52,6 @@
 		AB3877AA1B97D7F700DD7468 /* YDCXCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3877A81B97D7F700DD7468 /* YDCXCell.m */; };
 		AB3877AB1B97D7F700DD7468 /* YDCXCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB3877A91B97D7F700DD7468 /* YDCXCell.xib */; };
 		AB3877AE1B97DF8200DD7468 /* YDCXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3877AD1B97DF8200DD7468 /* YDCXManager.m */; };
-		AB3877B11B97DFD300DD7468 /* YDCXMode.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3877B01B97DFD300DD7468 /* YDCXMode.m */; };
 		AB40EAB51B8BF97500DE5ED7 /* ClerkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB40EAB41B8BF97500DE5ED7 /* ClerkViewController.m */; };
 		AB40EABC1B8BFA0100DE5ED7 /* ClerkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB40EABA1B8BFA0100DE5ED7 /* ClerkTableViewCell.m */; };
 		AB40EABD1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB40EABB1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib */; };
@@ -320,8 +319,6 @@
 		AB3877A91B97D7F700DD7468 /* YDCXCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YDCXCell.xib; sourceTree = "<group>"; };
 		AB3877AC1B97DF8200DD7468 /* YDCXManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCXManager.h; sourceTree = "<group>"; };
 		AB3877AD1B97DF8200DD7468 /* YDCXManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCXManager.m; sourceTree = "<group>"; };
-		AB3877AF1B97DFD300DD7468 /* YDCXMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCXMode.h; sourceTree = "<group>"; };
-		AB3877B01B97DFD300DD7468 /* YDCXMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCXMode.m; sourceTree = "<group>"; };
 		AB40EAB31B8BF97500DE5ED7 /* ClerkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClerkViewController.h; sourceTree = "<group>"; };
 		AB40EAB41B8BF97500DE5ED7 /* ClerkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClerkViewController.m; sourceTree = "<group>"; };
 		AB40EAB91B8BFA0100DE5ED7 /* ClerkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClerkTableViewCell.h; sourceTree = "<group>"; };
@@ -889,8 +886,6 @@
 				AB3877AC1B97DF8200DD7468 /* YDCXManager.h */,
 				AB3877AD1B97DF8200DD7468 /* YDCXManager.m */,
 				ABAAFB661B996B1B0012D1C6 /* Model */,
-				AB3877AF1B97DFD300DD7468 /* YDCXMode.h */,
-				AB3877B01B97DFD300DD7468 /* YDCXMode.m */,
 			);
 			path = Yudanchaxun;
 			sourceTree = "<group>";
@@ -1782,7 +1777,6 @@
 				FFF391961B846F58007DC652 /* AFHTTPSessionManager.m in Sources */,
 				AB9F43E91B92E45900914C85 /* SettingViewController.m in Sources */,
 				AB2579361B8F02010015039A /* IQUIView+Hierarchy.m in Sources */,
-				AB3877B11B97DFD300DD7468 /* YDCXMode.m in Sources */,
 				FF4DFCF51B856B9600617660 /* SCach.m in Sources */,
 				FF4DFCF41B856B9600617660 /* NSFileManager_Additions.m in Sources */,
 				ABAACA071B95B5EC00305080 /* SupplierManage.m in Sources */,

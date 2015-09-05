@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -32,8 +33,8 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upf-0o-R0Y">
-                        <rect key="frame" x="0.0" y="92.5" width="320" height="0.5"/>
+                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upf-0o-R0Y">
+                        <rect key="frame" x="0.0" y="93" width="320" height="1"/>
                         <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="母婴坊小熊水温计" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xqo-zq-XVq">
@@ -79,6 +80,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="upf-0o-R0Y" secondAttribute="trailing" constant="-16" id="SZ8-fV-kVN"/>
+                    <constraint firstItem="upf-0o-R0Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-16" id="Xnc-Gk-h95"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="labelName" destination="Xqo-zq-XVq" id="qJp-si-pho"/>
@@ -87,6 +92,7 @@
                 <outlet property="labelSum" destination="jsc-TO-S8J" id="Tte-yl-kUg"/>
                 <outlet property="labelZhe" destination="sdT-Hc-OTN" id="QTz-GH-hz6"/>
             </connections>
+            <point key="canvasLocation" x="196" y="299.5"/>
         </tableViewCell>
     </objects>
 </document>

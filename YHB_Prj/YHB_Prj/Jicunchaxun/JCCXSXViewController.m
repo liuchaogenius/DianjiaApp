@@ -12,6 +12,7 @@
 #import "HYGLViewController.h"
 #import "VipInfoMode.h"
 #import "HYCell.h"
+#import "YDCXManager.h"
 @interface JCCXSXViewController ()
 {
      __weak JCCXSXViewController *weakself;
@@ -28,6 +29,9 @@
 @property (strong, nonatomic) NSString *strStartTime;
 @property (strong, nonatomic) NSString *strEndTime;
 @property (strong, nonatomic) NSString *strVipeId;
+
+@property (strong, nonatomic) YDCXManager *YDCXmanager;
+@property (strong, nonatomic) void(^myPopBlock)(void);
 @end
 
 @implementation JCCXSXViewController
@@ -55,6 +59,12 @@
 - (void)setJCCXManager:(JCCXManager *)aManager
 {
     self.manager = aManager;
+}
+
+- (void)setYDCXManager:(YDCXManager *)aManager andPopBlock:(void(^)(void))aPopBlock
+{
+    _YDCXmanager = aManager;
+    _myPopBlock = aPopBlock;
 }
 #pragma mark 进入日期页面
 - (void)dataBtItem:(UIButton *)abt
@@ -158,6 +168,25 @@
         {
             [self.manager setCurrentVipid:_strVipeId];
         }
+    }
+    if (_YDCXmanager)
+    {
+        if (self.strEndTime&& _strEndTime.length > 0)
+        {
+            [_YDCXmanager setEndTime:_strEndTime];
+        }
+        if(self.strStartTime &&self.strStartTime.length>0)
+        {
+            [_YDCXmanager setStartTime:self.strStartTime];
+        }
+        if(self.strVipeId)
+        {
+            [_YDCXmanager setCurrentVipid:_strVipeId];
+        }
+    }
+    if (_myPopBlock) {
+        _myPopBlock();
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

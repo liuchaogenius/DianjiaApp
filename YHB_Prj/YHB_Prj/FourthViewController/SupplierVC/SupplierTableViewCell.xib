@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u8z-iy-IU6">
+                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u8z-iy-IU6">
                         <rect key="frame" x="0.0" y="139" width="320" height="1"/>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.8606124047" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -91,6 +92,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="u8z-iy-IU6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-16" id="EwY-Ij-HAd"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="u8z-iy-IU6" secondAttribute="trailing" constant="-41" id="Rk5-Zg-f7J"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="chuanzhenLabel" destination="Krk-bC-NI2" id="HS2-ic-alN"/>

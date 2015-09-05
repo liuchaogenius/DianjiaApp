@@ -237,11 +237,11 @@ typedef enum : NSUInteger {
 //        self.locaBtn.enabled = NO;
         for (int i=0; i<_titleArray.count; i++)
         {
-            if (i!=FieldTypeLoca)
-            {
+//            if (i!=FieldTypeLoca)
+//            {
                 UITextField *textfield = (UITextField *)[_bgScrollView viewWithTag:100+i];
                 textfield.enabled = NO;
-            }
+//            }
             UIImageView *imgView = (UIImageView *)[_bgScrollView viewWithTag:300+i];
             imgView.hidden = YES;
         }
