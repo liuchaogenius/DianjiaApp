@@ -43,6 +43,13 @@
             [self.tableiview reloadData];
         }
     }];
+    [self.shaixuanBT addTarget:self action:@selector(shuaixuanBTItem) forControlEvents:UIControlEventTouchUpInside];
+}
+
+#pragma mark 点击筛选按钮
+- (void)shuaixuanBTItem
+{
+    [self pushXIBName:@"JCCXSXViewController" animated:YES selector:@"setJCCXManager:" param:self.manager,nil];
 }
 
 #pragma mark - UITableViewDataSource

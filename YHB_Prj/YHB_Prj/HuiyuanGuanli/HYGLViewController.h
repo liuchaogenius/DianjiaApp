@@ -10,5 +10,6 @@
 
 @interface HYGLViewController : BaseViewController< UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate,UITableViewDataSource>
 
+@property (nonatomic, assign)BOOL isNOPushDetail;
 - (void)getUserSelectList:(void(^)(NSMutableArray *selectList))aSelectBlock;
 @end

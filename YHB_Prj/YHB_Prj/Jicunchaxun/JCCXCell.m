@@ -34,8 +34,8 @@
 
 - (void)resetview
 {
-    self.vipNumLabel.text = @"";
-    self.vipNameLabel.text = @"";
+    self.vipNumLabel.text = @" ";
+    self.vipNameLabel.text = @" ";
     self.pinmingLabel.text = @"";
     self.dianmingLabel.text = @"";
     self.dqkcCountLabel.text = @"";

@@ -194,6 +194,9 @@
 		FF5CC7101B9420E000F55713 /* JCCXCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC70E1B9420E000F55713 /* JCCXCell.xib */; };
 		FF5CC7131B94262F00F55713 /* JCCXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC7121B94262F00F55713 /* JCCXManager.m */; };
 		FF5CC7161B94264D00F55713 /* JCCXMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC7151B94264D00F55713 /* JCCXMode.m */; };
+		FF5CC71D1B99A45400F55713 /* JFB_First_Close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC71C1B99A45400F55713 /* JFB_First_Close@2x.png */; };
+		FF5CC7241B9A8D8C00F55713 /* JCCXSXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC7221B9A8D8C00F55713 /* JCCXSXViewController.m */; };
+		FF5CC7251B9A8D8C00F55713 /* JCCXSXViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC7231B9A8D8C00F55713 /* JCCXSXViewController.xib */; };
 		FFD26CCE1B86D0D50003F491 /* FirstMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CCD1B86D0D50003F491 /* FirstMode.m */; };
 		FFD26CDE1B8B0B4E0003F491 /* KCYJManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CDD1B8B0B4E0003F491 /* KCYJManager.m */; };
 		FFD26CE11B8B10970003F491 /* KCYJMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CE01B8B10970003F491 /* KCYJMode.m */; };
@@ -590,6 +593,10 @@
 		FF5CC7121B94262F00F55713 /* JCCXManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCXManager.m; sourceTree = "<group>"; };
 		FF5CC7141B94264D00F55713 /* JCCXMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCXMode.h; sourceTree = "<group>"; };
 		FF5CC7151B94264D00F55713 /* JCCXMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCXMode.m; sourceTree = "<group>"; };
+		FF5CC71C1B99A45400F55713 /* JFB_First_Close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "JFB_First_Close@2x.png"; sourceTree = "<group>"; };
+		FF5CC7211B9A8D8C00F55713 /* JCCXSXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCXSXViewController.h; sourceTree = "<group>"; };
+		FF5CC7221B9A8D8C00F55713 /* JCCXSXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCXSXViewController.m; sourceTree = "<group>"; };
+		FF5CC7231B9A8D8C00F55713 /* JCCXSXViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JCCXSXViewController.xib; sourceTree = "<group>"; };
 		FFD26CCC1B86D0D50003F491 /* FirstMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstMode.h; sourceTree = "<group>"; };
 		FFD26CCD1B86D0D50003F491 /* FirstMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstMode.m; sourceTree = "<group>"; };
 		FFD26CDC1B8B0B4E0003F491 /* KCYJManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCYJManager.h; sourceTree = "<group>"; };
@@ -1017,6 +1024,7 @@
 		FF2A6BD11A0F3780001607AC = {
 			isa = PBXGroup;
 			children = (
+				FF5CC71C1B99A45400F55713 /* JFB_First_Close@2x.png */,
 				5BA5AA321B98299D00329677 /* AVFoundation.framework */,
 				FF5C87281B8318C500F79EC1 /* libsqlite3.dylib */,
 				FF2A6BDC1A0F3780001607AC /* YHB_Prj */,
@@ -1511,6 +1519,9 @@
 				FF5CC7071B93FA0B00F55713 /* JCCXViewController.h */,
 				FF5CC7081B93FA0B00F55713 /* JCCXViewController.m */,
 				FF5CC7091B93FA0B00F55713 /* JCCXViewController.xib */,
+				FF5CC7211B9A8D8C00F55713 /* JCCXSXViewController.h */,
+				FF5CC7221B9A8D8C00F55713 /* JCCXSXViewController.m */,
+				FF5CC7231B9A8D8C00F55713 /* JCCXSXViewController.xib */,
 				FF5CC7111B94262F00F55713 /* JCCXManager.h */,
 				FF5CC7121B94262F00F55713 /* JCCXManager.m */,
 				FF5CC70C1B9420E000F55713 /* JCCXCell.h */,
@@ -1701,6 +1712,7 @@
 				AB42ACD11B8B4140001FB93A /* FourthTableViewCell.xib in Resources */,
 				FF4DFD041B85A5DF00617660 /* DateSelectVC.xib in Resources */,
 				AB42ACDA1B8BE303001FB93A /* GateTableViewCell.xib in Resources */,
+				FF5CC71D1B99A45400F55713 /* JFB_First_Close@2x.png in Resources */,
 				FF5C871A1B83024C00F79EC1 /* LICENSE.txt in Resources */,
 				AB3877AB1B97D7F700DD7468 /* YDCXCell.xib in Resources */,
 				FF5CC7031B93EE5300F55713 /* RuKushenpinVC.xib in Resources */,
@@ -1715,6 +1727,7 @@
 				AB40EAC61B8C021800DE5ED7 /* SupplierTableViewCell.xib in Resources */,
 				AB2579411B8F02010015039A /* IQKeyboardManager.bundle in Resources */,
 				FF5CC7051B93EE5300F55713 /* SXViewController.xib in Resources */,
+				FF5CC7251B9A8D8C00F55713 /* JCCXSXViewController.xib in Resources */,
 				AB40EABD1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib in Resources */,
 				FF2A6BE51A0F3780001607AC /* Images.xcassets in Resources */,
 				FF2A6C431A0F3B6D001607AC /* SVProgressHUD.bundle in Resources */,
@@ -1823,6 +1836,7 @@
 				FF2A6C6C1A0F3B7B001607AC /* NSData+ImageContentType.m in Sources */,
 				FF2A6C701A0F3B7B001607AC /* SDWebImageDownloader.m in Sources */,
 				FF2A6C481A0F3B72001607AC /* JSONKit.m in Sources */,
+				FF5CC7241B9A8D8C00F55713 /* JCCXSXViewController.m in Sources */,
 				AB3877AE1B97DF8200DD7468 /* YDCXManager.m in Sources */,
 				FF2A6C781A0F3B7B001607AC /* UIImageView+HighlightedWebCache.m in Sources */,
 				FFD26CE11B8B10970003F491 /* KCYJMode.m in Sources */,

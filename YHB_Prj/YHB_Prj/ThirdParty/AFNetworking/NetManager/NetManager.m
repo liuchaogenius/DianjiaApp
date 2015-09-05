@@ -261,6 +261,7 @@
 }
 
 + (void)uploadImg:(UIImage*)aImg
+      imgFilePath:(NSString *)aFilePath
        parameters:(NSDictionary*)aParam
           apiName:(NSString *)aApidName
         uploadUrl:(NSString*)aUrl
@@ -286,14 +287,16 @@
     }
     
     [manager POST:kBaseUrl parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        if(aImgname)
-        {
-            [formData appendPartWithFormData:imageData name:aImgname];
-        }
-        else
-        {
-            [formData appendPartWithFormData:imageData name:@"image"];
-        }
+        //[formData appendPartWithFileURL:[NSURL URLWithString:aFilePath] name:@"pic" error:nil];
+        [formData appendPartWithFileData:imageData name:@"imgage" fileName:@"img.jpg" mimeType:@"image/jpeg"];
+//        if(aImgname)
+//        {
+//            [formData appendPartWithFormData:imageData name:aImgname];
+//        }
+//        else
+//        {
+//            [formData appendPartWithFormData:imageData name:@"image"];
+//        }
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *Dict = [operation.responseString objectFromJSONString];
         success(Dict);

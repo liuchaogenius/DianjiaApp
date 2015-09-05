@@ -119,6 +119,7 @@
 #pragma mark Head 部分 日期按钮的事件及页面操作回调
 - (void)head_rbtItem:(UIButton *)abt
 {
+//    [self.manager uploadImg];
     self.dateVC = (DateSelectVC *)[self pushXIBName:@"DateSelectVC" animated:YES selector:nil param:nil];
     [self obserDateVCValue];
 }

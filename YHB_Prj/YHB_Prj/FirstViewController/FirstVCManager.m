@@ -109,4 +109,17 @@
         aFinishBlock(nil);
     }];
 }
+
+- (void)uploadImg
+{
+        NSString *resourcePath =  [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"JFB_First_Close@2x.png"];
+    //JFB_First_Close@2x
+    [NetManager uploadImg:[UIImage imageNamed:@"clerk_1"] imgFilePath:resourcePath parameters:nil apiName:@"uploadUserFacePic" uploadUrl:nil uploadimgName:@"image" progressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        
+    } succ:^(NSDictionary *successDict) {
+        
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        
+    }];
+}
 @end

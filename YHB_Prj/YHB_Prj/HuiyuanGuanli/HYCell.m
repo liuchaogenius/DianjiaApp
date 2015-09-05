@@ -41,6 +41,10 @@
     {
         [self.selectButton setImage:[UIImage imageNamed:@"hyList_icon_nor"] forState:UIControlStateNormal];
     }
+    if(aIndex < 0)
+    {
+        self.selectButton.hidden = YES;
+    }
 }
 
 - (void)selectButtomItem

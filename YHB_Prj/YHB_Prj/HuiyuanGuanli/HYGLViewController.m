@@ -240,7 +240,10 @@
     {
         mode = [self.vipInfoArry objectAtIndex:indexPath.row];
     }
-    [self pushXIBName:@"HYDetailViewController" animated:YES selector:@"setDetailData:" param:mode,nil];
+    if(self.isNOPushDetail == NO)
+    {
+        [self pushXIBName:@"HYDetailViewController" animated:YES selector:@"setDetailData:" param:mode,nil];
+    }
 }
 
 #pragma mark scrollview delegate

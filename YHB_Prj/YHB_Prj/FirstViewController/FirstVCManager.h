@@ -24,4 +24,6 @@
 //3、	首页预警数字查询
 - (void)getHomePageInfoApp:(NSString *)aStoreId
                finishBlock:(void(^)(FirstMode *mode))aFinishBlock;
+
+- (void)uploadImg;
 @end
