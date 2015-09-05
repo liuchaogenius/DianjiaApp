@@ -186,7 +186,7 @@ static const CGFloat bottomViewHeight = 44;
             [_tableviewYudan reloadData];
         }];
     };
-    [self pushXIBName:@"JCCXSXViewController" animated:YES selector:@"setYDCXManager:andPopBlock:" param:self.manage,popBlock];
+    [self pushXIBName:@"JCCXSXViewController" animated:YES selector:@"setYDCXManager:andPopBlock:" param:self.manage,popBlock,nil];
 }
 
 #pragma mark tableView
