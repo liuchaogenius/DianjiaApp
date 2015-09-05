@@ -37,7 +37,6 @@
             failure:(FAILUREBLOCK)failure;
 
 + (void)uploadImg:(UIImage*)aImg
-      imgFilePath:(NSString *)aFilePath
        parameters:(NSDictionary*)aParam
           apiName:(NSString *)aApidName
         uploadUrl:(NSString*)aUrl

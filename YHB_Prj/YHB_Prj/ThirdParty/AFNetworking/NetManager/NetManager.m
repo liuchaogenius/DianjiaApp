@@ -261,7 +261,6 @@
 }
 
 + (void)uploadImg:(UIImage*)aImg
-      imgFilePath:(NSString *)aFilePath
        parameters:(NSDictionary*)aParam
           apiName:(NSString *)aApidName
         uploadUrl:(NSString*)aUrl
@@ -279,7 +278,7 @@
     param = [[NetManager shareInstance] basePostDict:aParam apiName:aApidName];
     dict = [NSMutableDictionary dictionaryWithDictionary:aParam];
     [dict setValue:param forKey:@"S3CAPI"];
-    
+    [manager.requestSerializer setValue:param forHTTPHeaderField:@"S3CAPI"];
     [NetManager setRequestHeadValue:manager];
     if([kBaseUrl compare:@"https://api.chinascrm.com/sapi4app.html"] == 0)
     {
@@ -287,16 +286,7 @@
     }
     
     [manager POST:kBaseUrl parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        //[formData appendPartWithFileURL:[NSURL URLWithString:aFilePath] name:@"pic" error:nil];
-        [formData appendPartWithFileData:imageData name:@"imgage" fileName:@"img.jpg" mimeType:@"image/jpeg"];
-//        if(aImgname)
-//        {
-//            [formData appendPartWithFormData:imageData name:aImgname];
-//        }
-//        else
-//        {
-//            [formData appendPartWithFormData:imageData name:@"image"];
-//        }
+        [formData appendPartWithFileData:imageData name:@"pic" fileName:@"temp_image.jpg" mimeType:@"application/octet-stream"];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *Dict = [operation.responseString objectFromJSONString];
         success(Dict);
