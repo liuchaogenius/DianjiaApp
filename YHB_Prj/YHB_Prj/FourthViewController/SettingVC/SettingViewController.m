@@ -8,8 +8,20 @@
 
 #import "SettingViewController.h"
 #import "SetTableViewCell.h"
+#import "NetManager.h"
+#import "FBViewController.h"
 
-@interface SettingViewController ()<UITableViewDataSource, UITableViewDelegate>
+typedef NS_ENUM(NSInteger, cellType){
+    cellTypeAbout=0,
+    cellTypeRecommend,
+    cellTypeFeedBack,
+    cellTypeCheckNew
+};
+
+@interface SettingViewController ()<UITableViewDataSource, UITableViewDelegate,UIAlertViewDelegate>
+{
+    NSString *_updateUrl;
+}
 @property(nonatomic, strong) UITableView *setTV;
 @property(nonatomic,strong) NSArray *titleArray;
 @property(nonatomic,strong) UIButton *logoutBtn;
@@ -72,7 +84,59 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    MLOG(@"%ld", indexPath.row);
+    switch (indexPath.row) {
+        case cellTypeAbout:
+            
+            break;
+        case cellTypeRecommend:
+            
+            break;
+        case cellTypeFeedBack:
+        {
+            FBViewController *vc = [[FBViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case cellTypeCheckNew:
+        {
+            [SVProgressHUD show:YES offsetY:kMainScreenHeight/2.0];
+            NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+            NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+            CFShow((__bridge CFTypeRef)(infoDictionary));
+            // app版本
+            NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+            [dict setObject:app_Version forKey:@"v_code"];
+            [dict setObject:@1 forKey:@"sys_type"];
+            [NetManager requestWith:dict apiName:@"getVersionInfo" method:@"POST" succ:^(NSDictionary *successDict) {
+//                MLOG(@"%@", successDict);
+                NSDictionary *resultDict = successDict[@"result"];
+                int vid = [resultDict[@"id"] intValue];
+                if (vid==0) [SVProgressHUD showSuccessWithStatus:@"当前是最新版本,无需更新" cover:YES offsetY:kMainScreenHeight/2.0];
+                else
+                {
+                    [SVProgressHUD dismiss];
+                    _updateUrl = [NSString stringWithFormat:@"%@%@", resultDict[@"pathDomain"], resultDict[@"pathUrl"]];
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"是否现在去更新" message:nil delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+                    [alertView show];
+                }
+            } failure:^(NSDictionary *failDict, NSError *error) {
+                
+            }];
+            
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==1)
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_updateUrl]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

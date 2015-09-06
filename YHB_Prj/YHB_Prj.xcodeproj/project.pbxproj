@@ -86,6 +86,7 @@
 		ABAAFB6D1B996B250012D1C6 /* DJYDCXDetailList.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAAFB681B996B250012D1C6 /* DJYDCXDetailList.m */; };
 		ABAAFB6E1B996B250012D1C6 /* DJYDCXResult.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAAFB6A1B996B250012D1C6 /* DJYDCXResult.m */; };
 		ABAAFB6F1B996B250012D1C6 /* DJYDCXRows.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAAFB6C1B996B250012D1C6 /* DJYDCXRows.m */; };
+		ABE71E241B9C32E2000651A9 /* FBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE71E231B9C32E2000651A9 /* FBViewController.m */; };
 		ABEF1DA71B929D5400C1C2EA /* SupplierDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DA61B929D5400C1C2EA /* SupplierDetailViewController.m */; };
 		ABEF1DAB1B92A18E00C1C2EA /* ClerkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DAA1B92A18E00C1C2EA /* ClerkDetailViewController.m */; };
 		ABEF1DAF1B92AD2700C1C2EA /* TenantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DAE1B92AD2700C1C2EA /* TenantViewController.m */; };
@@ -389,6 +390,8 @@
 		ABAAFB6A1B996B250012D1C6 /* DJYDCXResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJYDCXResult.m; sourceTree = "<group>"; };
 		ABAAFB6B1B996B250012D1C6 /* DJYDCXRows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJYDCXRows.h; sourceTree = "<group>"; };
 		ABAAFB6C1B996B250012D1C6 /* DJYDCXRows.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJYDCXRows.m; sourceTree = "<group>"; };
+		ABE71E221B9C32E2000651A9 /* FBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBViewController.h; sourceTree = "<group>"; };
+		ABE71E231B9C32E2000651A9 /* FBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBViewController.m; sourceTree = "<group>"; };
 		ABEF1DA51B929D5400C1C2EA /* SupplierDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierDetailViewController.h; sourceTree = "<group>"; };
 		ABEF1DA61B929D5400C1C2EA /* SupplierDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplierDetailViewController.m; sourceTree = "<group>"; };
 		ABEF1DA91B92A18E00C1C2EA /* ClerkDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClerkDetailViewController.h; sourceTree = "<group>"; };
@@ -1018,6 +1021,8 @@
 				AB9F43E81B92E45900914C85 /* SettingViewController.m */,
 				AB9F43EA1B92E58400914C85 /* SetTableViewCell.h */,
 				AB9F43EB1B92E58400914C85 /* SetTableViewCell.m */,
+				ABE71E221B9C32E2000651A9 /* FBViewController.h */,
+				ABE71E231B9C32E2000651A9 /* FBViewController.m */,
 			);
 			path = SettingVC;
 			sourceTree = "<group>";
@@ -1891,6 +1896,7 @@
 				5B1F7FA01B90A9C000763059 /* DJProductCheckListCell.m in Sources */,
 				FF3C20081A2F2A440081D3C7 /* GlobObserverObject.m in Sources */,
 				ABAAFB6E1B996B250012D1C6 /* DJYDCXResult.m in Sources */,
+				ABE71E241B9C32E2000651A9 /* FBViewController.m in Sources */,
 				AB25793A1B8F02010015039A /* IQKeyboardReturnKeyHandler.m in Sources */,
 				FF5C86DF1B818BE700F79EC1 /* SSWDirectionalPanGestureRecognizer.m in Sources */,
 				5B1F7FAD1B91CEB100763059 /* DJProductCheckSrlResult.m in Sources */,
