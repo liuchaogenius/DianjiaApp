@@ -45,6 +45,13 @@
 		AB25793F1B8F02010015039A /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AB25792E1B8F02010015039A /* IQToolbar.m */; };
 		AB2579401B8F02010015039A /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2579301B8F02010015039A /* IQUIView+IQKeyboardToolbar.m */; };
 		AB2579411B8F02010015039A /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AB2579331B8F02010015039A /* IQKeyboardManager.bundle */; };
+		AB311F8C1B9BDBFE0070784E /* ProblemGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB311F8B1B9BDBFE0070784E /* ProblemGoodsViewController.m */; };
+		AB311F901B9BDC260070784E /* ProblemGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB311F8E1B9BDC260070784E /* ProblemGoodsCell.m */; };
+		AB311F911B9BDC260070784E /* ProblemGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB311F8F1B9BDC260070784E /* ProblemGoodsCell.xib */; };
+		AB311F941B9BE0100070784E /* ProblemGoodsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB311F931B9BE0100070784E /* ProblemGoodsManager.m */; };
+		AB311F9C1B9BFCEE0070784E /* PGPicList.m in Sources */ = {isa = PBXBuildFile; fileRef = AB311F971B9BFCEE0070784E /* PGPicList.m */; };
+		AB311F9D1B9BFCEE0070784E /* PGResult.m in Sources */ = {isa = PBXBuildFile; fileRef = AB311F991B9BFCEE0070784E /* PGResult.m */; };
+		AB311F9E1B9BFCEE0070784E /* PGRows.m in Sources */ = {isa = PBXBuildFile; fileRef = AB311F9B1B9BFCEE0070784E /* PGRows.m */; };
 		AB358E431B99855C007D62E9 /* YDCXDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB358E421B99855C007D62E9 /* YDCXDetailViewController.m */; };
 		AB358E471B99B47B007D62E9 /* YDCXDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB358E451B99B47B007D62E9 /* YDCXDetailCell.m */; };
 		AB358E481B99B47B007D62E9 /* YDCXDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB358E461B99B47B007D62E9 /* YDCXDetailCell.xib */; };
@@ -307,6 +314,19 @@
 		AB2579301B8F02010015039A /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		AB2579311B8F02010015039A /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
 		AB2579331B8F02010015039A /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		AB311F8A1B9BDBFE0070784E /* ProblemGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemGoodsViewController.h; sourceTree = "<group>"; };
+		AB311F8B1B9BDBFE0070784E /* ProblemGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemGoodsViewController.m; sourceTree = "<group>"; };
+		AB311F8D1B9BDC260070784E /* ProblemGoodsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemGoodsCell.h; sourceTree = "<group>"; };
+		AB311F8E1B9BDC260070784E /* ProblemGoodsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemGoodsCell.m; sourceTree = "<group>"; };
+		AB311F8F1B9BDC260070784E /* ProblemGoodsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProblemGoodsCell.xib; sourceTree = "<group>"; };
+		AB311F921B9BE0100070784E /* ProblemGoodsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemGoodsManager.h; sourceTree = "<group>"; };
+		AB311F931B9BE0100070784E /* ProblemGoodsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemGoodsManager.m; sourceTree = "<group>"; };
+		AB311F961B9BFCEE0070784E /* PGPicList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGPicList.h; sourceTree = "<group>"; };
+		AB311F971B9BFCEE0070784E /* PGPicList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGPicList.m; sourceTree = "<group>"; };
+		AB311F981B9BFCEE0070784E /* PGResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGResult.h; sourceTree = "<group>"; };
+		AB311F991B9BFCEE0070784E /* PGResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGResult.m; sourceTree = "<group>"; };
+		AB311F9A1B9BFCEE0070784E /* PGRows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGRows.h; sourceTree = "<group>"; };
+		AB311F9B1B9BFCEE0070784E /* PGRows.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGRows.m; sourceTree = "<group>"; };
 		AB358E411B99855C007D62E9 /* YDCXDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCXDetailViewController.h; sourceTree = "<group>"; };
 		AB358E421B99855C007D62E9 /* YDCXDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCXDetailViewController.m; sourceTree = "<group>"; };
 		AB358E441B99B47B007D62E9 /* YDCXDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCXDetailCell.h; sourceTree = "<group>"; };
@@ -870,6 +890,34 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		AB311F891B9BDBEA0070784E /* ProblemGoods */ = {
+			isa = PBXGroup;
+			children = (
+				AB311F951B9BFCE60070784E /* PGModel */,
+				AB311F8A1B9BDBFE0070784E /* ProblemGoodsViewController.h */,
+				AB311F8B1B9BDBFE0070784E /* ProblemGoodsViewController.m */,
+				AB311F8D1B9BDC260070784E /* ProblemGoodsCell.h */,
+				AB311F8E1B9BDC260070784E /* ProblemGoodsCell.m */,
+				AB311F8F1B9BDC260070784E /* ProblemGoodsCell.xib */,
+				AB311F921B9BE0100070784E /* ProblemGoodsManager.h */,
+				AB311F931B9BE0100070784E /* ProblemGoodsManager.m */,
+			);
+			path = ProblemGoods;
+			sourceTree = "<group>";
+		};
+		AB311F951B9BFCE60070784E /* PGModel */ = {
+			isa = PBXGroup;
+			children = (
+				AB311F961B9BFCEE0070784E /* PGPicList.h */,
+				AB311F971B9BFCEE0070784E /* PGPicList.m */,
+				AB311F981B9BFCEE0070784E /* PGResult.h */,
+				AB311F991B9BFCEE0070784E /* PGResult.m */,
+				AB311F9A1B9BFCEE0070784E /* PGRows.h */,
+				AB311F9B1B9BFCEE0070784E /* PGRows.m */,
+			);
+			path = PGModel;
+			sourceTree = "<group>";
+		};
 		AB3877A31B97D06E00DD7468 /* Yudanchaxun */ = {
 			isa = PBXGroup;
 			children = (
@@ -1276,6 +1324,7 @@
 		FF2A6C8D1A0F3CC9001607AC /* FourthViewController */ = {
 			isa = PBXGroup;
 			children = (
+				AB311F891B9BDBEA0070784E /* ProblemGoods */,
 				AB9F43E61B92E45000914C85 /* SettingVC */,
 				ABEF1DAC1B92AD1800C1C2EA /* Tenant */,
 				AB8844181B913DA500FA526D /* ChooseLocaVC */,
@@ -1735,6 +1784,7 @@
 				FFD26CEB1B8C1B3B0003F491 /* KCYJViewController.xib in Resources */,
 				FF5CC7101B9420E000F55713 /* JCCXCell.xib in Resources */,
 				FF5CC7011B93EE5300F55713 /* RukuDetailViewController.xib in Resources */,
+				AB311F911B9BDC260070784E /* ProblemGoodsCell.xib in Resources */,
 				FFD26CF51B8C546F0003F491 /* ZCBCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1818,6 +1868,7 @@
 				AB25793B1B8F02010015039A /* IQSegmentedNextPrevious.m in Sources */,
 				AB88441E1B914D0F00FA526D /* CLTableViewCell.m in Sources */,
 				FFD26CF41B8C546F0003F491 /* ZCBCell.m in Sources */,
+				AB311F901B9BDC260070784E /* ProblemGoodsCell.m in Sources */,
 				FF2A6C0C1A0F3A01001607AC /* UIImage+ImageEffects.m in Sources */,
 				FF2A6C791A0F3B7B001607AC /* UIImageView+WebCache.m in Sources */,
 				FF5CC7021B93EE5300F55713 /* RuKushenpinVC.m in Sources */,
@@ -1834,6 +1885,7 @@
 				AB3877AE1B97DF8200DD7468 /* YDCXManager.m in Sources */,
 				FF2A6C781A0F3B7B001607AC /* UIImageView+HighlightedWebCache.m in Sources */,
 				FFD26CE11B8B10970003F491 /* KCYJMode.m in Sources */,
+				AB311F9C1B9BFCEE0070784E /* PGPicList.m in Sources */,
 				AB8071C51B96C7AA002114C9 /* EmpManage.m in Sources */,
 				ABEF1DA71B929D5400C1C2EA /* SupplierDetailViewController.m in Sources */,
 				5B1F7FA01B90A9C000763059 /* DJProductCheckListCell.m in Sources */,
@@ -1882,6 +1934,7 @@
 				FF5CC7001B93EE5300F55713 /* RukuDetailViewController.m in Sources */,
 				AB2579401B8F02010015039A /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				5B1F7F921B8F690400763059 /* DJProductCheckVC.m in Sources */,
+				AB311F9D1B9BFCEE0070784E /* PGResult.m in Sources */,
 				FF5C86F81B81B72400F79EC1 /* MASCompositeConstraint.m in Sources */,
 				FF2A6C441A0F3B6D001607AC /* SVProgressHUD.m in Sources */,
 				FF5C871C1B83024C00F79EC1 /* FMDatabase.m in Sources */,
@@ -1898,6 +1951,7 @@
 				ABAACA0A1B95BE7600305080 /* SupplierMode.m in Sources */,
 				FF4DFD0B1B85CBFA00617660 /* StoreListView.m in Sources */,
 				5B54BA421B9336C7002098A4 /* DJCheckCartCell.m in Sources */,
+				AB311F9E1B9BFCEE0070784E /* PGRows.m in Sources */,
 				FF2A6C711A0F3B7B001607AC /* SDWebImageDownloaderOperation.m in Sources */,
 				5B54BA3B1B92B0BC002098A4 /* DJCheckCartNetService.m in Sources */,
 				5B1F7F991B8F73C000763059 /* CALayer+CCAddition.m in Sources */,
@@ -1914,8 +1968,10 @@
 				FF2A6C891A0F3B8A001607AC /* UIScrollView+SVPullToRefresh.m in Sources */,
 				FFD26CEA1B8C1B3B0003F491 /* KCYJViewController.m in Sources */,
 				AB8844161B913D6300FA526D /* UITableView+DataSourceBlocks.m in Sources */,
+				AB311F941B9BE0100070784E /* ProblemGoodsManager.m in Sources */,
 				FF2A6C991A0F3D1C001607AC /* ThirdViewController.m in Sources */,
 				FF5CC70A1B93FA0B00F55713 /* JCCXViewController.m in Sources */,
+				AB311F8C1B9BDBFE0070784E /* ProblemGoodsViewController.m in Sources */,
 				ABAAFB6F1B996B250012D1C6 /* DJYDCXRows.m in Sources */,
 				AB42ACD01B8B4140001FB93A /* FourthTableViewCell.m in Sources */,
 				FFF391971B846F58007DC652 /* AFNetworkReachabilityManager.m in Sources */,

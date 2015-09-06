@@ -17,6 +17,7 @@
 #import "LoginManager.h"
 #import "SDWebImageManager.h"
 #import "NetManager.h"
+#import "ProblemGoodsViewController.h"
 
 #define userFace @"userFace"
 
@@ -235,7 +236,12 @@ typedef enum : NSUInteger {
             
             break;
         case cellTypeMatter:
-            
+        {
+            ProblemGoodsViewController *vc = [[ProblemGoodsViewController alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
             break;
         default:
             break;

@@ -24,7 +24,7 @@
 {
     [self resetCell];
     self.labelName.text = aMode.productName;
-    self.labelNum.text = [NSString stringWithFormat:@"%d", (int)aMode.saleNum];
+    self.labelNum.text = [NSString stringWithFormat:@"%.f", aMode.saleNum];
     self.labelPri.text = [NSString stringWithFormat:@"%.2f", aMode.salePrice];
     self.labelSum.text = [NSString stringWithFormat:@"%.2f", aMode.payableMoney];
     self.labelZhe.text = [NSString stringWithFormat:@"%.2f%%", aMode.discountRate];

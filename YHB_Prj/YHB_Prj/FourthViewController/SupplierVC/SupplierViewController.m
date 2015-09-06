@@ -84,15 +84,14 @@
         [tableView registerNib:[UINib nibWithNibName:@"SupplierTableViewCell" bundle:nil] forCellReuseIdentifier:cellId];
         cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     }
-    SupplierMode *mode = [self.dataArray objectAtIndex:indexPath.row];
-    [cell setCellWithSupplierMode:mode];
+
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(SupplierTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    cell.cellImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"mine_menu_%d", (int)indexPath.row]];
-    //    cell.cellTitleLabel.text = _cellTitleArray[indexPath.row];
+    SupplierMode *mode = [self.dataArray objectAtIndex:indexPath.row];
+    [cell setCellWithSupplierMode:mode];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

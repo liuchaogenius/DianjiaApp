@@ -75,7 +75,6 @@
     {
         [tableView registerNib:[UINib nibWithNibName:@"YDCXDetailCell" bundle:nil] forCellReuseIdentifier:cellId];
         cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     return cell;
@@ -83,6 +82,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(YDCXDetailCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     DJYDCXDetailList *mode = _arrData[indexPath.row];
     [cell setCellWithMode:mode];
 }
