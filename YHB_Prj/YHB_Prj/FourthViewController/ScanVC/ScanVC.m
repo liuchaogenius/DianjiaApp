@@ -8,17 +8,27 @@
 
 #import "ScanVC.h"
 #import "DJScanViewController.h"
+#import "LoginMode.h"
 
 @interface ScanVC ()
-
+@property(nonatomic,strong) StoreMode *mode;
 @property(nonatomic,strong) UIButton *scanBtn;
 @end
 
 @implementation ScanVC
 
+- (instancetype)initWithMode:(StoreMode *)aMode
+{
+    if (self = [super init])
+    {
+        _mode = aMode;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"快速扫描";
+    self.title = _mode.strStoreName;
     self.view.backgroundColor = [UIColor whiteColor];
     
     CGFloat btnWidth = 250;

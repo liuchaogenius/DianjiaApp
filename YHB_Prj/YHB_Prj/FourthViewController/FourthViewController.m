@@ -19,8 +19,12 @@
 #import "NetManager.h"
 #import "ProblemGoodsViewController.h"
 #import "ScanVC.h"
+#import "CLTableViewCell.h"
+#import "LoginMode.h"
 
 #define userFace @"userFace"
+
+static const CGFloat storeTVWidth = 100;
 
 typedef enum : NSUInteger {
     cellTypeTenant = 0,//商户
@@ -45,6 +49,11 @@ typedef enum : NSUInteger {
     UILabel *_userProLabel;//信誉
     UIButton *_userImgBtn;//头像按钮
     UIView *_proBgView;//星星的bgView
+    
+    UIView *_maskingView;
+    UITapGestureRecognizer *_tapGR;
+    UITableView *_storeTV;
+    NSArray *_storeArr;
 }
 @end
 
@@ -143,111 +152,185 @@ typedef enum : NSUInteger {
     [self.view addSubview:_mineTableView];
     
     _cellTitleArray = @[@"商户管理", @"门店管理", @"店员管理", @"供货商管理", @"设置", @"", @"快速扫描", @"问题商品"];
+    
+    [self createMaskingView];
+    [self.view bringSubviewToFront:_mineTableView];
+}
+
+- (void)createMaskingView
+{
+    _maskingView = [[UIView alloc] initWithFrame:self.view.bounds];
+    _maskingView.backgroundColor = [UIColor blackColor];
+    _maskingView.alpha = 0.3;
+    _tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchMask)];
+    [_maskingView addGestureRecognizer:_tapGR];
+    [self.view addSubview:_maskingView];
+    
+    LoginManager *loManager = [LoginManager shareLoginManager];
+    _storeArr = [loManager getStoreList];
+    
+    CGFloat cellHeight = 30;
+    CGFloat storeTVHeight = cellHeight*_storeArr.count>120?120:cellHeight*_storeArr.count;
+    _storeTV = [[UITableView alloc] initWithFrame:CGRectMake(kMainScreenWidth/2.0-storeTVWidth/2.0, _maskingView.height/2.0-storeTVHeight/2.0, storeTVWidth, storeTVHeight)];
+    _storeTV.delegate =self;
+    _storeTV.dataSource = self;
+    _storeTV.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _storeTV.tableFooterView = [UIView new];
+    [self.view addSubview:_storeTV];
+}
+
+- (void)touchMask
+{
+    [self.view bringSubviewToFront:_mineTableView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _cellTitleArray.count;
+    if (tableView==_mineTableView)
+    {
+        return _cellTitleArray.count;
+    }
+    else
+    {
+        return _storeArr.count;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==5)
+    if (tableView==_mineTableView)
     {
-        return 10;
+        if (indexPath.row==5)
+        {
+            return 10;
+        }
+        return [FourthTableViewCell heightForFourthCell];
     }
-    return [FourthTableViewCell heightForFourthCell];
+    else
+    {
+        return 30;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row != 5)
+    if (tableView==_mineTableView)
     {
-        static NSString *cellId = @"FourthCell";
-        FourthTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-        if (!cell)
+        if (indexPath.row != 5)
         {
-            [tableView registerNib:[UINib nibWithNibName:@"FourthTableViewCell" bundle:nil] forCellReuseIdentifier:cellId];
-            cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            static NSString *cellId = @"FourthCell";
+            FourthTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            if (!cell)
+            {
+                [tableView registerNib:[UINib nibWithNibName:@"FourthTableViewCell" bundle:nil] forCellReuseIdentifier:cellId];
+                cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            }
+            
+            return cell;
         }
-        
-        return cell;
+        else
+        {
+            UITableViewCell *cell = [[UITableViewCell alloc] init];
+            UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 5, kMainScreenWidth-50, 0.5)];
+            lineView.backgroundColor = RGBCOLOR(220, 220, 220);
+            [cell addSubview:lineView];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
     }
     else
     {
-        UITableViewCell *cell = [[UITableViewCell alloc] init];
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 5, kMainScreenWidth-50, 0.5)];
-        lineView.backgroundColor = RGBCOLOR(220, 220, 220);
-        [cell addSubview:lineView];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        static NSString *clcellId = @"clCell";
+        CLTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:clcellId];
+        if (!cell)
+        {
+            cell = [[CLTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:clcellId andWidth:storeTVWidth];
+            cell.titleLabel.font = kFont12;
+        }
+        StoreMode *mode = _storeArr[indexPath.row];
+        cell.titleLabel.text = mode.strStoreName;
         return cell;
     }
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(FourthTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row!=5)
+    if (tableView==_mineTableView)
     {
-        cell.cellImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"mine_menu_%d", (int)indexPath.row]];
-        cell.cellTitleLabel.text = _cellTitleArray[indexPath.row];
+        if(indexPath.row!=5)
+        {
+            cell.cellImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"mine_menu_%d", (int)indexPath.row]];
+            cell.cellTitleLabel.text = _cellTitleArray[indexPath.row];
+        }
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    switch (indexPath.row) {
-        case cellTypeTenant:
-        {
-            TenantViewController *vc = [[TenantViewController alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
+    if (tableView==_mineTableView)
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        switch (indexPath.row) {
+            case cellTypeTenant:
+            {
+                TenantViewController *vc = [[TenantViewController alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+            case cellTypeGate:
+            {
+                GateViewController *vc = [[GateViewController alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+            case cellTypeClerk:
+            {
+                ClerkViewController *vc = [[ClerkViewController alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+            case cellTypeSupplier:
+            {
+                SupplierViewController *vc = [[SupplierViewController alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+            case cellTypeOption:
+            {
+                SettingViewController *vc = [[SettingViewController alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+            case cellTypeScan:
+            {
+                [self.view bringSubviewToFront:_maskingView];
+                [self.view bringSubviewToFront:_storeTV];
+                break;
+            }
+            case cellTypeMatter:
+            {
+                ProblemGoodsViewController *vc = [[ProblemGoodsViewController alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+                break;
+            }
+            default:
+                break;
         }
-        case cellTypeGate:
-        {
-            GateViewController *vc = [[GateViewController alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-        case cellTypeClerk:
-        {
-            ClerkViewController *vc = [[ClerkViewController alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-        case cellTypeSupplier:
-        {
-            SupplierViewController *vc = [[SupplierViewController alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-        case cellTypeOption:
-        {
-            SettingViewController *vc = [[SettingViewController alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-        case cellTypeScan:
-        {
-            ScanVC *vc = [[ScanVC alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-        case cellTypeMatter:
-        {
-            ProblemGoodsViewController *vc = [[ProblemGoodsViewController alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-        default:
-            break;
+    }
+    else
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        StoreMode *mode = _storeArr[indexPath.row];
+        [self.view bringSubviewToFront:_mineTableView];
+        ScanVC *vc = [[ScanVC alloc] initWithMode:mode];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 

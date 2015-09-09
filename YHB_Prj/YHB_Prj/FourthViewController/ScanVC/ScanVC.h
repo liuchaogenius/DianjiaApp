@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+@class StoreMode;
 @interface ScanVC : BaseViewController
 
+- (instancetype)initWithMode:(StoreMode *)aMode;
 @end
