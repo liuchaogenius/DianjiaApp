@@ -1,0 +1,19 @@
+//
+//  SPGLManager.h
+//  YHB_Prj
+//
+//  Created by  striveliu on 15/9/9.
+//  Copyright (c) 2015年 striveliu. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "SPGLCategoryMode.h"
+#import "SPGLProductMode.h"
+
+@interface SPGLManager : NSObject
+- (void)getAllProductCls:(void(^)(SPGLCategoryIndexList *list))aFinishBlock;
+//2、	按分类查询商品列表
+- (void)getProductListByClsApp:(NSString*)aId
+                   finishBlock:(void(^)(SPGLProductList* aList))aFinishBlock;
+
+@end

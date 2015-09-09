@@ -151,7 +151,7 @@
     UIButton *button = [[UIButton alloc] initWithFrame:buttonFrame];
     if(aImg)
     {
-        [button setBackgroundImage:aImg forState:UIControlStateNormal];
+        [button setImage:aImg forState:UIControlStateNormal];
     }
     if(aTitle)
     {
@@ -251,7 +251,7 @@
     }
     if(aImg)
     {
-        [button setBackgroundImage:aImg forState:UIControlStateNormal];
+        [button setImage:aImg forState:UIControlStateNormal];
     }
     CGRect viewFrame = CGRectMake(kMainScreenWidth-100/2, 0, 59, 44);
     UIView *view = [[UIView alloc]initWithFrame:viewFrame];

@@ -72,6 +72,7 @@
     [self.bottom_sprk_BT addTarget:self action:@selector(rksp_buttonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_chcx_BT addTarget:self action:@selector(jccx_buttonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_gdcx_BT addTarget:self action:@selector(gdcx_buttonItem) forControlEvents:UIControlEventTouchUpInside];
+    [self.bottom_spgl_BT addTarget:self action:@selector(spgl_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -171,6 +172,11 @@
     [self pushXIBName:@"KCYJViewController" animated:YES selector:nil param:nil];
 }
 
+#pragma mark 进入商品管理
+- (void)spgl_ButtonItem
+{
+    [self pushXIBName:@"ShangpinguanliVC" animated:YES selector:nil param:nil];
+}
 #pragma mark 会员管理
 - (void)hygl_ButtonItem
 {
