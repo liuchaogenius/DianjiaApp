@@ -18,6 +18,7 @@
 #import "SDWebImageManager.h"
 #import "NetManager.h"
 #import "ProblemGoodsViewController.h"
+#import "ScanVC.h"
 
 #define userFace @"userFace"
 
@@ -231,10 +232,13 @@ typedef enum : NSUInteger {
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
-            break;
         case cellTypeScan:
-            
+        {
+            ScanVC *vc = [[ScanVC alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
             break;
+        }
         case cellTypeMatter:
         {
             ProblemGoodsViewController *vc = [[ProblemGoodsViewController alloc] init];
@@ -242,7 +246,6 @@ typedef enum : NSUInteger {
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
-            break;
         default:
             break;
     }

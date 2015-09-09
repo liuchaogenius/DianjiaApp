@@ -86,6 +86,7 @@
 		ABAAFB6D1B996B250012D1C6 /* DJYDCXDetailList.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAAFB681B996B250012D1C6 /* DJYDCXDetailList.m */; };
 		ABAAFB6E1B996B250012D1C6 /* DJYDCXResult.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAAFB6A1B996B250012D1C6 /* DJYDCXResult.m */; };
 		ABAAFB6F1B996B250012D1C6 /* DJYDCXRows.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAAFB6C1B996B250012D1C6 /* DJYDCXRows.m */; };
+		ABAE34A11BA0109C00221980 /* ScanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAE34A01BA0109C00221980 /* ScanVC.m */; };
 		ABE71E241B9C32E2000651A9 /* FBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE71E231B9C32E2000651A9 /* FBViewController.m */; };
 		ABEF1DA71B929D5400C1C2EA /* SupplierDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DA61B929D5400C1C2EA /* SupplierDetailViewController.m */; };
 		ABEF1DAB1B92A18E00C1C2EA /* ClerkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DAA1B92A18E00C1C2EA /* ClerkDetailViewController.m */; };
@@ -390,6 +391,8 @@
 		ABAAFB6A1B996B250012D1C6 /* DJYDCXResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJYDCXResult.m; sourceTree = "<group>"; };
 		ABAAFB6B1B996B250012D1C6 /* DJYDCXRows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJYDCXRows.h; sourceTree = "<group>"; };
 		ABAAFB6C1B996B250012D1C6 /* DJYDCXRows.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJYDCXRows.m; sourceTree = "<group>"; };
+		ABAE349F1BA0109C00221980 /* ScanVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanVC.h; sourceTree = "<group>"; };
+		ABAE34A01BA0109C00221980 /* ScanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanVC.m; sourceTree = "<group>"; };
 		ABE71E221B9C32E2000651A9 /* FBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBViewController.h; sourceTree = "<group>"; };
 		ABE71E231B9C32E2000651A9 /* FBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBViewController.m; sourceTree = "<group>"; };
 		ABEF1DA51B929D5400C1C2EA /* SupplierDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierDetailViewController.h; sourceTree = "<group>"; };
@@ -1040,6 +1043,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		ABAE349E1BA0107A00221980 /* ScanVC */ = {
+			isa = PBXGroup;
+			children = (
+				ABAE349F1BA0109C00221980 /* ScanVC.h */,
+				ABAE34A01BA0109C00221980 /* ScanVC.m */,
+			);
+			path = ScanVC;
+			sourceTree = "<group>";
+		};
 		ABEF1DA41B929D4100C1C2EA /* SupplierDetailVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1329,6 +1341,7 @@
 		FF2A6C8D1A0F3CC9001607AC /* FourthViewController */ = {
 			isa = PBXGroup;
 			children = (
+				ABAE349E1BA0107A00221980 /* ScanVC */,
 				AB311F891B9BDBEA0070784E /* ProblemGoods */,
 				AB9F43E61B92E45000914C85 /* SettingVC */,
 				ABEF1DAC1B92AD1800C1C2EA /* Tenant */,
@@ -1925,6 +1938,7 @@
 				FF4DFD081B85B21C00617660 /* NSDateTool.m in Sources */,
 				FF2A6C6B1A0F3B7B001607AC /* MKAnnotationView+WebCache.m in Sources */,
 				FF5C87271B830F3000F79EC1 /* LoginManager.m in Sources */,
+				ABAE34A11BA0109C00221980 /* ScanVC.m in Sources */,
 				AB358E431B99855C007D62E9 /* YDCXDetailViewController.m in Sources */,
 				FF5CC6F91B93EE5300F55713 /* GysMode.m in Sources */,
 				FF5C87201B83024C00F79EC1 /* FMResultSet.m in Sources */,

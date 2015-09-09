@@ -27,7 +27,7 @@
         
         _chooseView = [[UIView alloc] initWithFrame:CGRectMake(height/2.0-4, height/2.0-4, 8, 8)];
         _chooseView.layer.cornerRadius = 4;
-        _chooseView.backgroundColor = [UIColor orangeColor];
+        _chooseView.backgroundColor = KColor;
         _chooseView.hidden = YES;
         [self addSubview:_chooseView];
     }
@@ -37,7 +37,7 @@
 - (void)becomeChoose
 {
     _chooseView.hidden = NO;
-    self.layer.borderColor = [[UIColor orangeColor] CGColor];
+    self.layer.borderColor = [KColor CGColor];
 }
 
 - (void)becomeHidden

@@ -33,7 +33,7 @@
     _btnChoose = [[UIButton alloc] initWithFrame:CGRectMake(kMainScreenWidth/2.0-btnWidth/2.0, _textViewFB.bottom+20, btnWidth, 40)];
     _btnChoose.titleLabel.font = kFont13;
     [_btnChoose setTitle:@"确认发送" forState:UIControlStateNormal];
-    _btnChoose.backgroundColor = [UIColor orangeColor];
+    _btnChoose.backgroundColor = KColor;
     _btnChoose.layer.cornerRadius = 3;
     [_btnChoose addTarget:self action:@selector(touchChoose) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_btnChoose];

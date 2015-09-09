@@ -109,7 +109,7 @@ static const CGFloat bottomViewHeight = 44;
     CGFloat length = attStr.length;
     [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:preRange];
     NSRange boRange = NSMakeRange(4, length-4);
-    [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:boRange];
+    [attStr addAttribute:NSForegroundColorAttributeName value:KColor range:boRange];
     _labelSum.attributedText = attStr;
 }
 

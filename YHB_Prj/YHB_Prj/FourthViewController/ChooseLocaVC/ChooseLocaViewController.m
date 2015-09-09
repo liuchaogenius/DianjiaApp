@@ -111,7 +111,7 @@
     lineView.backgroundColor = RGBCOLOR(220, 220, 220);
     [self.view addSubview:lineView];
     
-    UIColor *btnColor = [UIColor orangeColor];
+    UIColor *btnColor = KColor;
     for (int i=0; i<2; i++)
     {
         UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(15+kMainScreenWidth/2.0*i, lineView.bottom+35, kMainScreenWidth/2.0-30, 30)];

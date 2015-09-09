@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger, cellType){
     [self.view addSubview:_setTV];
     
     CGFloat cellH = [SetTableViewCell heightForSetCell];
-    UIColor *btnColor = [UIColor orangeColor];
+    UIColor *btnColor = KColor;
     CGFloat btnWidth = 200;
     UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64-4*cellH)];
     _logoutBtn = [[UIButton alloc] initWithFrame:CGRectMake((kMainScreenWidth-btnWidth)/2.0, tableFooterView.bottom-40-50, btnWidth, 40)];
