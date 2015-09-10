@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface SPGLSearchVC : BaseViewController<UITableViewDelegate, UITableViewDataSource>
-
+@class SPGLManager;
+@interface SPGLSearchVC : BaseViewController<UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate>
+- (void)setMnagerAndCode:(SPGLManager *)aManager procode:(NSString *)aProcode;
 @end

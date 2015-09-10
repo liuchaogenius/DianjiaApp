@@ -14,13 +14,6 @@
 - (void)awakeFromNib {
     // Initialization code
 }
-//mageView *headUrl;
-//@property (strong, nonatomic) IBOutlet UILabel *pinming;
-//@property (strong, nonatomic) IBOutlet UILabel *jinjiaLabel;
-//@property (strong, nonatomic) IBOutlet UILabel *kucunlabel;
-//@property (strong, nonatomic) IBOutlet UILabel *shoujiaLabel;
-//@property (strong, nonatomic) IBOutlet UILabel *zhekouLabel;
-
 
 - (void)setCellData:(SPGLProductMode *)aMode
 {

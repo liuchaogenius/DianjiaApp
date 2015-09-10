@@ -152,6 +152,9 @@
 		FF357C941BA052F500DFCAC0 /* SPGLSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF357C921BA052F500DFCAC0 /* SPGLSearchCell.m */; };
 		FF357C951BA052F500DFCAC0 /* SPGLSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF357C931BA052F500DFCAC0 /* SPGLSearchCell.xib */; };
 		FF357C981BA0635100DFCAC0 /* SPGLProductMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF357C971BA0635100DFCAC0 /* SPGLProductMode.m */; };
+		FF357C9C1BA12D6E00DFCAC0 /* SPGLProductDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = FF357C9A1BA12D6E00DFCAC0 /* SPGLProductDetail.m */; };
+		FF357C9D1BA12D6E00DFCAC0 /* SPGLProductDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF357C9B1BA12D6E00DFCAC0 /* SPGLProductDetail.xib */; };
+		FF357CA01BA1310300DFCAC0 /* SBPageFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF357C9F1BA1310300DFCAC0 /* SBPageFlowView.m */; };
 		FF3C20011A2EE6D30081D3C7 /* LSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C20001A2EE6D30081D3C7 /* LSNavigationController.m */; };
 		FF3C20041A2EE7480081D3C7 /* FactoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C20031A2EE7480081D3C7 /* FactoryModel.m */; };
 		FF3C20081A2F2A440081D3C7 /* GlobObserverObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C20071A2F2A440081D3C7 /* GlobObserverObject.m */; };
@@ -530,6 +533,11 @@
 		FF357C931BA052F500DFCAC0 /* SPGLSearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPGLSearchCell.xib; sourceTree = "<group>"; };
 		FF357C961BA0635100DFCAC0 /* SPGLProductMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGLProductMode.h; sourceTree = "<group>"; };
 		FF357C971BA0635100DFCAC0 /* SPGLProductMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGLProductMode.m; sourceTree = "<group>"; };
+		FF357C991BA12D6E00DFCAC0 /* SPGLProductDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGLProductDetail.h; sourceTree = "<group>"; };
+		FF357C9A1BA12D6E00DFCAC0 /* SPGLProductDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGLProductDetail.m; sourceTree = "<group>"; };
+		FF357C9B1BA12D6E00DFCAC0 /* SPGLProductDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPGLProductDetail.xib; sourceTree = "<group>"; };
+		FF357C9E1BA1310300DFCAC0 /* SBPageFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPageFlowView.h; sourceTree = "<group>"; };
+		FF357C9F1BA1310300DFCAC0 /* SBPageFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPageFlowView.m; sourceTree = "<group>"; };
 		FF3C1FFF1A2EE6D30081D3C7 /* LSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSNavigationController.h; sourceTree = "<group>"; };
 		FF3C20001A2EE6D30081D3C7 /* LSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSNavigationController.m; sourceTree = "<group>"; };
 		FF3C20021A2EE7480081D3C7 /* FactoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryModel.h; sourceTree = "<group>"; };
@@ -1439,6 +1447,11 @@
 				FF357C931BA052F500DFCAC0 /* SPGLSearchCell.xib */,
 				FF357C961BA0635100DFCAC0 /* SPGLProductMode.h */,
 				FF357C971BA0635100DFCAC0 /* SPGLProductMode.m */,
+				FF357C991BA12D6E00DFCAC0 /* SPGLProductDetail.h */,
+				FF357C9A1BA12D6E00DFCAC0 /* SPGLProductDetail.m */,
+				FF357C9B1BA12D6E00DFCAC0 /* SPGLProductDetail.xib */,
+				FF357C9E1BA1310300DFCAC0 /* SBPageFlowView.h */,
+				FF357C9F1BA1310300DFCAC0 /* SBPageFlowView.m */,
 			);
 			path = shangpinguanli;
 			sourceTree = "<group>";
@@ -1858,6 +1871,7 @@
 				FF5CC7101B9420E000F55713 /* JCCXCell.xib in Resources */,
 				FF5CC7011B93EE5300F55713 /* RukuDetailViewController.xib in Resources */,
 				AB311F911B9BDC260070784E /* ProblemGoodsCell.xib in Resources */,
+				FF357C9D1BA12D6E00DFCAC0 /* SPGLProductDetail.xib in Resources */,
 				FFD26CF51B8C546F0003F491 /* ZCBCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1880,6 +1894,7 @@
 				FF357C851BA01B8A00DFCAC0 /* SPGLManager.m in Sources */,
 				FF2A6C751A0F3B7B001607AC /* UIImage+GIF.m in Sources */,
 				5B1F7FAC1B91CEB100763059 /* DJProductCheckSrl.m in Sources */,
+				FF357C9C1BA12D6E00DFCAC0 /* SPGLProductDetail.m in Sources */,
 				FFD26CEF1B8C3F940003F491 /* ZXBJCell.m in Sources */,
 				FF2A6C881A0F3B8A001607AC /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				FFD26CCE1B86D0D50003F491 /* FirstMode.m in Sources */,
@@ -1987,6 +2002,7 @@
 				5B54BA1A1B91FCB7002098A4 /* DJProductCheckDetail.m in Sources */,
 				FF5C86DE1B818BE700F79EC1 /* SSWAnimator.m in Sources */,
 				FFF3919E1B846F58007DC652 /* NetManager.m in Sources */,
+				FF357CA01BA1310300DFCAC0 /* SBPageFlowView.m in Sources */,
 				5B54BA3F1B92F9C0002098A4 /* DJCheckCartSubmitRequest.m in Sources */,
 				FF2A6C7A1A0F3B7B001607AC /* UIView+WebCacheOperation.m in Sources */,
 				AB25793E1B8F02010015039A /* IQTitleBarButtonItem.m in Sources */,

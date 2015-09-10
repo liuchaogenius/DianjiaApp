@@ -57,4 +57,60 @@
         aFinishBlock(nil);
     }];
 }
+
+- (void)getProductListByKeywordApp:(NSString*)aKeyword
+                   finishBlock:(void(^)(SPGLProductList* aList))aFinishBlock
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+    if(aKeyword)
+    {
+        [dict setValue:aKeyword forKey:@"queryName"];
+        [dict setValue:[NSNumber numberWithInt:0] forKey:@"pageNo"];
+        [dict setValue:[NSNumber numberWithInt:20] forKey:@"pageSize"];
+        [dict setValue:@"false" forKey:@"needPage"];
+    }
+    [NetManager requestWith:dict apiName:@"getProductListByKeywordApp" method:@"post" succ:^(NSDictionary *successDict) {
+        MLOG(@"%@",successDict);
+        if([successDict objectForKey:@"result"])
+        {
+            SPGLProductList *list = [[SPGLProductList alloc] init];
+            [list unPacketData:[successDict objectForKey:@"result"]];
+            aFinishBlock(list);
+        }
+        else
+        {
+            aFinishBlock(nil);
+        }
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        aFinishBlock(nil);
+    }];
+}
+
+- (void)getProductListByCodeApp:(NSString*)aKeyword
+                       finishBlock:(void(^)(SPGLProductList* aList))aFinishBlock
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+    if(aKeyword)
+    {
+        [dict setValue:aKeyword forKey:@"queryName"];
+        [dict setValue:[NSNumber numberWithInt:0] forKey:@"pageNo"];
+        [dict setValue:[NSNumber numberWithInt:20] forKey:@"pageSize"];
+        [dict setValue:@"false" forKey:@"needPage"];
+    }
+    [NetManager requestWith:dict apiName:@"getProductListByCodeApp" method:@"post" succ:^(NSDictionary *successDict) {
+        MLOG(@"%@",successDict);
+        if([successDict objectForKey:@"result"])
+        {
+            SPGLProductList *list = [[SPGLProductList alloc] init];
+            [list unPacketData:[successDict objectForKey:@"result"]];
+            aFinishBlock(list);
+        }
+        else
+        {
+            aFinishBlock(nil);
+        }
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        aFinishBlock(nil);
+    }];
+}
 @end

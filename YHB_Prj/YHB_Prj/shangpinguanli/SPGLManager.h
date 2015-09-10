@@ -15,5 +15,11 @@
 //2、	按分类查询商品列表
 - (void)getProductListByClsApp:(NSString*)aId
                    finishBlock:(void(^)(SPGLProductList* aList))aFinishBlock;
+// 关键字查询
+- (void)getProductListByKeywordApp:(NSString*)aKeyword
+                       finishBlock:(void(^)(SPGLProductList* aList))aFinishBlock;
+// 条形码查询
+- (void)getProductListByCodeApp:(NSString*)aKeyword
+                    finishBlock:(void(^)(SPGLProductList* aList))aFinishBlock;
 
 @end

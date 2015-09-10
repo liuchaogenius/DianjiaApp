@@ -10,6 +10,7 @@
 #import "SPGLManager.h"
 #import "SPGLCategoryCell.h"
 #import "SPGLSearchVC.h"
+#import "SPGLSearchVC.h"
 
 @interface ShangpinguanliVC ()
 {
@@ -17,6 +18,7 @@
     int currentIndexPath;
     int oldSectionPath;
     NSMutableArray *currentIndexArry;
+     DJScanViewController *svc;
 }
 @property (strong, nonatomic) IBOutlet UIButton *searchBt;
 @property (strong, nonatomic) IBOutlet UIButton *scanButton;
@@ -35,6 +37,7 @@
         self.hidesBottomBarWhenPushed = YES;
         self.manager = [[SPGLManager alloc] init];
         currentIndexArry = [NSMutableArray arrayWithCapacity:0];
+        
     }
     return self;
 }
@@ -76,7 +79,7 @@
 #pragma mark 进入扫描条形码页面
 - (void)pushScanView
 {
-    DJScanViewController *svc = [[DJScanViewController alloc] init];
+    svc = [[DJScanViewController alloc] init];
     svc.delegate = self;
     [self.navigationController pushViewController:svc animated:YES];
 }
@@ -84,6 +87,14 @@
 - (void)scanController:(UIViewController *)vc didScanedAndTransToMessage: (NSString *)message
 {
     MLOG(@"%@",message);
+    SPGLSearchVC *ssvc = [[SPGLSearchVC alloc] initWithNibName:@"SPGLSearchVC" bundle:nil];
+    [ssvc setMnagerAndCode:self.manager procode:message];
+    NSMutableArray * viewControllers = [self.navigationController.viewControllers mutableCopy];
+    if (viewControllers.count > 1) {
+        [viewControllers removeLastObject];
+    }
+    [viewControllers addObject:ssvc];
+    [self.navigationController setViewControllers:viewControllers animated:YES];
 }
 
 - (void)needToInputNumberFromScanController:(UIViewController *)vc

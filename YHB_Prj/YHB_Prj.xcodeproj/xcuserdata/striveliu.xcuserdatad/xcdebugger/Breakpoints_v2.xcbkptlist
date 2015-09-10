@@ -9,28 +9,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YHB_Prj/shangpinguanli/SPGLManager.m"
-            timestampString = "463502668.73619"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "-getProductListByClsApp:finishBlock:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "YHB_Prj/shangpinguanli/SPGLSearchVC.m"
-            timestampString = "463504788.998898"
+            timestampString = "463562000.125875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,45 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YHB_Prj/shangpinguanli/SPGLManager.m"
-            timestampString = "463502821.00322"
+            timestampString = "463560609.249543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "-getProductListByClsApp:finishBlock:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SPGLManager getProductListByClsApp:finishBlock:]"
-                  moduleName = "YHB_Prj"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/shangpinguanli/SPGLManager.m"
-                  timestampString = "463504923.475194"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "546">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__50-[SPGLManager getProductListByClsApp:finishBlock:]_block_invoke"
-                  moduleName = "YHB_Prj"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/shangpinguanli/SPGLManager.m"
-                  timestampString = "463504923.475589"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "64">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
