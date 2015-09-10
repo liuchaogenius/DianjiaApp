@@ -8,7 +8,7 @@
 
 #import "ProblemGoodsManager.h"
 #import "NetManager.h"
-#import "PGResult.h"
+#import "PGProductList.h"
 
 @interface ProblemGoodsManager()
 {
@@ -34,9 +34,10 @@
         if ([str isEqualToString:@"success"])
         {
             NSDictionary *resultDict = successDict[@"result"];
-            PGResult *result = [PGResult modelObjectWithDictionary:resultDict];
+            PGProductList *result = [[PGProductList alloc] init];
+            [result unPacketData:resultDict];
             _currentPage++;
-            FBlock(result.rows);
+            FBlock(result.productList);
         }
         else
         {

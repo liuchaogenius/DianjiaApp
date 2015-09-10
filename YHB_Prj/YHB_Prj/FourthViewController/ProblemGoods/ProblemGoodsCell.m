@@ -7,7 +7,7 @@
 //
 
 #import "ProblemGoodsCell.h"
-#import "PGRows.h"
+#import "SPGLProductMode.h"
 
 @implementation ProblemGoodsCell
 
@@ -20,16 +20,16 @@
     return 110;
 }
 
-- (void)setCellWithMode:(PGRows *)aMode
+- (void)setCellWithMode:(SPGLProductMode *)aMode
 {
     [self resetCell];
-    self.labelInPrice.text=[NSString stringWithFormat:@"%.2f",aMode.buyingPrice];
-    self.labelName.text=aMode.productName;
-    self.labelNum.text=[NSString stringWithFormat:@"%.f",aMode.stockQty];
-    self.labelOdd.text=[NSString stringWithFormat:@"%.f",aMode.productCode];
-    self.labelOutPrice.text=[NSString stringWithFormat:@"%.2f",aMode.salePrice];
+    self.labelInPrice.text=[NSString stringWithFormat:@"%.2f",[aMode.strBuyingPrice floatValue]];
+    self.labelName.text=aMode.strProductName;
+    self.labelNum.text=[NSString stringWithFormat:@"%.f",[aMode.strStayQty floatValue]];
+    self.labelOdd.text=[NSString stringWithFormat:@"%.f",[aMode.strProductCode floatValue]];
+    self.labelOutPrice.text=[NSString stringWithFormat:@"%.2f",[aMode.strSalePrice floatValue]];
 //    self.labelStatus.text=@"";
-    self.labelType.text=aMode.clsName;
+    self.labelType.text=aMode.strClsName;
 }
 
 - (void)resetCell

@@ -54,6 +54,9 @@ typedef enum : NSUInteger {
     UITapGestureRecognizer *_tapGR;
     UITableView *_storeTV;
     NSArray *_storeArr;
+    
+    //设置页面的view宽度
+    CGFloat viewWidth;
 }
 @end
 
@@ -76,31 +79,34 @@ typedef enum : NSUInteger {
     [super viewDidLoad];
     [self settitleLabel:@"我的"];
     
+    //设置页面的view宽度
+    viewWidth = kMainScreenWidth;
+    
     LoginMode *mode = [[LoginManager shareLoginManager] getLoginMode];
     
-    CGFloat topImgViewH = kMainScreenWidth/320*206;
-    _topImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, topImgViewH)];
+    CGFloat topImgViewH = viewWidth/320*206;
+    _topImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, topImgViewH)];
     _topImgView.image = [UIImage imageNamed:@"mine_bg_1"];
     
-    CGFloat mengViewH = kMainScreenWidth/320*176;
-    _topMengView = [[UIImageView alloc] initWithFrame:CGRectMake(0, _topImgView.height-mengViewH, kMainScreenWidth, mengViewH)];
+    CGFloat mengViewH = viewWidth/320*176;
+    _topMengView = [[UIImageView alloc] initWithFrame:CGRectMake(0, _topImgView.height-mengViewH, viewWidth, mengViewH)];
     _topMengView.image = [UIImage imageNamed:@"mine_bg_1_meng"];
     [_topImgView addSubview:_topMengView];
     
     CGFloat originX = 15;
     CGFloat interval = 10;
     NSString *comStr = [NSString stringWithFormat:@"公司名称:%@", mode.strCompanyName];
-    kCreateLabel(_userComLabel, CGRectMake(originX, topImgViewH-30, kMainScreenWidth-2*originX, 17), 14, [UIColor whiteColor], comStr);
+    kCreateLabel(_userComLabel, CGRectMake(originX, topImgViewH-30, viewWidth-2*originX, 17), 14, [UIColor whiteColor], comStr);
     [_topImgView addSubview:_userComLabel];
     
     NSString *userStr = [NSString stringWithFormat:@"掌柜:%@", mode.strNickName];
-    kCreateLabel(_userNameLabel, CGRectMake(originX, _userComLabel.top-17-interval, kMainScreenWidth/2.0-originX-10, 17), 14, [UIColor whiteColor], userStr);
+    kCreateLabel(_userNameLabel, CGRectMake(originX, _userComLabel.top-17-interval, viewWidth/2.0-originX-10, 17), 14, [UIColor whiteColor], userStr);
     [_topImgView addSubview:_userNameLabel];
     
     //字体
     CGFloat stringWidth = [@"信用:" sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:kFont14,NSFontAttributeName, nil]].width;
     
-    kCreateLabel(_userProLabel, CGRectMake(kMainScreenWidth/2.0, _userNameLabel.top, stringWidth, 17), 14, [UIColor whiteColor], @"信用:");
+    kCreateLabel(_userProLabel, CGRectMake(viewWidth/2.0, _userNameLabel.top, stringWidth, 17), 14, [UIColor whiteColor], @"信用:");
     [_topImgView addSubview:_userProLabel];
     
     _proBgView = [[UIView alloc] initWithFrame:CGRectMake(_userProLabel.right, _userProLabel.top+3.5, 100, 11)];
@@ -143,7 +149,7 @@ typedef enum : NSUInteger {
     _topImgView.userInteractionEnabled = YES;
     [_topImgView addSubview:_userImgBtn];
     
-    _mineTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64-49)];
+    _mineTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, kMainScreenHeight-64-49)];
     _mineTableView.delegate = self;
     _mineTableView.dataSource = self;
     _mineTableView.tableHeaderView = _topImgView;
@@ -171,7 +177,7 @@ typedef enum : NSUInteger {
     
     CGFloat cellHeight = 30;
     CGFloat storeTVHeight = cellHeight*_storeArr.count>120?120:cellHeight*_storeArr.count;
-    _storeTV = [[UITableView alloc] initWithFrame:CGRectMake(kMainScreenWidth/2.0-storeTVWidth/2.0, _maskingView.height/2.0-storeTVHeight/2.0, storeTVWidth, storeTVHeight)];
+    _storeTV = [[UITableView alloc] initWithFrame:CGRectMake(viewWidth/2.0-storeTVWidth/2.0, _maskingView.height/2.0-storeTVHeight/2.0, storeTVWidth, storeTVHeight)];
     _storeTV.delegate =self;
     _storeTV.dataSource = self;
     _storeTV.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -231,7 +237,7 @@ typedef enum : NSUInteger {
         else
         {
             UITableViewCell *cell = [[UITableViewCell alloc] init];
-            UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 5, kMainScreenWidth-50, 0.5)];
+            UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 5, viewWidth-50, 0.5)];
             lineView.backgroundColor = RGBCOLOR(220, 220, 220);
             [cell addSubview:lineView];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;

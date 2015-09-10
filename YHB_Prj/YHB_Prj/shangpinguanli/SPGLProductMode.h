@@ -50,6 +50,7 @@
 @property (nonatomic, strong) NSString *strUid;
 
 @property (nonatomic, strong) NSMutableArray *picList;
+- (void)unPacketData:(NSDictionary *)aDataDict;
 @end
 
 
