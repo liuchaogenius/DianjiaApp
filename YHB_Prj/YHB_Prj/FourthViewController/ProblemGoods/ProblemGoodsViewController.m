@@ -9,8 +9,9 @@
 #import "ProblemGoodsViewController.h"
 #import "ProblemGoodsManager.h"
 #import "ProblemGoodsCell.h"
-#import "PGRows.h"
+#import "SPGLProductMode.h"
 #import "SVPullToRefresh.h"
+#import "SPEditViewController.h"
 
 @interface ProblemGoodsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -105,8 +106,16 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(ProblemGoodsCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    PGRows *mode = _arrData[indexPath.row];
+    SPGLProductMode *mode = _arrData[indexPath.row];
     [cell setCellWithMode:mode];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    SPGLProductMode *mode = _arrData[indexPath.row];
+    SPEditViewController *vc = [[SPEditViewController alloc] initWithMode:mode];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

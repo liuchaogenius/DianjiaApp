@@ -26,6 +26,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *indexTableview;
 @property (nonatomic, strong) SPGLManager *manager;
 @property (nonatomic, strong) SPGLCategoryIndexList *modeList;
+
+@property(nonatomic,strong) void(^selectBlock)(SPGLCategoryMode *);
 @end
 
 @implementation ShangpinguanliVC
@@ -40,6 +42,11 @@
         
     }
     return self;
+}
+
+- (void)setSelectBlock:(void (^)(SPGLCategoryMode *))aBlock
+{
+    _selectBlock = aBlock;
 }
 
 - (void)viewDidLoad {
@@ -206,7 +213,12 @@
     else
     {
         SPGLCategoryMode *mode = [currentIndexArry objectAtIndex:indexPath.row];
-        [self pushXIBName:@"SPGLSearchVC" animated:YES selector:@"setMnagerAndid:cateID:" param:self.manager,mode.strId,nil];
+        if (_selectBlock)
+        {
+            _selectBlock(mode);
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else [self pushXIBName:@"SPGLSearchVC" animated:YES selector:@"setMnagerAndid:cateID:" param:self.manager,mode.strId,nil];
     }
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class PGRows;
+@class SPGLProductMode;
 @interface ProblemGoodsCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *labelOdd;
 @property (strong, nonatomic) IBOutlet UILabel *labelStatus;
@@ -19,5 +19,5 @@
 
 + (CGFloat)heightForCell;
 - (void)resetCell;
-- (void)setCellWithMode:(PGRows *)aMode;
+- (void)setCellWithMode:(SPGLProductMode *)aMode;
 @end

@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+@class SupplierMode;
 @interface SupplierViewController : BaseViewController
+
+- (instancetype)initWithSelectBlock:(void(^)(SupplierMode *mode))aBlock;
 
 @end

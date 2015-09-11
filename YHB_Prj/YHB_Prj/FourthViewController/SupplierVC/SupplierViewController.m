@@ -17,13 +17,24 @@
 @property(nonatomic, strong) UITableView *supplierTableView;
 @property(nonatomic, strong) SupplierManage *manage;
 @property(nonatomic, strong) NSMutableArray *dataArray;
+
+@property(nonatomic,strong) void(^ selectBlock)(SupplierMode *);
 @end
 
 @implementation SupplierViewController
 
+- (instancetype)initWithSelectBlock:(void (^)(SupplierMode *))aBlock
+{
+    if (self = [super init])
+    {
+        _selectBlock = aBlock;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"供货商管理";
+    self.title = @"供货商列表";
     
     _supplierTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64) style:UITableViewStylePlain];
     _supplierTableView.backgroundColor = [UIColor whiteColor];
@@ -98,14 +109,22 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     SupplierMode *mode = [self.dataArray objectAtIndex:indexPath.row];
-    SupplierDetailViewController *vc = [[SupplierDetailViewController alloc] initWithSupplierMode:mode withDeleteBlock:^{
-        [_dataArray removeObjectAtIndex:indexPath.row];
-        [_supplierTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } withChangeBlock:^(SupplierMode *aMode) {
-        [_dataArray replaceObjectAtIndex:indexPath.row withObject:aMode];
-        [_supplierTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (_selectBlock)
+    {
+        _selectBlock(mode);
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else
+    {
+        SupplierDetailViewController *vc = [[SupplierDetailViewController alloc] initWithSupplierMode:mode withDeleteBlock:^{
+            [_dataArray removeObjectAtIndex:indexPath.row];
+            [_supplierTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        } withChangeBlock:^(SupplierMode *aMode) {
+            [_dataArray replaceObjectAtIndex:indexPath.row withObject:aMode];
+            [_supplierTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
