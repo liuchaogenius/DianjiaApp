@@ -73,6 +73,7 @@
     [self.bottom_chcx_BT addTarget:self action:@selector(jccx_buttonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_gdcx_BT addTarget:self action:@selector(gdcx_buttonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_spgl_BT addTarget:self action:@selector(spgl_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
+    [self.bottom_wydh_BT addTarget:self action:@selector(wyjn_buttonItem) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -172,6 +173,11 @@
     [self pushXIBName:@"KCYJViewController" animated:YES selector:nil param:nil];
 }
 
+#pragma mark 进入我要订货页面
+- (void)wyjn_buttonItem
+{
+    [self pushXIBName:@"WYDHViewController" animated:YES selector:nil param:nil];
+}
 #pragma mark 进入商品管理
 - (void)spgl_ButtonItem
 {

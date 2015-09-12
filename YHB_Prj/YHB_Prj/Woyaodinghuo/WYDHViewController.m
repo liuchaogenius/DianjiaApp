@@ -1,41 +1,44 @@
 //
-//  RuKushenpinVC.m
+//  WYDHViewController.m
 //  YHB_Prj
 //
-//  Created by  striveliu on 15/8/27.
+//  Created by  striveliu on 15/9/10.
 //  Copyright (c) 2015年 striveliu. All rights reserved.
 //
 
-#import "RuKushenpinVC.h"
-#import "RKSPManager.h"
-#import "RKSPMode.h"
-#import "RKSPCell.h"
-#import "SXViewController.h"
-#import "RukuDetailViewController.h"
-@interface RuKushenpinVC ()
+#import "WYDHViewController.h"
+#import "WYJHManager.h"
+#import "WYJHListCell.h"
+#import "WYJHSXViewcontroller.h"
+
+@interface WYDHViewController ()
+{
+    
+}
+@property (nonatomic, strong) WYJHManager *manager;
+@property (strong, nonatomic) IBOutlet UIButton *weirukouBT;
+@property (strong, nonatomic) IBOutlet UIButton *yirukouBT;
 @property (strong, nonatomic) IBOutlet UIButton *quanbuBT;
-@property (nonatomic,strong) RKSPManager *manager;
-@property (strong, nonatomic) IBOutlet UIButton *weishenheBT;
 @property (strong, nonatomic) IBOutlet UIButton *shaixuanBT;
-@property (strong, nonatomic) IBOutlet UIButton *yishenheBT;
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 @property (strong,nonatomic) NSMutableArray *weishenheArry;
 @property (strong,nonatomic) NSMutableArray *yishenheArry;
 @property (strong,nonatomic) NSMutableArray *quanbuArry;
-@property (assign, nonatomic)int selType;
+@property (strong, nonatomic) WYJHModeRows *modeRows;
+@property (assign, nonatomic) int selType;
 @end
 
-@implementation RuKushenpinVC
+@implementation WYDHViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if(self=[super initWithNibName:nibNameOrNil bundle:nil])
     {
         self.hidesBottomBarWhenPushed = YES;
+        self.manager = [[WYJHManager alloc] init];
         self.selType = 1;
-        self.manager = [[RKSPManager alloc] init];
-        self.yishenheArry = [NSMutableArray arrayWithCapacity:0];
         self.weishenheArry = [NSMutableArray arrayWithCapacity:0];
+        self.yishenheArry = [NSMutableArray arrayWithCapacity:0];
         self.quanbuArry = [NSMutableArray arrayWithCapacity:0];
     }
     return self;
@@ -46,26 +49,37 @@
     // Do any additional setup after loading the view from its nib.
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
-    [self.weishenheBT addTarget:self action:@selector(weishenheBTItem) forControlEvents:UIControlEventTouchUpInside];
-    [self.yishenheBT addTarget:self action:@selector(yishenheBTItem) forControlEvents:UIControlEventTouchUpInside];
-    [self.quanbuBT addTarget:self action:@selector(quanBTItem) forControlEvents:UIControlEventTouchUpInside];
-    [self.shaixuanBT addTarget:self action:@selector(shaixuanBTItem) forControlEvents:UIControlEventTouchUpInside];
-    [self.manager appGetProductStockSrl:self.selType finishBlock:^(RKSPModeListList *llist) {
-        [self.weishenheArry addObjectsFromArray:llist.rksModeArryArry];
-        [self.tableview reloadData];
+    [self.weirukouBT addTarget:self action:@selector(weirukouBT) forControlEvents:UIControlEventTouchUpInside];
+    [self.yirukouBT addTarget:self action:@selector(yirukuBTItem) forControlEvents:UIControlEventTouchUpInside];
+    [self.quanbuBT addTarget:self action:@selector(quanbuBT) forControlEvents:UIControlEventTouchUpInside];
+    [self.shaixuanBT addTarget:self action:@selector(shaixuanBtItem) forControlEvents:UIControlEventTouchUpInside];
+    [self.manager appGetStorageSrl:self.selType finishBlock:^(WYJHModeRows *llist) {
+        if(llist)
+        {
+            self.modeRows = llist;
+            if(llist)
+            {
+                [self.weishenheArry addObjectsFromArray:llist.modeRowsArry];
+                [self.tableview reloadData];
+            }
+            [self.tableview reloadData];
+        }
     }];
 }
 
-#pragma mark 顶部按钮点击事件
-- (void)weishenheBTItem
+- (void)weirukuBTItem
 {
-    self.selType = 1;//未审核
+    self.selType = 1;//未入库
     if(self.weishenheArry.count == 0)
     {
-        [self.manager appGetProductStockSrl:self.selType finishBlock:^(RKSPModeListList *llist) {
+        [self.manager appGetStorageSrl:self.selType finishBlock:^(WYJHModeRows *llist) {
             if(llist)
             {
-                [self.weishenheArry addObjectsFromArray:llist.rksModeArryArry];
+                [self.weishenheArry addObjectsFromArray:llist.modeRowsArry];
+                [self.tableview reloadData];
+            }
+            else
+            {
                 [self.tableview reloadData];
             }
         }];
@@ -75,15 +89,19 @@
         [self.tableview reloadData];
     }
 }
-- (void)yishenheBTItem
+- (void)yirukuBTItem
 {
-    self.selType = 2;//已审核
+    self.selType = 2;//已入库
     if(self.yishenheArry.count == 0)
     {
-        [self.manager appGetProductStockSrl:self.selType finishBlock:^(RKSPModeListList *llist) {
+        [self.manager appGetStorageSrl:self.selType finishBlock:^(WYJHModeRows *llist) {
             if(llist)
             {
-                [self.yishenheArry addObjectsFromArray:llist.rksModeArryArry];
+                [self.yishenheArry addObjectsFromArray:llist.modeRowsArry];
+                [self.tableview reloadData];
+            }
+            else
+            {
                 [self.tableview reloadData];
             }
         }];
@@ -95,13 +113,17 @@
 }
 - (void)quanBTItem
 {
-    self.selType = -1;//全部
+    self.selType = 0;//全部
     if(self.quanbuArry.count == 0)
     {
-        [self.manager appGetProductStockSrl:self.selType finishBlock:^(RKSPModeListList *llist) {
+        [self.manager appGetStorageSrl:self.selType finishBlock:^(WYJHModeRows *llist) {
             if(llist)
             {
-                [self.quanbuArry addObjectsFromArray:llist.rksModeArryArry];
+                [self.quanbuArry addObjectsFromArray:llist.modeRowsArry];
+                [self.tableview reloadData];
+            }
+            else
+            {
                 [self.tableview reloadData];
             }
         }];
@@ -111,9 +133,11 @@
         [self.tableview reloadData];
     }
 }
-- (void)shaixuanBTItem
+
+#pragma mark 删选BTItem
+- (void)shaixuanBtItem
 {
-    [self pushXIBName:@"SXViewController" animated:YES selector:@"setRKSPManager:" param:self.manager,nil];
+    [self pushXIBName:@"WYJHSXViewcontroller" animated:YES selector:@"setRKSPManager:" param:self.manager,nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -128,33 +152,11 @@
     {
         count = self.yishenheArry.count;
     }
-    else if(self.selType == -1)
+    else if(self.selType == 0)
     {
         count = self.quanbuArry.count;
     }
-    return count;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section
-{
-    int count = 0;
-    if(self.selType == 1)
-    {
-        RKSPModeList *list = [self.weishenheArry objectAtIndex:section];
-        count = list.rksModeArry.count;
-    }
-    else if(self.selType == 2)
-    {
-        RKSPModeList *list = [self.yishenheArry objectAtIndex:section];
-        count = list.rksModeArry.count;
-    }
-    else if(self.selType == -1)
-    {
-        RKSPModeList *list = [self.quanbuArry objectAtIndex:section];
-        count = list.rksModeArry.count;
-    }
-    return count;
+    return count;;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -169,7 +171,7 @@
     {
         if(section < self.weishenheArry.count)
         {
-            RKSPModeList *list = [self.weishenheArry objectAtIndex:section];
+            WYJHModeList *list = [self.weishenheArry objectAtIndex:section];
             time = list.strOrderTime;
         }
     }
@@ -177,19 +179,19 @@
     {
         if(section < self.yishenheArry.count)
         {
-            RKSPModeList *list = [self.yishenheArry objectAtIndex:section];
+            WYJHModeList *list = [self.yishenheArry objectAtIndex:section];
             time = list.strOrderTime;
         }
     }
-    else if(self.selType == -1)
+    else if(self.selType == 0)
     {
         if(section < self.quanbuArry.count)
         {
-            RKSPModeList *list = [self.quanbuArry objectAtIndex:section];
+            WYJHModeList *list = [self.quanbuArry objectAtIndex:section];
             time = list.strOrderTime;
         }
     }
-
+    
     label.text =  [NSString stringWithFormat:@"   时间：%@",time];
     label.backgroundColor = [UIColor clearColor];
     [sectionHeadview addSubview:label];
@@ -202,28 +204,49 @@
     {
         if(section < self.weishenheArry.count)
         {
-            RKSPModeList *list = [self.weishenheArry objectAtIndex:section];
-            time = list.strStatusDesc;
+            WYJHModeList *list = [self.weishenheArry objectAtIndex:section];
+            if([list.strAccountType intValue] == 1)//未计算
+            {
+                status = @"未结算";
+            }
+            else
+            {
+                status = @"已结算";
+            }
         }
     }
     else if(self.selType == 2)
     {
         if(section < self.yishenheArry.count)
         {
-            RKSPModeList *list = [self.yishenheArry objectAtIndex:section];
-            status = list.strStatusDesc;
+            WYJHModeList *list = [self.yishenheArry objectAtIndex:section];
+            if([list.strAccountType intValue] == 1)//未计算
+            {
+                status = @"未结算";
+            }
+            else
+            {
+                status = @"已结算";
+            }
         }
     }
-    else if(self.selType == -1)
+    else if(self.selType == 0)
     {
         if(section < self.quanbuArry.count)
         {
-            RKSPModeList *list = [self.quanbuArry objectAtIndex:section];
-            status = list.strStatusDesc;
+            WYJHModeList *list = [self.quanbuArry objectAtIndex:section];
+            if([list.strAccountType intValue] == 1)//未计算
+            {
+                status = @"未结算";
+            }
+            else
+            {
+                status = @"已结算";
+            }
         }
     }
     
-    labelStatus.text =  [NSString stringWithFormat:@"状态：%@",time];
+    labelStatus.text =  [NSString stringWithFormat:@"状态：%@",status];
     labelStatus.backgroundColor = [UIColor clearColor];
     [sectionHeadview addSubview:labelStatus];
     return sectionHeadview;
@@ -231,7 +254,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100.0f;
+    return 67.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -239,30 +262,51 @@
     return 25.0f;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
+{
+    int count = 0;
+    if(self.selType == 1)
+    {
+        WYJHModeList *list = [self.weishenheArry objectAtIndex:section];
+        count = list.modeListArry.count;
+    }
+    else if(self.selType == 2)
+    {
+        WYJHModeList *list = [self.yishenheArry objectAtIndex:section];
+        count = list.modeListArry.count;
+    }
+    else if(self.selType == 0)
+    {
+        WYJHModeList *list = [self.quanbuArry objectAtIndex:section];
+        count = list.modeListArry.count;
+    }
+    return count;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RKSPCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rukushenpincell"];
+    WYJHListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wyjhlistcell"];
     if(!cell)
     {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RKSPCell" owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"WYJHListCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     [self configureCell:cell forRowAtIndexPath:indexPath];
-
     return cell;
 }
 
-- (void)configureCell:(RKSPCell *)cell
+- (void)configureCell:(WYJHListCell *)cell
     forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(self.selType == 1)
     {
         if(indexPath.section < self.weishenheArry.count)
         {
-            RKSPModeList *list = [self.weishenheArry objectAtIndex:indexPath.section];
-            RKSPMode *mode = [list.rksModeArry objectAtIndex:indexPath.row];
+            WYJHModeList *list = [self.weishenheArry objectAtIndex:indexPath.section];
+            WYJHMode *mode = [list.modeListArry objectAtIndex:indexPath.row];
             [cell setCellData:mode];
         }
     }
@@ -270,17 +314,17 @@
     {
         if(indexPath.section < self.yishenheArry.count)
         {
-            RKSPModeList *list = [self.yishenheArry objectAtIndex:indexPath.section];
-            RKSPMode *mode = [list.rksModeArry objectAtIndex:indexPath.row];
+            WYJHModeList *list = [self.yishenheArry objectAtIndex:indexPath.section];
+            WYJHMode *mode = [list.modeListArry objectAtIndex:indexPath.row];
             [cell setCellData:mode];
         }
     }
-    else if(self.selType == -1)
+    else if(self.selType == 0)
     {
         if(indexPath.section < self.quanbuArry.count)
         {
-            RKSPModeList *list = [self.quanbuArry objectAtIndex:indexPath.section];
-            RKSPMode *mode = [list.rksModeArry objectAtIndex:indexPath.row];
+            WYJHModeList *list = [self.quanbuArry objectAtIndex:indexPath.section];
+            WYJHMode *mode = [list.modeListArry objectAtIndex:indexPath.row];
             [cell setCellData:mode];
         }
     }
@@ -288,12 +332,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RKSPModeList *list = nil;
+    WYJHModeList *list = nil;
+    WYJHMode *mode = nil;
     if(self.selType == 1)
     {
         if(indexPath.section < self.weishenheArry.count)
         {
-            list = [self.weishenheArry objectAtIndex:indexPath.section];
+             list = [self.weishenheArry objectAtIndex:indexPath.section];
+             mode = [list.modeListArry objectAtIndex:indexPath.row];
         }
     }
     else if(self.selType == 2)
@@ -301,16 +347,18 @@
         if(indexPath.section < self.yishenheArry.count)
         {
             list = [self.yishenheArry objectAtIndex:indexPath.section];
+            mode = [list.modeListArry objectAtIndex:indexPath.row];
         }
     }
-    else if(self.selType == -1)
+    else if(self.selType == 0)
     {
         if(indexPath.section < self.quanbuArry.count)
         {
             list = [self.quanbuArry objectAtIndex:indexPath.section];
+            mode = [list.modeListArry objectAtIndex:indexPath.row];
         }
     }
-    [self pushXIBName:@"RukuDetailViewController" animated:YES selector:@"setRKSPManager:dateList:" param:self.manager,list,nil];
+    [self pushXIBName:@"WYJHDetailVC" animated:YES selector:@"setInitData:mode:modeList:" param:self.manager,mode,list,nil];
 }
 
 - (void)didReceiveMemoryWarning {

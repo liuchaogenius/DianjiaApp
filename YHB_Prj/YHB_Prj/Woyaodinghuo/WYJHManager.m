@@ -1,15 +1,15 @@
 //
-//  RKSPManager.m
+//  WYJHManager.m
 //  YHB_Prj
 //
-//  Created by  striveliu on 15/8/27.
+//  Created by  striveliu on 15/9/11.
 //  Copyright (c) 2015年 striveliu. All rights reserved.
 //
 
-#import "RKSPManager.h"
+#import "WYJHManager.h"
 #import "NetManager.h"
-#import "RKSPMode.h"
-@interface RKSPManager()
+
+@interface WYJHManager()
 {
     int stockSrlCurrentPage_1;
     int stockSrlCurrentPage_2;
@@ -17,10 +17,12 @@
     NSString *strStartTime;
     NSString *strEndTime;
     NSString *strSupId;
+    NSString *strAccountType;
 }
 @end
-@implementation RKSPManager
-- (void)appGetProductStockSrl:(int)selId finishBlock:(void(^)(RKSPModeListList *llist))aFinishBlock
+
+@implementation WYJHManager
+- (void)appGetStorageSrl:(int)selId finishBlock:(void(^)(WYJHModeRows *llist))aFinishBlock
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
     [dict setValue:[NSNumber numberWithInt:selId] forKey:@"sid"];
@@ -32,7 +34,7 @@
     {
         [dict setValue:[NSNumber numberWithInt:stockSrlCurrentPage_2] forKey:@"pageNo"];
     }
-    else if(selId == -1)
+    else if(selId == 0)
     {
         [dict setValue:[NSNumber numberWithInt:stockSrlCurrentPage__1] forKey:@"pageNo"];
     }
@@ -50,25 +52,37 @@
     {
         [dict setValue:strSupId forKey:@"supId"];
     }
-    [NetManager requestWith:dict apiName:@"appGetProductStockSrl" method:@"POST" succ:^(NSDictionary *successDict) {
+    if(strAccountType)
+    {
+        [dict setValue:strAccountType forKey:@"accountType"];
+    }
+    [NetManager requestWith:dict apiName:@"appGetStorageSrl" method:@"POST" succ:^(NSDictionary *successDict) {
         MLOG(@"%@",successDict);
         NSDictionary *dict = [successDict objectForKey:@"result"];
-        if(dict && [dict objectForKey:@"rows"])
+        if(dict)
         {
-            RKSPModeListList *llist = [[RKSPModeListList alloc] init];
-            [llist unPacketData:dict];
-            aFinishBlock(llist);
-            if(selId == 1)
+            NSArray *arry =[dict objectForKey:@"rows"];
+            if(arry && arry.count>0)
             {
-                stockSrlCurrentPage_1++;
+                WYJHModeRows *llist = [[WYJHModeRows alloc] init];
+                [llist unPacketData:dict];
+                aFinishBlock(llist);
+                if(selId == 1)
+                {
+                    stockSrlCurrentPage_1++;
+                }
+                else if(selId == 2)
+                {
+                    stockSrlCurrentPage_2++;
+                }
+                else if(selId == -1)
+                {
+                    stockSrlCurrentPage__1++;
+                }
             }
-            else if(selId == 2)
+            else
             {
-                stockSrlCurrentPage_2++;
-            }
-            else if(selId == -1)
-            {
-                stockSrlCurrentPage__1++;
+                aFinishBlock(nil);
             }
         }
         else
@@ -81,23 +95,15 @@
         }
     }];
 }
-
-//获取入库单详情
-- (void)appGetProductStockDetail:(NSString *)aProductId status:(NSString *)aStatus
-{
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
-    [dict setValue:aProductId forKey:@"sid"];
-    [dict setValue:[NSNumber numberWithInt:0] forKey:@"pageNo"];
-    [dict setValue:[NSNumber numberWithInt:20] forKey:@"pageSize"];
-    [dict setValue:@"false" forKey:@"needPage"];
-    [dict setValue:aStatus forKey:@"status"];
-    [NetManager requestWith:dict apiName:@"appGetProductStockDetail" method:@"post" succ:^(NSDictionary *successDict) {
-        MLOG(@"%@",successDict);
-    } failure:^(NSDictionary *failDict, NSError *error) {
-        
-    }];
-}
 #pragma mark 设置筛选数据
+- (void)setAccountType:(int)aType //是否已结  1-未结 2-已结
+{
+    if(aType > 0)
+    {
+        strAccountType = [NSString stringWithFormat:@"%d",aType];
+    }
+}
+
 - (void)setStartTime:(NSString *)aStartTime
 {
     strStartTime = aStartTime;

@@ -134,10 +134,19 @@
         [cell setCellData:mode];
     }
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row < self.productList.productList.count)
+    {
+        SPGLProductMode *mode = [self.productList.productList objectAtIndex:indexPath.row];        
+        [self pushXIBName:@"SPGLProductDetail" animated:YES selector:@"setInitData:mode:" param:self.manager,mode,nil];
+    }
+}
 #pragma mark search bar delegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-
+    MLOG(@"fsafas");
 }
 #pragma mark scrollview delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{

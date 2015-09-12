@@ -1,31 +1,31 @@
 //
-//  SXViewController.m
+//  WYJHSXViewcontroller.m
 //  YHB_Prj
 //
-//  Created by  striveliu on 15/8/28.
+//  Created by  striveliu on 15/9/11.
 //  Copyright (c) 2015年 striveliu. All rights reserved.
 //
 
-#import "SXViewController.h"
+#import "WYJHSXViewcontroller.h"
 #import "DateSelectVC.h"
-#import "RKSPManager.h"
+#import "WYJHManager.h"
 #import "NetManager.h"
 #import "GysMode.h"
-
-@interface SXViewController ()
+@interface WYJHSXViewcontroller ()
 {
-    __weak SXViewController *weakself;
+    __weak WYJHSXViewcontroller *weakself;
     NSString *strSupId;
 }
 @property (nonatomic, strong) NSMutableArray *gysArry;
 @property (nonatomic, strong) DateSelectVC *dateVC;
-@property (nonatomic, strong) RKSPManager *manager;
+@property (nonatomic, strong) WYJHManager *manager;
 @property (nonatomic, strong) GysModeList *modeList;
 @property (strong, nonatomic) NSString *strStartTime;
 @property (strong, nonatomic) NSString *strEndTime;
+@property (assign, nonatomic) int accountType;
 @end
 
-@implementation SXViewController
+@implementation WYJHSXViewcontroller
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if(self=[super initWithNibName:nibNameOrNil bundle:nil])
@@ -33,15 +33,10 @@
         self.hidesBottomBarWhenPushed = YES;
         self.gysArry = [NSMutableArray arrayWithCapacity:0];
         weakself = self;
+        self.accountType = 2;
     }
     return self;
 }
-
-- (void)setRKSPManager:(RKSPManager *)aManager
-{
-    self.manager = aManager;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -53,6 +48,32 @@
     self.tableview.dataSource = self;
     self.modeList = [[GysModeList alloc] init];
     [self appGetAllSupplier];
+    self.yijiesuanBT.tag = 2;
+    [self.yijiesuanBT addTarget:self action:@selector(isJiesuan:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.weijiesuanBT.tag = 1;
+    [self.weijiesuanBT addTarget:self action:@selector(isJiesuan:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)setRKSPManager:(WYJHManager *)aManager
+{
+    self.manager = aManager;
+}
+
+#pragma mark 是否结算but
+- (void)isJiesuan:(UIButton *)aBt
+{
+    self.accountType = aBt.tag;
+    if(aBt.tag == 1)
+    {
+        [self.weijiesuanBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+        [self.yijiesuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.yijiesuanBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+        [self.weijiesuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark 获取供应商数据
@@ -93,13 +114,16 @@
         weakself.strEndTime = eTimer;
     }];
 }
+
 #pragma mark OK 按钮事件
 - (void)okButtonItem
 {
     [self.manager setStartTime:self.strStartTime];
     [self.manager setEndTime:self.strEndTime];
     [self.manager setSupIdTime:strSupId];
+    [self.manager setAccountType:self.accountType];
     [self.navigationController popViewControllerAnimated:YES];
+#warning  回到前面一个页面要进行刷新
 }
 
 #pragma mark 处理供应商按钮
@@ -129,7 +153,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     [self configureCell:cell forRowAtIndexPath:indexPath];
-
+    
     return cell;
 }
 

@@ -159,6 +159,16 @@
 		FF357C9C1BA12D6E00DFCAC0 /* SPGLProductDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = FF357C9A1BA12D6E00DFCAC0 /* SPGLProductDetail.m */; };
 		FF357C9D1BA12D6E00DFCAC0 /* SPGLProductDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF357C9B1BA12D6E00DFCAC0 /* SPGLProductDetail.xib */; };
 		FF357CA01BA1310300DFCAC0 /* SBPageFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF357C9F1BA1310300DFCAC0 /* SBPageFlowView.m */; };
+		FF357CAA1BA1974800DFCAC0 /* WYDHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF357CA81BA1974800DFCAC0 /* WYDHViewController.m */; };
+		FF357CAB1BA1974800DFCAC0 /* WYDHViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF357CA91BA1974800DFCAC0 /* WYDHViewController.xib */; };
+		FF357CAE1BA2787F00DFCAC0 /* WYJHManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF357CAD1BA2787F00DFCAC0 /* WYJHManager.m */; };
+		FF357CB11BA27EA900DFCAC0 /* WYJHMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF357CB01BA27EA900DFCAC0 /* WYJHMode.m */; };
+		FF357CB51BA2AABD00DFCAC0 /* WYJHListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF357CB31BA2AABD00DFCAC0 /* WYJHListCell.m */; };
+		FF357CB61BA2AABD00DFCAC0 /* WYJHListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF357CB41BA2AABD00DFCAC0 /* WYJHListCell.xib */; };
+		FF357CBA1BA2B56100DFCAC0 /* WYJHSXViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = FF357CB81BA2B56100DFCAC0 /* WYJHSXViewcontroller.m */; };
+		FF357CBB1BA2B56100DFCAC0 /* WYJHSXViewcontroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF357CB91BA2B56100DFCAC0 /* WYJHSXViewcontroller.xib */; };
+		FF357CBF1BA2C30900DFCAC0 /* WYJHDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FF357CBD1BA2C30900DFCAC0 /* WYJHDetailVC.m */; };
+		FF357CC01BA2C30900DFCAC0 /* WYJHDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF357CBE1BA2C30900DFCAC0 /* WYJHDetailVC.xib */; };
 		FF3C20011A2EE6D30081D3C7 /* LSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C20001A2EE6D30081D3C7 /* LSNavigationController.m */; };
 		FF3C20041A2EE7480081D3C7 /* FactoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C20031A2EE7480081D3C7 /* FactoryModel.m */; };
 		FF3C20081A2F2A440081D3C7 /* GlobObserverObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C20071A2F2A440081D3C7 /* GlobObserverObject.m */; };
@@ -550,6 +560,22 @@
 		FF357C9B1BA12D6E00DFCAC0 /* SPGLProductDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPGLProductDetail.xib; sourceTree = "<group>"; };
 		FF357C9E1BA1310300DFCAC0 /* SBPageFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPageFlowView.h; sourceTree = "<group>"; };
 		FF357C9F1BA1310300DFCAC0 /* SBPageFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPageFlowView.m; sourceTree = "<group>"; };
+		FF357CA71BA1974800DFCAC0 /* WYDHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYDHViewController.h; sourceTree = "<group>"; };
+		FF357CA81BA1974800DFCAC0 /* WYDHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYDHViewController.m; sourceTree = "<group>"; };
+		FF357CA91BA1974800DFCAC0 /* WYDHViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WYDHViewController.xib; sourceTree = "<group>"; };
+		FF357CAC1BA2787F00DFCAC0 /* WYJHManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYJHManager.h; sourceTree = "<group>"; };
+		FF357CAD1BA2787F00DFCAC0 /* WYJHManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYJHManager.m; sourceTree = "<group>"; };
+		FF357CAF1BA27EA900DFCAC0 /* WYJHMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYJHMode.h; sourceTree = "<group>"; };
+		FF357CB01BA27EA900DFCAC0 /* WYJHMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYJHMode.m; sourceTree = "<group>"; };
+		FF357CB21BA2AABD00DFCAC0 /* WYJHListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYJHListCell.h; sourceTree = "<group>"; };
+		FF357CB31BA2AABD00DFCAC0 /* WYJHListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYJHListCell.m; sourceTree = "<group>"; };
+		FF357CB41BA2AABD00DFCAC0 /* WYJHListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WYJHListCell.xib; sourceTree = "<group>"; };
+		FF357CB71BA2B56100DFCAC0 /* WYJHSXViewcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYJHSXViewcontroller.h; sourceTree = "<group>"; };
+		FF357CB81BA2B56100DFCAC0 /* WYJHSXViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYJHSXViewcontroller.m; sourceTree = "<group>"; };
+		FF357CB91BA2B56100DFCAC0 /* WYJHSXViewcontroller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WYJHSXViewcontroller.xib; sourceTree = "<group>"; };
+		FF357CBC1BA2C30900DFCAC0 /* WYJHDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYJHDetailVC.h; sourceTree = "<group>"; };
+		FF357CBD1BA2C30900DFCAC0 /* WYJHDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYJHDetailVC.m; sourceTree = "<group>"; };
+		FF357CBE1BA2C30900DFCAC0 /* WYJHDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WYJHDetailVC.xib; sourceTree = "<group>"; };
 		FF3C1FFF1A2EE6D30081D3C7 /* LSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSNavigationController.h; sourceTree = "<group>"; };
 		FF3C20001A2EE6D30081D3C7 /* LSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSNavigationController.m; sourceTree = "<group>"; };
 		FF3C20021A2EE7480081D3C7 /* FactoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryModel.h; sourceTree = "<group>"; };
@@ -1373,6 +1399,7 @@
 		FF2A6C8B1A0F3C58001607AC /* UIParty */ = {
 			isa = PBXGroup;
 			children = (
+				FF357CA61BA16F1D00DFCAC0 /* Woyaodinghuo */,
 				FF357C7D1BA00ADC00DFCAC0 /* shangpinguanli */,
 				5BA5AA2E1B98293600329677 /* Scan */,
 				AB3877A31B97D06E00DD7468 /* Yudanchaxun */,
@@ -1482,6 +1509,29 @@
 				FF357C9F1BA1310300DFCAC0 /* SBPageFlowView.m */,
 			);
 			path = shangpinguanli;
+			sourceTree = "<group>";
+		};
+		FF357CA61BA16F1D00DFCAC0 /* Woyaodinghuo */ = {
+			isa = PBXGroup;
+			children = (
+				FF357CA71BA1974800DFCAC0 /* WYDHViewController.h */,
+				FF357CA81BA1974800DFCAC0 /* WYDHViewController.m */,
+				FF357CA91BA1974800DFCAC0 /* WYDHViewController.xib */,
+				FF357CB21BA2AABD00DFCAC0 /* WYJHListCell.h */,
+				FF357CB31BA2AABD00DFCAC0 /* WYJHListCell.m */,
+				FF357CB41BA2AABD00DFCAC0 /* WYJHListCell.xib */,
+				FF357CAC1BA2787F00DFCAC0 /* WYJHManager.h */,
+				FF357CAD1BA2787F00DFCAC0 /* WYJHManager.m */,
+				FF357CAF1BA27EA900DFCAC0 /* WYJHMode.h */,
+				FF357CB01BA27EA900DFCAC0 /* WYJHMode.m */,
+				FF357CB71BA2B56100DFCAC0 /* WYJHSXViewcontroller.h */,
+				FF357CB81BA2B56100DFCAC0 /* WYJHSXViewcontroller.m */,
+				FF357CB91BA2B56100DFCAC0 /* WYJHSXViewcontroller.xib */,
+				FF357CBC1BA2C30900DFCAC0 /* WYJHDetailVC.h */,
+				FF357CBD1BA2C30900DFCAC0 /* WYJHDetailVC.m */,
+				FF357CBE1BA2C30900DFCAC0 /* WYJHDetailVC.xib */,
+			);
+			path = Woyaodinghuo;
 			sourceTree = "<group>";
 		};
 		FF3C1FFE1A2EE6D30081D3C7 /* LSNavigationController */ = {
@@ -1889,12 +1939,16 @@
 				FF2A6BE51A0F3780001607AC /* Images.xcassets in Resources */,
 				FF2A6C431A0F3B6D001607AC /* SVProgressHUD.bundle in Resources */,
 				5B1F7F8F1B8F686700763059 /* ProductCheck.storyboard in Resources */,
+				FF357CB61BA2AABD00DFCAC0 /* WYJHListCell.xib in Resources */,
 				FF5CC6FF1B93EE5300F55713 /* RukuDetailCell.xib in Resources */,
 				FF012FB21B8EB92C00AE563C /* HYDetailViewController.xib in Resources */,
 				FFD26CE61B8B1BC50003F491 /* KCYJCell.xib in Resources */,
+				FF357CBB1BA2B56100DFCAC0 /* WYJHSXViewcontroller.xib in Resources */,
 				FF5C87091B82FE5200F79EC1 /* LoginViewController.xib in Resources */,
 				FF012FAC1B8EB92C00AE563C /* HYLSXFCell.xib in Resources */,
+				FF357CAB1BA1974800DFCAC0 /* WYDHViewController.xib in Resources */,
 				FFD26CEB1B8C1B3B0003F491 /* KCYJViewController.xib in Resources */,
+				FF357CC01BA2C30900DFCAC0 /* WYJHDetailVC.xib in Resources */,
 				FF357C951BA052F500DFCAC0 /* SPGLSearchCell.xib in Resources */,
 				FF5CC7101B9420E000F55713 /* JCCXCell.xib in Resources */,
 				FF5CC7011B93EE5300F55713 /* RukuDetailViewController.xib in Resources */,
@@ -1925,6 +1979,7 @@
 				FF357C9C1BA12D6E00DFCAC0 /* SPGLProductDetail.m in Sources */,
 				FFD26CEF1B8C3F940003F491 /* ZXBJCell.m in Sources */,
 				FF2A6C881A0F3B8A001607AC /* UIScrollView+SVInfiniteScrolling.m in Sources */,
+				FF357CBF1BA2C30900DFCAC0 /* WYJHDetailVC.m in Sources */,
 				FFD26CCE1B86D0D50003F491 /* FirstMode.m in Sources */,
 				FF3C200B1A2F2B330081D3C7 /* NotifyFactoryObject.m in Sources */,
 				FF2A6C3A1A0F3B59001607AC /* NSData+Base64.m in Sources */,
@@ -1959,6 +2014,7 @@
 				AB358E471B99B47B007D62E9 /* YDCXDetailCell.m in Sources */,
 				FF5CC6FD1B93EE5300F55713 /* RKSPMode.m in Sources */,
 				FF357C8F1BA0468600DFCAC0 /* SPGLSearchVC.m in Sources */,
+				FF357CAE1BA2787F00DFCAC0 /* WYJHManager.m in Sources */,
 				AB25793D1B8F02010015039A /* IQBarButtonItem.m in Sources */,
 				FF4DFCFA1B856C2B00617660 /* LoginMode.m in Sources */,
 				FF5C86FE1B81B72400F79EC1 /* NSArray+MASAdditions.m in Sources */,
@@ -1992,6 +2048,7 @@
 				FF2A6C0C1A0F3A01001607AC /* UIImage+ImageEffects.m in Sources */,
 				FF2A6C791A0F3B7B001607AC /* UIImageView+WebCache.m in Sources */,
 				FF5CC7021B93EE5300F55713 /* RuKushenpinVC.m in Sources */,
+				FF357CB11BA27EA900DFCAC0 /* WYJHMode.m in Sources */,
 				AB2579381B8F02010015039A /* IQUIWindow+Hierarchy.m in Sources */,
 				FF5C86F91B81B72400F79EC1 /* MASConstraint.m in Sources */,
 				FF5CC6FA1B93EE5300F55713 /* RKSPCell.m in Sources */,
@@ -2028,6 +2085,8 @@
 				FF2A6BE01A0F3780001607AC /* main.m in Sources */,
 				FF5CC70F1B9420E000F55713 /* JCCXCell.m in Sources */,
 				FFF3919C1B846F58007DC652 /* AFURLSessionManager.m in Sources */,
+				FF357CB51BA2AABD00DFCAC0 /* WYJHListCell.m in Sources */,
+				FF357CAA1BA1974800DFCAC0 /* WYDHViewController.m in Sources */,
 				5B54BA1A1B91FCB7002098A4 /* DJProductCheckDetail.m in Sources */,
 				FF5C86DE1B818BE700F79EC1 /* SSWAnimator.m in Sources */,
 				FFF3919E1B846F58007DC652 /* NetManager.m in Sources */,
@@ -2042,6 +2101,7 @@
 				FF2A6C6E1A0F3B7B001607AC /* SDWebImageCompat.m in Sources */,
 				FFF3919B1B846F58007DC652 /* AFURLResponseSerialization.m in Sources */,
 				AB25793C1B8F02010015039A /* IQTextView.m in Sources */,
+				FF357CBA1BA2B56100DFCAC0 /* WYJHSXViewcontroller.m in Sources */,
 				FF4DFD081B85B21C00617660 /* NSDateTool.m in Sources */,
 				ABFAB0EC1BA1C0DE009D8654 /* SPEditViewController.m in Sources */,
 				FF2A6C6B1A0F3B7B001607AC /* MKAnnotationView+WebCache.m in Sources */,
