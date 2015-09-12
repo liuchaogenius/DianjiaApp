@@ -344,4 +344,46 @@
         success(Dict);
     }];
 }
+
++ (void)uploadImgArry:(NSArray*)aImgArry
+       parameters:(NSDictionary*)aParam
+          apiName:(NSString *)aApidName
+        uploadUrl:(NSString*)aUrl
+    uploadimgName:(NSString*)aImgname
+    progressBlock:(PROGRESSBLOCK)block
+             succ:(SUCCESSBLOCK)success
+          failure:(FAILUREBLOCK)failure
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSString *param = nil;
+    NSMutableDictionary *dict = nil;
+    manager.requestSerializer.timeoutInterval = 30;
+    
+    param = [[NetManager shareInstance] basePostDict:aParam apiName:aApidName];
+    dict = [NSMutableDictionary dictionaryWithDictionary:aParam];
+    [dict setValue:param forKey:@"S3CAPI"];
+    [manager.requestSerializer setValue:param forHTTPHeaderField:@"S3CAPI"];
+    [NetManager setRequestHeadValue:manager];
+    if([kBaseUrl compare:@"https://api.chinascrm.com/sapi4app.html"] == 0)
+    {
+        manager.securityPolicy.allowInvalidCertificates = YES;
+    }
+    
+    [manager POST:kBaseUrl parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        NSString *fileName = @"temp_image.jpg";
+        for(int i=0; i<aImgArry.count; i++)
+        {
+            fileName = [NSString stringWithFormat:@"temp_image%d.jpg",i];
+            NSData *imageData = UIImageJPEGRepresentation([aImgArry objectAtIndex:i], 1);
+            [formData appendPartWithFileData:imageData name:@"pic" fileName:fileName mimeType:@"application/octet-stream"];
+        }
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *Dict = [operation.responseString objectFromJSONString];
+        success(Dict);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSDictionary *Dict = [operation.responseString objectFromJSONString];
+        success(Dict);
+    }];
+}
 @end
