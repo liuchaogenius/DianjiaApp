@@ -15,4 +15,8 @@
 - (void)setStartTime:(NSString *)aStartTime;
 - (void)setEndTime:(NSString *)aEndTime;
 - (void)setSupIdTime:(NSString *)aSupId;
+- (void)appAccountSupplierStorage:(NSString *)aId //结清
+                      finishBlock:(void(^)(BOOL ret))aFinishBlock;
+- (void)appStorageStockSrl:(NSString *)aId
+               finishBlock:(void(^)(BOOL ret))aFinishBlock;
 @end

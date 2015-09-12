@@ -182,6 +182,9 @@
 		FF3C20041A2EE7480081D3C7 /* FactoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C20031A2EE7480081D3C7 /* FactoryModel.m */; };
 		FF3C20081A2F2A440081D3C7 /* GlobObserverObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C20071A2F2A440081D3C7 /* GlobObserverObject.m */; };
 		FF3C200B1A2F2B330081D3C7 /* NotifyFactoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C200A1A2F2B330081D3C7 /* NotifyFactoryObject.m */; };
+		FF3C34EB1BA3DB98006766E9 /* UIAlertView+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C34E81BA3DB98006766E9 /* UIAlertView+Block.m */; };
+		FF3C34F11BA4268C006766E9 /* WYJHDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C34EF1BA4268C006766E9 /* WYJHDetailCell.m */; };
+		FF3C34F21BA4268C006766E9 /* WYJHDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3C34F01BA4268C006766E9 /* WYJHDetailCell.xib */; };
 		FF4DFCF31B856B9600617660 /* JsonToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4DFCEA1B856B9600617660 /* JsonToModel.m */; };
 		FF4DFCF41B856B9600617660 /* NSFileManager_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4DFCEC1B856B9600617660 /* NSFileManager_Additions.m */; };
 		FF4DFCF51B856B9600617660 /* SCach.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4DFCEE1B856B9600617660 /* SCach.m */; };
@@ -609,6 +612,11 @@
 		FF3C20071A2F2A440081D3C7 /* GlobObserverObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobObserverObject.m; sourceTree = "<group>"; };
 		FF3C20091A2F2B330081D3C7 /* NotifyFactoryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyFactoryObject.h; sourceTree = "<group>"; };
 		FF3C200A1A2F2B330081D3C7 /* NotifyFactoryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyFactoryObject.m; sourceTree = "<group>"; };
+		FF3C34E71BA3DB98006766E9 /* UIAlertView+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Block.h"; sourceTree = "<group>"; };
+		FF3C34E81BA3DB98006766E9 /* UIAlertView+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Block.m"; sourceTree = "<group>"; };
+		FF3C34EE1BA4268C006766E9 /* WYJHDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYJHDetailCell.h; sourceTree = "<group>"; };
+		FF3C34EF1BA4268C006766E9 /* WYJHDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYJHDetailCell.m; sourceTree = "<group>"; };
+		FF3C34F01BA4268C006766E9 /* WYJHDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WYJHDetailCell.xib; sourceTree = "<group>"; };
 		FF4DFCE91B856B9600617660 /* JsonToModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonToModel.h; sourceTree = "<group>"; };
 		FF4DFCEA1B856B9600617660 /* JsonToModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonToModel.m; sourceTree = "<group>"; };
 		FF4DFCEB1B856B9600617660 /* NSFileManager_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSFileManager_Additions.h; sourceTree = "<group>"; };
@@ -1296,6 +1304,7 @@
 		FF2A6C041A0F39E3001607AC /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				FF3C34E41BA3DB98006766E9 /* UIAlertView+Block */,
 				AB25790F1B8F02010015039A /* IQQKeyBoardManager */,
 				FF4DFCE81B856B9600617660 /* serilzerFile */,
 				FFF3917B1B846F58007DC652 /* AFNetworking */,
@@ -1571,6 +1580,9 @@
 				FF357CBC1BA2C30900DFCAC0 /* WYJHDetailVC.h */,
 				FF357CBD1BA2C30900DFCAC0 /* WYJHDetailVC.m */,
 				FF357CBE1BA2C30900DFCAC0 /* WYJHDetailVC.xib */,
+				FF3C34EE1BA4268C006766E9 /* WYJHDetailCell.h */,
+				FF3C34EF1BA4268C006766E9 /* WYJHDetailCell.m */,
+				FF3C34F01BA4268C006766E9 /* WYJHDetailCell.xib */,
 			);
 			path = Woyaodinghuo;
 			sourceTree = "<group>";
@@ -1582,6 +1594,15 @@
 				FF3C20001A2EE6D30081D3C7 /* LSNavigationController.m */,
 			);
 			path = LSNavigationController;
+			sourceTree = "<group>";
+		};
+		FF3C34E41BA3DB98006766E9 /* UIAlertView+Block */ = {
+			isa = PBXGroup;
+			children = (
+				FF3C34E71BA3DB98006766E9 /* UIAlertView+Block.h */,
+				FF3C34E81BA3DB98006766E9 /* UIAlertView+Block.m */,
+			);
+			path = "UIAlertView+Block";
 			sourceTree = "<group>";
 		};
 		FF4DFCE81B856B9600617660 /* serilzerFile */ = {
@@ -1978,6 +1999,7 @@
 				FF5CC7251B9A8D8C00F55713 /* JCCXSXViewController.xib in Resources */,
 				AB40EABD1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib in Resources */,
 				FF357C821BA0151D00DFCAC0 /* ShangpinguanliVC.xib in Resources */,
+				FF3C34F21BA4268C006766E9 /* WYJHDetailCell.xib in Resources */,
 				FF2A6BE51A0F3780001607AC /* Images.xcassets in Resources */,
 				FF2A6C431A0F3B6D001607AC /* SVProgressHUD.bundle in Resources */,
 				5B1F7F8F1B8F686700763059 /* ProductCheck.storyboard in Resources */,
@@ -2029,6 +2051,7 @@
 				FF2A6C3A1A0F3B59001607AC /* NSData+Base64.m in Sources */,
 				FF5C872D1B83279600F79EC1 /* FirstViewController.m in Sources */,
 				5BF62F771BA43ADE0053801E /* DJInputCodeViewController.m in Sources */,
+				FF3C34F11BA4268C006766E9 /* WYJHDetailCell.m in Sources */,
 				FF4DFCF61B856B9600617660 /* ThreadSafeMutableArry.m in Sources */,
 				FF5C86FC1B81B72400F79EC1 /* MASViewAttribute.m in Sources */,
 				FF5C87001B81B72400F79EC1 /* View+MASAdditions.m in Sources */,
@@ -2087,6 +2110,7 @@
 				5B54BA381B922CB2002098A4 /* DJCheckCartContext.m in Sources */,
 				FF5C86FF1B81B72400F79EC1 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				FF012FB11B8EB92C00AE563C /* HYGLManager.m in Sources */,
+				FF3C34EB1BA3DB98006766E9 /* UIAlertView+Block.m in Sources */,
 				AB25793B1B8F02010015039A /* IQSegmentedNextPrevious.m in Sources */,
 				AB88441E1B914D0F00FA526D /* CLTableViewCell.m in Sources */,
 				FFD26CF41B8C546F0003F491 /* ZCBCell.m in Sources */,

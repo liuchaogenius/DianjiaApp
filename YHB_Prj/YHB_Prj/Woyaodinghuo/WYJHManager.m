@@ -95,6 +95,31 @@
         }
     }];
 }
+#pragma mark 结账进货
+- (void)appAccountSupplierStorage:(NSString *)aId
+                      finishBlock:(void(^)(BOOL ret))aFinishBlock
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+    [dict setValue:aId forKey:@"id"];
+    [NetManager requestWith:dict apiName:@"appAccountSupplierStorage" method:@"post" succ:^(NSDictionary *successDict) {
+        MLOG(@"%@",successDict);
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        
+    }];
+}
+
+#pragma mark 收货
+- (void)appStorageStockSrl:(NSString *)aId
+                      finishBlock:(void(^)(BOOL ret))aFinishBlock
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+    [dict setValue:aId forKey:@"id"];
+    [NetManager requestWith:dict apiName:@"appStorageStockSrl" method:@"post" succ:^(NSDictionary *successDict) {
+        MLOG(@"%@",successDict);
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        
+    }];
+}
 #pragma mark 设置筛选数据
 - (void)setAccountType:(int)aType //是否已结  1-未结 2-已结
 {

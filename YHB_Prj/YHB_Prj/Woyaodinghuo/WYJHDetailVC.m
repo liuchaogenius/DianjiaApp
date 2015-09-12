@@ -9,25 +9,26 @@
 #import "WYJHDetailVC.h"
 #import "WYJHMode.h"
 #import "WYJHManager.h"
+#import "UIAlertView+Block.h"
+#import "WYJHDetailCell.h"
 
 @interface WYJHDetailVC ()
+@property (strong, nonatomic) IBOutlet UIView *tvHeadView;
+@property (strong, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic) IBOutlet UILabel *jinhuodanhaoLabel;
 @property (strong, nonatomic) IBOutlet UILabel *riqiLabel;
 @property (strong, nonatomic) IBOutlet UILabel *gonghuoshangLabel;
 @property (strong, nonatomic) IBOutlet UILabel *zongshuliangLabel;
 @property (strong, nonatomic) IBOutlet UILabel *zongjineLabel;
-@property (strong, nonatomic) IBOutlet UILabel *pinmingLabel;
-@property (strong, nonatomic) IBOutlet UILabel *dinghuoshuliangLabel;
-@property (strong, nonatomic) IBOutlet UILabel *jinjiaLabel;
-@property (strong, nonatomic) IBOutlet UILabel *kucunLabel;
-@property (strong, nonatomic) IBOutlet UILabel *xiaojiLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *didanLabel;
+
+@property (strong, nonatomic) IBOutlet UIButton *didanBT;
 @property (strong, nonatomic) IBOutlet UIButton *jieqingBT;
 @property (strong, nonatomic) IBOutlet UIButton *xiugaiBT;
 @property (strong, nonatomic) IBOutlet UIButton *shouhuoBT;
 @property (strong, nonatomic) WYJHMode *mode;
 @property (strong, nonatomic) WYJHModeList *modeList;
 @property (strong, nonatomic) WYJHManager *manager;
+@property (strong, nonatomic) NSMutableArray *modeArry;
 @end
 
 @implementation WYJHDetailVC
@@ -36,41 +37,168 @@
     if(self=[super initWithNibName:nibNameOrNil bundle:nil])
     {
         self.hidesBottomBarWhenPushed = YES;
+        kCreateMutableArry(self.modeArry);
     }
     return self;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.jinhuodanhaoLabel.text = self.modeList.strSrl;
-    self.riqiLabel.text = self.modeList.strOrderTime;
-    self.gonghuoshangLabel.text = self.modeList.strSupName;
-    self.zongshuliangLabel.text = self.modeList.strStockNum;
-    self.zongjineLabel.text = self.modeList.strTotalRealPay;
-    
-    self.pinmingLabel.text = self.mode.strProductName;
-    self.dinghuoshuliangLabel.text = self.mode.strStayQty;
-    self.jinjiaLabel.text = self.mode.strStockPrice;
-    self.kucunLabel.text = self.mode.strStayQty;
-    self.xiaojiLabel.text = self.mode.strShelfDys;
+
     if([self.modeList.strAccountType intValue] == 1)//未计算
     {
-        
+        self.jieqingBT.hidden = NO;
     }
     else if([self.modeList.strAccountType intValue] == 2)
     {
-        self.xiugaiBT.hidden = YES;
-        self.shouhuoBT.hidden = YES;
+        self.jieqingBT.hidden = YES;
     }
+    if([self.modeList.strStatus intValue] == 0)//未入库
+    {
+        self.xiugaiBT.hidden = NO;
+        self.shouhuoBT.hidden = NO;
+    }
+    else if([self.modeList.strStatus intValue] == 1)//已入库
+    {
+        self.xiugaiBT.hidden = NO;
+        self.shouhuoBT.hidden = NO;
+    }
+    [self.jieqingBT addTarget:self action:@selector(jieqingBT) forControlEvents:UIControlEventTouchUpInside];
+    [self.shouhuoBT addTarget:self action:@selector(shouhuoBT) forControlEvents:UIControlEventTouchUpInside];
+    [self.xiugaiBT addTarget:self action:@selector(modifyBTItem) forControlEvents:UIControlEventTouchUpInside];
+    
+    //self.tableview.tableHeaderView = [self getTVHeadView];
+    self.tableview.delegate = self;
+    self.tableview.dataSource = self;
 }
 
 #pragma mark 初始化数据
 - (void)setInitData:(WYJHManager *)aManager mode:(WYJHMode *)aMode modeList:(WYJHModeList *)aList
 {
-    self.manager = aManager;
-    self.mode = aMode;
-    self.modeList = aList;
+    if(aManager)
+    {
+        self.manager = aManager;
+    }
+    if(aMode)
+    {
+        self.mode = aMode;
+        [self.modeArry addObject:aMode];
+    }
+    if(aList)
+    {
+        self.modeList = aList;
+    }
 }
+
+#pragma mark 结清
+- (void)jieqingBTItem
+{
+    UIAlertView *alertview = [[UIAlertView alloc] initWithMessage:@"确认结清货物？" cancelButtonTitle:@"取消" otherButtonTitle:@"确定"];
+    [alertview showUsingBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        if(buttonIndex == 1)
+        {
+            [SVProgressHUD show:NO offsetY:0];
+            [self.manager appAccountSupplierStorage:self.modeList.strId finishBlock:^(BOOL ret) {
+                if(ret)
+                {
+                    [SVProgressHUD showWithStatus:@"结算完成" cover:NO offsetY:0];
+                    [SVProgressHUD dissmissAfter];
+                }
+                else
+                {
+                    [SVProgressHUD dismiss];
+                }
+            }];
+        }
+    }];
+}
+
+#pragma mark 收货
+- (void)shouhuoBTItem
+{
+    UIAlertView *alertview = [[UIAlertView alloc] initWithMessage:@"确认收货？" cancelButtonTitle:@"取消" otherButtonTitle:@"确定"];
+    [alertview showUsingBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        if(buttonIndex == 1)
+        {
+            [SVProgressHUD showWithStatus:@"确认中" cover:NO offsetY:0];
+            [self.manager appStorageStockSrl:self.modeList.strId finishBlock:^(BOOL ret) {
+                    if(ret)
+                    {
+                        [SVProgressHUD showWithStatus:@"完成" cover:NO offsetY:0];
+                        [SVProgressHUD dissmissAfter];
+                    }
+                    else
+                    {
+                        [SVProgressHUD dismiss];
+                    }
+            }];
+        }
+    }];
+}
+
+#pragma mark 修改
+- (void)modifyBTItem
+{
+    UIView *tempTopView = [[UIView alloc] initWithFrame:CGRectMake(0, 10, kMainScreenWidth-20, 34)];
+    UIButton *searchBt = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, tempTopView.width-50, tempTopView.height)];
+    [searchBt setTitle:@"请输入商品名称/简拼/条码" forState:UIControlStateNormal];
+    [tempTopView addSubview:searchBt];
+    
+    UIButton *tiaomaBt = [[UIButton alloc] initWithFrame:CGRectMake(tempTopView.width-50, 0, 50, tempTopView.height)];
+    [tiaomaBt setImage:[UIImage imageNamed:@"icon_2_saoma"] forState:UIControlStateNormal];
+    [tempTopView addSubview:tiaomaBt];
+    
+    [self.view addSubview:tempTopView];
+    
+    CGRect tvRect = self.tvHeadView.frame;
+    self.tvHeadView.frame = CGRectMake(0, tvRect.origin.y+44, tvRect.size.width, tvRect.size.height);
+    
+    CGRect tbvRect = self.tableview.frame;
+    self.tableview.frame = CGRectMake(0, tbvRect.origin.y+44, tbvRect.size.width, tbvRect.size.height);
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//
+//
+//    });
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
+{
+    return self.modeArry.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 108.00f;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    WYJHDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WYJHDETAILCELL"];
+    if(!cell)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"WYJHDetailCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    [self configureCell:cell forRowAtIndexPath:indexPath];
+
+    return cell;
+}
+
+- (void)configureCell:(WYJHDetailCell *)cell
+    forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row < self.modeArry.count)
+    {
+        WYJHMode *mode = [self.modeArry objectAtIndex:indexPath.row];
+        [cell setCellData:mode];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

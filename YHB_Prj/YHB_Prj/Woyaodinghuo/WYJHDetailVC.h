@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface WYJHDetailVC : BaseViewController
+@interface WYJHDetailVC : BaseViewController<UITableViewDelegate, UITableViewDataSource>
 
 @end

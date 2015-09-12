@@ -41,5 +41,5 @@ typedef NSUInteger SVProgressHUDMaskType;
 + (void)dismissWithError:(NSString*)errorString afterDelay:(NSTimeInterval)seconds;
 
 + (BOOL)isVisible;
-
++ (void)dissmissAfter;
 @end
