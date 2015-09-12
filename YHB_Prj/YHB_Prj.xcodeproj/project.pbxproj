@@ -93,6 +93,9 @@
 		ABDDB3791BA3BCDA00DCD659 /* UploadImgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB3781BA3BCDA00DCD659 /* UploadImgViewController.m */; };
 		ABDDB3801BA3C2E300DCD659 /* XSLSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB37E1BA3C2E300DCD659 /* XSLSTableViewCell.m */; };
 		ABDDB3811BA3C2E300DCD659 /* XSLSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABDDB37F1BA3C2E300DCD659 /* XSLSTableViewCell.xib */; };
+		ABDDB3841BA4190B00DCD659 /* JHLSMode.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB3831BA4190B00DCD659 /* JHLSMode.m */; };
+		ABDDB3871BA41FC400DCD659 /* XSLSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB3861BA41FC400DCD659 /* XSLSViewController.m */; };
+		ABDDB38A1BA421B200DCD659 /* XSLSMode.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB3891BA421B200DCD659 /* XSLSMode.m */; };
 		ABE71E241B9C32E2000651A9 /* FBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE71E231B9C32E2000651A9 /* FBViewController.m */; };
 		ABEF1DA71B929D5400C1C2EA /* SupplierDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DA61B929D5400C1C2EA /* SupplierDetailViewController.m */; };
 		ABEF1DAB1B92A18E00C1C2EA /* ClerkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DAA1B92A18E00C1C2EA /* ClerkDetailViewController.m */; };
@@ -435,6 +438,12 @@
 		ABDDB37D1BA3C2E300DCD659 /* XSLSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XSLSTableViewCell.h; sourceTree = "<group>"; };
 		ABDDB37E1BA3C2E300DCD659 /* XSLSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XSLSTableViewCell.m; sourceTree = "<group>"; };
 		ABDDB37F1BA3C2E300DCD659 /* XSLSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XSLSTableViewCell.xib; sourceTree = "<group>"; };
+		ABDDB3821BA4190B00DCD659 /* JHLSMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLSMode.h; sourceTree = "<group>"; };
+		ABDDB3831BA4190B00DCD659 /* JHLSMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLSMode.m; sourceTree = "<group>"; };
+		ABDDB3851BA41FC400DCD659 /* XSLSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XSLSViewController.h; sourceTree = "<group>"; };
+		ABDDB3861BA41FC400DCD659 /* XSLSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XSLSViewController.m; sourceTree = "<group>"; };
+		ABDDB3881BA421B200DCD659 /* XSLSMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XSLSMode.h; sourceTree = "<group>"; };
+		ABDDB3891BA421B200DCD659 /* XSLSMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XSLSMode.m; sourceTree = "<group>"; };
 		ABE71E221B9C32E2000651A9 /* FBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBViewController.h; sourceTree = "<group>"; };
 		ABE71E231B9C32E2000651A9 /* FBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBViewController.m; sourceTree = "<group>"; };
 		ABEF1DA51B929D5400C1C2EA /* SupplierDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierDetailViewController.h; sourceTree = "<group>"; };
@@ -1181,11 +1190,17 @@
 				ABDDB3721BA3B1ED00DCD659 /* JHLSTableViewCell.h */,
 				ABDDB3731BA3B1ED00DCD659 /* JHLSTableViewCell.m */,
 				ABDDB3741BA3B1ED00DCD659 /* JHLSTableViewCell.xib */,
+				ABDDB3821BA4190B00DCD659 /* JHLSMode.h */,
+				ABDDB3831BA4190B00DCD659 /* JHLSMode.m */,
 				ABDDB3771BA3BCDA00DCD659 /* UploadImgViewController.h */,
 				ABDDB3781BA3BCDA00DCD659 /* UploadImgViewController.m */,
+				ABDDB3851BA41FC400DCD659 /* XSLSViewController.h */,
+				ABDDB3861BA41FC400DCD659 /* XSLSViewController.m */,
 				ABDDB37D1BA3C2E300DCD659 /* XSLSTableViewCell.h */,
 				ABDDB37E1BA3C2E300DCD659 /* XSLSTableViewCell.m */,
 				ABDDB37F1BA3C2E300DCD659 /* XSLSTableViewCell.xib */,
+				ABDDB3881BA421B200DCD659 /* XSLSMode.h */,
+				ABDDB3891BA421B200DCD659 /* XSLSMode.m */,
 			);
 			path = EditSPVC;
 			sourceTree = "<group>";
@@ -1998,6 +2013,7 @@
 				FF5C87081B82FE5200F79EC1 /* LoginViewController.m in Sources */,
 				FF357C851BA01B8A00DFCAC0 /* SPGLManager.m in Sources */,
 				FF2A6C751A0F3B7B001607AC /* UIImage+GIF.m in Sources */,
+				ABDDB3871BA41FC400DCD659 /* XSLSViewController.m in Sources */,
 				5B1F7FAC1B91CEB100763059 /* DJProductCheckSrl.m in Sources */,
 				FF357C9C1BA12D6E00DFCAC0 /* SPGLProductDetail.m in Sources */,
 				FFD26CEF1B8C3F940003F491 /* ZXBJCell.m in Sources */,
@@ -2126,6 +2142,7 @@
 				FF2A6C6E1A0F3B7B001607AC /* SDWebImageCompat.m in Sources */,
 				FFF3919B1B846F58007DC652 /* AFURLResponseSerialization.m in Sources */,
 				AB25793C1B8F02010015039A /* IQTextView.m in Sources */,
+				ABDDB3841BA4190B00DCD659 /* JHLSMode.m in Sources */,
 				FF357CBA1BA2B56100DFCAC0 /* WYJHSXViewcontroller.m in Sources */,
 				FF4DFD081B85B21C00617660 /* NSDateTool.m in Sources */,
 				ABFAB0EC1BA1C0DE009D8654 /* SPEditViewController.m in Sources */,
@@ -2157,6 +2174,7 @@
 				FF012FB31B8EB92C00AE563C /* HYDetailViewController.m in Sources */,
 				FF012FB01B8EB92C00AE563C /* HYGLOneMothMode.m in Sources */,
 				AB2579391B8F02010015039A /* IQKeyboardManager.m in Sources */,
+				ABDDB38A1BA421B200DCD659 /* XSLSMode.m in Sources */,
 				FF5CC7161B94264D00F55713 /* JCCXMode.m in Sources */,
 				AB40EAC11B8C020700DE5ED7 /* SupplierViewController.m in Sources */,
 				FF2A6C731A0F3B7B001607AC /* SDWebImagePrefetcher.m in Sources */,

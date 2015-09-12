@@ -39,7 +39,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="南京母婴商贸有限公司" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5VD-WC-vRY">
-                        <rect key="frame" x="55" y="30" width="180" height="21"/>
+                        <rect key="frame" x="55" y="30" width="250" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -93,7 +93,7 @@
                 <outlet property="laSum" destination="w8M-V2-5TP" id="Rfh-2n-lyo"/>
                 <outlet property="laTime" destination="t8g-1f-PyW" id="DQe-tU-7TF"/>
             </connections>
-            <point key="canvasLocation" x="33" y="279"/>
+            <point key="canvasLocation" x="-228" y="229"/>
         </tableViewCell>
     </objects>
 </document>

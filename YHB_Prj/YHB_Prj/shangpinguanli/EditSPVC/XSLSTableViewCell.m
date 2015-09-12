@@ -7,6 +7,7 @@
 //
 
 #import "XSLSTableViewCell.h"
+#import "XSLSMode.h"
 
 @implementation XSLSTableViewCell
 
@@ -16,7 +17,18 @@
 
 +(CGFloat)heightForCell
 {
-    return 82;
+    return 108;
+}
+
+- (void)setCellWithMode:(XSLSMode *)aMode
+{
+    [self resetCell];
+    _laNum.text = aMode.strSale_num;
+    _laPrice.text = [NSString stringWithFormat:@"%.2f", [aMode.strSale_price floatValue]];
+    _laPro.text = [NSString stringWithFormat:@"%@%%", aMode.strDiscount_rate];
+    _laSum.text = [NSString stringWithFormat:@"%.2f", [aMode.strPayable_money floatValue]];
+    _laTime.text = aMode.strOrder_time;
+    _laLiu.text = aMode.strSrl;
 }
 
 - (void)resetCell
@@ -26,6 +38,7 @@
     _laPro.text = @"";
     _laSum.text = @"";
     _laTime.text = @"";
+    _laLiu.text = @"";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

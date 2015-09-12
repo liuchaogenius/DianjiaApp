@@ -7,6 +7,7 @@
 //
 
 #import "JHLSTableViewCell.h"
+#import "JHLSMode.h"
 
 @implementation JHLSTableViewCell
 
@@ -17,6 +18,16 @@
 + (CGFloat)heightForCell
 {
     return 108;
+}
+
+- (void)setCellWithMode:(JHLSMode *)aMode
+{
+    [self resetCell];
+    _laName.text = aMode.strSup_name;
+    _laNum.text = aMode.strStock_num;
+    _laPrice.text = [NSString stringWithFormat:@"%.2f", [aMode.strStock_price floatValue]];
+    _laSum.text = [NSString stringWithFormat:@"%.2f", [aMode.strStock_price floatValue]*[aMode.strStock_num floatValue]];
+    _laTime.text = aMode.strAdd_date;
 }
 
 - (void)resetCell

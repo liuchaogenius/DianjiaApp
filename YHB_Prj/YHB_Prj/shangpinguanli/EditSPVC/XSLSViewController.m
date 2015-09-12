@@ -1,26 +1,27 @@
 //
-//  JHLSViewController.m
+//  XSLSViewController.m
 //  YHB_Prj
 //
-//  Created by Johnny's on 15/9/11.
+//  Created by Johnny's on 15/9/12.
 //  Copyright (c) 2015年 striveliu. All rights reserved.
 //
 
-#import "JHLSViewController.h"
-#import "JHLSTableViewCell.h"
+#import "XSLSViewController.h"
+#import "XSLSTableViewCell.h"
 #import "SPManager.h"
 #import "SVPullToRefresh.h"
+#import "XSLSMode.h"
 
-@interface JHLSViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface XSLSViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
     NSString *productId;
 }
 @property(nonatomic,strong) UITableView *myTableView;
-@property(nonatomic,strong) JHLSManager *manager;
+@property(nonatomic,strong) XSLSManager *manager;
 @property(nonatomic,strong) NSMutableArray *arrData;
 @end
 
-@implementation JHLSViewController
+@implementation XSLSViewController
 
 - (instancetype)initWithProductId:(NSString *)aId
 {
@@ -42,7 +43,7 @@
     [self.view addSubview:_myTableView];
     
     _arrData = [NSMutableArray arrayWithCapacity:0];
-    _manager = [[JHLSManager alloc] init];
+    _manager = [[XSLSManager alloc] init];
     [self addTableViewTrag];
     [_myTableView triggerPullToRefresh];
 }
@@ -50,9 +51,9 @@
 #pragma mark 增加上拉下拉
 - (void)addTableViewTrag
 {
-    __weak JHLSViewController *weakself = self;
+    __weak XSLSViewController *weakself = self;
     [weakself.myTableView addPullToRefreshWithActionHandler:^{
-        [_manager appGetProductStockDetail:productId finishBlock:^(NSArray *resultArr) {
+        [_manager getSaleHisByProductIdApp:productId finishBlock:^(NSArray *resultArr) {
             if (resultArr && resultArr.count>0)
             {
                 _arrData = [resultArr mutableCopy];
@@ -67,7 +68,7 @@
     [weakself.myTableView addInfiniteScrollingWithActionHandler:^{
         if (_arrData.count%20==0 && _arrData.count!=0)
         {
-            [_manager appGetProductStockDetail:productId finishBlock:^(NSArray *resultArr) {
+            [_manager getSaleHisByProductIdApp:productId finishBlock:^(NSArray *resultArr) {
                 if (resultArr && resultArr.count>0)
                 {
                     [_arrData addObjectsFromArray:resultArr];
@@ -88,16 +89,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [JHLSTableViewCell heightForCell];
+    return [XSLSTableViewCell heightForCell];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellId = @"JHLSCell";
-    JHLSTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    static NSString *cellId = @"XSLSCell";
+    XSLSTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (!cell)
     {
-        [tableView registerNib:[UINib nibWithNibName:@"JHLSTableViewCell" bundle:nil] forCellReuseIdentifier:cellId];
+        [tableView registerNib:[UINib nibWithNibName:@"XSLSTableViewCell" bundle:nil] forCellReuseIdentifier:cellId];
         cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -105,9 +106,9 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(JHLSTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView willDisplayCell:(XSLSTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    JHLSMode *mode = _arrData[indexPath.row];
+    XSLSMode *mode = _arrData[indexPath.row];
     [cell setCellWithMode:mode];
 }
 

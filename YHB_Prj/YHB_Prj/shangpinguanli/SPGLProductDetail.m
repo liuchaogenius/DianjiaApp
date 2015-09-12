@@ -13,6 +13,8 @@
 #import "SPEditViewController.h"
 #import "JHLSViewController.h"
 #import "UploadImgViewController.h"
+#import "XSLSViewController.h"
+
 @interface SPGLProductDetail ()
 {
     SBPageFlowView *flowView;
@@ -103,13 +105,14 @@
 
 - (void)touchJHLS
 {
-    JHLSViewController *vc = [[JHLSViewController alloc] initWithProductId:_productMode.strProductCode];
+    JHLSViewController *vc = [[JHLSViewController alloc] initWithProductId:_productMode.strId];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)touchXSLS
 {
-    
+    XSLSViewController *vc = [[XSLSViewController alloc] initWithProductId:_productMode.strId];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark 设置初始化数据

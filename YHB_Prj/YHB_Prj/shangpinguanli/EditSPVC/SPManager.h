@@ -19,3 +19,9 @@
 - (void)appGetProductStockDetail:(NSString *)aProductId finishBlock:(void (^)(NSArray *))FBlock isRefresh:(BOOL)aBool;
 
 @end
+
+@interface XSLSManager : NSObject
+
+- (void)getSaleHisByProductIdApp:(NSString *)aProductId finishBlock:(void (^)(NSArray *))FBlock isRefresh:(BOOL)aBool;
+
+@end
