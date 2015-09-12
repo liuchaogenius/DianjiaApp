@@ -14,14 +14,17 @@
 
 + (void)switchStore: (NSString *)storeId;
 
-+ (void)registSuccessActionHandler:(DJCheckCartAxtionHandler)sHandler
-                       failHandler:(DJCheckCartAxtionHandler)fHandler
-                     forActionType: (DJCheckCartActionType)typeKey;
++ (void)registActionHandler:(DJCheckCartAxtionHandler)sHandler
+              forActionType: (DJCheckCartActionType)typeKey;
+
++ (DJCheckCartAxtionHandler)actionHandlerWithActionType: (DJCheckCartActionType)type;
 
 + (void)addCheckCartItemComponent: (id<DJCheckCartItemComponent>)item
                       withStoreId:(NSString *)storeId;
 
 + (NSArray<DJCheckCartItemComponent> *)chekCartItemComponents;
+
++ (void)removeAllItemComponentsWithStoreId:(NSString *)storeId;
 
 + (void)setCheckCartItemComponents: (NSArray<DJCheckCartItemComponent> *)components;
 

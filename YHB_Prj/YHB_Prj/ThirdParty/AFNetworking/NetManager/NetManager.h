@@ -45,5 +45,11 @@
              succ:(SUCCESSBLOCK)success
           failure:(FAILUREBLOCK)failure;
 
++ (void)requestWithData:(id)aData
+            apiName:(NSString *)aApiName
+             method:(NSString *)aMethod
+               succ:(SUCCESSBLOCK)success
+            failure:(FAILUREBLOCK)failure;
+
 + (void)cancelOperation:(id)aOperationKey;
 @end

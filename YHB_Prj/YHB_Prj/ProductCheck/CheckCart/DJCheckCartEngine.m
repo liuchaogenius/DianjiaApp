@@ -11,6 +11,7 @@
 #import "DJCheckCartNetService.h"
 #import "JSONKit.h"
 #import "DJProductCheckManager.h"
+#import "AFNetworking.h"
 
 @implementation DJCheckCartEngine
 
@@ -31,13 +32,11 @@
 }
 
 + (void)registActionHandler:(DJCheckCartAxtionHandler)sHandler forActionTyp: (DJCheckCartActionType)typeKey {
-    [self registSuccessActionHandler:sHandler failHandler:nil forActionType:typeKey];
+    [DJCheckCartContexManager registActionHandler:[sHandler copy] forActionType:typeKey];
 }
 
-+ (void)registSuccessActionHandler:(DJCheckCartAxtionHandler)sHandler
-                       failHandler:(DJCheckCartAxtionHandler)fHandler
-                     forActionType: (DJCheckCartActionType)typeKey {
-    [DJCheckCartContexManager registSuccessActionHandler:[sHandler copy] failHandler:[fHandler copy] forActionType:typeKey];
++ (DJCheckCartAxtionHandler)actionHandlerWIthType: (DJCheckCartActionType)typeKey {
+    return [DJCheckCartContexManager actionHandlerWithActionType:typeKey];
 }
 
 + (void)addCheckCartItemComponent: (id<DJCheckCartItemComponent>)item
@@ -46,26 +45,51 @@
         return;
     }
     [DJCheckCartContexManager addCheckCartItemComponent:item withStoreId:storeId];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DJCheckCartDataChangedNotification object:nil];
 }
 
 + (NSArray<DJCheckCartItemComponent> *)chekCartItemComponents {
     return [DJCheckCartContexManager chekCartItemComponents];
 }
 
-+ (void)deleteCheckCartItemComponents: (id<DJCheckCartItemComponent>)item; {
-    
++ (void)deleteCheckCartItemComponents: (id<DJCheckCartItemComponent>)item {
+    if (!item) {
+        return;
+    }
+    [DJCheckCartContexManager deleteCheckCartItemComponents:item];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DJCheckCartDataChangedNotification object:nil];
 }
 
-+ (void)submitCheckCartItemComponents {
++ (void)submitCheckCartItemComponentsWithStoreId:(NSString *)storeId {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:[DJCheckCartContexManager chekCartItemComponents].count];
+    DJCheckCartAxtionHandler sHandler = [self actionHandlerWIthType:DJCheckCartActionTypeSubmitChecksSuccess];
+    DJCheckCartAxtionHandler fHandler = [self actionHandlerWIthType:DJCheckCartActionTypeSubmitFail];
+    DJCheckCartAxtionHandler reCheckHandler = [self actionHandlerWIthType:DJCheckCartActionTypeSubmitChecksNeedRechack];
+    
     for (id<DJCheckCartItemComponent> item in [DJCheckCartContexManager chekCartItemComponents])
     {
         [array addObject:[item dataDictionary]];
     };
-    [DJProductCheckManager submitProductChecksWithCheckDicArray:array success:^(id resultModel) {
-        
+    [DJProductCheckManager submitProductChecksWithCheckDicArray:array success:^(NSArray *result) {
+        [DJCheckCartContexManager removeAllItemComponentsWithStoreId:storeId];
+        if (result.count) {
+            [result enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+                id<DJCheckCartItemComponent> item = [[DJCheckCartItemComponent alloc] initWithData:obj];
+                [DJCheckCartContexManager addCheckCartItemComponent:item withStoreId:storeId];
+            }];
+            if (reCheckHandler) {
+                reCheckHandler(nil);
+            }
+        }else {
+            if (sHandler) {
+                sHandler(nil);
+            }
+        }
+
     } fail:^(id msg) {
-        
+        if (fHandler) {
+            fHandler(nil);
+        }
     }];
     
 }

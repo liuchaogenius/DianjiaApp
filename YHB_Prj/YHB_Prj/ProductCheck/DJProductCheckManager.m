@@ -11,6 +11,7 @@
 #import "DJProductCheckSrlResult.h"
 #import "DJProductCheckDetail.h"
 #import "JSONKit.h"
+#import "DJCheckCartItemComponent.h"
 
 @implementation DJProductCheckManager
 + (void)getProductCheckSrlWithSid:(NSString *)sid
@@ -112,13 +113,16 @@
     if (checks.count <= 0) {
         return;
     }
-    NSMutableDictionary *postDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:checks,@"list",nil];
+    NSMutableDictionary *postDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:checks,@"List",nil];
     
-    [NetManager requestWith:postDic apiName:@"getProductBySidForCheck" method:@"POST" succ:^(NSDictionary *successDict) {
+    [NetManager requestWith:postDic apiName:@"appSubmitProductCheck" method:@"POST" succ:^(NSDictionary *successDict) {
         NSLog(@"%@",successDict);
         if ([successDict[@"msg"] isEqualToString:@"success"]) {
-           // NSDictionary *result = successDict[@"result"];
-            // DJProductCheckSrlResult *resultModel = [[DJProductCheckSrlResult alloc] initWithDictionary:result];
+            NSArray *result = successDict[@"result"];
+            if (successHandler) {
+                successHandler(result);
+                NSLog(@"success");
+            }
         }else {
             if (failHandler) {
                 failHandler(successDict[@"msg"]);

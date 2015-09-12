@@ -177,7 +177,7 @@
     
     [item setSid:[[LoginManager shareLoginManager] getStoreId]];
     [item setCheckId:[mode strCid]];
-    //[item setProductId:[mode strProductCode]];
+    [item setProductId:[mode strId]];
     [item setProductCode:[mode strProductCode]];
     [item setProductName:[mode strProductName]];
 //    item setStoreStockId:[mode strst]

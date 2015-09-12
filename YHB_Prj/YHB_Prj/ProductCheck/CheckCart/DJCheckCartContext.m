@@ -22,43 +22,42 @@
 @property (nonatomic, strong) NSString              *storeId;
 @property (nonatomic, strong) NSMutableArray<DJCheckCartItemComponent> *itemComponents;
 @property (nonatomic, strong) DJCheckCartProcessor  *processor;
-@property (nonatomic, strong) NSMutableDictionary   *successActionBlockDic;
-@property (nonatomic, strong) NSMutableDictionary   *failActionBlockDic;
+@property (nonatomic, strong) NSMutableDictionary   *actionBlockDic;
+//@property (nonatomic, strong) NSMutableDictionary   *failActionBlockDic;
 
 @end
 
 @implementation DJCheckCartContext
 #pragma mark - getter and setter
-- (NSMutableDictionary *)successActionBlockDic {
-    if (!_successActionBlockDic) {
-        _successActionBlockDic = [NSMutableDictionary dictionaryWithCapacity:4];
+- (NSMutableDictionary *)actionBlockDic {
+    if (!_actionBlockDic) {
+        _actionBlockDic = [NSMutableDictionary dictionaryWithCapacity:4];
     }
-    return _successActionBlockDic;
+    return _actionBlockDic;
 }
 
-- (NSMutableDictionary *)failActionBlockDic {
-    if (!_failActionBlockDic) {
-        _failActionBlockDic = [NSMutableDictionary dictionaryWithCapacity:4];
-    }
-    return _failActionBlockDic;
-}
-
-- (void)registSuccessActionHandler:(DJCheckCartAxtionHandler)sHandler
-                       failHandler:(DJCheckCartAxtionHandler)fHandler
-                     forActionType: (DJCheckCartActionType)typeKey {
+- (void)registActionHandler:(DJCheckCartAxtionHandler)sHandler
+              forActionType: (DJCheckCartActionType)typeKey {
     if (sHandler) {
-        self.successActionBlockDic[@(typeKey)] = sHandler;
+        self.actionBlockDic[@(typeKey)] = [sHandler copy];
     }
-    if (fHandler) {
-        self.failActionBlockDic[@(typeKey)] = fHandler;
-    }
+
+}
+
+- (DJCheckCartAxtionHandler)actionHandlerWithActionType: (DJCheckCartActionType)type {
+    return self.actionBlockDic[@(type)];
 }
 
 - (void)addCheckCartItemComponent:(id<DJCheckCartItemComponent>)item {
+    id<DJCheckCartItemComponent> removeItem = nil;
     for (id<DJCheckCartItemComponent> citem in self.chekCartItemComponents) {
         if ([citem.productId isEqualToString:item.productId]) {
-            [self.chekCartItemComponents removeObject:citem];
+            removeItem = item;
+            break;
         }
+    }
+    if (removeItem) {
+        [self.chekCartItemComponents removeObject:removeItem];
     }
     if (!self.itemComponents) {
         self.itemComponents = ( NSMutableArray<DJCheckCartItemComponent> *)[NSMutableArray array];
@@ -68,6 +67,10 @@
 
 - (NSMutableArray<DJCheckCartItemComponent> *)chekCartItemComponents {
     return self.itemComponents;
+}
+
+- (void)removeAllItemComponents {
+    [self.itemComponents removeAllObjects];
 }
 
 - (void)setCheckCartItemComponents: (NSArray<DJCheckCartItemComponent> *)components {

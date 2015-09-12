@@ -48,10 +48,14 @@
 + (DJCheckCartContext *)currentContex {
     return [[[self sharedManager] contextDic] objectForKey:[[self sharedManager] currentStoreId]];
 }
-+ (void)registSuccessActionHandler:(DJCheckCartAxtionHandler)sHandler
-                       failHandler:(DJCheckCartAxtionHandler)fHandler
-                     forActionType: (DJCheckCartActionType)typeKey {
-    [[self currentContex] registSuccessActionHandler:sHandler failHandler:fHandler forActionType:typeKey];
+
++ (void)registActionHandler:(DJCheckCartAxtionHandler)sHandler
+              forActionType: (DJCheckCartActionType)typeKey {
+    [[self currentContex] registActionHandler:sHandler forActionType:typeKey];
+}
+
++ (DJCheckCartAxtionHandler)actionHandlerWithActionType: (DJCheckCartActionType)type {
+    return [[self currentContex] actionHandlerWithActionType:type];
 }
 
 + (void)addCheckCartItemComponent: (id<DJCheckCartItemComponent>)item
@@ -66,6 +70,10 @@
 
 + (NSArray<DJCheckCartItemComponent> *)chekCartItemComponents {
     return [[self currentContex] chekCartItemComponents];
+}
+
++ (void)removeAllItemComponentsWithStoreId:(NSString *)storeId {
+    [[[[self sharedManager] contextDic] objectForKey:storeId] removeAllItemComponents];
 }
 
 + (void)setCheckCartItemComponents: (NSArray<DJCheckCartItemComponent> *)components {

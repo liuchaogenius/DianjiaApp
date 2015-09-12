@@ -15,13 +15,16 @@
 
 @interface DJCheckCartContext : NSObject
 
-- (void)registSuccessActionHandler:(DJCheckCartAxtionHandler)sHandler
-                       failHandler:(DJCheckCartAxtionHandler)fHandler
-                     forActionType: (DJCheckCartActionType)typeKey;
+- (void)registActionHandler:(DJCheckCartAxtionHandler)sHandler
+              forActionType: (DJCheckCartActionType)typeKey;
 
 - (void)addCheckCartItemComponent: (id<DJCheckCartItemComponent>)item;
 
+- (void)removeAllItemComponents ;
+
 - (NSMutableArray<DJCheckCartItemComponent> *)chekCartItemComponents;
+
+- (DJCheckCartAxtionHandler)actionHandlerWithActionType: (DJCheckCartActionType)type;
 
 - (void)setCheckCartItemComponents: (NSArray<DJCheckCartItemComponent> *)components;
 

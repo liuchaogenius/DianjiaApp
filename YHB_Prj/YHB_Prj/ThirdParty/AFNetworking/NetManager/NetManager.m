@@ -187,6 +187,55 @@
     }
 }
 
++ (void)requestWithData:(id)aData
+                apiName:(NSString *)aApiName
+                 method:(NSString *)aMethod
+                   succ:(SUCCESSBLOCK)success
+                failure:(FAILUREBLOCK)failure {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer.timeoutInterval = 30;
+    
+    [NetManager setRequestHeadValue:manager];
+    NSString *method = [aMethod uppercaseString];
+    if([kBaseUrl compare:@"https://api.chinascrm.com/sapi4app.html"] == 0)
+    {
+        manager.securityPolicy.allowInvalidCertificates = YES;
+    }
+    if([method compare:@"POST"] == 0)
+    {
+        [manager POST:kBaseUrl parameters:aData success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            //请求成功
+            NSDictionary *dic = responseObject;
+            MLOG(@"API_NAME = %@,result=%@",aApiName,dic);
+            NSString *codeString = [NSString stringWithFormat:@"%@",[dic objectForKey:@"code"]];
+            if ([codeString intValue] == 0) {
+                success(dic);
+            }else{
+                success(nil);
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            //请求失败
+            NSDictionary *resultDictionary = [operation.responseString objectFromJSONString];
+            MLOG(@"API_NAME = %@,false=%@",aApiName,resultDictionary);
+            failure(nil, error);
+        }];
+    }
+    else if([method compare:@"GET"] == 0)
+    {
+        [manager GET:kBaseUrl parameters:aData success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            //请求成功
+            NSDictionary *Dict = [operation.responseString objectFromJSONString];
+            MLOG(@"API_NAME = %@,result=%@",aApiName,Dict);
+            success(Dict);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            //请求失败
+            NSDictionary *resultDictionary = [operation.responseString objectFromJSONString];
+            MLOG(@"API_NAME = %@,false=%@",aApiName,resultDictionary);
+            failure(resultDictionary, error);
+        }];
+    }
+}
+
 - (NSString *)basePostDict:(NSDictionary *)aParam apiName:(NSString *)aApiName
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:nil];

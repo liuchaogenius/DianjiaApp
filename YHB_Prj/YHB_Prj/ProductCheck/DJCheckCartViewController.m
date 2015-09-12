@@ -13,14 +13,16 @@
 #import "DJCheckCartCell.h"
 #import "DJScanViewController.h"
 #import "ShangpinguanliVC.h"
+#import "DJProductCheckViewManager.h"
 
 #define StringValueWithNum(a) [NSString stringWithFormat:@"%ld",(NSInteger)a]
 
-@interface DJCheckCartViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface DJCheckCartViewController ()<UITableViewDataSource,UITableViewDelegate,DJProductCheckViewDataSoure>
 
 @property (weak, nonatomic) IBOutlet DJProductSearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) id<DJCheckCartItemComponent> currentCheckItem;
 
 @end
 
@@ -30,6 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setExtraCellLineHidden:self.tableView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshUI) name:DJCheckCartDataChangedNotification object:nil];
+    [self registEnigine];
     
     [self.searchBar setNeedShowSearchVCHandler:^{
         //TODO:跳转搜索框
@@ -61,19 +65,25 @@
 
 - (void)registEnigine {
     __weak typeof(self) weakself = self;
-    [DJCheckCartEngine registSuccessActionHandler:^(id model) {
+    [DJCheckCartEngine registActionHandler:^(id model) {
         [SVProgressHUD dismissWithSuccess:@"成功"];
         [weakself refreshUI];
-    } failHandler:^(id model) {
-        [SVProgressHUD dismissWithError:@"上传盘点失败,请重试"];
-        [weakself refreshUI];
-    } forActionType:DJCheckCartActionTypeSubmitChecksSuccess];
+    } forActionTyp:DJCheckCartActionTypeSubmitChecksSuccess];
     
     [DJCheckCartEngine registActionHandler:^(id model) {
+        [SVProgressHUD dismissWithError:@"上传盘点失败,请重试"];
         [weakself refreshUI];
-        [SVProgressHUD showErrorWithStatus:@"本次盘点期间这些库存发生变化,请重新盘点" cover:YES offsetY:0];
-    } forActionTyp:DJCheckCartActionTypeSubmitChecksNeedRechack];
+    } forActionTyp:DJCheckCartActionTypeSubmitFail];
     
+    [DJCheckCartEngine registActionHandler:^(id model) {
+        [SVProgressHUD dismissWithError:@"上传盘点失败,请重试"];
+        [weakself refreshUI];
+    } forActionTyp:DJCheckCartActionTypeSubmitFail];
+    
+    [DJCheckCartEngine registActionHandler:^(id model) {
+        [SVProgressHUD showErrorWithStatus:@"本次盘点期间这些库存发生变化,请重新盘点" cover:YES offsetY:0];
+        [weakself refreshUI];
+    } forActionTyp:DJCheckCartActionTypeSubmitChecksNeedRechack];
 }
 
 
@@ -108,6 +118,20 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row < [DJCheckCartEngine chekCartItemComponents].count) {
+        id<DJCheckCartItemComponent> item = [DJCheckCartEngine chekCartItemComponents][indexPath.row];
+        if (item) {
+            self.currentCheckItem = item;
+            [[DJProductCheckViewManager sharedInstance] showCheckViewFromViewController:self withDataSource:self];
+            return;
+        }
+    }
+    //由于check中数量顺序等会变化，所以不给于连续下一下检索功能
+    self.currentCheckItem = nil;
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         if ([DJCheckCartEngine chekCartItemComponents].count > indexPath.row) {
@@ -117,13 +141,24 @@
     }
 }
 
+#pragma mark - check DataSource
+- (id<DJCheckCartItemComponent>)nextItem {
+    id<DJCheckCartItemComponent> item = self.currentCheckItem;
+    self.currentCheckItem = nil;
+    return item;
+}
+
 #pragma mark - action
 #pragma mark submit
 - (IBAction)touchSubmitButton:(UIButton *)sender {
     if ([DJCheckCartEngine chekCartItemComponents].count > 0) {
         [SVProgressHUD showWithStatus:@"上传中..." cover:YES offsetY:0];
-        [DJCheckCartEngine submitCheckCartItemComponents];
+        [DJCheckCartEngine submitCheckCartItemComponentsWithStoreId:[[LoginManager shareLoginManager] getStoreId]];
     }
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

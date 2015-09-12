@@ -8,6 +8,8 @@
 
 #ifndef YHB_Prj_DJCheckCartPublic_h
 #define YHB_Prj_DJCheckCartPublic_h
+//数据发生变化 通知
+#define DJCheckCartDataChangedNotification @"cartChange"
 
 typedef void (^DJCheckCartAxtionHandler)(id model);
 

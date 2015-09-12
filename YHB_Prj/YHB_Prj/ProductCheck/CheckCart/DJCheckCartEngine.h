@@ -15,15 +15,11 @@
 
 + (void)registActionHandler:(DJCheckCartAxtionHandler)sHandler forActionTyp: (DJCheckCartActionType)typeKey;
 
-+ (void)registSuccessActionHandler:(DJCheckCartAxtionHandler)sHandler
-                       failHandler:(DJCheckCartAxtionHandler)fHandler
-                     forActionType: (DJCheckCartActionType)typeKey;
-
 + (void)addCheckCartItemComponent: (id<DJCheckCartItemComponent>)item withStoreId:(NSString *)storeId;
 
 + (NSArray<DJCheckCartItemComponent> *)chekCartItemComponents;
 
-+ (void)submitCheckCartItemComponents;
++ (void)submitCheckCartItemComponentsWithStoreId:(NSString *)storeId;
 
 + (void)deleteCheckCartItemComponents: (id<DJCheckCartItemComponent>)item;
 
