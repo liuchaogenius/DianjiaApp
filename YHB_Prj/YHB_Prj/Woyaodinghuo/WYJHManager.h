@@ -19,4 +19,7 @@
                       finishBlock:(void(^)(BOOL ret))aFinishBlock;
 - (void)appStorageStockSrl:(NSString *)aId
                finishBlock:(void(^)(BOOL ret))aFinishBlock;
+
+- (void)appDeleteSupplierStorageSrl:(NSString *)aId //删除
+                        finishBlock:(void(^)(BOOL ret))aFinishBlock;
 @end

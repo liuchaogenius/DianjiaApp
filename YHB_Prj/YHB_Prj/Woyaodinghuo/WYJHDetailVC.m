@@ -139,9 +139,12 @@
 #pragma mark 修改
 - (void)modifyBTItem
 {
-    UIView *tempTopView = [[UIView alloc] initWithFrame:CGRectMake(0, 10, kMainScreenWidth-20, 34)];
+    UIView *tempTopView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, kMainScreenWidth-20, 34)];
+    tempTopView.backgroundColor = [UIColor whiteColor];
     UIButton *searchBt = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, tempTopView.width-50, tempTopView.height)];
     [searchBt setTitle:@"请输入商品名称/简拼/条码" forState:UIControlStateNormal];
+    [searchBt setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    searchBt.titleLabel.font = [UIFont systemFontOfSize:13];
     [tempTopView addSubview:searchBt];
     
     UIButton *tiaomaBt = [[UIButton alloc] initWithFrame:CGRectMake(tempTopView.width-50, 0, 50, tempTopView.height)];
@@ -150,15 +153,11 @@
     
     [self.view addSubview:tempTopView];
     
-    CGRect tvRect = self.tvHeadView.frame;
-    self.tvHeadView.frame = CGRectMake(0, tvRect.origin.y+44, tvRect.size.width, tvRect.size.height);
-    
-    CGRect tbvRect = self.tableview.frame;
-    self.tableview.frame = CGRectMake(0, tbvRect.origin.y+44, tbvRect.size.width, tbvRect.size.height);
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//
-//
-//    });
+    self.tableview.editing = YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleDelete;
 }
 
 #pragma mark - UITableViewDataSource
@@ -199,6 +198,25 @@
     }
 }
 
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MLOG(@"1213");
+    if(indexPath.row < self.modeArry.count)
+    {
+        WYJHMode *mode = [self.modeArry objectAtIndex:indexPath.row];
+        [self.manager appDeleteSupplierStorageSrl:mode.strId finishBlock:^(BOOL ret) {
+            
+        }];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row < self.modeArry.count)
+    {
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

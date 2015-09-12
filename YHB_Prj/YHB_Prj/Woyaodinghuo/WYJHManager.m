@@ -120,6 +120,19 @@
         
     }];
 }
+
+- (void)appDeleteSupplierStorageSrl:(NSString *)aId
+                        finishBlock:(void(^)(BOOL ret))aFinishBlock
+
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+    [dict setValue:aId forKey:@"id"];
+    [NetManager requestWith:dict apiName:@"appDeleteSupplierStorageSrl" method:@"post" succ:^(NSDictionary *successDict) {
+        MLOG(@"%@",successDict);
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        
+    }];
+}
 #pragma mark 设置筛选数据
 - (void)setAccountType:(int)aType //是否已结  1-未结 2-已结
 {
