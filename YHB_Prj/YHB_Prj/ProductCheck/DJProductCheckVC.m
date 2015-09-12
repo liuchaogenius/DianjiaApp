@@ -9,22 +9,35 @@
 #import "DJProductCheckVC.h"
 #import "DJCheckCartEngine.h"
 #import "LoginManager.h"
+#import "DJStoryboadManager.h"
+#import "SVProgressHUD.h"
 
 #define StringValueWithNum(a) [NSString stringWithFormat:@"%ld",(NSInteger)a]
 
 @interface DJProductCheckVC ()
 
+@property (nonatomic, assign) NSInteger originNum;
 @property (nonatomic, assign) NSInteger calculateNum;
 @property (nonatomic, strong) NSDictionary *operationDic;
-@property (nonatomic, weak) id<DJCheckCartItemComponent> currentItem;
+@property (nonatomic, strong) id<DJCheckCartItemComponent> currentItem;
 
 @end
 
 @implementation DJProductCheckVC
 
+- (void)setCurrentItem:(id<DJCheckCartItemComponent>)currentItem {
+    _currentItem = currentItem;
+    _originNum = [_currentItem checkQuanity];
+    _calculateNum = _originNum;
+    //刷新UI
+    [self resetUI];
+}
+
 - (void)setCalculateNum:(NSInteger)calculateNum {
     _calculateNum = calculateNum;
     self.checkNumTextField.text = StringValueWithNum(_calculateNum);
+    [self.currentItem setCheckQuanity:_calculateNum];
+    self.stateLabel.text = [self.currentItem checkStateString];
 }
 
 - (void)viewDidLoad {
@@ -32,29 +45,57 @@
     self.calculateNum = 0;
     self.numPadTextField.text = StringValueWithNum(self.calculateNum);
     self.operationDic = @{@(DJNumPadTagTypePlus):@"+"};
+    
+    [self next:nil];
 }
 
 - (IBAction)next:(id)sender {
-    if (self.currentItem) {
+    if ([self.currentItem  checkState] == DJCheckItemStateNotCheck) {
+        [SVProgressHUD showErrorWithStatus:@"请输入盘底数量" cover:YES offsetY:0];
+        return;
+    }
+    
+    if (self.currentItem && [self.currentItem checkState] != DJCheckItemStateNotCheck) {
         [self.currentItem setCheckQuanity:self.calculateNum];
         [DJCheckCartEngine addCheckCartItemComponent:self.currentItem withStoreId:[[LoginManager shareLoginManager] currentSelectStore].strId];
     }
-    self.currentItem = [self.dataSoure nextItem];
+    self.currentItem = nil;
+    if ([self.dataSoure respondsToSelector:@selector(nextItem)]) {
+        self.currentItem = [self.dataSoure nextItem];
+    }
     if (!self.currentItem) {
-        //TODO:dismiss
-    }else {
-        self.calculateNum = 0;
-        [self resetUI];
+        if ([self.delegate respondsToSelector:@selector(didNeedDissmiss:)]) {
+            [self.delegate didNeedDissmiss: self];
+        }
+    }
+}
+
+- (void)rollBack {
+    [[self currentItem] setCheckQuanity:_originNum];
+    if ([self.delegate respondsToSelector:@selector(didNeedDissmiss:)]) {
+        [self.delegate didNeedDissmiss: self];
     }
 }
 
 
 - (IBAction)touchGoToCart:(UIButton *)sender {
-    //TODO
+    if (self.currentItem && [self.currentItem  checkState] != DJCheckItemStateNotCheck) {
+        [self.currentItem setCheckQuanity:self.calculateNum];
+        [DJCheckCartEngine addCheckCartItemComponent:self.currentItem withStoreId:[[LoginManager shareLoginManager] currentSelectStore].strId];
+    }
+    self.currentItem = nil;
+    
+    if ([self.delegate respondsToSelector:@selector(didNeedGoCheckCart:)]) {
+        [self.delegate didNeedGoCheckCart: self];
+    }
 }
 
 - (IBAction)touchNum:(UIButton *)sender {
-    self.numPadTextField.text = [NSString stringWithFormat:@"%@%ld",self.numPadTextField.text,sender.tag];
+    if ([self.numPadTextField.text isEqualToString:@"0"]) {
+        self.numPadTextField.text = [NSString stringWithFormat:@"%ld",sender.tag];
+    }else {
+        self.numPadTextField.text = [NSString stringWithFormat:@"%@%ld",self.numPadTextField.text,sender.tag];
+    }
     self.calculateNum = [self calculateNumberWithString:self.numPadTextField.text];
 }
 
@@ -85,7 +126,18 @@
 }
 
 - (void)resetUI {
-    //TODO
+    self.productNameLabel.text = [self.currentItem productName];
+    self.lastCheckTimeLabel.text = [self.currentItem lastCheckTime];
+    self.stockQuantityLabel.text = [NSString stringWithFormat:@"%ld",[self.currentItem stockQuanity]];
+    self.stayQuantityLabel.text = [NSString stringWithFormat:@"%ld",[self.currentItem stayQuanity]];
+    self.stateLabel.text = [self.currentItem checkStateString];
+    if ([self.currentItem checkState] != DJCheckItemStateNotCheck) {
+        self.checkNumTextField.text = [NSString stringWithFormat:@"%ld",[self.currentItem checkQuanity]];
+    }else{
+        self.checkNumTextField.text = @"";
+    }
+    
+    self.numPadTextField.text = self.checkNumTextField.text;
 }
 
 - (void)didReceiveMemoryWarning {

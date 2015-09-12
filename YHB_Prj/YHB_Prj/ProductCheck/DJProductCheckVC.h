@@ -21,6 +21,13 @@ typedef NS_ENUM(NSUInteger, DJNumPadTagType) {
 
 @end
 
+@protocol DJProductCheckViewDelegate <NSObject>
+
+- (void)didNeedDissmiss: (UIViewController *)vc;
+
+- (void)didNeedGoCheckCart: (UIViewController *)vc;
+
+@end
 
 @interface DJProductCheckVC : BaseViewController
 
@@ -34,8 +41,9 @@ typedef NS_ENUM(NSUInteger, DJNumPadTagType) {
 @property (weak, nonatomic) IBOutlet UIButton *gotoCartButton;
 @property (weak, nonatomic) IBOutlet UITextField *numPadTextField;
 @property (weak, nonatomic) id<DJProductCheckViewDataSoure> dataSoure;
+@property (weak, nonatomic) id<DJProductCheckViewDelegate> delegate;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *numPadButtons;
 
-
+- (void)rollBack;
 
 @end

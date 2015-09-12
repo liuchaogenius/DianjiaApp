@@ -12,6 +12,7 @@
 #import "LoginManager.h"
 #import "DJCheckCartCell.h"
 #import "DJScanViewController.h"
+#import "ShangpinguanliVC.h"
 
 #define StringValueWithNum(a) [NSString stringWithFormat:@"%ld",(NSInteger)a]
 
@@ -32,9 +33,15 @@
     
     [self.searchBar setNeedShowSearchVCHandler:^{
         //TODO:跳转搜索框
-    } andShowScanVCHandler:^{
-        DJScanViewController *vc=  [[DJScanViewController alloc] init];
+        ShangpinguanliVC *vc = [[ShangpinguanliVC alloc] init];
+        vc.isFromProductCheckCart = YES;
         [self.navigationController pushViewController:vc animated:YES];
+    } andShowScanVCHandler:^{
+        ShangpinguanliVC *vc = [[ShangpinguanliVC alloc] init];
+        vc.isFromProductCheckCart = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+//        DJScanViewController *vc=  [[DJScanViewController alloc] init];
+//        [self.navigationController pushViewController:vc animated:YES];
     }];
     
 }
@@ -42,6 +49,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [DJCheckCartEngine switchEngineWithStoreId:[[LoginManager shareLoginManager] getStoreId]];
     [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)setExtraCellLineHidden: (UITableView *)tableView
@@ -67,6 +75,7 @@
     } forActionTyp:DJCheckCartActionTypeSubmitChecksNeedRechack];
     
 }
+
 
 - (void)refreshUI{
     [self.tableView reloadData];

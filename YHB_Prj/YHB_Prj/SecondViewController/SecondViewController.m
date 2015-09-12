@@ -23,7 +23,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 //盘点 vc 测试
-    [[DJProductCheckViewManager sharedInstance] showCheckViewFromViewController:self];
+    //[[DJProductCheckViewManager sharedInstance] showCheckViewFromViewController:self];
 }
 
 - (void)didReceiveMemoryWarning {

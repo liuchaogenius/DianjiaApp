@@ -358,6 +358,14 @@
             [self perforVCSelector:paramArry selector:sel target:vc];
         }
     }
+    
+    if ([self isKindOfClass:NSClassFromString(@"ShangpinguanliVC")]) {
+        BOOL boolValue = [[self valueForKey:@"isFromProductCheckCart"] boolValue];
+        if (boolValue) {
+            [vc setValue:@(1) forKey:@"serchFrom"];
+        }
+    }
+    
     [self.navigationController pushViewController:vc animated:animated];
     return vc;
 }

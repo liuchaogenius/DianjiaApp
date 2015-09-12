@@ -10,7 +10,8 @@
 typedef enum : NSUInteger{
     DJCheckItemStateNormal = 0, //正常
     DJCheckItemStateMuch,       //盘亏
-    DJCheckItemStateLess        //盘盈
+    DJCheckItemStateLess,       //盘盈
+    DJCheckItemStateNotCheck    //未盘点
 }DJCheckItemState;
 
 @protocol DJCheckCartItemComponent <NSObject>

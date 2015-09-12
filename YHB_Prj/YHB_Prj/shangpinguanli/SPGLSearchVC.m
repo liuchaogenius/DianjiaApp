@@ -9,8 +9,10 @@
 #import "SPGLSearchVC.h"
 #import "SPGLManager.h"
 #import "SPGLSearchCell.h"
+#import "DJProductCheckViewManager.h"
+#import "DJCheckCartItemComponent.h"
 
-@interface SPGLSearchVC ()
+@interface SPGLSearchVC ()<DJProductCheckViewDataSoure>
 {
     NSString *cateId;
     int isGetNetdata; //1 分类id，2 条形码
@@ -24,6 +26,7 @@
 @property (strong, nonatomic)  UIButton *backButton;
 @property (strong, nonatomic)  SPGLManager *manager;
 @property (strong, nonatomic) SPGLProductList *productList;
+@property (assign, nonatomic) NSUInteger currentCheckRow;
 @end
 
 @implementation SPGLSearchVC
@@ -38,13 +41,14 @@
     self.searchBar.searchBarStyle = UISearchBarStyleMinimal;
     self.searchBar.delegate = self;
     [self.navigationController.view addSubview:self.searchBar];
+    __weak typeof(self) weakself = self;
     if(isGetNetdata == 1)
     {
         [self.manager getProductListByClsApp:cateId finishBlock:^(SPGLProductList *aList) {
             if(aList && aList.productList.count > 0)
             {
-                self.productList = aList;
-                [self.tableview reloadData];
+                weakself.productList = aList;
+                [weakself.tableview reloadData];
             }
         }];
     }
@@ -53,8 +57,8 @@
         [self.manager getProductListByCodeApp:cateId finishBlock:^(SPGLProductList *aList) {
             if(aList && aList.productList.count > 0)
             {
-                self.productList = aList;
-                [self.tableview reloadData];
+                weakself.productList = aList;
+                [weakself.tableview reloadData];
             }
         }];
     }
@@ -137,17 +141,56 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.serchFrom == SearchFromPD) {
+        //商品管理
+        self.currentCheckRow = indexPath.row - 1; //-1因为调用数据源是需要+1
+        [[DJProductCheckViewManager sharedInstance] showCheckViewFromViewController:self withDataSource:self];
+        return;
+    }
+    
     if(indexPath.row < self.productList.productList.count)
     {
         SPGLProductMode *mode = [self.productList.productList objectAtIndex:indexPath.row];        
         [self pushXIBName:@"SPGLProductDetail" animated:YES selector:@"setInitData:mode:" param:self.manager,mode,nil];
     }
+    
+    
 }
 #pragma mark search bar delegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     MLOG(@"fsafas");
 }
+
+#pragma mark - check Delegate
+- (id<DJCheckCartItemComponent>)nextItem {
+    if (++self.currentCheckRow < self.productList.productList.count) {
+        return [self itemWithProductListModel:self.productList.productList[self.currentCheckRow]];
+    }
+    return nil;
+}
+
+#pragma mark - adapter
+
+- (id<DJCheckCartItemComponent>)itemWithProductListModel: (SPGLProductMode *)mode {
+    id<DJCheckCartItemComponent> item = [[DJCheckCartItemComponent alloc] init];
+    
+    [item setSid:[[LoginManager shareLoginManager] getStoreId]];
+    [item setCheckId:[mode strCid]];
+    //[item setProductId:[mode strProductCode]];
+    [item setProductCode:[mode strProductCode]];
+    [item setProductName:[mode strProductName]];
+//    item setStoreStockId:[mode strst]
+    [item setStockQuanity:[[mode strStockQty] integerValue]];
+    [item setStayQuanity:[[mode strStayQty] integerValue]];
+//    item setCheckQuanity:
+    [item setLastCheckTime:[mode strCheckLasttime]];
+    [item setCheckState:DJCheckItemStateNotCheck];
+    [item setCheckName:[[[LoginManager shareLoginManager] getLoginMode] strUname]];
+    
+    return item;
+}
+
 #pragma mark scrollview delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     

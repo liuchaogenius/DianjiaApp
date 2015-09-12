@@ -60,6 +60,9 @@
             [self.chekCartItemComponents removeObject:citem];
         }
     }
+    if (!self.itemComponents) {
+        self.itemComponents = ( NSMutableArray<DJCheckCartItemComponent> *)[NSMutableArray array];
+    }
     [self.itemComponents addObject:item];
 }
 

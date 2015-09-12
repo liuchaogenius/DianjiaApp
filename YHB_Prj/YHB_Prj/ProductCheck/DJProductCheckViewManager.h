@@ -7,14 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DJProductCheckVC.h"
 #import "DJCheckCartItemComponent.h"
 
 @interface DJProductCheckViewManager : NSObject
 
 + (instancetype)sharedInstance;
 
-@property (nonatomic, weak) id<DJCheckCartItemComponent> delegate;
+//@property (nonatomic, weak) id<DJProductCheckViewDataSoure> delegate;
 
-- (void)showCheckViewFromViewController: (UIViewController *)vc;
+- (void)showCheckViewFromViewController: (UIViewController *)vc
+                         withDataSource: (id<DJProductCheckViewDataSoure>)dataSource;
+
 
 @end

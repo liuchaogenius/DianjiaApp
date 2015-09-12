@@ -60,6 +60,7 @@
     if ([storeId integerValue] == 0) {
         return;
     }
+    [item setSid:storeId];
     [[[[self sharedManager] contextDic] objectForKey:storeId] addCheckCartItemComponent:item];
 }
 
