@@ -11,17 +11,13 @@
 @protocol DJScanDelegate<NSObject>
 
 /**
- *  扫描出信息的徽标
+ *  成功扫描出了信息 或者用户手动收入了一串信息
  *
- *  @param message 扫描出的信息
+ *  @param message 扫描出的信息或输入的信息
  *
  */
 - (void)scanController:(UIViewController *)vc didScanedAndTransToMessage: (NSString *)message;
 
-/**
- *  用户点击了手工输入码
- */
-- (void)needToInputNumberFromScanController:(UIViewController *)vc;
 
 @end
 

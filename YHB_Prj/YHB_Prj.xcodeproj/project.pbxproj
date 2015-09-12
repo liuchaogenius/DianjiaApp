@@ -30,6 +30,7 @@
 		5B54BA481B9348FD002098A4 /* DJProductCheckViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA471B9348FD002098A4 /* DJProductCheckViewManager.m */; };
 		5BA5AA311B98297400329677 /* DJScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA5AA301B98297400329677 /* DJScanViewController.m */; };
 		5BA5AA331B98299D00329677 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA5AA321B98299D00329677 /* AVFoundation.framework */; };
+		5BF62F771BA43ADE0053801E /* DJInputCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF62F761BA43ADE0053801E /* DJInputCodeViewController.m */; };
 		AB2578DC1B8EFBDE0015039A /* GateDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2578DB1B8EFBDE0015039A /* GateDetailViewController.m */; };
 		AB2579341B8F02010015039A /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2579121B8F02010015039A /* IQNSArray+Sort.m */; };
 		AB2579351B8F02010015039A /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2579141B8F02010015039A /* IQUITextFieldView+Additions.m */; };
@@ -319,6 +320,8 @@
 		5BA5AA2F1B98297400329677 /* DJScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJScanViewController.h; sourceTree = "<group>"; };
 		5BA5AA301B98297400329677 /* DJScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJScanViewController.m; sourceTree = "<group>"; };
 		5BA5AA321B98299D00329677 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5BF62F751BA43ADE0053801E /* DJInputCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJInputCodeViewController.h; sourceTree = "<group>"; };
+		5BF62F761BA43ADE0053801E /* DJInputCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJInputCodeViewController.m; sourceTree = "<group>"; };
 		AB2578DA1B8EFBDE0015039A /* GateDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GateDetailViewController.h; sourceTree = "<group>"; };
 		AB2578DB1B8EFBDE0015039A /* GateDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GateDetailViewController.m; sourceTree = "<group>"; };
 		AB2579111B8F02010015039A /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
@@ -893,6 +896,8 @@
 			children = (
 				5BA5AA2F1B98297400329677 /* DJScanViewController.h */,
 				5BA5AA301B98297400329677 /* DJScanViewController.m */,
+				5BF62F751BA43ADE0053801E /* DJInputCodeViewController.h */,
+				5BF62F761BA43ADE0053801E /* DJInputCodeViewController.m */,
 			);
 			path = Scan;
 			sourceTree = "<group>";
@@ -2023,6 +2028,7 @@
 				FF3C200B1A2F2B330081D3C7 /* NotifyFactoryObject.m in Sources */,
 				FF2A6C3A1A0F3B59001607AC /* NSData+Base64.m in Sources */,
 				FF5C872D1B83279600F79EC1 /* FirstViewController.m in Sources */,
+				5BF62F771BA43ADE0053801E /* DJInputCodeViewController.m in Sources */,
 				FF4DFCF61B856B9600617660 /* ThreadSafeMutableArry.m in Sources */,
 				FF5C86FC1B81B72400F79EC1 /* MASViewAttribute.m in Sources */,
 				FF5C87001B81B72400F79EC1 /* View+MASAdditions.m in Sources */,

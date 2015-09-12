@@ -8,6 +8,8 @@
 
 #import "DJScanViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "DJStoryboadManager.h"
+#import "DJInputCodeViewController.h"
 
 #define kButtonWidth 180
 #define kButtonHeight 40
@@ -18,6 +20,7 @@
 @property (nonatomic, assign) BOOL                  isReading;
 @property (nonatomic, strong) AVCaptureSession *    captureSession;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *videoPreviewLayer;
+@property (nonatomic, assign) CGRect                scanRect;
 
 @end;
 
@@ -25,10 +28,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initailUI];
     if (![self startReading]) {
         [self.navigationController popViewControllerAnimated:YES];
     }
-    [self initailUI];
 }
 
 
@@ -53,10 +56,16 @@
 }
 
 - (void)inputNum: (UIButton *)sender {
-    if ([self.delegate respondsToSelector:@selector(scanController:didScanedAndTransToMessage:)]) {
-        [self.navigationController popViewControllerAnimated:YES];
-        [self.delegate needToInputNumberFromScanController:self];
-    }
+    DJInputCodeViewController *vc = (DJInputCodeViewController *)[[DJStoryboadManager sharedInstance] viewControllerWithName:@"DJInputCodeViewController"];
+    __weak typeof(self) weakself = self;
+    [vc setSHandler:^(NSString *codeStr){
+        if (codeStr.length) {
+            if ([weakself.delegate respondsToSelector:@selector(scanController:didScanedAndTransToMessage:)]) {
+                [weakself.delegate scanController:weakself didScanedAndTransToMessage:codeStr];
+            }
+        }
+    }];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (BOOL)startReading {
@@ -81,14 +90,20 @@
     
     AVCaptureMetadataOutput *captureMetadataOutput = [[AVCaptureMetadataOutput alloc] init];
     [_captureSession addOutput:captureMetadataOutput];
+    
+    NSLog(@"%@ %@",[NSValue valueWithCGRect:self.view.frame],[NSValue valueWithCGRect:self.scanRect]);
+    //优化
+    CGFloat x = self.scanRect.origin.x / self.view.width;
 
-
-   // [captureMetadataOutput setRectOfInterest:CGRectMake(0.5, 0.5, 0.5, 0.5)];
+    CGFloat y = (self.scanRect.origin.y) / self.view.height;
+    CGFloat width = self.scanRect.size.width / self.view.width;
+    CGFloat height = self.scanRect.size.height / self.view.height;
+    [captureMetadataOutput setRectOfInterest:CGRectMake(y, x, height, width)];
     
     
     [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
     
-    [captureMetadataOutput setMetadataObjectTypes:@[AVMetadataObjectTypeQRCode,AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code]];
+    [captureMetadataOutput setMetadataObjectTypes:@[AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code]];
     
     _videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_captureSession];
     [_videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
@@ -103,10 +118,11 @@
 - (void)addShape {
     CGFloat x = (kMainScreenWidth - kScanWidth) / 2.;
     CGFloat y = 40 + 40;
-
+    self.scanRect = CGRectMake(x, y, kScanWidth, kScanWidth);
+    
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathAddRect(path, nil, self.view.bounds);
-    CGPathAddRect(path, nil, CGRectMake(x, y, kScanWidth, kScanWidth));
+    CGPathAddRect(path, nil, self.scanRect);
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.strokeColor = [UIColor whiteColor].CGColor;
@@ -118,6 +134,8 @@
     shapeLayer.path = path;
 
     [self.view.layer addSublayer:shapeLayer];
+
+
     
     CGPathRelease(path);
 }
@@ -140,8 +158,8 @@
         NSLog(@"扫描到的信息%@",metadataObj.stringValue);
         if ([self.delegate respondsToSelector:@selector(scanController:didScanedAndTransToMessage:)]) {
             [self stopReading];
-            [self.delegate scanController:self didScanedAndTransToMessage:metadataObj.stringValue];
             [self.navigationController popViewControllerAnimated:YES];
+            [self.delegate scanController:self didScanedAndTransToMessage:metadataObj.stringValue];
         }
     }
 }

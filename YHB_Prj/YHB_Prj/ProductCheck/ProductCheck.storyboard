@@ -598,6 +598,78 @@
             </objects>
             <point key="canvasLocation" x="503" y="312"/>
         </scene>
+        <!--Input Code View Controller-->
+        <scene sceneID="Sri-ak-qeD">
+            <objects>
+                <viewController storyboardIdentifier="DJInputCodeViewController" id="bLB-Mn-JcK" customClass="DJInputCodeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dyn-6L-gTz"/>
+                        <viewControllerLayoutGuide type="bottom" id="frb-CV-6ja"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QIt-L1-YC8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="条码:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDs-ou-BXm">
+                                <rect key="frame" x="39" y="41.5" width="34.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sp_0" translatesAutoresizingMaskIntoConstraints="NO" id="yNZ-cn-9cJ">
+                                <rect key="frame" x="16" y="43" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="15" id="HJS-T9-olk"/>
+                                    <constraint firstAttribute="height" constant="15" id="TF5-iI-aeE"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入条码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IPG-jU-0AS">
+                                <rect key="frame" x="81" y="36" width="502.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="go"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AmG-ex-Qr4">
+                                <rect key="frame" x="200" y="138" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.99215686270000003" green="0.52156862749999999" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="5UQ-h6-SIa"/>
+                                    <constraint firstAttribute="height" constant="40" id="ZYB-Ov-nf1"/>
+                                </constraints>
+                                <state key="normal" title="确定">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="touchComfirm:" destination="bLB-Mn-JcK" eventType="touchUpInside" id="kAb-ss-nIG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yNZ-cn-9cJ" firstAttribute="leading" secondItem="QIt-L1-YC8" secondAttribute="leadingMargin" id="1n2-bc-qq5"/>
+                            <constraint firstItem="AmG-ex-Qr4" firstAttribute="top" secondItem="IPG-jU-0AS" secondAttribute="bottom" constant="72" id="D3u-oz-TSz"/>
+                            <constraint firstItem="rDs-ou-BXm" firstAttribute="leading" secondItem="yNZ-cn-9cJ" secondAttribute="trailing" constant="8" id="Fmu-PP-bKe"/>
+                            <constraint firstItem="rDs-ou-BXm" firstAttribute="centerY" secondItem="yNZ-cn-9cJ" secondAttribute="centerY" id="GTH-En-lSq"/>
+                            <constraint firstAttribute="centerX" secondItem="AmG-ex-Qr4" secondAttribute="centerX" id="ZnK-HR-5Ak"/>
+                            <constraint firstItem="rDs-ou-BXm" firstAttribute="centerY" secondItem="IPG-jU-0AS" secondAttribute="centerY" constant="-0.5" id="olz-ca-YzG"/>
+                            <constraint firstItem="IPG-jU-0AS" firstAttribute="leading" secondItem="rDs-ou-BXm" secondAttribute="trailing" constant="8" id="puS-cu-40D"/>
+                            <constraint firstItem="yNZ-cn-9cJ" firstAttribute="top" secondItem="Dyn-6L-gTz" secondAttribute="bottom" constant="23" id="u5P-zg-rNO"/>
+                            <constraint firstItem="IPG-jU-0AS" firstAttribute="trailing" secondItem="QIt-L1-YC8" secondAttribute="trailingMargin" id="u78-sj-YUj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="codeTextField" destination="IPG-jU-0AS" id="jTJ-se-3EC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Prc-Gc-8VE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="489" y="979"/>
+        </scene>
         <!--Product Check ListVC-->
         <scene sceneID="1uh-AS-rTl">
             <objects>
@@ -787,6 +859,7 @@
                             </state>
                         </button>
                         <barButtonItem key="rightBarButtonItem" image="menicon_4" id="rev-nT-nTC">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="touchDateItem:" destination="DyI-k4-XyD" id="FeQ-T5-l15"/>
                             </connections>
@@ -1389,5 +1462,6 @@
     <resources>
         <image name="icon_2" width="9" height="8"/>
         <image name="menicon_4" width="32" height="32"/>
+        <image name="sp_0" width="18" height="16"/>
     </resources>
 </document>

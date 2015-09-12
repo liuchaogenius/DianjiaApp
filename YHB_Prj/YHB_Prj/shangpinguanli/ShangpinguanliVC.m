@@ -104,10 +104,6 @@
     [self.navigationController setViewControllers:viewControllers animated:YES];
 }
 
-- (void)needToInputNumberFromScanController:(UIViewController *)vc
-{
-    
-}
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView
