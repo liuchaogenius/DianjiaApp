@@ -10,6 +10,9 @@
 #import "SPGLManager.h"
 #import "SPGLProductMode.h"
 #import "UIImageView+WebCache.h"
+#import "SPEditViewController.h"
+#import "JHLSViewController.h"
+#import "UploadImgViewController.h"
 @interface SPGLProductDetail ()
 {
     SBPageFlowView *flowView;
@@ -59,6 +62,54 @@
     self.kucunLabel.text = self.productMode.strStayQty;
     self.shoujiaLabel.text = self.productMode.strSalePrice;
     self.dianmingAndKuncunLabel.text = [NSString stringWithFormat:@"    %@：库存 %@",self.productMode.strClsName,self.productMode.strStockQty];
+    
+    [self.xiugaishangpinBT addTarget:self action:@selector(touchXiugai) forControlEvents:UIControlEventTouchUpInside];
+    [self.shangchuantupianBT addTarget:self action:@selector(touchShangchuan) forControlEvents:UIControlEventTouchUpInside];
+    [self.ypdmBT addTarget:self action:@selector(touchYPDM) forControlEvents:UIControlEventTouchUpInside];
+    [self.jhlsBT addTarget:self action:@selector(touchJHLS) forControlEvents:UIControlEventTouchUpInside];
+    [self.pdspBT addTarget:self action:@selector(touchPDSP) forControlEvents:UIControlEventTouchUpInside];
+    [self.xslsBT addTarget:self action:@selector(touchXSLS) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)touchXiugai
+{
+    SPEditViewController *vc = [[SPEditViewController alloc] initWithMode:_productMode];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)touchShangchuan
+{
+    int count = 3-(int)_productMode.picList.count;
+    if (count==0)
+    {
+        [SVProgressHUD showErrorWithStatus:@"商品图片已满3张" cover:YES offsetY:kMainScreenHeight/2.0];
+    }
+    else
+    {
+        UploadImgViewController *vc = [[UploadImgViewController alloc] initWithUploadImgCount:count];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
+- (void)touchYPDM
+{
+    
+}
+
+- (void)touchPDSP
+{
+    
+}
+
+- (void)touchJHLS
+{
+    JHLSViewController *vc = [[JHLSViewController alloc] initWithProductId:_productMode.strProductCode];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)touchXSLS
+{
+    
 }
 
 #pragma mark 设置初始化数据

@@ -13,3 +13,9 @@
 - (void)saveOrUpdateDict:(NSDictionary *)aDict finishBlock:(void (^)(NSString *))FBlock;
 
 @end
+
+@interface JHLSManager : NSObject
+
+- (void)appGetProductStockDetail:(NSString *)aProductId finishBlock:(void (^)(NSArray *))FBlock isRefresh:(BOOL)aBool;
+
+@end

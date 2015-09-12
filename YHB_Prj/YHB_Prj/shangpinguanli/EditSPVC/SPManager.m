@@ -23,3 +23,36 @@
 }
 
 @end
+
+@interface JHLSManager()
+{
+    int currentPage;
+}
+@end
+
+@implementation JHLSManager
+
+- (void)appGetProductStockDetail:(NSString *)aProductId finishBlock:(void (^)(NSArray *))FBlock isRefresh:(BOOL)aBool
+{
+    if (aBool) currentPage=0;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+    [dict setObject:aProductId forKey:@"productId"];
+    [dict setObject:@0 forKey:@"status"];
+    [dict setObject:@-1 forKey:@"orderFrom"];
+    [dict setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"pageNo"];
+    [dict setObject:@20 forKey:@"pageSize"];
+    [dict setObject:@"true" forKey:@"needPage"];
+    [NetManager requestWith:dict apiName:@"appGetProductStockDetail" method:@"post" succ:^(NSDictionary *successDict) {
+        MLOG(@"%@", successDict);
+        NSString *code = successDict[@"msg"];
+        if ([code isEqualToString:@"success"] && code)
+        {
+            NSDictionary *dictResult = successDict[@"result"];
+        }
+        else FBlock(nil);
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        FBlock(nil);
+    }];
+}
+
+@end

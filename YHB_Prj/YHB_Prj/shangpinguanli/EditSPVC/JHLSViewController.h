@@ -10,4 +10,6 @@
 
 @interface JHLSViewController : BaseViewController
 
+- (instancetype)initWithProductId:(NSString *)aId;
+
 @end

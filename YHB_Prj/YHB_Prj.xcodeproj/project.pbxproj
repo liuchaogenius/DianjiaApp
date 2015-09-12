@@ -88,6 +88,11 @@
 		ABAAFB6F1B996B250012D1C6 /* DJYDCXRows.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAAFB6C1B996B250012D1C6 /* DJYDCXRows.m */; };
 		ABAE34A11BA0109C00221980 /* ScanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAE34A01BA0109C00221980 /* ScanVC.m */; };
 		ABDDB3711BA2CF4000DCD659 /* JHLSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB3701BA2CF4000DCD659 /* JHLSViewController.m */; };
+		ABDDB3751BA3B1ED00DCD659 /* JHLSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB3731BA3B1ED00DCD659 /* JHLSTableViewCell.m */; };
+		ABDDB3761BA3B1ED00DCD659 /* JHLSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABDDB3741BA3B1ED00DCD659 /* JHLSTableViewCell.xib */; };
+		ABDDB3791BA3BCDA00DCD659 /* UploadImgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB3781BA3BCDA00DCD659 /* UploadImgViewController.m */; };
+		ABDDB3801BA3C2E300DCD659 /* XSLSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB37E1BA3C2E300DCD659 /* XSLSTableViewCell.m */; };
+		ABDDB3811BA3C2E300DCD659 /* XSLSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABDDB37F1BA3C2E300DCD659 /* XSLSTableViewCell.xib */; };
 		ABE71E241B9C32E2000651A9 /* FBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE71E231B9C32E2000651A9 /* FBViewController.m */; };
 		ABEF1DA71B929D5400C1C2EA /* SupplierDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DA61B929D5400C1C2EA /* SupplierDetailViewController.m */; };
 		ABEF1DAB1B92A18E00C1C2EA /* ClerkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEF1DAA1B92A18E00C1C2EA /* ClerkDetailViewController.m */; };
@@ -422,6 +427,14 @@
 		ABAE34A01BA0109C00221980 /* ScanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanVC.m; sourceTree = "<group>"; };
 		ABDDB36F1BA2CF4000DCD659 /* JHLSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLSViewController.h; sourceTree = "<group>"; };
 		ABDDB3701BA2CF4000DCD659 /* JHLSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLSViewController.m; sourceTree = "<group>"; };
+		ABDDB3721BA3B1ED00DCD659 /* JHLSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLSTableViewCell.h; sourceTree = "<group>"; };
+		ABDDB3731BA3B1ED00DCD659 /* JHLSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLSTableViewCell.m; sourceTree = "<group>"; };
+		ABDDB3741BA3B1ED00DCD659 /* JHLSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JHLSTableViewCell.xib; sourceTree = "<group>"; };
+		ABDDB3771BA3BCDA00DCD659 /* UploadImgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImgViewController.h; sourceTree = "<group>"; };
+		ABDDB3781BA3BCDA00DCD659 /* UploadImgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImgViewController.m; sourceTree = "<group>"; };
+		ABDDB37D1BA3C2E300DCD659 /* XSLSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XSLSTableViewCell.h; sourceTree = "<group>"; };
+		ABDDB37E1BA3C2E300DCD659 /* XSLSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XSLSTableViewCell.m; sourceTree = "<group>"; };
+		ABDDB37F1BA3C2E300DCD659 /* XSLSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XSLSTableViewCell.xib; sourceTree = "<group>"; };
 		ABE71E221B9C32E2000651A9 /* FBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBViewController.h; sourceTree = "<group>"; };
 		ABE71E231B9C32E2000651A9 /* FBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBViewController.m; sourceTree = "<group>"; };
 		ABEF1DA51B929D5400C1C2EA /* SupplierDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplierDetailViewController.h; sourceTree = "<group>"; };
@@ -1165,6 +1178,14 @@
 				ABFAB0EE1BA29CF9009D8654 /* SPManager.m */,
 				ABDDB36F1BA2CF4000DCD659 /* JHLSViewController.h */,
 				ABDDB3701BA2CF4000DCD659 /* JHLSViewController.m */,
+				ABDDB3721BA3B1ED00DCD659 /* JHLSTableViewCell.h */,
+				ABDDB3731BA3B1ED00DCD659 /* JHLSTableViewCell.m */,
+				ABDDB3741BA3B1ED00DCD659 /* JHLSTableViewCell.xib */,
+				ABDDB3771BA3BCDA00DCD659 /* UploadImgViewController.h */,
+				ABDDB3781BA3BCDA00DCD659 /* UploadImgViewController.m */,
+				ABDDB37D1BA3C2E300DCD659 /* XSLSTableViewCell.h */,
+				ABDDB37E1BA3C2E300DCD659 /* XSLSTableViewCell.m */,
+				ABDDB37F1BA3C2E300DCD659 /* XSLSTableViewCell.xib */,
 			);
 			path = EditSPVC;
 			sourceTree = "<group>";
@@ -1924,6 +1945,7 @@
 				FF5CC7031B93EE5300F55713 /* RuKushenpinVC.xib in Resources */,
 				FFD26CF01B8C3F940003F491 /* ZXBJCell.xib in Resources */,
 				FF012FAA1B8EB92C00AE563C /* HYXFJLListViewController.xib in Resources */,
+				ABDDB3811BA3C2E300DCD659 /* XSLSTableViewCell.xib in Resources */,
 				FF012FB41B8EB92C00AE563C /* HYCell.xib in Resources */,
 				FF5C872E1B83279600F79EC1 /* FirstViewController.xib in Resources */,
 				FF012FAE1B8EB92C00AE563C /* HYGLViewController.xib in Resources */,
@@ -1947,6 +1969,7 @@
 				FF5C87091B82FE5200F79EC1 /* LoginViewController.xib in Resources */,
 				FF012FAC1B8EB92C00AE563C /* HYLSXFCell.xib in Resources */,
 				FF357CAB1BA1974800DFCAC0 /* WYDHViewController.xib in Resources */,
+				ABDDB3761BA3B1ED00DCD659 /* JHLSTableViewCell.xib in Resources */,
 				FFD26CEB1B8C1B3B0003F491 /* KCYJViewController.xib in Resources */,
 				FF357CC01BA2C30900DFCAC0 /* WYJHDetailVC.xib in Resources */,
 				FF357C951BA052F500DFCAC0 /* SPGLSearchCell.xib in Resources */,
@@ -1994,6 +2017,7 @@
 				FF2A6C9C1A0F3D30001607AC /* FourthViewController.m in Sources */,
 				5B1F7F9C1B90A52300763059 /* DJProductCheckListVC.m in Sources */,
 				FF2A6C871A0F3B8A001607AC /* DataOC.mm in Sources */,
+				ABDDB3751BA3B1ED00DCD659 /* JHLSTableViewCell.m in Sources */,
 				FF2A6C861A0F3B8A001607AC /* DataCenterDeal.mm in Sources */,
 				5B1F7FA61B91C8A600763059 /* DJProductCheckManager.m in Sources */,
 				AB9F43EC1B92E58400914C85 /* SetTableViewCell.m in Sources */,
@@ -2092,6 +2116,7 @@
 				FFF3919E1B846F58007DC652 /* NetManager.m in Sources */,
 				FF357CA01BA1310300DFCAC0 /* SBPageFlowView.m in Sources */,
 				5B54BA3F1B92F9C0002098A4 /* DJCheckCartSubmitRequest.m in Sources */,
+				ABDDB3801BA3C2E300DCD659 /* XSLSTableViewCell.m in Sources */,
 				FF2A6C7A1A0F3B7B001607AC /* UIView+WebCacheOperation.m in Sources */,
 				AB25793E1B8F02010015039A /* IQTitleBarButtonItem.m in Sources */,
 				AB40EAC51B8C021800DE5ED7 /* SupplierTableViewCell.m in Sources */,
@@ -2116,6 +2141,7 @@
 				FF5C87241B83025600F79EC1 /* YTKKeyValueStore.m in Sources */,
 				FF2A6C3E1A0F3B66001607AC /* UIViewAdditions.m in Sources */,
 				5B54BA1D1B9213A9002098A4 /* DJProductSearchBar.m in Sources */,
+				ABDDB3791BA3BCDA00DCD659 /* UploadImgViewController.m in Sources */,
 				FF3C20011A2EE6D30081D3C7 /* LSNavigationController.m in Sources */,
 				5B54BA2B1B922676002098A4 /* DJCheckCartItemComponent.m in Sources */,
 				FF5C871B1B83024C00F79EC1 /* README.markdown in Sources */,
