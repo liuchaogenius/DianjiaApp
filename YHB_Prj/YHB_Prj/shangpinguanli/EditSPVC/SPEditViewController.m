@@ -28,8 +28,8 @@ typedef NS_ENUM(NSInteger, FieldType) {
 
 @interface SPEditViewController ()<UIScrollViewDelegate, UIActionSheetDelegate>
 {
-    NSString *cid;
-    NSString *supid;
+    NSString *_cid;
+    NSString *_supid;
 }
 
 @property(nonatomic,strong) SPGLProductMode *myMode;
@@ -57,6 +57,8 @@ typedef NS_ENUM(NSInteger, FieldType) {
 @property(nonatomic,strong) UIActionSheet *sheetjf;
 
 @property(nonatomic,strong) SPManager *manager;
+
+@property(nonatomic,strong) UITapGestureRecognizer *tapGR;
 @end
 
 @implementation SPEditViewController
@@ -66,6 +68,8 @@ typedef NS_ENUM(NSInteger, FieldType) {
     if (self=[super init])
     {
         _myMode = aMode;
+        if (aMode.strCid) _cid = aMode.strCid;
+        if (aMode.strSupid) _supid = aMode.strSupid;
     }
     return self;
 }
@@ -76,6 +80,9 @@ typedef NS_ENUM(NSInteger, FieldType) {
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self createScrollView];
+    
+    _tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchView)];
+    [_bgScrollView addGestureRecognizer:_tapGR];
     
     CGFloat btnWidth = 200;
     _btnOK = [[UIButton alloc] initWithFrame:CGRectMake(kMainScreenWidth/2.0-btnWidth/2.0, kMainScreenHeight-64-50+10, btnWidth, 30)];
@@ -100,7 +107,8 @@ typedef NS_ENUM(NSInteger, FieldType) {
     _titleArray = @[@"条码:",@"品名:",@"分类:",@"库存:",@"进价:",@"售价:",@"单位:",@"供货商:",@"折扣活动:",@"积分商品:"];
     NSString *isAct = [_myMode.strActEnable intValue]==1?@"参加":@"不参加";
     NSString *isScore = [_myMode.strIsScore intValue]==1?@"是":@"否";
-    _contentArray = @[_myMode.strProductCode,_myMode.strProductName,_myMode.strClsName,_myMode.strStockQty,_myMode.strBuyingPrice,_myMode.strSalePrice,_myMode.strSaleUnit,_myMode.strSupName,isAct,isScore];
+    NSString *supName = _myMode.strSupName?_myMode.strSupName:@"";
+    _contentArray = @[_myMode.strProductCode,_myMode.strProductName,_myMode.strClsName,_myMode.strStockQty,_myMode.strBuyingPrice,_myMode.strSalePrice,_myMode.strSaleUnit,supName,isAct,isScore];
     
     CGFloat endHeight = 0;
     for (int i=0; i<_titleArray.count; i++)
@@ -124,7 +132,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
             textField.tag = 100+i;
             [_bgScrollView addSubview:textField];
             textField.text = _contentArray[i];
-            if (i==FieldTypejj || i==FieldTypesj) textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            if (i==FieldTypejj || i==FieldTypesj || i==FieldTypetm) textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
             if (i==FieldTypekc) textField.enabled = NO;
             if (i==FieldTypekc) textField.textColor = [UIColor lightGrayColor];
         }
@@ -170,42 +178,57 @@ typedef NS_ENUM(NSInteger, FieldType) {
 #pragma mark touchBtn
 - (void)touchfl
 {
+    [self.view endEditing:YES];
     void(^selectBlock)(SPGLCategoryMode *) = ^(SPGLCategoryMode *aMode){
         [_btnfl setTitle:aMode.strCateName forState:UIControlStateNormal];
-        cid = aMode.strId;
+        _cid = aMode.strId;
     };
     [self pushXIBName:@"ShangpinguanliVC" animated:YES selector:@"setSelectBlock:" param:selectBlock,nil];
 }
 
 - (void)touchgy
 {
+    [self.view endEditing:YES];
     SupplierViewController *vc = [[SupplierViewController alloc] initWithSelectBlock:^(SupplierMode *mode) {
         [self.btngy setTitle:mode.strSupName forState:UIControlStateNormal];
-        supid = mode.strid;
+        _supid = mode.strid;
     }];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)touchzk
 {
+    [self.view endEditing:YES];
     [self.sheetzk showInView:self.view];
 }
 
 - (void)touchjf
 {
+    [self.view endEditing:YES];
     [self.sheetjf showInView:self.view];
 }
 
 - (void)touchtm
 {
+    [self.view endEditing:YES];
     MLOG(@"%s", __func__);
+}
+
+- (void)touchView
+{
+    [self.view endEditing:YES];
 }
 
 - (void)touchOK
 {
     NSDictionary *dict = [self getDict];
     [self.manager saveOrUpdateDict:dict finishBlock:^(NSString *resultCode) {
-        
+        if ([resultCode isEqualToString:@"1"])
+        {
+            [SVProgressHUD showSuccessWithStatus:@"修改成功" cover:YES offsetY:kMainScreenHeight/2.0];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else [SVProgressHUD showErrorWithStatus:@"修改失败" cover:YES offsetY:kMainScreenHeight/2.0];
     }];
 }
 
@@ -213,10 +236,14 @@ typedef NS_ENUM(NSInteger, FieldType) {
 {
     _myMode.strProductCode = self.textfieldtm.text;
     _myMode.strProductName = self.textfieldpm.text;
+    if (_cid) _myMode.strCid = _cid;
+    if (_supid) _myMode.strSupid = _supid;
     _myMode.strClsName = self.btnfl.titleLabel.text;
     _myMode.strBuyingPrice = self.textfieldjj.text;
     _myMode.strSalePrice = self.textfieldsj.text;
     _myMode.strSaleUnit = self.textfielddw.text;
+    if (!self.btngy.titleLabel.text) _myMode.strSupName = @"";
+    else _myMode.strSupName = self.btngy.titleLabel.text;
     if ([self.btnzk.titleLabel.text isEqualToString:@"参加"]) _myMode.strActEnable = @"1";
     else _myMode.strActEnable = @"0";
     if ([self.btnjf.titleLabel.text isEqualToString:@"是"]) _myMode.strIsScore = @"1";
@@ -231,11 +258,15 @@ typedef NS_ENUM(NSInteger, FieldType) {
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
     [dict setValue:@1 forKey:@"operateType"];
-    if (cid) [dict setObject:cid forKey:@"cid"];
-    if (supid)
+    if (_cid)
     {
-        [dict setObject:supid forKey:@"sup_id"];
-        [dict setObject:self.btngy.titleLabel.text forKey:@"sup_name"];
+        [dict setObject:_cid forKey:@"cid"];
+        [dict setObject:_myMode.strClsName forKey:@"cls_name"];
+    }
+    if (_supid)
+    {
+        [dict setObject:_supid forKey:@"sup_id"];
+        [dict setObject:_myMode.strSupName forKey:@"sup_name"];
     }
     [dict setObject:_myMode.strId forKey:@"id"];
     [dict setObject:_myMode.strProductName forKey:@"product_name"];
@@ -243,6 +274,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
     [dict setObject:_myMode.strBuyingPrice forKey:@"buying_price"];
     [dict setObject:_myMode.strSalePrice forKey:@"sale_price"];
     [dict setObject:_myMode.strIsScore forKey:@"is_score"];
+    [dict setObject:_myMode.strSaleUnit forKey:@"sale_unit"];
     [dict setObject:_myMode.strActEnable forKey:@"act_enabled"];
     return [dict copy];
 }

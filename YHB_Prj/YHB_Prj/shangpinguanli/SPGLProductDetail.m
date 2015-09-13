@@ -96,7 +96,10 @@
 
 - (void)touchYPDM
 {
-    YPDMViewController *vc = [[YPDMViewController alloc] initWithProductMode:_productMode];
+    YPDMViewController *vc = [[YPDMViewController alloc] initWithProductMode:_productMode changeBlock:^(SPGLProductMode *aMode) {
+        _productMode = aMode;
+        self.chanpinmaLabel.text = self.productMode.strProductCode;
+    }];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

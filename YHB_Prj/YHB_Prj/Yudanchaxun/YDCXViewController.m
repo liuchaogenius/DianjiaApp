@@ -12,6 +12,7 @@
 #import "DJYDCXRows.h"
 #import "YDCXDetailViewController.h"
 #import "JCCXSXViewController.h"
+#import "SVPullToRefresh.h"
 
 static const CGFloat topBtnHeight = 44;
 static const CGFloat bottomViewHeight = 44;
@@ -52,6 +53,8 @@ static const CGFloat bottomViewHeight = 44;
     _tableviewYudan.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableviewYudan];
     
+    [self addTableViewTrag];
+    
     [self createBottomView];
     
     _arrNo = [NSMutableArray arrayWithCapacity:0];
@@ -60,6 +63,40 @@ static const CGFloat bottomViewHeight = 44;
     _currentArray = [NSMutableArray arrayWithCapacity:0];
     
     [self.btnNo sendActionsForControlEvents:UIControlEventTouchUpInside];
+}
+
+#pragma mark 增加上拉下拉
+- (void)addTableViewTrag
+{
+    __weak YDCXViewController *weakself = self;
+//    [weakself.myTableView addPullToRefreshWithActionHandler:^{
+//        [_manager getSaleHisByProductIdApp:productId finishBlock:^(NSArray *resultArr) {
+//            if (resultArr && resultArr.count>0)
+//            {
+//                _arrData = [resultArr mutableCopy];
+//                [_myTableView reloadData];
+//            }
+//            else [SVProgressHUD showErrorWithStatus:@"无数据" cover:YES offsetY:kMainScreenHeight/2.0];
+//            [weakself.myTableView.pullToRefreshView stopAnimating];
+//        } isRefresh:YES];
+//    }];
+    
+    
+    [weakself.tableviewYudan addInfiniteScrollingWithActionHandler:^{
+        if (_currentArray.count%20==0 && _currentArray.count!=0)
+        {
+            [_manage appGetVipCerditListArr:_currentStatus isRefresh:NO finishBlock:^(NSArray *resultArr) {
+                if (resultArr && resultArr.count>0)
+                {
+                    [_currentArray addObjectsFromArray:resultArr];
+                    [_tableviewYudan reloadData];
+                }
+                else [SVProgressHUD showErrorWithStatus:@"无数据" cover:YES offsetY:kMainScreenHeight/2.0];
+                [weakself.tableviewYudan.infiniteScrollingView stopAnimating];
+            }];
+        }
+        else [weakself.tableviewYudan.infiniteScrollingView stopAnimating];
+    }];
 }
 
 #pragma mark Btn相关

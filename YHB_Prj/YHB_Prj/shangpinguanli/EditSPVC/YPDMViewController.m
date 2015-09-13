@@ -19,15 +19,19 @@
 @property(nonatomic,strong) UIButton *btnSao;
 @property(nonatomic,strong) UIButton *btnJia;
 @property(nonatomic,strong) NSMutableArray *dataArr;
+
+@property(nonatomic,strong) void(^ changeBlock)(SPGLProductMode *);
+
 @end
 
 @implementation YPDMViewController
 
-- (instancetype)initWithProductMode:(SPGLProductMode *)aMode
+- (instancetype)initWithProductMode:(SPGLProductMode *)aMode changeBlock:(void (^)(SPGLProductMode *))aChangeBlcok
 {
     if (self=[super init])
     {
         _productMode = aMode;
+        _changeBlock = aChangeBlcok;
     }
     return self;
 }
@@ -50,6 +54,8 @@
             NSString *msg = successDict[@"msg"];
             if ([msg isEqualToString:@"success"]) {
                 [SVProgressHUD showSuccessWithStatus:@"修改成功" cover:YES offsetY:kMainScreenHeight/2.0];
+                _productMode.strProductCode = mutableStr;
+                _changeBlock(_productMode);
                 [self.navigationController popViewControllerAnimated:YES];
             }
             else [SVProgressHUD showErrorWithStatus:@"修改失败" cover:YES offsetY:kMainScreenHeight/2.0];

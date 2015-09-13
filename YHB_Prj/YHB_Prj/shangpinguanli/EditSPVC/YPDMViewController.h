@@ -10,6 +10,6 @@
 @class SPGLProductMode;
 @interface YPDMViewController : BaseViewController
 
-- (instancetype)initWithProductMode:(SPGLProductMode *)aMode ;
+- (instancetype)initWithProductMode:(SPGLProductMode *)aMode changeBlock:(void(^)(SPGLProductMode *))aChangeBlcok;
 
 @end
