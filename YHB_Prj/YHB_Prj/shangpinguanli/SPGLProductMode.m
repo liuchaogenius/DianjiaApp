@@ -65,6 +65,11 @@
     BaseIntToNSString(self.strSysPid);
     AssignMentID(self.strUid, [aDataDict objectForKey:@"uid"]);
     BaseIntToNSString(self.strUid);
+    
+    AssignMentID(self.strSupid, [aDataDict objectForKey:@"sup_id"]);
+    BaseFloadToNSString(self.strSupid);
+    AssignMentID(self.strSupName, [aDataDict objectForKey:@"sup_name"]);
+    
     NSArray *arry = [aDataDict objectForKey:@"picList"];
     if(arry && arry.count > 0)
     {

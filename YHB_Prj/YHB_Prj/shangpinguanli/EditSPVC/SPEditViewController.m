@@ -100,7 +100,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
     _titleArray = @[@"条码:",@"品名:",@"分类:",@"库存:",@"进价:",@"售价:",@"单位:",@"供货商:",@"折扣活动:",@"积分商品:"];
     NSString *isAct = [_myMode.strActEnable intValue]==1?@"参加":@"不参加";
     NSString *isScore = [_myMode.strIsScore intValue]==1?@"是":@"否";
-    _contentArray = @[_myMode.strProductCode,_myMode.strProductName,_myMode.strClsName,_myMode.strStockQty,_myMode.strBuyingPrice,_myMode.strSalePrice,_myMode.strSaleUnit,@"",isAct,isScore];
+    _contentArray = @[_myMode.strProductCode,_myMode.strProductName,_myMode.strClsName,_myMode.strStockQty,_myMode.strBuyingPrice,_myMode.strSalePrice,_myMode.strSaleUnit,_myMode.strSupName,isAct,isScore];
     
     CGFloat endHeight = 0;
     for (int i=0; i<_titleArray.count; i++)

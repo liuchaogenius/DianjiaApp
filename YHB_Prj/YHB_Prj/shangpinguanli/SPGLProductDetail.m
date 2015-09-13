@@ -14,6 +14,7 @@
 #import "JHLSViewController.h"
 #import "UploadImgViewController.h"
 #import "XSLSViewController.h"
+#import "YPDMViewController.h"
 
 @interface SPGLProductDetail ()
 {
@@ -95,12 +96,13 @@
 
 - (void)touchYPDM
 {
-    
+    YPDMViewController *vc = [[YPDMViewController alloc] initWithProductMode:_productMode];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)touchPDSP
 {
-    
+#warning 跳转到盘点商品
 }
 
 - (void)touchJHLS

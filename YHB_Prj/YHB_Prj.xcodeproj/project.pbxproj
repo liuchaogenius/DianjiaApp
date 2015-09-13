@@ -72,6 +72,8 @@
 		AB42ACD91B8BE303001FB93A /* GateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB42ACD71B8BE303001FB93A /* GateTableViewCell.m */; };
 		AB42ACDA1B8BE303001FB93A /* GateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB42ACD81B8BE303001FB93A /* GateTableViewCell.xib */; };
 		AB42ACDD1B8BE97E001FB93A /* GateHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB42ACDC1B8BE97E001FB93A /* GateHeaderView.m */; };
+		AB7603C61BA5117C004A5F31 /* YPDMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7603C51BA5117C004A5F31 /* YPDMViewController.m */; };
+		AB7603C91BA51CC5004A5F31 /* YPDMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7603C81BA51CC5004A5F31 /* YPDMTableViewCell.m */; };
 		AB79DB591B93FF6000CC1894 /* ChooseBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = AB79DB581B93FF6000CC1894 /* ChooseBtn.m */; };
 		AB8071C21B96C5CD002114C9 /* EmpMode.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8071C11B96C5CD002114C9 /* EmpMode.m */; };
 		AB8071C51B96C7AA002114C9 /* EmpManage.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8071C41B96C7AA002114C9 /* EmpManage.m */; };
@@ -402,6 +404,10 @@
 		AB42ACD81B8BE303001FB93A /* GateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GateTableViewCell.xib; sourceTree = "<group>"; };
 		AB42ACDB1B8BE97E001FB93A /* GateHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GateHeaderView.h; sourceTree = "<group>"; };
 		AB42ACDC1B8BE97E001FB93A /* GateHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GateHeaderView.m; sourceTree = "<group>"; };
+		AB7603C41BA5117C004A5F31 /* YPDMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPDMViewController.h; sourceTree = "<group>"; };
+		AB7603C51BA5117C004A5F31 /* YPDMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPDMViewController.m; sourceTree = "<group>"; };
+		AB7603C71BA51CC5004A5F31 /* YPDMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPDMTableViewCell.h; sourceTree = "<group>"; };
+		AB7603C81BA51CC5004A5F31 /* YPDMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPDMTableViewCell.m; sourceTree = "<group>"; };
 		AB79DB571B93FF6000CC1894 /* ChooseBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseBtn.h; sourceTree = "<group>"; };
 		AB79DB581B93FF6000CC1894 /* ChooseBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseBtn.m; sourceTree = "<group>"; };
 		AB8071C01B96C5CD002114C9 /* EmpMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmpMode.h; sourceTree = "<group>"; };
@@ -1214,6 +1220,10 @@
 				ABDDB37F1BA3C2E300DCD659 /* XSLSTableViewCell.xib */,
 				ABDDB3881BA421B200DCD659 /* XSLSMode.h */,
 				ABDDB3891BA421B200DCD659 /* XSLSMode.m */,
+				AB7603C41BA5117C004A5F31 /* YPDMViewController.h */,
+				AB7603C51BA5117C004A5F31 /* YPDMViewController.m */,
+				AB7603C71BA51CC5004A5F31 /* YPDMTableViewCell.h */,
+				AB7603C81BA51CC5004A5F31 /* YPDMTableViewCell.m */,
 			);
 			path = EditSPVC;
 			sourceTree = "<group>";
@@ -2072,11 +2082,13 @@
 				FF4DFCF51B856B9600617660 /* SCach.m in Sources */,
 				FF4DFCF41B856B9600617660 /* NSFileManager_Additions.m in Sources */,
 				ABAACA071B95B5EC00305080 /* SupplierManage.m in Sources */,
+				AB7603C91BA51CC5004A5F31 /* YPDMTableViewCell.m in Sources */,
 				FF012FA91B8EB92C00AE563C /* VipInfoMode.m in Sources */,
 				FFF391991B846F58007DC652 /* AFURLConnectionOperation.m in Sources */,
 				FF012FB51B8EB92C00AE563C /* HYCell.m in Sources */,
 				FF2A6C961A0F3D06001607AC /* SecondViewController.m in Sources */,
 				5B54BA241B9225FD002098A4 /* DJCheckCartEngine.m in Sources */,
+				AB7603C61BA5117C004A5F31 /* YPDMViewController.m in Sources */,
 				AB42ACD91B8BE303001FB93A /* GateTableViewCell.m in Sources */,
 				FF3C20041A2EE7480081D3C7 /* FactoryModel.m in Sources */,
 				AB2579341B8F02010015039A /* IQNSArray+Sort.m in Sources */,

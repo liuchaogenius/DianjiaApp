@@ -49,6 +49,11 @@
 
 @property (nonatomic, strong) NSString *strUid;
 
+@property (nonatomic, strong) NSString *strSupid;
+
+@property (nonatomic, strong) NSString *strSupName;
+
+
 @property (nonatomic, strong) NSMutableArray *picList;
 - (void)unPacketData:(NSDictionary *)aDataDict;
 @end
