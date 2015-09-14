@@ -7,6 +7,7 @@
 //
 
 #import "UploadImgViewController.h"
+#import "NetManager.h"
 
 @interface UploadImgViewController ()<UIAlertViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
@@ -57,7 +58,13 @@
 //上传按钮事件
 - (void)touchOk
 {
-    MLOG(@"%s", __func__);
+    [NetManager uploadImgArry:_photoArr parameters:nil apiName:@"updateProductPicApp" uploadUrl:nil uploadimgName:nil progressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        
+    } succ:^(NSDictionary *successDict) {
+        MLOG(@"%@", successDict);
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        
+    }];
 }
 
 - (void)reloadView

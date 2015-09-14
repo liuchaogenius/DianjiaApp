@@ -17,8 +17,13 @@
 {
     [NetManager requestWith:aDict apiName:@"saveOrUpdateProduct" method:@"post" succ:^(NSDictionary *successDict) {
         MLOG(@"%@", successDict);
+//        MLOG(@"%@", successDict[@"RErrorInfo"]);
         NSString *msg = successDict[@"msg"];
-        if ([msg isEqualToString:@"success"]) FBlock(@"1");
+        if ([msg isEqualToString:@"success"])
+        {
+            NSString *code = successDict[@"result"];
+            FBlock(code);
+        }
         else FBlock(nil);
     } failure:^(NSDictionary *failDict, NSError *error) {
         FBlock(nil);

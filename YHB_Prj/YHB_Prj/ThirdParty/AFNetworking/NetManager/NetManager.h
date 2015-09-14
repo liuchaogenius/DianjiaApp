@@ -51,5 +51,15 @@
                succ:(SUCCESSBLOCK)success
             failure:(FAILUREBLOCK)failure;
 
++ (void)uploadImgArry:(NSArray*)aImgArry
+           parameters:(NSDictionary*)aParam
+              apiName:(NSString *)aApidName
+            uploadUrl:(NSString*)aUrl
+        uploadimgName:(NSString*)aImgname
+        progressBlock:(PROGRESSBLOCK)block
+                 succ:(SUCCESSBLOCK)success
+              failure:(FAILUREBLOCK)failure;
+
+
 + (void)cancelOperation:(id)aOperationKey;
 @end

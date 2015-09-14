@@ -82,6 +82,9 @@
 		AB8844171B913D6300FA526D /* UITableView+DelegateBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8844141B913D6300FA526D /* UITableView+DelegateBlocks.m */; };
 		AB88441B1B913DBB00FA526D /* ChooseLocaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB88441A1B913DBB00FA526D /* ChooseLocaViewController.m */; };
 		AB88441E1B914D0F00FA526D /* CLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB88441D1B914D0F00FA526D /* CLTableViewCell.m */; };
+		AB97F8B31BA65AB6000A0F3E /* SPNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB97F8B21BA65AB6000A0F3E /* SPNewViewController.m */; };
+		AB97F8B61BA66BF2000A0F3E /* SPKCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB97F8B51BA66BF2000A0F3E /* SPKCViewController.m */; };
+		AB97F8B91BA66CEB000A0F3E /* SPKCTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB97F8B81BA66CEB000A0F3E /* SPKCTableViewCell.m */; };
 		AB9F43E91B92E45900914C85 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9F43E81B92E45900914C85 /* SettingViewController.m */; };
 		AB9F43EC1B92E58400914C85 /* SetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9F43EB1B92E58400914C85 /* SetTableViewCell.m */; };
 		ABAACA071B95B5EC00305080 /* SupplierManage.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAACA061B95B5EC00305080 /* SupplierManage.m */; };
@@ -424,6 +427,12 @@
 		AB88441A1B913DBB00FA526D /* ChooseLocaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseLocaViewController.m; sourceTree = "<group>"; };
 		AB88441C1B914D0F00FA526D /* CLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTableViewCell.h; sourceTree = "<group>"; };
 		AB88441D1B914D0F00FA526D /* CLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTableViewCell.m; sourceTree = "<group>"; };
+		AB97F8B11BA65AB6000A0F3E /* SPNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPNewViewController.h; sourceTree = "<group>"; };
+		AB97F8B21BA65AB6000A0F3E /* SPNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPNewViewController.m; sourceTree = "<group>"; };
+		AB97F8B41BA66BF2000A0F3E /* SPKCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPKCViewController.h; sourceTree = "<group>"; };
+		AB97F8B51BA66BF2000A0F3E /* SPKCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPKCViewController.m; sourceTree = "<group>"; };
+		AB97F8B71BA66CEB000A0F3E /* SPKCTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPKCTableViewCell.h; sourceTree = "<group>"; };
+		AB97F8B81BA66CEB000A0F3E /* SPKCTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPKCTableViewCell.m; sourceTree = "<group>"; };
 		AB9F43E71B92E45900914C85 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		AB9F43E81B92E45900914C85 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		AB9F43EA1B92E58400914C85 /* SetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetTableViewCell.h; sourceTree = "<group>"; };
@@ -1202,6 +1211,12 @@
 			children = (
 				ABFAB0EA1BA1C0DE009D8654 /* SPEditViewController.h */,
 				ABFAB0EB1BA1C0DE009D8654 /* SPEditViewController.m */,
+				AB97F8B11BA65AB6000A0F3E /* SPNewViewController.h */,
+				AB97F8B21BA65AB6000A0F3E /* SPNewViewController.m */,
+				AB97F8B41BA66BF2000A0F3E /* SPKCViewController.h */,
+				AB97F8B51BA66BF2000A0F3E /* SPKCViewController.m */,
+				AB97F8B71BA66CEB000A0F3E /* SPKCTableViewCell.h */,
+				AB97F8B81BA66CEB000A0F3E /* SPKCTableViewCell.m */,
 				ABFAB0ED1BA29CF9009D8654 /* SPManager.h */,
 				ABFAB0EE1BA29CF9009D8654 /* SPManager.m */,
 				ABDDB36F1BA2CF4000DCD659 /* JHLSViewController.h */,
@@ -2113,6 +2128,7 @@
 				FF2A6C761A0F3B7B001607AC /* UIImage+MultiFormat.m in Sources */,
 				5B54BA201B922210002098A4 /* DJCheckCartViewController.m in Sources */,
 				AB40EABC1B8BFA0100DE5ED7 /* ClerkTableViewCell.m in Sources */,
+				AB97F8B91BA66CEB000A0F3E /* SPKCTableViewCell.m in Sources */,
 				FF2A6C6F1A0F3B7B001607AC /* SDWebImageDecoder.m in Sources */,
 				FFF391981B846F58007DC652 /* AFSecurityPolicy.m in Sources */,
 				5B54BA481B9348FD002098A4 /* DJProductCheckViewManager.m in Sources */,
@@ -2239,6 +2255,7 @@
 				AB8844171B913D6300FA526D /* UITableView+DelegateBlocks.m in Sources */,
 				5B1F7FA31B90B62900763059 /* DJProductCheckListDetailVC.m in Sources */,
 				FF5C86FB1B81B72400F79EC1 /* MASLayoutConstraint.m in Sources */,
+				AB97F8B31BA65AB6000A0F3E /* SPNewViewController.m in Sources */,
 				FF2A6C721A0F3B7B001607AC /* SDWebImageManager.m in Sources */,
 				FF2A6C891A0F3B8A001607AC /* UIScrollView+SVPullToRefresh.m in Sources */,
 				FFD26CEA1B8C1B3B0003F491 /* KCYJViewController.m in Sources */,
@@ -2258,6 +2275,7 @@
 				AB25793F1B8F02010015039A /* IQToolbar.m in Sources */,
 				AB40EAB51B8BF97500DE5ED7 /* ClerkViewController.m in Sources */,
 				FF5CC7041B93EE5300F55713 /* SXViewController.m in Sources */,
+				AB97F8B61BA66BF2000A0F3E /* SPKCViewController.m in Sources */,
 				FF2A6C081A0F39EC001607AC /* ViewInteraction.m in Sources */,
 				FF2A6C6D1A0F3B7B001607AC /* SDImageCache.m in Sources */,
 			);

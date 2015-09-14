@@ -6,12 +6,13 @@
 //  Copyright (c) 2015年 striveliu. All rights reserved.
 //
 
-#import "SPEditViewController.h"
-#import "SPGLProductMode.h"
+#import "SPNewViewController.h"
 #import "SupplierViewController.h"
 #import "SupplierMode.h"
 #import "SPGLCategoryMode.h"
 #import "SPManager.h"
+#import "NetManager.h"
+#import "SPKCViewController.h"
 
 typedef NS_ENUM(NSInteger, FieldType) {
     FieldTypetm,
@@ -26,13 +27,21 @@ typedef NS_ENUM(NSInteger, FieldType) {
     FieldTypejf
 };
 
-@interface SPEditViewController ()<UIScrollViewDelegate, UIActionSheetDelegate>
+@interface SPNewViewController ()<UIScrollViewDelegate, UIActionSheetDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>//UITableViewDataSource,UITableViewDelegate>
 {
     NSString *_cid;
     NSString *_supid;
+    
+    int _countNeedToUpload;
+    CGFloat _imgWidth;
+    CGFloat _interval;
+    int _deleteIndex;
+    
+    BOOL _isHide;
 }
 
-@property(nonatomic,strong) SPGLProductMode *myMode;
+@property(nonatomic,strong) UIView *bgView;
+@property(nonatomic,strong) NSMutableArray *photoArr;
 
 @property(nonatomic,strong) UIScrollView *bgScrollView;
 @property(nonatomic,strong) NSArray *titleArray;
@@ -41,7 +50,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
 @property(nonatomic,strong) UITextField *textfieldtm;
 @property(nonatomic,strong) UITextField *textfieldpm;
 @property(nonatomic,strong) UIButton *btnfl;
-@property(nonatomic,strong) UITextField *textfieldkc;
+@property(nonatomic,strong) UIButton *btnkc;
 @property(nonatomic,strong) UITextField *textfieldjj;
 @property(nonatomic,strong) UITextField *textfieldsj;
 @property(nonatomic,strong) UITextField *textfielddw;
@@ -59,26 +68,23 @@ typedef NS_ENUM(NSInteger, FieldType) {
 @property(nonatomic,strong) SPManager *manager;
 
 @property(nonatomic,strong) UITapGestureRecognizer *tapGR;
+
+//@property(nonatomic,strong) UITableView *tvkc;
+//@property(nonatomic,strong) UIView *bgkc;
+//@property(nonatomic,strong) UIView *maskingView;
+@property(nonatomic,strong) SPKCViewController *kcvc;
 @end
 
-@implementation SPEditViewController
-
-- (instancetype)initWithMode:(SPGLProductMode *)aMode
-{
-    if (self=[super init])
-    {
-        _myMode = aMode;
-        if (aMode.strCid) _cid = aMode.strCid;
-        if (aMode.strSupid) _supid = aMode.strSupid;
-    }
-    return self;
-}
+@implementation SPNewViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"修改商品";
+    self.title = @"新增商品";
     self.view.backgroundColor = [UIColor whiteColor];
     
+    _isHide = YES;
+    
+//    [self createkcView];
     [self createScrollView];
     
     _tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchView)];
@@ -96,7 +102,22 @@ typedef NS_ENUM(NSInteger, FieldType) {
     [self.btngy addTarget:self action:@selector(touchgy) forControlEvents:UIControlEventTouchUpInside];
     [self.btnzk addTarget:self action:@selector(touchzk) forControlEvents:UIControlEventTouchUpInside];
     [self.btnjf addTarget:self action:@selector(touchjf) forControlEvents:UIControlEventTouchUpInside];
+    [self.btnkc addTarget:self action:@selector(touchkc) forControlEvents:UIControlEventTouchUpInside];
 }
+
+//- (void)createkcView
+//{
+//    _maskingView = [[UIView alloc] initWithFrame:self.view.bounds];
+//    _maskingView.backgroundColor = [UIColor blackColor];
+//    _maskingView.alpha=0.3;
+//    [self.view addSubview:_maskingView];
+//    
+//    float bgWidth = 300;
+//    float bgHeight = 120;
+//    _bgkc = [[UIView alloc] initWithFrame:CGRectMake((kMainScreenWidth-bgWidth)/2.0, (kMainScreenHeight-bgHeight)/2.0, bgWidth, bgHeight)];
+//    _bgkc.backgroundColor = [UIColor whiteColor];
+//    [_maskingView addSubview:_bgkc];
+//}
 
 - (void)createScrollView
 {
@@ -105,10 +126,10 @@ typedef NS_ENUM(NSInteger, FieldType) {
     [self.view addSubview:_bgScrollView];
     
     _titleArray = @[@"条码:",@"品名:",@"分类:",@"库存:",@"进价:",@"售价:",@"单位:",@"供货商:",@"折扣活动:",@"积分商品:"];
-    NSString *isAct = [_myMode.strActEnable intValue]==1?@"参加":@"不参加";
-    NSString *isScore = [_myMode.strIsScore intValue]==1?@"是":@"否";
-    NSString *supName = _myMode.strSupName?_myMode.strSupName:@"";
-    _contentArray = @[_myMode.strProductCode,_myMode.strProductName,_myMode.strClsName,_myMode.strStockQty,_myMode.strBuyingPrice,_myMode.strSalePrice,_myMode.strSaleUnit,supName,isAct,isScore];
+    NSString *isAct = @"参加";
+    NSString *isScore = @"是";
+    NSString *supName = @"";
+    _contentArray = @[@"",@"输入商品名称",@"默认分类",@"0",@"￥0.00",@"￥0.00",@"如:400ml/瓶",supName,isAct,isScore];
     
     CGFloat endHeight = 0;
     for (int i=0; i<_titleArray.count; i++)
@@ -125,23 +146,22 @@ typedef NS_ENUM(NSInteger, FieldType) {
         [_bgScrollView addSubview:titleLabel];
         
         CGRect textFrame = CGRectMake(titleLabel.right+5, imgView.top, kMainScreenWidth-titleLabel.right-5-23, 16);
-        if (i!=FieldTypefl && i!=FieldTypegy && i!=FieldTypezk && i!= FieldTypejf)
+        if (i!=FieldTypefl && i!=FieldTypegy && i!=FieldTypezk && i!= FieldTypejf && i!=FieldTypekc)
         {
             UITextField *textField = [[UITextField alloc] initWithFrame:textFrame];
             textField.font = kFont12;
             textField.tag = 100+i;
             [_bgScrollView addSubview:textField];
-            textField.text = _contentArray[i];
+            textField.placeholder = _contentArray[i];
             if (i==FieldTypejj || i==FieldTypesj || i==FieldTypetm) textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
-            if (i==FieldTypekc) textField.enabled = NO;
-            if (i==FieldTypekc) textField.textColor = [UIColor lightGrayColor];
         }
         else
         {
             UIButton *btn = [[UIButton alloc] initWithFrame:textFrame];
             btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
             btn.contentEdgeInsets = UIEdgeInsetsMake(0,3, 0, 0);
-            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            if (i==FieldTypezk || i==FieldTypejf || i==FieldTypegy) [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             btn.titleLabel.font = kFont12;
             [btn setTitle:_contentArray[i] forState:UIControlStateNormal];
             btn.tag = 100+i;
@@ -171,6 +191,17 @@ typedef NS_ENUM(NSInteger, FieldType) {
         endHeight = lineView.bottom;
     }
     
+    _interval = 15;
+    _imgWidth = (kMainScreenWidth-_interval*4)/3.0;
+    
+    _photoArr = [NSMutableArray arrayWithCapacity:0];
+    _countNeedToUpload = 3;
+    _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, endHeight+10, kMainScreenWidth, _imgWidth)];
+    [_bgScrollView addSubview:_bgView];
+    [self reloadView];
+    
+
+    endHeight += _imgWidth+10;
     CGFloat contentH = _bgScrollView.height+1>endHeight+5?_bgScrollView.height+1:endHeight+5;
     _bgScrollView.contentSize = CGSizeMake(kMainScreenWidth, contentH);
 }
@@ -180,7 +211,8 @@ typedef NS_ENUM(NSInteger, FieldType) {
 {
     [self.view endEditing:YES];
     void(^selectBlock)(SPGLCategoryMode *) = ^(SPGLCategoryMode *aMode){
-        [self.btnfl setTitle:aMode.strCateName forState:UIControlStateNormal];
+        [_btnfl setTitle:aMode.strCateName forState:UIControlStateNormal];
+        [self.btnfl setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         _cid = aMode.strId;
     };
     [self pushXIBName:@"ShangpinguanliVC" animated:YES selector:@"setSelectBlock:" param:selectBlock,nil];
@@ -214,6 +246,11 @@ typedef NS_ENUM(NSInteger, FieldType) {
     MLOG(@"%s", __func__);
 }
 
+- (void)touchkc
+{
+    [self.navigationController pushViewController:self.kcvc animated:YES];
+}
+
 - (void)touchView
 {
     [self.view endEditing:YES];
@@ -225,36 +262,22 @@ typedef NS_ENUM(NSInteger, FieldType) {
     if (dict)
     {
         [self.manager saveOrUpdateDict:dict finishBlock:^(NSString *resultCode) {
-            if ([resultCode isEqualToString:@"1"])
+            if (resultCode)
             {
-                [SVProgressHUD showSuccessWithStatus:@"修改成功" cover:YES offsetY:kMainScreenHeight/2.0];
-                [self.navigationController popViewControllerAnimated:YES];
+                [SVProgressHUD showSuccessWithStatus:@"发布成功" cover:YES offsetY:kMainScreenHeight/2.0];
+#warning 上传图片 
+                //_photoArr
             }
-            else [SVProgressHUD showErrorWithStatus:@"修改失败" cover:YES offsetY:kMainScreenHeight/2.0];
+            else [SVProgressHUD showErrorWithStatus:@"发布失败" cover:YES offsetY:kMainScreenHeight/2.0];
         }];
     }
 }
-    
+
 
 - (NSDictionary *)getDict
 {
     if ([self isAllOK])
     {
-        _myMode.strProductCode = self.textfieldtm.text;
-        _myMode.strProductName = self.textfieldpm.text;
-        if (_cid) _myMode.strCid = _cid;
-        if (_supid) _myMode.strSupid = _supid;
-        _myMode.strClsName = self.btnfl.titleLabel.text;
-        _myMode.strBuyingPrice = self.textfieldjj.text;
-        _myMode.strSalePrice = self.textfieldsj.text;
-        _myMode.strSaleUnit = self.textfielddw.text;
-        if (!self.btngy.titleLabel.text) _myMode.strSupName = @"";
-        else _myMode.strSupName = self.btngy.titleLabel.text;
-        if ([self.btnzk.titleLabel.text isEqualToString:@"参加"]) _myMode.strActEnable = @"1";
-        else _myMode.strActEnable = @"0";
-        if ([self.btnjf.titleLabel.text isEqualToString:@"是"]) _myMode.strIsScore = @"1";
-        else _myMode.strIsScore = @"0";
-        
         NSDictionary *dict = [self dictFromMode];
         
         return dict;
@@ -263,27 +286,33 @@ typedef NS_ENUM(NSInteger, FieldType) {
 }
 
 - (NSDictionary *)dictFromMode
-{
+{    
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
-    [dict setValue:@1 forKey:@"operateType"];
+    [dict setValue:@0 forKey:@"operateType"];
     if (_cid)
     {
         [dict setObject:_cid forKey:@"cid"];
-        [dict setObject:_myMode.strClsName forKey:@"cls_name"];
+        [dict setObject:self.btnfl.titleLabel.text forKey:@"cls_name"];
     }
     if (_supid)
     {
         [dict setObject:_supid forKey:@"sup_id"];
-        [dict setObject:_myMode.strSupName forKey:@"sup_name"];
+        [dict setObject:self.btngy.titleLabel.text forKey:@"sup_name"];
     }
-    [dict setObject:_myMode.strId forKey:@"id"];
-    [dict setObject:_myMode.strProductName forKey:@"product_name"];
-    [dict setObject:_myMode.strProductCode forKey:@"product_code"];
-    [dict setObject:_myMode.strBuyingPrice forKey:@"buying_price"];
-    [dict setObject:_myMode.strSalePrice forKey:@"sale_price"];
-    [dict setObject:_myMode.strIsScore forKey:@"is_score"];
-    [dict setObject:_myMode.strSaleUnit forKey:@"sale_unit"];
-    [dict setObject:_myMode.strActEnable forKey:@"act_enabled"];
+    [dict setObject:self.textfieldpm.text forKey:@"product_name"];
+    [dict setObject:self.textfieldtm.text forKey:@"product_code"];
+    [dict setObject:self.textfieldjj.text forKey:@"buying_price"];
+    [dict setObject:self.textfieldsj.text forKey:@"sale_price"];
+    [dict setObject:self.textfielddw.text forKey:@"sale_unit"];
+    NSString *act;
+    NSString *score;
+    if ([self.btnzk.titleLabel.text isEqualToString:@"参加"]) act = @"1";
+    else act = @"0";
+    if ([self.btnjf.titleLabel.text isEqualToString:@"是"]) score = @"1";
+    else score = @"0";
+    [dict setObject:score forKey:@"is_score"];
+    [dict setObject:act forKey:@"act_enabled"];
+
     return [dict copy];
 }
 
@@ -299,6 +328,11 @@ typedef NS_ENUM(NSInteger, FieldType) {
         [SVProgressHUD showErrorWithStatus:@"请输入商品名" cover:YES offsetY:kMainScreenHeight/2.0];
         return NO;
     }
+    else if(![self isNotEmpty:self.btnfl.titleLabel.text])
+    {
+        [SVProgressHUD showErrorWithStatus:@"请选择商品分类" cover:YES offsetY:kMainScreenHeight/2.0];
+        return NO;
+    }
     else if(![self isPureFloat:self.textfieldjj.text])
     {
         [SVProgressHUD showErrorWithStatus:@"请输入正确进价" cover:YES offsetY:kMainScreenHeight/2.0];
@@ -309,6 +343,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
         [SVProgressHUD showErrorWithStatus:@"请输入正确售价" cover:YES offsetY:kMainScreenHeight/2.0];
         return NO;
     }
+    
     return YES;
 }
 
@@ -357,7 +392,60 @@ typedef NS_ENUM(NSInteger, FieldType) {
     {
         if (buttonIndex==0) [self.btnjf setTitle:@"是" forState:UIControlStateNormal];
         else if(buttonIndex==1) [self.btnjf setTitle:@"否" forState:UIControlStateNormal];
+    }else if (actionSheet.tag == 255) {
+        NSUInteger sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        // 判断是否支持相机
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            switch (buttonIndex) {
+                case 0:
+                    return;
+                case 1: //相机
+                    sourceType = UIImagePickerControllerSourceTypeCamera;
+                    break;
+                case 2: //相册
+                    sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                    break;
+            }
+        }
+        else {
+            if (buttonIndex == 0) {
+                return;
+            } else {
+                sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            }
+        }
+        
+        if (sourceType == UIImagePickerControllerSourceTypePhotoLibrary) { // 从相册选择
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.allowsEditing = YES;
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            picker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:picker.sourceType];
+            
+            if (kSystemVersion>7) {
+                picker.navigationBar.barTintColor = self.navigationController.navigationBar.barTintColor;
+            }
+            // 设置导航默认标题的颜色及字体大小
+            picker.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                         NSFontAttributeName : [UIFont boldSystemFontOfSize:18]};
+            [self presentViewController:picker animated:YES completion:nil];
+        } else if (buttonIndex == UIImagePickerControllerSourceTypeCamera) { // 拍照
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.allowsEditing = YES;
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            
+            picker.delegate = self;
+            if (kSystemVersion>7) {
+                picker.navigationBar.barTintColor = self.navigationController.navigationBar.barTintColor;
+            }
+            // 设置导航默认标题的颜色及字体大小
+            picker.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                         NSFontAttributeName : [UIFont boldSystemFontOfSize:18]};
+            [self presentViewController:picker animated:YES completion:nil];
+        }
     }
+
 }
 
 #pragma mark getter
@@ -388,13 +476,13 @@ typedef NS_ENUM(NSInteger, FieldType) {
     return _btnfl;
 }
 
-- (UITextField *)textfieldkc
+- (UIButton *)btnkc
 {
-    if (!_textfieldkc)
+    if (!_btnkc)
     {
-        _textfieldkc = (UITextField *)[_bgScrollView viewWithTag:103];
+        _btnkc = (UIButton *)[_bgScrollView viewWithTag:103];
     }
-    return _textfieldkc;
+    return _btnkc;
 }
 
 - (UITextField *)textfieldjj
@@ -478,19 +566,123 @@ typedef NS_ENUM(NSInteger, FieldType) {
     return _manager;
 }
 
+- (SPKCViewController *)kcvc
+{
+    if (!_kcvc) {
+        _kcvc= [[SPKCViewController alloc] initWithBlock:^(int count) {
+            [self.btnkc setTitle:[NSString stringWithFormat:@"%d", count] forState:UIControlStateNormal];
+            [self.btnkc setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        }];
+    }
+    return _kcvc;
+}
+
+- (void)reloadView
+{
+    [self removeSubviews:_bgView];
+    CGFloat endWidth=0;
+    for (int i=0; i<_photoArr.count; i++)
+    {
+        UIImage *img = _photoArr[i];
+        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(endWidth+_interval, 0, _imgWidth, _imgWidth)];
+        btn.tag = 100+i;
+        [btn addTarget:self action:@selector(touchPhoto:) forControlEvents:UIControlEventTouchUpInside];
+        [btn setImage:img forState:UIControlStateNormal];
+        [_bgView addSubview:btn];
+        endWidth += _interval+_imgWidth;
+    }
+    if (_photoArr.count<_countNeedToUpload)
+    {
+        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(endWidth+_interval, 0, _imgWidth, _imgWidth)];
+        btn.layer.borderWidth=0.5;
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn setTitle:@"+" forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(addPhoto) forControlEvents:UIControlEventTouchUpInside];
+        [_bgView addSubview:btn];
+    }
+}
+
+- (void)addPhoto
+{
+    UIActionSheet *sheet;
+    
+    // 判断是否支持相机
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        sheet  = [[UIActionSheet alloc] initWithTitle:@"选择图像" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"拍照", @"从相册选择", nil];
+    }
+    else {
+        sheet = [[UIActionSheet alloc] initWithTitle:@"选择图像" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"从相册选择", nil];
+    }
+    
+    sheet.tag = 255;
+    
+    [sheet showInView:self.view];
+}
+
+#pragma mark - image picker delegte
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    [_photoArr addObject:image];
+    [self reloadView];
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        UIImage * oriImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+        // 保存图片到相册中
+        SEL selectorToCall = @selector(imageWasSavedSuccessfully:didFinishSavingWithError:contextInfo:);
+        UIImageWriteToSavedPhotosAlbum(oriImage, self,selectorToCall, NULL);
+    }
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) imageWasSavedSuccessfully:(UIImage *)paramImage didFinishSavingWithError:(NSError *)paramError contextInfo:(void *)paramContextInfo{
+    if (paramError == nil){
+        NSLog(@"Image was saved successfully.");
+        paramImage = nil;
+    } else {
+        NSLog(@"An error happened while saving the image.");
+        NSLog(@"Error = %@", paramError);
+    }
+}
+
+- (void)touchPhoto:(UIButton *)sender
+{
+    _deleteIndex = (int)sender.tag-100;
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"是否要删除这张图片" message:nil delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==1)
+    {
+        [_photoArr removeObjectAtIndex:_deleteIndex];
+        [self reloadView];
+    }
+}
+
+- (void)removeSubviews:(UIView *)aView
+{
+    while (aView.subviews.count)
+    {
+        UIView* child = aView.subviews.lastObject;
+        [child removeFromSuperview];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
