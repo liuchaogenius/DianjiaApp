@@ -11,6 +11,7 @@
 #import "SPGLCategoryCell.h"
 #import "SPGLSearchVC.h"
 #import "SPGLSearchVC.h"
+#import "SPNewViewController.h"
 
 @interface ShangpinguanliVC ()
 {
@@ -28,6 +29,8 @@
 @property (nonatomic, strong) SPGLCategoryIndexList *modeList;
 
 @property(nonatomic,strong) void(^selectBlock)(SPGLCategoryMode *);
+
+@property(nonatomic,strong) UIButton *addBtn;
 @end
 
 @implementation ShangpinguanliVC
@@ -61,6 +64,11 @@
     self.indexTableview.dataSource = self;
     self.indexTableview.tag = 11;
     
+    _addBtn = [[UIButton alloc] initWithFrame:CGRectMake(kMainScreenWidth-65, kMainScreenHeight-64-65, 55, 55)];
+    [_addBtn setImage:[UIImage imageNamed:@"icon_add"] forState:UIControlStateNormal];
+    [_addBtn addTarget:self action:@selector(touchAdd) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_addBtn];
+    
     [self.scanButton addTarget:self action:@selector(pushScanView) forControlEvents:UIControlEventTouchUpInside];
     [self.searchBt addTarget:self action:@selector(pushSearchVc) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -77,6 +85,13 @@
         }
     }];
 }
+#pragma mark 进入新增商品
+- (void)touchAdd
+{
+    SPNewViewController *vc = [[SPNewViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 #pragma mark 进入搜索页面
 - (void)pushSearchVc
