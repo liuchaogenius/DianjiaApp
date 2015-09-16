@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>C1828BDD-CDD8-43D9-8080-66E39763FEEE</string>
 	<key>IDESourceControlProjectName</key>
-	<string>YHB_Prj</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>706F4A54D6D98022B9E07F56AD29736D3F1A7ADB</key>
 		<string>https://github.com/liuchaogenius/DianjiaApp.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>YHB_Prj/YHB_Prj.xcodeproj</string>
+	<string>YHB_Prj/YHB_Prj.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>706F4A54D6D98022B9E07F56AD29736D3F1A7ADB</key>

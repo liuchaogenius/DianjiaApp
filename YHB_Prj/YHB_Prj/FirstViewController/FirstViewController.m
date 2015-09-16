@@ -101,8 +101,9 @@
     [self.manager getSaleSrlStatisticsApp:self.strStartTime endDate:self.strEndTime finishBlock:^(FirstMode *mode) {
         if(mode)
         {
-            self.headYYEPrice_Label.text = mode.ssMode.strRealMoney;
-            self.headZLRPrice_Label.text = mode.ssMode.strProFitMoney;
+            
+            self.headYYEPrice_Label.text = [NSString stringWithFormat:@"￥%@",mode.ssMode.strRealMoney];//;
+            self.headZLRPrice_Label.text = [NSString stringWithFormat:@"￥%@",mode.ssMode.strProFitMoney];//;
             self.headZDSValue_Label.text = mode.ssMode.strSaleCount;
         }
     }];
@@ -110,11 +111,11 @@
         if(mode)
         {
             self.middleZKCValue_Label.text = mode.sumMode.strStockQty;
-            self.middleZCBValue_Label.text = mode.sumMode.strStockMoney;
+            self.middleZCBValue_Label.text = [NSString stringWithFormat:@"￥%@",mode.sumMode.strStockMoney];
             
-            self.thirdJRLSValue_Label.text = mode.sumMode.strJZLS;
-            self.thirdBZLSValue_Label.text = mode.sumMode.strBZLS;
-            self.thirdBYLSValue_Label.text = mode.sumMode.strBYLS;
+            self.thirdJRLSValue_Label.text = [NSString stringWithFormat:@"￥%@",mode.sumMode.strJZLS];
+            self.thirdBZLSValue_Label.text = [NSString stringWithFormat:@"￥%@",mode.sumMode.strBZLS];
+            self.thirdBYLSValue_Label.text = [NSString stringWithFormat:@"￥%@",mode.sumMode.strBYLS];
         }
     }];
 }
