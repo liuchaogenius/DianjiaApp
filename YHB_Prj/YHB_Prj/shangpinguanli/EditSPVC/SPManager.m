@@ -21,8 +21,7 @@
         NSString *msg = successDict[@"msg"];
         if ([msg isEqualToString:@"success"])
         {
-            NSString *code = successDict[@"result"];
-            FBlock(code);
+            FBlock(@"1");
         }
         else FBlock(nil);
     } failure:^(NSDictionary *failDict, NSError *error) {
