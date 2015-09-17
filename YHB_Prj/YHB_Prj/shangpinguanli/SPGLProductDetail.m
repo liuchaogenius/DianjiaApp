@@ -16,10 +16,13 @@
 #import "XSLSViewController.h"
 #import "YPDMViewController.h"
 #import "SPNewViewController.h"
+#import "DJProductCheckViewManager.h"
+#import "DJCheckCartItemComponent.h"
 
-@interface SPGLProductDetail ()
+@interface SPGLProductDetail ()<DJProductCheckViewDataSoure>
 {
     SBPageFlowView *flowView;
+    BOOL _isChecked;
 }
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollerview;
 @property (strong, nonatomic) IBOutlet UIView *headImgScrollview;
@@ -105,7 +108,38 @@
 
 - (void)touchPDSP
 {
-#warning 跳转到盘点商品
+    _isChecked = NO;
+    [[DJProductCheckViewManager sharedInstance] showCheckViewFromViewController:self withDataSource:self];
+}
+
+#pragma mark - check Delegate
+- (id<DJCheckCartItemComponent>)nextItem {
+    if (!_isChecked) {
+        return [self itemWithProductListModel:self.productMode];
+    }else {
+        return nil;
+    }
+}
+
+#pragma mark - adapter
+
+- (id<DJCheckCartItemComponent>)itemWithProductListModel: (SPGLProductMode *)mode {
+    id<DJCheckCartItemComponent> item = [[DJCheckCartItemComponent alloc] init];
+    
+    [item setSid:[[LoginManager shareLoginManager] getStoreId]];
+    [item setCheckId:[mode strCid]];
+    [item setProductId:[mode strId]];
+    [item setProductCode:[mode strProductCode]];
+    [item setProductName:[mode strProductName]];
+    //    item setStoreStockId:[mode strst]
+    [item setStockQuanity:[[mode strStockQty] integerValue]];
+    [item setStayQuanity:[[mode strStayQty] integerValue]];
+    //    item setCheckQuanity:
+    [item setLastCheckTime:[mode strCheckLasttime]];
+    [item setCheckState:DJCheckItemStateNotCheck];
+    [item setCheckName:[[[LoginManager shareLoginManager] getLoginMode] strUname]];
+    
+    return item;
 }
 
 - (void)touchJHLS
