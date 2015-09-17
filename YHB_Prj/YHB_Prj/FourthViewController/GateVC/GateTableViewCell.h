@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class StoreMode;
 @interface GateTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *locaLabel;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;

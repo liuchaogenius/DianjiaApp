@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #define LOGINRESULTBLOCK      void(^)(BOOL ret)
-
+@class LoginMode;
 @class StoreMode;
 @interface LoginManager : NSObject
 

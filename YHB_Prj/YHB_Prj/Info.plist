@@ -28,6 +28,8 @@
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<string>NSAllowsArbitraryLoads</string>
+	<key>CFBundleDisplayName</key>
+	<string>店+</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BaseViewController.h"
 @interface DateSelectVC : BaseViewController
 - (void)getUserSetTimer:(void(^)(NSString *sTimer, NSString *eTimer,NSString *ssTimer,NSString *seTimer, int btid))aBlock;
 @end

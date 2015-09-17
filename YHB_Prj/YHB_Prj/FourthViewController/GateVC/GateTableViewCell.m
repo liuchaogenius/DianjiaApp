@@ -7,7 +7,7 @@
 //
 
 #import "GateTableViewCell.h"
-
+#import "LoginMode.h"
 @implementation GateTableViewCell
 
 - (void)awakeFromNib {

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SBPageFlowView.h"
+#import "BaseViewController.h"
 @interface SPGLProductDetail : BaseViewController<SBPageFlowViewDelegate, SBPageFlowViewDataSource>
 
 @end
