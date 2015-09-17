@@ -269,7 +269,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
     if (_cid)
     {
         [dict setObject:_cid forKey:@"cid"];
-        [dict setObject:_myMode.strClsName forKey:@"cls_name"];
+        [dict setObject:[_myMode.strClsName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:@"cls_name"];
     }
     if (_supid)
     {
@@ -277,7 +277,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
         [dict setObject:_myMode.strSupName forKey:@"sup_name"];
     }
     [dict setObject:_myMode.strId forKey:@"id"];
-    [dict setObject:_myMode.strProductName forKey:@"product_name"];
+    [dict setObject:[_myMode.strProductName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:@"product_name"];
     [dict setObject:_myMode.strProductCode forKey:@"product_code"];
     [dict setObject:_myMode.strBuyingPrice forKey:@"buying_price"];
     [dict setObject:_myMode.strSalePrice forKey:@"sale_price"];
