@@ -12,5 +12,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *gongyingshangLabel;
 @property (strong, nonatomic) IBOutlet UILabel *shuliangLabel;
 @property (strong, nonatomic) IBOutlet UILabel *zongjineLabel;
-- (void)setCellData:(WYJHMode *)aMode;
+- (void)setCellData:(WYJHModeList *)aMode;
 @end

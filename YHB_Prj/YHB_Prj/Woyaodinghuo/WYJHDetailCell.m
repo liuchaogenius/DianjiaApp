@@ -9,6 +9,11 @@
 #import "WYJHDetailCell.h"
 #import "WYJHMode.h"
 
+@interface WYJHDetailCell()
+@property(nonatomic,assign) int row;
+@property(nonatomic,strong) void(^ myBlock)(int);
+@end
+
 @implementation WYJHDetailCell
 
 - (void)awakeFromNib {
@@ -19,9 +24,9 @@
 {
     [self resetView];
     self.pinmingLabel.text = mode.strProductName;
-    self.dinghuoshuliangLabel.text = mode.strStayQty;
-    self.jinjiaLabel.text = mode.strStockPrice;
-    self.kucunLabel.text = mode.strStayQty;
+    self.dinghuoshuliangLabel.text = mode.strStockNum;
+    self.jinjiaLabel.text = [NSString stringWithFormat:@"%.2f", [mode.strStockPrice floatValue]];
+    self.kucunLabel.text = mode.strStockQty;
     self.xiaojiLabel.text = mode.strShelfDys;
 }
 
@@ -32,6 +37,17 @@
     self.jinjiaLabel.text = @"";
     self.kucunLabel.text = @"";
     self.xiaojiLabel.text = @"";
+}
+
+- (void)setCellRow:(int)aRow andTouchBlock:(void (^)(int))aBlock
+{
+    _row = aRow;
+    _myBlock = aBlock;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    _myBlock(_row);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

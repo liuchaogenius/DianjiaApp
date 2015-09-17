@@ -16,4 +16,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *xiaojiLabel;
 
 - (void)setCellData:(WYJHMode *)mode;
+- (void)setCellRow:(int)aRow andTouchBlock:(void(^)(int))aBlock;
 @end

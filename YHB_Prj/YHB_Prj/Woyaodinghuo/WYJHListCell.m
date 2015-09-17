@@ -14,12 +14,12 @@
     // Initialization code
 }
 
-- (void)setCellData:(WYJHMode *)aMode
+- (void)setCellData:(WYJHModeList *)aMode
 {
     [self resetview];
     self.gongyingshangLabel.text = aMode.strSupName;
-    self.shuliangLabel.text = aMode.strStockQty;
-    self.zongjineLabel.text = aMode.strStockPrice;
+    self.shuliangLabel.text = aMode.strStockNum;
+    self.zongjineLabel.text = aMode.strTotalRealPay;
 }
 
 - (void)resetview

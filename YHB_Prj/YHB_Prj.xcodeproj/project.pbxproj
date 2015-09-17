@@ -53,6 +53,7 @@
 		AB311F9C1B9BFCEE0070784E /* PGPicList.m in Sources */ = {isa = PBXBuildFile; fileRef = AB311F971B9BFCEE0070784E /* PGPicList.m */; };
 		AB311F9D1B9BFCEE0070784E /* PGResult.m in Sources */ = {isa = PBXBuildFile; fileRef = AB311F991B9BFCEE0070784E /* PGResult.m */; };
 		AB311F9E1B9BFCEE0070784E /* PGRows.m in Sources */ = {isa = PBXBuildFile; fileRef = AB311F9B1B9BFCEE0070784E /* PGRows.m */; };
+		AB32CEBC1BA8EF2C00ADDB1C /* WYJHEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB32CEBB1BA8EF2C00ADDB1C /* WYJHEditViewController.m */; };
 		AB358E431B99855C007D62E9 /* YDCXDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB358E421B99855C007D62E9 /* YDCXDetailViewController.m */; };
 		AB358E471B99B47B007D62E9 /* YDCXDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB358E451B99B47B007D62E9 /* YDCXDetailCell.m */; };
 		AB358E481B99B47B007D62E9 /* YDCXDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB358E461B99B47B007D62E9 /* YDCXDetailCell.xib */; };
@@ -60,6 +61,7 @@
 		AB3877AA1B97D7F700DD7468 /* YDCXCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3877A81B97D7F700DD7468 /* YDCXCell.m */; };
 		AB3877AB1B97D7F700DD7468 /* YDCXCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB3877A91B97D7F700DD7468 /* YDCXCell.xib */; };
 		AB3877AE1B97DF8200DD7468 /* YDCXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3877AD1B97DF8200DD7468 /* YDCXManager.m */; };
+		AB39FA7E1BAA6FA6007494DC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5C87281B8318C500F79EC1 /* libsqlite3.dylib */; };
 		AB40EAB51B8BF97500DE5ED7 /* ClerkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB40EAB41B8BF97500DE5ED7 /* ClerkViewController.m */; };
 		AB40EABC1B8BFA0100DE5ED7 /* ClerkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB40EABA1B8BFA0100DE5ED7 /* ClerkTableViewCell.m */; };
 		AB40EABD1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB40EABB1B8BFA0100DE5ED7 /* ClerkTableViewCell.xib */; };
@@ -224,7 +226,6 @@
 		FF5C87201B83024C00F79EC1 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5C87191B83024C00F79EC1 /* FMResultSet.m */; };
 		FF5C87241B83025600F79EC1 /* YTKKeyValueStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5C87231B83025600F79EC1 /* YTKKeyValueStore.m */; };
 		FF5C87271B830F3000F79EC1 /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5C87261B830F3000F79EC1 /* LoginManager.m */; };
-		FF5C87291B8318C500F79EC1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF5C87281B8318C500F79EC1 /* libsqlite3.dylib */; };
 		FF5C872D1B83279600F79EC1 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5C872B1B83279600F79EC1 /* FirstViewController.m */; };
 		FF5C872E1B83279600F79EC1 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5C872C1B83279600F79EC1 /* FirstViewController.xib */; };
 		FF5CC6F91B93EE5300F55713 /* GysMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC6E51B93EE5300F55713 /* GysMode.m */; };
@@ -375,6 +376,8 @@
 		AB311F991B9BFCEE0070784E /* PGResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGResult.m; sourceTree = "<group>"; };
 		AB311F9A1B9BFCEE0070784E /* PGRows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGRows.h; sourceTree = "<group>"; };
 		AB311F9B1B9BFCEE0070784E /* PGRows.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGRows.m; sourceTree = "<group>"; };
+		AB32CEBA1BA8EF2C00ADDB1C /* WYJHEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYJHEditViewController.h; sourceTree = "<group>"; };
+		AB32CEBB1BA8EF2C00ADDB1C /* WYJHEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYJHEditViewController.m; sourceTree = "<group>"; };
 		AB358E411B99855C007D62E9 /* YDCXDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCXDetailViewController.h; sourceTree = "<group>"; };
 		AB358E421B99855C007D62E9 /* YDCXDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCXDetailViewController.m; sourceTree = "<group>"; };
 		AB358E441B99B47B007D62E9 /* YDCXDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCXDetailCell.h; sourceTree = "<group>"; };
@@ -788,7 +791,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BA5AA331B98299D00329677 /* AVFoundation.framework in Frameworks */,
-				FF5C87291B8318C500F79EC1 /* libsqlite3.dylib in Frameworks */,
+				AB39FA7E1BAA6FA6007494DC /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1608,6 +1611,8 @@
 				FF3C34EE1BA4268C006766E9 /* WYJHDetailCell.h */,
 				FF3C34EF1BA4268C006766E9 /* WYJHDetailCell.m */,
 				FF3C34F01BA4268C006766E9 /* WYJHDetailCell.xib */,
+				AB32CEBA1BA8EF2C00ADDB1C /* WYJHEditViewController.h */,
+				AB32CEBB1BA8EF2C00ADDB1C /* WYJHEditViewController.m */,
 			);
 			path = Woyaodinghuo;
 			sourceTree = "<group>";
@@ -2090,6 +2095,7 @@
 				ABDDB3751BA3B1ED00DCD659 /* JHLSTableViewCell.m in Sources */,
 				FF2A6C861A0F3B8A001607AC /* DataCenterDeal.mm in Sources */,
 				5B1F7FA61B91C8A600763059 /* DJProductCheckManager.m in Sources */,
+				AB32CEBC1BA8EF2C00ADDB1C /* WYJHEditViewController.m in Sources */,
 				AB9F43EC1B92E58400914C85 /* SetTableViewCell.m in Sources */,
 				FFF391961B846F58007DC652 /* AFHTTPSessionManager.m in Sources */,
 				AB9F43E91B92E45900914C85 /* SettingViewController.m in Sources */,

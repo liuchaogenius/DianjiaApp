@@ -27,7 +27,10 @@
 		<string>armv7</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
-	<string>NSAllowsArbitraryLoads</string>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>CFBundleDisplayName</key>
 	<string>店+</string>
 	<key>UISupportedInterfaceOrientations</key>

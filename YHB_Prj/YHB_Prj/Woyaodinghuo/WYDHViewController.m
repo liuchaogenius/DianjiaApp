@@ -265,23 +265,24 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    int count = 0;
-    if(self.selType == 1)
-    {
-        WYJHModeList *list = [self.weishenheArry objectAtIndex:section];
-        count = list.modeListArry.count;
-    }
-    else if(self.selType == 2)
-    {
-        WYJHModeList *list = [self.yishenheArry objectAtIndex:section];
-        count = list.modeListArry.count;
-    }
-    else if(self.selType == 0)
-    {
-        WYJHModeList *list = [self.quanbuArry objectAtIndex:section];
-        count = list.modeListArry.count;
-    }
-    return count;
+//    int count = 0;
+//    if(self.selType == 1)
+//    {
+//        WYJHModeList *list = [self.weishenheArry objectAtIndex:section];
+//        count = list.modeListArry.count;
+//    }
+//    else if(self.selType == 2)
+//    {
+//        WYJHModeList *list = [self.yishenheArry objectAtIndex:section];
+//        count = list.modeListArry.count;
+//    }
+//    else if(self.selType == 0)
+//    {
+//        WYJHModeList *list = [self.quanbuArry objectAtIndex:section];
+//        count = list.modeListArry.count;
+//    }
+//    return count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -306,8 +307,8 @@
         if(indexPath.section < self.weishenheArry.count)
         {
             WYJHModeList *list = [self.weishenheArry objectAtIndex:indexPath.section];
-            WYJHMode *mode = [list.modeListArry objectAtIndex:indexPath.row];
-            [cell setCellData:mode];
+//            WYJHMode *mode = [list.modeListArry objectAtIndex:indexPath.row];
+            [cell setCellData:list];
         }
     }
     else if(self.selType == 2)
@@ -315,8 +316,8 @@
         if(indexPath.section < self.yishenheArry.count)
         {
             WYJHModeList *list = [self.yishenheArry objectAtIndex:indexPath.section];
-            WYJHMode *mode = [list.modeListArry objectAtIndex:indexPath.row];
-            [cell setCellData:mode];
+//            WYJHMode *mode = [list.modeListArry objectAtIndex:indexPath.row];
+            [cell setCellData:list];
         }
     }
     else if(self.selType == 0)
@@ -324,8 +325,8 @@
         if(indexPath.section < self.quanbuArry.count)
         {
             WYJHModeList *list = [self.quanbuArry objectAtIndex:indexPath.section];
-            WYJHMode *mode = [list.modeListArry objectAtIndex:indexPath.row];
-            [cell setCellData:mode];
+//            WYJHMode *mode = [list.modeListArry objectAtIndex:indexPath.row];
+            [cell setCellData:list];
         }
     }
 }

@@ -47,6 +47,7 @@
     
     AssignMentID(self.strSupId, [aDataDict objectForKey:@"sup_id"]);
     BaseLongLongToNSString(self.strSupId);
+    
     AssignMentID(self.strSupName, [aDataDict objectForKey:@"sup_name"]);
     
 }
@@ -89,6 +90,9 @@
     AssignMentID(self.strSupid, [aDataDict objectForKey:@"sup_id"]);
     BaseLongLongToNSString(self.strSupid);
     AssignMentID(self.strSupName, [aDataDict objectForKey:@"sup_name"]);
+    
+    AssignMentID(self.strEmpStockId, [aDataDict objectForKey:@"emp_stock_id"]);
+    BaseLongLongToNSString(self.strEmpStockId);
     
     AssignMentID(self.strTotalRealPay, [aDataDict objectForKey:@"total_real_pay"]);
     BaseFloadToNSString(self.strTotalRealPay);

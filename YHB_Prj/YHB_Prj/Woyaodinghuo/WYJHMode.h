@@ -67,6 +67,8 @@
 
 @property (nonatomic, strong) NSString *strTotalRealPay;
 
+@property (nonatomic, strong) NSString *strEmpStockId;
+
 @property (nonatomic, strong) NSMutableArray *modeListArry;
 @end
 
