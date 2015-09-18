@@ -75,8 +75,8 @@
         self.xiugaiBT.hidden = NO;
         self.shouhuoBT.hidden = NO;
     }
-    [self.jieqingBT addTarget:self action:@selector(jieqingBT) forControlEvents:UIControlEventTouchUpInside];
-    [self.shouhuoBT addTarget:self action:@selector(shouhuoBT) forControlEvents:UIControlEventTouchUpInside];
+    [self.jieqingBT addTarget:self action:@selector(jieqingBTItem) forControlEvents:UIControlEventTouchUpInside];
+    [self.shouhuoBT addTarget:self action:@selector(shouhuoBTItem) forControlEvents:UIControlEventTouchUpInside];
     [self.xiugaiBT addTarget:self action:@selector(modifyBTItem) forControlEvents:UIControlEventTouchUpInside];
     
     //self.tableview.tableHeaderView = [self getTVHeadView];
