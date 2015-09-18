@@ -162,7 +162,7 @@
             if ([codeString intValue] == 0) {
                 success(dic);
             }else{
-                success(nil);
+                success(dic);
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             //请求失败

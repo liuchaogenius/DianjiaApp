@@ -157,6 +157,7 @@
     {
         NSMutableDictionary *dict = [self getModelDict];
         [NetManager requestWith:dict apiName:@"appSubmitSupplierStorage" method:@"POST" succ:^(NSDictionary *successDict) {
+            MLOG(@"%@", successDict[@"msg"]);
             if ([successDict[@"msg"] isEqualToString:@"success"])
             {
                 [_xiugaiBT setTitle:@"修改" forState:UIControlStateNormal];
@@ -287,7 +288,7 @@
     }
     [srlDict setValue:detailArray forKey:@"detailList"];
     
-    [dict setValue:srlDict forKey:@"srlList"];
+    [dict setValue:@[srlDict] forKey:@"srlList"];
     
     return dict;
 }
