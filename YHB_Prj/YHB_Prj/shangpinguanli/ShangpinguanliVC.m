@@ -55,6 +55,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self settitleLabel:@"商品管理"];
     self.sectionTableview.delegate = self;
     self.sectionTableview.dataSource = self;
     self.sectionTableview.tag = 10;

@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSString *strStartTime;
 @property (strong, nonatomic) NSString *strEndTime;
 @property (assign, nonatomic) int accountType;
+@property (copy, nonatomic) void(^okFinishBlock)(BOOL ret);
 @end
 
 @implementation WYJHSXViewcontroller
@@ -58,6 +59,11 @@
 - (void)setRKSPManager:(WYJHManager *)aManager
 {
     self.manager = aManager;
+}
+
+- (void)setOKItemFinishCallback:(void(^)(BOOL ret))aFinishBlock
+{
+    self.okFinishBlock = aFinishBlock;
 }
 
 #pragma mark 是否结算but
@@ -122,8 +128,11 @@
     [self.manager setEndTime:self.strEndTime];
     [self.manager setSupIdTime:strSupId];
     [self.manager setAccountType:self.accountType];
+    if(self.okFinishBlock)
+    {
+        self.okFinishBlock(YES);
+    }
     [self.navigationController popViewControllerAnimated:YES];
-#warning  回到前面一个页面要进行刷新
 }
 
 #pragma mark 处理供应商按钮

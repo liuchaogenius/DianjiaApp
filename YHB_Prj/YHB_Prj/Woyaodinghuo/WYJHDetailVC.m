@@ -50,7 +50,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    [self settitleLabel:@"订货详情"];
     self.jinhuodanhaoLabel.text = _modeList.strSrl;
     self.riqiLabel.text = _modeList.strOrderTime;
     self.gonghuoshangLabel.text = _modeList.strSupName;

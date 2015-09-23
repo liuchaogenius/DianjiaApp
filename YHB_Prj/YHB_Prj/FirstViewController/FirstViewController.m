@@ -14,6 +14,8 @@
 #import "LoginManager.h"
 #import "DJStoryboadManager.h"
 #import "YDCXViewController.h"
+#import "SVProgressHUD.h"
+
 @interface FirstViewController ()
 {
     __weak FirstViewController *weakself;
@@ -74,6 +76,7 @@
     [self.bottom_gdcx_BT addTarget:self action:@selector(gdcx_buttonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_spgl_BT addTarget:self action:@selector(spgl_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_wydh_BT addTarget:self action:@selector(wyjn_buttonItem) forControlEvents:UIControlEventTouchUpInside];
+    [self.bottom_zxdd_BT addTarget:self action:@selector(zxdg_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -167,6 +170,11 @@
 - (NSString *)getEndTime
 {
     return self.strEndTime;
+}
+#pragma mark 在线订购
+- (void)zxdg_ButtonItem
+{
+    [SVProgressHUD showSuccessWithStatus:@"敬请期待..." duration:1 cover:NO offsetY:64];
 }
 #pragma mark 库存预警按钮点击
 - (void)kcyj_ButtonItem

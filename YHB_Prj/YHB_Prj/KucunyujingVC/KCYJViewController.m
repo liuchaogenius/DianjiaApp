@@ -14,6 +14,7 @@
 #import "KCYJCell.h"
 #import "ZXBJCell.h"
 #import "ZCBCell.h"
+#import "LoginManager.h"
 
 @interface KCYJViewController ()
 @property (strong, nonatomic) IBOutlet UIView *headView;
@@ -45,6 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self settitleLabel:[[LoginManager shareLoginManager] getCurrentStoreName]];
     self.kcyjMutArry = [NSMutableArray arrayWithCapacity:0];
     self.zxyjMutArry = [NSMutableArray arrayWithCapacity:0];
     self.zkcMutArry = [NSMutableArray arrayWithCapacity:0];
@@ -59,6 +61,9 @@
             [self.tableview reloadData];
         }
     }];
+    [self.head_kuyjBT setTitleColor:RGBCOLOR(245, 186, 46) forState:UIControlStateNormal];
+    [self.head_zxbjBT setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.head_zkcBT setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 - (void)createTableview
@@ -76,6 +81,9 @@
 - (void)kcyjBTItem
 {
     self.pageType = 0;
+    [self.head_kuyjBT setTitleColor:RGBCOLOR(245, 186, 46) forState:UIControlStateNormal];
+    [self.head_zxbjBT setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.head_zkcBT setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     if(self.kcyjMutArry.count == 0)
     {
         [self.manager getStockWarningDetailPageApp:YES storeId:[[LoginManager shareLoginManager] getStoreId] finishBlock:^(KCYJListMode *modelist) {
@@ -95,6 +103,9 @@
 - (void)zxyjBTItem
 {
     self.pageType = 1;
+    [self.head_kuyjBT setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.head_zxbjBT setTitleColor:RGBCOLOR(245, 186, 46) forState:UIControlStateNormal];
+    [self.head_zkcBT setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     if(self.zxyjMutArry.count == 0)
     {
         [self.manager getSalekWarningDetailPageApp:YES storeId:[[LoginManager shareLoginManager] getStoreId] finishBlock:^(KCYJListMode *modelist) {
@@ -114,6 +125,9 @@
 - (void)zkcBTItem
 {
     self.pageType = 2;
+    [self.head_kuyjBT setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.head_zxbjBT setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.head_zkcBT setTitleColor:RGBCOLOR(245, 186, 46) forState:UIControlStateNormal];
     if(self.zkcMutArry.count == 0)
     {
         [self.manager getStoreStockByStoreCount:^(StoreTockList *modelist) {

@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *strUserToken;
 @property (nonatomic, strong) LoginMode *logMode;
 @property (nonatomic, strong) NSString *currentStoreId;
+@property (nonatomic, strong) NSString *currentStoreName;
 @end
 
 @implementation LoginManager
@@ -42,6 +43,7 @@
                 [self setNetWorkParam:self.logMode.strUid userToke:self.logMode.strToken];
                 StoreMode *sm = [self.logMode.storeList objectAtIndex:0];
                 [self setNetWorkStoreId:sm.strId];
+                [self setCurrentStoreName:sm.strStoreName];
             }
         }];
     }
@@ -52,8 +54,13 @@
              retblock:(LOGINRESULTBLOCK)aBlock
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+#ifdef DEBUG
     [dict setValue:@"18066040008" forKey:@"userName"];
     [dict setValue:@"000000" forKey:@"userPassword"];
+#else
+    [dict setValue:aUserName forKey:@"userName"];
+    [dict setValue:aPass forKey:@"userPassword"];
+#endif
     [dict setValue:@"1" forKey:@"loginUserType"];
     [NetManager requestWith:dict apiName:@"loginApp" method:@"POST" succ:^(NSDictionary *successDict) {
         NSDictionary *resultDict = [successDict objectForKey:@"result"];
@@ -71,6 +78,7 @@
             [self.logMode unPacketData:resultDict];
             [self setNetWorkParam:self.strUserId userToke:self.strUserToken];
             StoreMode *sm = [self.logMode.storeList objectAtIndex:0];
+            [self setCurrentStoreName:sm.strStoreName];
             [self setNetWorkStoreId:sm.strId];
             [[SCach shareInstance] setAsynValue:self.logMode key:@"loginMode" isMemeory:NO filePath:nil block:^(bool isResult) {
                 
@@ -147,7 +155,17 @@
 
 - (void)setCurrentSelectStore:(StoreMode *)currentSelectStore {
     _currentSelectStore = currentSelectStore;
+    [self setCurrentStoreName:currentSelectStore.strStoreName];
     self.currentStoreId = currentSelectStore.strId;
 }
 
+- (void)setCurrentStoreName:(NSString *)currentStoreName
+{
+    _currentStoreName = currentStoreName;
+}
+
+- (NSString *)getCurrentStoreName
+{
+    return self.currentStoreName?self.currentStoreName:@" ";
+}
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+@class YDCXManager;
 @interface JCCXSXViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource>
-
+- (void)setYDCXManager:(YDCXManager *)aManager andPopBlock:(void(^)(void))aPopBlock;
+- (void)setOKButtonFinishBlock:(void(^)(void))aPopBlock;
 @end

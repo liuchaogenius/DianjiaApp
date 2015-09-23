@@ -8,7 +8,7 @@
 
 #ifndef Public_h
 #define Public_h
-
+#define kLoadingText @"加载中..."
 #define kMainScreenHeight [UIScreen mainScreen].bounds.size.height
 #define kMainScreenWidth  [UIScreen mainScreen].bounds.size.width
 #define kBaseUrl @"http://testapi.chinascrm.com/sapi4app.html"

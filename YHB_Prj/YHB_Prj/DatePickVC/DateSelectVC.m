@@ -64,6 +64,7 @@ typedef NS_ENUM(int, dateBtTag)
 - (void)viewDidLoad {
     [super viewDidLoad];
     btTag = -1;
+    [self setTitle:@"选择日期"];
     // Do any additional setup after loading the view from its nib.
     CGFloat height = self.okButton.bottom;
     [self.scrollview setContentSize:CGSizeMake(kMainScreenWidth, height+20)];
@@ -106,7 +107,7 @@ typedef NS_ENUM(int, dateBtTag)
 
 - (void)dateButtonItem:(UIButton *)aBt
 {
-    btTag = aBt.tag;
+    btTag = (int)aBt.tag;
     switch (aBt.tag) {
         case jt_enum:
         {

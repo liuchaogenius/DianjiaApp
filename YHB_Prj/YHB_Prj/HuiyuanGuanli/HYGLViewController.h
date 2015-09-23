@@ -7,8 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
-@interface HYGLViewController : BaseViewController< UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate,UITableViewDataSource>
+#import <MessageUI/MessageUI.h>
+@interface HYGLViewController : BaseViewController< UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate,UITableViewDataSource,MFMessageComposeViewControllerDelegate>
 
 @property (nonatomic, assign)BOOL isNOPushDetail;
 - (void)getUserSelectList:(void(^)(NSMutableArray *selectList))aSelectBlock;

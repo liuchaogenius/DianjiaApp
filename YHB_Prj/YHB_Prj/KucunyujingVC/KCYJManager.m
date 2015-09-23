@@ -9,6 +9,7 @@
 #import "KCYJManager.h"
 #import "NetManager.h"
 #import "KCYJMode.h"
+#import "SVProgressHUD.h"
 
 @interface KCYJManager()
 {
@@ -41,7 +42,9 @@
     {
         [kcyjModeList.kcyjModeArry removeAllObjects];
     }
+    [SVProgressHUD showWithStatus:kLoadingText cover:NO offsetY:64];
     [NetManager requestWith:dict apiName:@"getStockWarningDetailPageApp" method:@"POST" succ:^(NSDictionary *successDict) {
+        [SVProgressHUD dismiss];
         MLOG(@"%@",successDict);
         if(successDict)
         {
@@ -56,6 +59,7 @@
         }
         
     } failure:^(NSDictionary *failDict, NSError *error) {
+        [SVProgressHUD dismiss];
         aFinishBlock(nil);
     }];
 }
@@ -75,7 +79,9 @@
     {
         [kcyjModeList.kcyjModeArry removeAllObjects];
     }
+    [SVProgressHUD showWithStatus:kLoadingText cover:NO offsetY:64];
     [NetManager requestWith:dict apiName:@"getSalekWarningDetailPageApp" method:@"POST" succ:^(NSDictionary *successDict) {
+        [SVProgressHUD dismiss];
         MLOG(@"%@",successDict);
         if(successDict)
         {
@@ -90,14 +96,17 @@
         }
         
     } failure:^(NSDictionary *failDict, NSError *error) {
+        [SVProgressHUD dismiss];
         aFinishBlock(nil);
     }];
 }
 
 - (void)getStoreStockByStoreCount:(void(^)(StoreTockList *modelist))aFinishBlock
 {
+    [SVProgressHUD showWithStatus:kLoadingText cover:NO offsetY:64];
     [NetManager requestWith:nil apiName:@"getStoreStockByStoreCount" method:@"POST" succ:^(NSDictionary *successDict) {
         MLOG(@"%@",successDict);
+        [SVProgressHUD dismiss];
         NSArray *dictArry = [successDict objectForKey:@"result"];
         if(dictArry && dictArry.count > 0)
         {
@@ -110,6 +119,7 @@
             aFinishBlock(nil);
         }
     } failure:^(NSDictionary *failDict, NSError *error) {
+        [SVProgressHUD dismiss];
         aFinishBlock(nil);
     }];
 }

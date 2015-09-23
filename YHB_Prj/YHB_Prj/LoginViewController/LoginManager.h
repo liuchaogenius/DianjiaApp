@@ -32,6 +32,8 @@
 
 - (NSArray *)getStoreList;
 
+- (NSString *)getCurrentStoreName;
+
 @property (nonatomic, strong) StoreMode *currentSelectStore;
 
 @end

@@ -47,11 +47,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self settitleLabel:@"我要订货"];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
-    [self.weirukouBT addTarget:self action:@selector(weirukouBT) forControlEvents:UIControlEventTouchUpInside];
+    [self.weirukouBT addTarget:self action:@selector(weirukuBTItem) forControlEvents:UIControlEventTouchUpInside];
     [self.yirukouBT addTarget:self action:@selector(yirukuBTItem) forControlEvents:UIControlEventTouchUpInside];
-    [self.quanbuBT addTarget:self action:@selector(quanbuBT) forControlEvents:UIControlEventTouchUpInside];
+    [self.quanbuBT addTarget:self action:@selector(quanBTItem) forControlEvents:UIControlEventTouchUpInside];
     [self.shaixuanBT addTarget:self action:@selector(shaixuanBtItem) forControlEvents:UIControlEventTouchUpInside];
     [self.manager appGetStorageSrl:self.selType finishBlock:^(WYJHModeRows *llist) {
         if(llist)
@@ -65,11 +66,19 @@
             [self.tableview reloadData];
         }
     }];
+    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+    [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
 }
 
 - (void)weirukuBTItem
 {
     self.selType = 1;//未入库
+    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+    [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     if(self.weishenheArry.count == 0)
     {
         [self.manager appGetStorageSrl:self.selType finishBlock:^(WYJHModeRows *llist) {
@@ -92,6 +101,10 @@
 - (void)yirukuBTItem
 {
     self.selType = 2;//已入库
+    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+    [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     if(self.yishenheArry.count == 0)
     {
         [self.manager appGetStorageSrl:self.selType finishBlock:^(WYJHModeRows *llist) {
@@ -114,6 +127,10 @@
 - (void)quanBTItem
 {
     self.selType = 0;//全部
+    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     if(self.quanbuArry.count == 0)
     {
         [self.manager appGetStorageSrl:self.selType finishBlock:^(WYJHModeRows *llist) {
@@ -137,7 +154,18 @@
 #pragma mark 删选BTItem
 - (void)shaixuanBtItem
 {
-    [self pushXIBName:@"WYJHSXViewcontroller" animated:YES selector:@"setRKSPManager:" param:self.manager,nil];
+    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_self"] forState:UIControlStateNormal];
+    WYJHSXViewcontroller *sxvc = (WYJHSXViewcontroller*)[self pushXIBName:@"WYJHSXViewcontroller" animated:YES selector:@"setRKSPManager:" param:self.manager,nil];
+    [sxvc setOKItemFinishCallback:^(BOOL ret) {
+        [self.manager clearePageNo];
+        [self.weishenheArry removeAllObjects];
+        [self.yishenheArry removeAllObjects];
+        [self.quanbuArry removeAllObjects];
+        [self weirukuBTItem];
+    }];
 }
 
 #pragma mark - UITableViewDataSource

@@ -48,6 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self settitleLabel:@"会员筛选"];
     [self.dateSelectBT addTarget:self action:@selector(dataBtItem:) forControlEvents:UIControlEventTouchUpInside];
     [self.selectHYBT addTarget:self action:@selector(pushSelectHuiYuanVC) forControlEvents:UIControlEventTouchUpInside];
     [self.OKButton addTarget:self action:@selector(okButtonItem) forControlEvents:UIControlEventTouchUpInside];
@@ -64,7 +65,12 @@
 - (void)setYDCXManager:(YDCXManager *)aManager andPopBlock:(void(^)(void))aPopBlock
 {
     _YDCXmanager = aManager;
-    _myPopBlock = aPopBlock;
+    self.myPopBlock = aPopBlock;
+}
+
+- (void)setOKButtonFinishBlock:(void(^)(void))aPopBlock
+{
+    self.myPopBlock = aPopBlock;
 }
 #pragma mark 进入日期页面
 - (void)dataBtItem:(UIButton *)abt

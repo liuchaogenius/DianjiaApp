@@ -10,12 +10,15 @@
 #import "NetManager.h"
 #import "VipInfoMode.h"
 #import "HYGLOneMothMode.h"
+#import "SVProgressHUD.h"
 
 @implementation HYGLManager
 - (void)appGetAllVip:(void(^)(VipInfoList *modeList))aFinishBlock
 {
+    [SVProgressHUD showWithStatus:kLoadingText cover:NO offsetY:64];
     [NetManager requestWith:nil apiName:@"appGetAllVip" method:@"POST" succ:^(NSDictionary *successDict) {
         MLOG(@"%@",successDict);
+        [SVProgressHUD dismiss];
         if(successDict)
         {
             NSArray *arry = [successDict objectForKey:@"result"];
@@ -35,6 +38,7 @@
             aFinishBlock(nil);
        }
     } failure:^(NSDictionary *failDict, NSError *error) {
+        [SVProgressHUD dismiss];
          aFinishBlock(nil);
     }];
 }
@@ -44,7 +48,9 @@
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
     [dict setObject:aVipId forKey:@"id"];
+    [SVProgressHUD showWithStatus:kLoadingText cover:NO offsetY:64];
     [NetManager requestWith:dict apiName:@"appGetVipDetailByVid" method:@"POST" succ:^(NSDictionary *successDict) {
+        [SVProgressHUD dismiss];
         NSDictionary *dict = [successDict objectForKey:@"result"];
         if(dict)
         {
@@ -57,6 +63,7 @@
             aFinishBlock(nil);
         }
     } failure:^(NSDictionary *failDict, NSError *error) {
+        [SVProgressHUD dismiss];
         aFinishBlock(nil);
     }];
 }

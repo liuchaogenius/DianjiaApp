@@ -13,6 +13,7 @@
 - (void)appGetStorageSrl:(int)selId finishBlock:(void(^)(WYJHModeRows *llist))aFinishBlock;
 - (void)setAccountType:(int)aType; //是否已结  1-未结 2-已结
 - (void)setStartTime:(NSString *)aStartTime;
+- (void)clearePageNo;
 - (void)setEndTime:(NSString *)aEndTime;
 - (void)setSupIdTime:(NSString *)aSupId;
 - (void)appAccountSupplierStorage:(NSString *)aId //结清

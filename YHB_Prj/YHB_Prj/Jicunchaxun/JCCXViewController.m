@@ -10,6 +10,7 @@
 #import "JCCXManager.h"
 #import "JCCXMode.h"
 #import "JCCXCell.h"
+#import "JCCXSXViewController.h"
 
 @interface JCCXViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *weiquwanBT;
@@ -34,6 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self settitleLabel:@"存货查询"];
     self.tableiview.dataSource = self;
     self.tableiview.delegate = self;
     [self.manager appGetProductStaySrl:1 finishBlock:^(JCCXModeList *list) {
@@ -43,13 +45,52 @@
             [self.tableiview reloadData];
         }
     }];
+    [self.weiquwanBT addTarget:self action:@selector(weiquwanBTItem) forControlEvents:UIControlEventTouchUpInside];
+    [self.yiquwanBT addTarget:self action:@selector(quwanBTItem) forControlEvents:UIControlEventTouchUpInside];
     [self.shaixuanBT addTarget:self action:@selector(shuaixuanBTItem) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)weiquwanBTItem
+{
+    [self.weiquwanBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+    [self.yiquwanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.manager appGetProductStaySrl:1 finishBlock:^(JCCXModeList *list) {
+        if(list)
+        {
+            self.modeList = list;
+            [self.tableiview reloadData];
+        }
+    }];
+}
+-(void)quwanBTItem
+{
+    [self.weiquwanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.yiquwanBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.manager appGetProductStaySrl:2 finishBlock:^(JCCXModeList *list) {
+        if(list)
+        {
+            self.modeList = list;
+            [self.tableiview reloadData];
+        }
+        else
+        {
+            
+        }
+    }];
 }
 
 #pragma mark 点击筛选按钮
 - (void)shuaixuanBTItem
 {
-    [self pushXIBName:@"JCCXSXViewController" animated:YES selector:@"setJCCXManager:" param:self.manager,nil];
+    [self.weiquwanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.yiquwanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+    JCCXSXViewController *svc = (JCCXSXViewController *)[self pushXIBName:@"JCCXSXViewController" animated:YES selector:@"setJCCXManager:" param:self.manager,nil];
+    [svc setOKButtonFinishBlock:^{
+        [self weiquwanBTItem];
+    }];
 }
 
 #pragma mark - UITableViewDataSource

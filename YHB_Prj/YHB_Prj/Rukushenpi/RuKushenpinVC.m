@@ -12,7 +12,12 @@
 #import "RKSPCell.h"
 #import "SXViewController.h"
 #import "RukuDetailViewController.h"
+#import "FBKVOController.h"
+
 @interface RuKushenpinVC ()
+{
+    FBKVOController *kvo;
+}
 @property (strong, nonatomic) IBOutlet UIButton *quanbuBT;
 @property (nonatomic,strong) RKSPManager *manager;
 @property (strong, nonatomic) IBOutlet UIButton *weishenheBT;
@@ -46,6 +51,8 @@
     // Do any additional setup after loading the view from its nib.
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
+    kvo = [[FBKVOController alloc] initWithObserver:self];
+    [self settitleLabel:@"商品入库"];
     [self.weishenheBT addTarget:self action:@selector(weishenheBTItem) forControlEvents:UIControlEventTouchUpInside];
     [self.yishenheBT addTarget:self action:@selector(yishenheBTItem) forControlEvents:UIControlEventTouchUpInside];
     [self.quanbuBT addTarget:self action:@selector(quanBTItem) forControlEvents:UIControlEventTouchUpInside];
@@ -54,12 +61,19 @@
         [self.weishenheArry addObjectsFromArray:llist.rksModeArryArry];
         [self.tableview reloadData];
     }];
+    [self.weishenheBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+    [self.yishenheBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
 }
 
 #pragma mark 顶部按钮点击事件
 - (void)weishenheBTItem
 {
     self.selType = 1;//未审核
+    [self.weishenheBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+    [self.yishenheBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     if(self.weishenheArry.count == 0)
     {
         [self.manager appGetProductStockSrl:self.selType finishBlock:^(RKSPModeListList *llist) {
@@ -78,6 +92,10 @@
 - (void)yishenheBTItem
 {
     self.selType = 2;//已审核
+    [self.weishenheBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.yishenheBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+    [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     if(self.yishenheArry.count == 0)
     {
         [self.manager appGetProductStockSrl:self.selType finishBlock:^(RKSPModeListList *llist) {
@@ -96,6 +114,10 @@
 - (void)quanBTItem
 {
     self.selType = -1;//全部
+    [self.weishenheBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.yishenheBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     if(self.quanbuArry.count == 0)
     {
         [self.manager appGetProductStockSrl:self.selType finishBlock:^(RKSPModeListList *llist) {
@@ -113,13 +135,27 @@
 }
 - (void)shaixuanBTItem
 {
-    [self pushXIBName:@"SXViewController" animated:YES selector:@"setRKSPManager:" param:self.manager,nil];
+    [self.weishenheBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.yishenheBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+    SXViewController * svc = (SXViewController*)[self pushXIBName:@"SXViewController" animated:YES selector:@"setRKSPManager:" param:self.manager,nil];
+    [kvo observe:svc keyPath:@"isTouchOkButtonItem" options:NSKeyValueObservingOptionNew block:^(id observer, id object, NSDictionary *change) {
+        if(change && [[change objectForKey:@"new"] intValue] == 1)
+        {
+            [self.weishenheArry removeAllObjects];
+            [self.yishenheArry removeAllObjects];
+            [self.quanbuArry removeAllObjects];
+            [self.manager resetPage];
+            [self weishenheBTItem];
+        }
+    }];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    int count = 0;
+    NSInteger count = 0;
     if(self.selType == 1)
     {
         count = self.weishenheArry.count;
@@ -138,7 +174,7 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    int count = 0;
+    NSInteger count = 0;
     if(self.selType == 1)
     {
         RKSPModeList *list = [self.weishenheArry objectAtIndex:section];
@@ -289,11 +325,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RKSPModeList *list = nil;
+    NSMutableArray *temarry = nil;
     if(self.selType == 1)
     {
         if(indexPath.section < self.weishenheArry.count)
         {
             list = [self.weishenheArry objectAtIndex:indexPath.section];
+            temarry = self.weishenheArry;
         }
     }
     else if(self.selType == 2)
@@ -301,6 +339,7 @@
         if(indexPath.section < self.yishenheArry.count)
         {
             list = [self.yishenheArry objectAtIndex:indexPath.section];
+            temarry = self.yishenheArry;
         }
     }
     else if(self.selType == -1)
@@ -308,9 +347,39 @@
         if(indexPath.section < self.quanbuArry.count)
         {
             list = [self.quanbuArry objectAtIndex:indexPath.section];
+            temarry = self.quanbuArry;
         }
     }
-    [self pushXIBName:@"RukuDetailViewController" animated:YES selector:@"setRKSPManager:dateList:" param:self.manager,list,nil];
+    RukuDetailViewController * rvc = (RukuDetailViewController*)[self pushXIBName:@"RukuDetailViewController" animated:YES selector:@"setRKSPManager:dateList:" param:self.manager,list,nil];
+    
+    [rvc obserModeDealStatus:^(int status) {
+       if(status == type_shenhe_success | status == type_shenhe_clear)
+       {
+           if(tableView)
+           {
+               [list.rksModeArry removeObjectAtIndex:indexPath.row];
+               if(list.rksModeArry.count == 0)
+               {
+                   [temarry removeObject:list];
+                   [tableView beginUpdates];
+                   [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+                   [tableView endUpdates];
+               }
+               else
+               {
+                   NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity:0];
+                   if(index >= 0)
+                   {
+                       [tableView beginUpdates];
+                       NSIndexPath *path = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
+                       [indexPaths addObject:path];
+                       [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+                       [tableView endUpdates];
+                   }
+               }
+           }
+       }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

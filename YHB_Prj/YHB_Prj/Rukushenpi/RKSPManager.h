@@ -11,6 +11,9 @@
 @interface RKSPManager : NSObject
 
 - (void)appGetProductStockSrl:(int)selId finishBlock:(void(^)(RKSPModeListList *llist))aFinishBlock;
+
+- (void)resetPage;
+
 - (void)setStartTime:(NSString *)aStartTime;
 
 - (void)setEndTime:(NSString *)aEndTime;

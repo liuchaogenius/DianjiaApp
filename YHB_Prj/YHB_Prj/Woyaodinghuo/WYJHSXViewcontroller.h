@@ -18,4 +18,5 @@
 @property (strong, nonatomic) IBOutlet UIButton *weijiesuanBT;
 @property (strong, nonatomic) IBOutlet UIButton *yijiesuanBT;
 
+- (void)setOKItemFinishCallback:(void(^)(BOOL ret))aFinishBlock;
 @end

@@ -8,6 +8,7 @@
 
 #import "WYJHManager.h"
 #import "NetManager.h"
+#import "SVProgressHUD.h"
 
 @interface WYJHManager()
 {
@@ -56,8 +57,10 @@
     {
         [dict setValue:strAccountType forKey:@"accountType"];
     }
+    [SVProgressHUD showWithStatus:kLoadingText cover:NO offsetY:64];
     [NetManager requestWith:dict apiName:@"appGetStorageSrl" method:@"POST" succ:^(NSDictionary *successDict) {
         MLOG(@"%@",successDict);
+        [SVProgressHUD dismiss];
         NSDictionary *dict = [successDict objectForKey:@"result"];
         if(dict)
         {
@@ -91,9 +94,16 @@
         }
     } failure:^(NSDictionary *failDict, NSError *error) {
         {
+            [SVProgressHUD dismiss];
             aFinishBlock(nil);
         }
     }];
+}
+- (void)clearePageNo
+{
+    stockSrlCurrentPage_1 = 0;
+    stockSrlCurrentPage_2 = 0;
+    stockSrlCurrentPage__1 = 0;
 }
 #pragma mark 结账进货
 - (void)appAccountSupplierStorage:(NSString *)aId

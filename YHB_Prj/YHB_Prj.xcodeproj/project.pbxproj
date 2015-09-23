@@ -202,6 +202,7 @@
 		FF4DFD041B85A5DF00617660 /* DateSelectVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF4DFD021B85A5DF00617660 /* DateSelectVC.xib */; };
 		FF4DFD081B85B21C00617660 /* NSDateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4DFD071B85B21C00617660 /* NSDateTool.m */; };
 		FF4DFD0B1B85CBFA00617660 /* StoreListView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4DFD0A1B85CBFA00617660 /* StoreListView.m */; };
+		FF59C82F1BB15CC400F65B17 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF59C82E1BB15CC300F65B17 /* MessageUI.framework */; };
 		FF5C86DD1B818BE700F79EC1 /* SloppySwiper.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5C86D81B818BE700F79EC1 /* SloppySwiper.m */; };
 		FF5C86DE1B818BE700F79EC1 /* SSWAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5C86DA1B818BE700F79EC1 /* SSWAnimator.m */; };
 		FF5C86DF1B818BE700F79EC1 /* SSWDirectionalPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5C86DC1B818BE700F79EC1 /* SSWDirectionalPanGestureRecognizer.m */; };
@@ -654,6 +655,7 @@
 		FF4DFD071B85B21C00617660 /* NSDateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateTool.m; sourceTree = "<group>"; };
 		FF4DFD091B85CBFA00617660 /* StoreListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreListView.h; sourceTree = "<group>"; };
 		FF4DFD0A1B85CBFA00617660 /* StoreListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreListView.m; sourceTree = "<group>"; };
+		FF59C82E1BB15CC300F65B17 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		FF5C86D71B818BE700F79EC1 /* SloppySwiper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SloppySwiper.h; sourceTree = "<group>"; };
 		FF5C86D81B818BE700F79EC1 /* SloppySwiper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SloppySwiper.m; sourceTree = "<group>"; };
 		FF5C86D91B818BE700F79EC1 /* SSWAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSWAnimator.h; sourceTree = "<group>"; };
@@ -790,6 +792,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF59C82F1BB15CC400F65B17 /* MessageUI.framework in Frameworks */,
 				5BA5AA331B98299D00329677 /* AVFoundation.framework in Frameworks */,
 				AB39FA7E1BAA6FA6007494DC /* libsqlite3.dylib in Frameworks */,
 			);
@@ -1249,6 +1252,7 @@
 		FF2A6BD11A0F3780001607AC = {
 			isa = PBXGroup;
 			children = (
+				FF59C82E1BB15CC300F65B17 /* MessageUI.framework */,
 				FF5CC71C1B99A45400F55713 /* JFB_First_Close@2x.png */,
 				5BA5AA321B98299D00329677 /* AVFoundation.framework */,
 				FF5C87281B8318C500F79EC1 /* libsqlite3.dylib */,

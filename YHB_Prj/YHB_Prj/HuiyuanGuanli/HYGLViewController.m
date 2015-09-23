@@ -10,8 +10,6 @@
 #import "HYGLManager.h"
 #import "VipInfoMode.h"
 #import "HYCell.h"
-
-
 #define kLeftViewWidth   0
 @interface HYGLViewController ()
 {
@@ -49,7 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    [self settitleLabel:@"会员管理"];
     self.filteredListArry = [NSMutableArray arrayWithCapacity:0];
     self.noSelectCellArry = [NSMutableArray arrayWithCapacity:0];
     self.selectCellArry = [NSMutableArray arrayWithCapacity:0];
@@ -65,6 +63,7 @@
         }
     }];
     [self.quanxuanBT addTarget:self action:@selector(selectAllButtonItem) forControlEvents:UIControlEventTouchUpInside];
+    [self.sendMsgBT addTarget:self action:@selector(sendMsgBTItem) forControlEvents:UIControlEventTouchUpInside];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasHidden:) name:UIKeyboardDidHideNotification object:nil];
@@ -327,6 +326,43 @@
     self.selectBlock = aSelectBlock;
 }
 
+#pragma mark 发送短信
+- (void)sendMsgBTItem
+{
+    if(self.selectCellArry)
+    {
+        NSMutableArray *telArry = [NSMutableArray arrayWithCapacity:0];
+        for(VipInfoMode *mode in self.selectCellArry)
+        {
+            if(mode.strVipPhone)
+            {
+                [telArry addObject:mode.strVipPhone];
+            }
+        }
+        [SVProgressHUD showWithStatus:kLoadingText cover:NO offsetY:64];
+        MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
+        if([MFMessageComposeViewController canSendText])
+        {
+            controller.body = @"";
+            controller.recipients = telArry;
+            controller.messageComposeDelegate = self;
+            [self presentViewController:controller animated:YES completion:^{
+                [SVProgressHUD dismiss];
+            }];
+        }
+    }
+    else
+    {
+        [SVProgressHUD showErrorWithStatus:@"请选择会员" cover:NO offsetY:64];
+    }
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    [controller dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
 - (void)viewWillDisappear:(BOOL)animated
 {
     if(self.selectBlock)

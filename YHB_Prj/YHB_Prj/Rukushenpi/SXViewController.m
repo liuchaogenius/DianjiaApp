@@ -23,6 +23,7 @@
 @property (nonatomic, strong) GysModeList *modeList;
 @property (strong, nonatomic) NSString *strStartTime;
 @property (strong, nonatomic) NSString *strEndTime;
+@property (assign, nonatomic) BOOL isTouchOkButtonItem;
 @end
 
 @implementation SXViewController
@@ -99,6 +100,7 @@
     [self.manager setStartTime:self.strStartTime];
     [self.manager setEndTime:self.strEndTime];
     [self.manager setSupIdTime:strSupId];
+    self.isTouchOkButtonItem = YES;
     [self.navigationController popViewControllerAnimated:YES];
 }
 

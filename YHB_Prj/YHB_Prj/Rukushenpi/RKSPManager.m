@@ -9,6 +9,8 @@
 #import "RKSPManager.h"
 #import "NetManager.h"
 #import "RKSPMode.h"
+#import "SVProgressHUD.h"
+
 @interface RKSPManager()
 {
     int stockSrlCurrentPage_1;
@@ -22,7 +24,7 @@
 @implementation RKSPManager
 - (void)appGetProductStockSrl:(int)selId finishBlock:(void(^)(RKSPModeListList *llist))aFinishBlock
 {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:0];
     [dict setValue:[NSNumber numberWithInt:selId] forKey:@"sid"];
     if(selId == 1)
     {
@@ -50,8 +52,10 @@
     {
         [dict setValue:strSupId forKey:@"supId"];
     }
+    [SVProgressHUD showWithStatus:kLoadingText cover:NO offsetY:64];
     [NetManager requestWith:dict apiName:@"appGetProductStockSrl" method:@"POST" succ:^(NSDictionary *successDict) {
         MLOG(@"%@",successDict);
+        [SVProgressHUD dismiss];
         NSDictionary *dict = [successDict objectForKey:@"result"];
         if(dict && [dict objectForKey:@"rows"])
         {
@@ -77,6 +81,7 @@
         }
     } failure:^(NSDictionary *failDict, NSError *error) {
         {
+            [SVProgressHUD dismiss];
             aFinishBlock(nil);
         }
     }];
@@ -91,11 +96,22 @@
     [dict setValue:[NSNumber numberWithInt:20] forKey:@"pageSize"];
     [dict setValue:@"false" forKey:@"needPage"];
     [dict setValue:aStatus forKey:@"status"];
+    [SVProgressHUD showWithStatus:kLoadingText cover:NO offsetY:64];
     [NetManager requestWith:dict apiName:@"appGetProductStockDetail" method:@"post" succ:^(NSDictionary *successDict) {
+        [SVProgressHUD dismiss];
         MLOG(@"%@",successDict);
     } failure:^(NSDictionary *failDict, NSError *error) {
-        
+        [SVProgressHUD dismiss];
     }];
+}
+
+- (void)resetPage
+{
+    stockSrlCurrentPage_1 = 0;
+
+    stockSrlCurrentPage_2 = 0;
+
+    stockSrlCurrentPage__1 = 0;
 }
 #pragma mark 设置筛选数据
 - (void)setStartTime:(NSString *)aStartTime
