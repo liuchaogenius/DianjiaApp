@@ -9,10 +9,13 @@
 #import "ScanVC.h"
 #import "DJScanViewController.h"
 #import "LoginMode.h"
+#import "SPGLSearchVC.h"
+#import "SPGLManager.h"
 
-@interface ScanVC ()
+@interface ScanVC ()<DJScanDelegate>
 @property(nonatomic,strong) StoreMode *mode;
 @property(nonatomic,strong) UIButton *scanBtn;
+@property (strong, nonatomic) SPGLManager *manager;
 @end
 
 @implementation ScanVC
@@ -39,12 +42,28 @@
     [_scanBtn addTarget:self action:@selector(touchScan) forControlEvents:UIControlEventTouchUpInside];
     _scanBtn.layer.cornerRadius = 3;
     [self.view addSubview:_scanBtn];
+    
+    self.manager = [[SPGLManager alloc] init];
 }
 
 - (void)touchScan
 {
     DJScanViewController *vc=  [[DJScanViewController alloc] init];
+    vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)scanController:(UIViewController *)vc didScanedAndTransToMessage:(NSString *)message
+{
+    MLOG(@"%@",message);
+    SPGLSearchVC *ssvc = [[SPGLSearchVC alloc] initWithNibName:@"SPGLSearchVC" bundle:nil];
+    [ssvc setMnagerAndCode:self.manager procode:message];
+    NSMutableArray * viewControllers = [self.navigationController.viewControllers mutableCopy];
+    if (viewControllers.count > 1) {
+        [viewControllers removeLastObject];
+    }
+    [viewControllers addObject:ssvc];
+    [self.navigationController setViewControllers:viewControllers animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
