@@ -103,6 +103,8 @@ typedef NS_ENUM(int, dateBtTag)
     self.dateEnd_pick.tag = 1;
     [self.dateEnd_pick addTarget:self action:@selector(onDatePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
     [self.okButton addTarget:self action:@selector(okButtonItem) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self setRightButton:nil title:@"确定" target:self action:@selector(okButtonItem)];
 }
 
 - (void)dateButtonItem:(UIButton *)aBt
@@ -167,6 +169,7 @@ typedef NS_ENUM(int, dateBtTag)
         default:
             break;
     }
+    [self okButtonItem];
 }
 
 - (void)onDatePickerValueChanged:(UIDatePicker *)aDatePicker
