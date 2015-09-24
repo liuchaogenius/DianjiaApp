@@ -98,7 +98,7 @@
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pyc-qO-bBm">
                     <rect key="frame" x="17" y="436" width="65" height="50"/>
-                    <state key="normal" title="底单" backgroundImage="gy_bt_style1">
+                    <state key="normal" title="无底单" backgroundImage="gy_bt_style1">
                         <color key="titleColor" red="1" green="0.63615492220000003" blue="0.17634948959999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>

@@ -12,6 +12,7 @@
 #import "SPGLSearchVC.h"
 #import "SPGLSearchVC.h"
 #import "SPNewViewController.h"
+#import "WYJHMode.h"
 
 @interface ShangpinguanliVC ()
 {
@@ -29,6 +30,8 @@
 @property (nonatomic, strong) SPGLCategoryIndexList *modeList;
 
 @property(nonatomic,strong) void(^selectBlock)(SPGLCategoryMode *);
+@property(nonatomic,strong) void(^changeBlock)(WYJHModeList *);
+@property(nonatomic,strong) WYJHModeList *WYJHModeList;
 
 @property(nonatomic,strong) UIButton *addBtn;
 @end
@@ -46,6 +49,13 @@
     }
     return self;
 }
+
+- (void)setModeList:(WYJHModeList *)aList andChangeBlock:(void(^)(WYJHModeList *))aBlock
+{
+    _changeBlock = aBlock;
+    _WYJHModeList = aList;
+}
+
 
 - (void)setSelectBlock:(void (^)(SPGLCategoryMode *))aBlock
 {
@@ -229,6 +239,10 @@
         {
             _selectBlock(mode);
             [self.navigationController popViewControllerAnimated:YES];
+        }
+        else if(_changeBlock)
+        {
+            [self pushXIBName:@"SPGLSearchVC" animated:YES selector:@"setMnagerAndid:cateID:modeList:andChangeBlock:" param:self.manager,mode.strId,_WYJHModeList,_changeBlock,nil];
         }
         else [self pushXIBName:@"SPGLSearchVC" animated:YES selector:@"setMnagerAndid:cateID:" param:self.manager,mode.strId,nil];
     }

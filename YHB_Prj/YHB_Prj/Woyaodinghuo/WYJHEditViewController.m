@@ -10,10 +10,25 @@
 #import "WYJHMode.h"
 #import "NetManager.h"
 
+#define kStringIsNotEmpty(aBool, str) do{\
+if (!str) {\
+aBool=false;\
+} else {\
+NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];\
+NSString *trimedString = [str stringByTrimmingCharactersInSet:set];\
+if ([trimedString length] == 0) {\
+aBool=false;\
+} else {\
+aBool=true;\
+}\
+}\
+}while(0)
+
 @interface WYJHEditViewController ()
 @property(nonatomic,strong) WYJHMode *myMode;
 @property(nonatomic,strong) WYJHModeList *myModeList;
 @property(nonatomic,strong) void(^ myBlock)(void);
+@property(nonatomic,assign) BOOL canNull;
 
 @property(nonatomic,strong) UITextField *tfJJ;
 @property(nonatomic,strong) UITextField *tfSJ;
@@ -22,15 +37,22 @@
 
 @implementation WYJHEditViewController
 
-- (instancetype)initWithMode:(WYJHMode *)aMode modeList:(WYJHModeList *)aList andChangeBlock:(void (^)(void))aBlock
+- (instancetype)initWithMode:(WYJHMode *)aMode modeList:(WYJHModeList *)aList andChangeBlock:(void(^)(void))aBlock canNull:(BOOL)aBool
 {
     if (self=[super init])
     {
         _myBlock = aBlock;
         _myMode = aMode;
         _myModeList = aList;
+        _canNull = aBool;
     }
     return self;
+}
+
+- (NSString *)strFormMode:(NSString *)aModeStr
+{
+    NSString *str = aModeStr&&aModeStr.length>0?aModeStr:@"";
+    return str;
 }
 
 - (void)viewDidLoad {
@@ -40,7 +62,8 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(touchOk)];
     
     NSArray *titleArray = @[@"条码",@"品名",@"供应商",@"库存",@"存货",@"进价",@"售价",@"进货"];
-    NSArray *contentArray = @[_myMode.strProductCode, _myMode.strProductName, _myMode.strSupName,_myMode.strStockQty,_myMode.strStayQty,[NSString stringWithFormat:@"￥%.2f", [_myMode.strStockPrice floatValue]],[NSString stringWithFormat:@"￥%.2f", [_myMode.strSalePrice floatValue]],_myMode.strStockNum];
+    NSString *strStockNum = _myMode.strStockNum&&[_myMode.strStockNum intValue]>0?_myMode.strStockNum:@"";
+    NSArray *contentArray = @[[self strFormMode:_myMode.strProductCode],[self strFormMode:_myMode.strProductName], [self strFormMode:_myMode.strSupName],[self strFormMode:_myMode.strStockQty],[self strFormMode:_myMode.strStayQty],[NSString stringWithFormat:@"%.2f", [[self strFormMode:_myMode.strStockPrice] floatValue]],[NSString stringWithFormat:@"%.2f", [[self strFormMode:_myMode.strSalePrice] floatValue]],strStockNum];
     
     for (int i=0; i<8; i++)
     {
@@ -67,7 +90,7 @@
         {
             UITextField *tf = [[UITextField alloc] initWithFrame:frame];
             tf.font=kFont12;
-            tf.placeholder = contentArray[i];
+            tf.text = contentArray[i];
             tf.tag = i;
             tf.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
             [self.view addSubview:tf];
@@ -77,48 +100,77 @@
             [self.view addSubview:lineView];
         }
     }
+    
+    self.tfJJ.placeholder = @"请输入进价";
+    self.tfJH.placeholder = @"请输入进货数量";
+    self.tfSJ.placeholder = @"请输入售价";
 }
 
 - (void)touchOk
 {
-    if ([self isPureFloat:self.tfJJ.text] && [self isPureFloat:self.tfSJ.text] && [self isPureInt:self.tfJH.text])
+    if (_canNull==NO)
     {
-        int aJH = [self.tfJH.text intValue];
-        int bJH = [_myMode.strStockNum intValue];
-        float aJJ = [self.tfJJ.text floatValue];
-        float bJJ = [_myMode.strStockPrice floatValue];
-        int chaN = aJH-bJH;
-        float chaP = aJH*aJJ-bJH*bJJ;
-        _myMode.strStockPrice = self.tfJJ.text;
-        _myMode.strSalePrice = self.tfSJ.text;
-        _myMode.strStockNum = self.tfJH.text;
-//        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
-//        [dict setObject:_myModeList.strId forKey:@"id"];
-        int allJH = [_myModeList.strStockNum intValue];
-        float allPrice = [_myModeList.strTotalRealPay floatValue];
-        _myModeList.strStockNum = [NSString stringWithFormat:@"%d", chaN+allJH];
-        _myModeList.strTotalRealPay = [NSString stringWithFormat:@"%.2f", chaP+allPrice];
-//        [dict setObject:_myModeList.strStockNum forKey:@"stock_num"];
-//        [dict setObject:_myModeList.strStockNum forKey:@"total_real_pay"];
-//        NSDictionary *detailDict = [NSDictionary dictionaryWithObjectsAndKeys:_myMode.strStockNum,@"stock_num",_myMode.strSalePrice,@"sale_price",_myMode.strStockPrice,@"stock_price",_myMode.strId,@"id", nil];
-//        NSArray *detailArray = @[detailDict];
-//        [dict setValue:detailArray forKey:@"detailList"];
-//        NSArray *dictArr = @[dict];
-//        NSDictionary *allDict = [NSDictionary dictionaryWithObjectsAndKeys:@0,@"empStockSrlId",dictArr,@"srlList", nil];
-//        [NetManager requestWith:allDict apiName:@"appSubmitSupplierStorage" method:@"POST" succ:^(NSDictionary *successDict) {
-//            MLOG(@"%@", successDict);
-//            MLOG(@"%@", successDict[@"msg"]);
-//            if ([successDict[@"msg"] isEqualToString:@"success"])
-//            {
-//                [SVProgressHUD showSuccessWithStatus:@"修改成功" cover:YES offsetY:kMainScreenHeight/2.0];
-                _myBlock();
-                [self.navigationController popViewControllerAnimated:YES];
-//            }
-//        } failure:^(NSDictionary *failDict, NSError *error) {
-//            
-//        }];
+        if ([self isPureFloat:self.tfJJ.text] && [self isPureFloat:self.tfSJ.text] && [self isPureInt:self.tfJH.text])
+        {
+            int aJH = [self.tfJH.text intValue];
+            int bJH = [_myMode.strStockNum intValue];
+            float aJJ = [self.tfJJ.text floatValue];
+            float bJJ = [_myMode.strStockPrice floatValue];
+            int chaN = aJH-bJH;
+            float chaP = aJH*aJJ-bJH*bJJ;
+            _myMode.strStockPrice = self.tfJJ.text;
+            _myMode.strSalePrice = self.tfSJ.text;
+            _myMode.strStockNum = self.tfJH.text;
+            
+            int allJH = [_myModeList.strStockNum intValue];
+            float allPrice = [_myModeList.strTotalRealPay floatValue];
+            _myModeList.strStockNum = [NSString stringWithFormat:@"%d", chaN+allJH];
+            _myModeList.strTotalRealPay = [NSString stringWithFormat:@"%.2f", chaP+allPrice];
+            
+            _myBlock();
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else [SVProgressHUD showErrorWithStatus:@"请输入数字" cover:YES offsetY:kMainScreenHeight/2.0];
     }
-    else [SVProgressHUD showErrorWithStatus:@"请输入数字" cover:YES offsetY:kMainScreenHeight/2.0];
+    else
+    {
+        if ([self isPureFloat:self.tfJJ.text] && [self isPureFloat:self.tfSJ.text])
+        {
+            BOOL a;
+            kStringIsNotEmpty(a, self.tfJH.text);
+            if (a==YES)
+            {
+                if([self isPureInt:self.tfJH.text])
+                {
+                    int aJH = [self.tfJH.text intValue];
+                    float aJJ = [self.tfJJ.text floatValue];
+                    _myMode.strStockPrice = self.tfJJ.text;
+                    _myMode.strSalePrice = self.tfSJ.text;
+                    _myMode.strStockNum = self.tfJH.text;
+                    
+                    int allJH = [_myModeList.strStockNum intValue];
+                    float allPrice = [_myModeList.strTotalRealPay floatValue];
+                    _myModeList.strStockNum = [NSString stringWithFormat:@"%d", aJH+allJH];
+                    _myModeList.strTotalRealPay = [NSString stringWithFormat:@"%.2f", aJH*aJJ+allPrice];
+                    
+                    for (int i=0; i<_myModeList.modeListArry.count; i++)
+                    {
+                        WYJHMode *mode = _myModeList.modeListArry[i];
+                        if ([mode.strId isEqualToString:_myMode.strId])
+                        {
+                            [_myModeList.modeListArry removeObjectAtIndex:i];
+                            break;
+                        }
+                    }
+                    [_myModeList.modeListArry addObject:_myMode];
+                    _myBlock();
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+                else [SVProgressHUD showErrorWithStatus:@"请输入数字" cover:YES offsetY:kMainScreenHeight/2.0];
+            }
+            else [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
 }
 
 - (BOOL)isPureFloat:(NSString*)string{

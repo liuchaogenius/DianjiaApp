@@ -11,6 +11,6 @@
 @class WYJHModeList;
 @interface WYJHEditViewController : BaseViewController
 
-- (instancetype)initWithMode:(WYJHMode *)aMode modeList:(WYJHModeList *)aList andChangeBlock:(void(^)(void))aBlock;
+- (instancetype)initWithMode:(WYJHMode *)aMode modeList:(WYJHModeList *)aList andChangeBlock:(void(^)(void))aBlock canNull:(BOOL)aBool;
 
 @end

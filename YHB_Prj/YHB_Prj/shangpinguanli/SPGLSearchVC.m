@@ -11,6 +11,8 @@
 #import "SPGLSearchCell.h"
 #import "DJProductCheckViewManager.h"
 #import "DJCheckCartItemComponent.h"
+#import "WYJHMode.h"
+#import "WYJHEditViewController.h"
 
 @interface SPGLSearchVC ()<DJProductCheckViewDataSoure>
 {
@@ -27,6 +29,9 @@
 @property (strong, nonatomic)  SPGLManager *manager;
 @property (strong, nonatomic) SPGLProductList *productList;
 @property (assign, nonatomic) NSUInteger currentCheckRow;
+
+@property(nonatomic,strong) void(^changeBlock)(WYJHModeList *);
+@property(nonatomic,strong) WYJHModeList *WYJHModeList;
 @end
 
 @implementation SPGLSearchVC
@@ -95,6 +100,15 @@
     isGetNetdata = 1;
 }
 
+- (void)setMnagerAndid:(SPGLManager *)aManager cateID:(NSString *)aCateId modeList:(WYJHModeList *)aModeList andChangeBlock:(void(^)(WYJHModeList *))aChangeBlock
+{
+    self.manager = aManager;
+    cateId = aCateId;
+    isGetNetdata = 1;
+    _WYJHModeList = aModeList;
+    _changeBlock = aChangeBlock;
+}
+
 - (void)setMnagerAndCode:(SPGLManager *)aManager procode:(NSString *)aProcode
 {
     self.manager = aManager;
@@ -150,8 +164,16 @@
     
     if(indexPath.row < self.productList.productList.count)
     {
-        SPGLProductMode *mode = [self.productList.productList objectAtIndex:indexPath.row];        
-        [self pushXIBName:@"SPGLProductDetail" animated:YES selector:@"setInitData:mode:" param:self.manager,mode,nil];
+        SPGLProductMode *mode = [self.productList.productList objectAtIndex:indexPath.row];
+        if (_changeBlock)
+        {
+            WYJHMode *model = [[WYJHMode alloc] initWithProductMode:mode];
+            WYJHEditViewController *vc = [[WYJHEditViewController alloc] initWithMode:model modeList:_WYJHModeList andChangeBlock:^{
+                _changeBlock(_WYJHModeList);
+            } canNull:YES];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else [self pushXIBName:@"SPGLProductDetail" animated:YES selector:@"setInitData:mode:" param:self.manager,mode,nil];
     }
     
     

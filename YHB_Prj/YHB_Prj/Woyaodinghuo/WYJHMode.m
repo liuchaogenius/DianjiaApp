@@ -7,6 +7,7 @@
 //
 
 #import "WYJHMode.h"
+#import "SPGLProductMode.h"
 
 @implementation WYJHMode
 - (instancetype)init
@@ -16,9 +17,29 @@
     return self;
 }
 
+- (instancetype)initWithProductMode:(SPGLProductMode *)aProductMode
+{
+    if (self = [super init])
+    {
+//        self.strAddDate = aProductMode.
+        self.strId = aProductMode.strId;
+//        self.strMakeDate = aProductMode.str
+        self.strProductCode = aProductMode.strProductCode;
+//        self.strProductId = aProductMode.strProductName
+        self.strProductName = aProductMode.strProductName;
+        self.strSalePrice = aProductMode.strSalePrice;
+//        self.strShelfDys = aProductMode.strs
+        self.strStayQty = aProductMode.strStayQty;
+        self.strStockNum = aProductMode.strStockQty;
+//        self.strStoreName = aProductMode.strsto
+        self.strSupId = aProductMode.strSupid;
+        self.strSupName = aProductMode.strSupName;
+    }
+    return self;
+}
+
 - (void)unPacketData:(NSDictionary *)aDataDict
 {
-    
     AssignMentID(self.strAddDate, [aDataDict objectForKey:@"add_date"]);
     
     AssignMentID(self.strId, [aDataDict objectForKey:@"id"]);
