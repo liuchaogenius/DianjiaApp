@@ -191,6 +191,7 @@
         self.beginTime = sTimer;
         self.endTime = eTimer;
         [self getDataWithIsFirst:YES];
+        //test
     }];
     [self.navigationController pushViewController:vc animated:YES];
 }

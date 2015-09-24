@@ -169,6 +169,8 @@ typedef NS_ENUM(int, dateBtTag)
         default:
             break;
     }
+    startDate = [NSString stringWithFormat:@"%d",btTag];
+    endDate = [NSString stringWithFormat:@"%d",btTag];
     [self okButtonItem];
 }
 

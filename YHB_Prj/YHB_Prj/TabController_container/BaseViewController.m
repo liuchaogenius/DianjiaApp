@@ -112,6 +112,7 @@
 }
 - (void)back
 {
+    [self.view endEditing:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)viewWillAppear:(BOOL)animated
@@ -126,6 +127,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [self.view endEditing:YES];
     [self hiddenSelectStoreButton];
 }
 

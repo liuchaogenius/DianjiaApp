@@ -39,7 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setRightButton:[UIImage imageNamed:@"icon_2_saoma"] title:nil target:self action:@selector(back)];
+   // [self setRightButton:[UIImage imageNamed:@"icon_2_saoma"] title:nil target:self action:@selector(back)];
     self.tableview.dataSource = self;
     self.tableview.delegate = self;
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(50, 20, 200, 44)];
@@ -49,6 +49,7 @@
     __weak typeof(self) weakself = self;
     if(isGetNetdata == 1)
     {
+        [self.searchBar resignFirstResponder];
         [self.manager getProductListByClsApp:cateId finishBlock:^(SPGLProductList *aList) {
             if(aList && aList.productList.count > 0)
             {
@@ -59,6 +60,7 @@
     }
     else if(isGetNetdata == 2)
     {
+        [[self searchBar] resignFirstResponder];
         [self.manager getProductListByCodeApp:cateId finishBlock:^(SPGLProductList *aList) {
             if(aList && aList.productList.count > 0)
             {
@@ -66,6 +68,8 @@
                 [weakself.tableview reloadData];
             }
         }];
+    }else {
+        [self.searchBar becomeFirstResponder];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
     
@@ -155,6 +159,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(self.searchBar.isFirstResponder) [self.searchBar resignFirstResponder];
     if (self.serchFrom == SearchFromPD) {
         //商品管理
         self.currentCheckRow = indexPath.row - 1; //-1因为调用数据源是需要+1
@@ -214,6 +219,10 @@
 }
 
 #pragma mark scrollview delegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if(self.searchBar.isFirstResponder) [self.searchBar resignFirstResponder];
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     int currentPostion = scrollView.contentOffset.y;
@@ -228,7 +237,7 @@
         //if(textview.hidden == NO)
         {
             //[self hiddenTView];
-            if(!self.searchBar.resignFirstResponder)
+            if(!self.searchBar.isFirstResponder)
             {
                 [self.searchBar resignFirstResponder];
             }
@@ -264,12 +273,18 @@
 #pragma mark 返回
 - (void)back
 {
+    [self.searchBar resignFirstResponder];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.searchBar resignFirstResponder];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     self.searchBar.hidden = NO;
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated

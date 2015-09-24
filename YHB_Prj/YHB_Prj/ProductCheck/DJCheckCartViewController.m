@@ -43,6 +43,7 @@
     } andShowScanVCHandler:^{
         ShangpinguanliVC *vc = [[ShangpinguanliVC alloc] init];
         vc.isFromProductCheckCart = YES;
+        vc.isNeedJumpToScan = YES;
         [self.navigationController pushViewController:vc animated:YES];
 //        DJScanViewController *vc=  [[DJScanViewController alloc] init];
 //        [self.navigationController pushViewController:vc animated:YES];

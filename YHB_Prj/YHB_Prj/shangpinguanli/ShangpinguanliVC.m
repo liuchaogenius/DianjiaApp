@@ -82,6 +82,7 @@
     
     [self.scanButton addTarget:self action:@selector(pushScanView) forControlEvents:UIControlEventTouchUpInside];
     [self.searchBt addTarget:self action:@selector(pushSearchVc) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -95,6 +96,10 @@
             [self.indexTableview reloadData];
         }
     }];
+    if (self.isNeedJumpToScan) {
+        self.isNeedJumpToScan = NO;
+        [self pushScanView];
+    }
 }
 #pragma mark 进入新增商品
 - (void)touchAdd

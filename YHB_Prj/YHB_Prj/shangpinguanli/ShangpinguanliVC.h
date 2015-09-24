@@ -11,5 +11,7 @@
 @interface ShangpinguanliVC : BaseViewController<UITableViewDelegate,UITableViewDataSource,DJScanDelegate>
 //是否来自盘点车
 @property(nonatomic, assign) BOOL isFromProductCheckCart;
+//是否需要立即跳转扫码
+@property(nonatomic, assign) BOOL isNeedJumpToScan;
 
 @end
