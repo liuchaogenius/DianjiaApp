@@ -15,6 +15,7 @@
 #import "DJStoryboadManager.h"
 #import "YDCXViewController.h"
 #import "SVProgressHUD.h"
+#import "SVPullToRefresh.h"
 
 @interface FirstViewController ()
 {
@@ -88,12 +89,19 @@
         [self settitleLabel:selectStore.strStoreName];
         [self requestHomeData];
     }
+    WS(weakself);
+    [self.scrollView addPullToRefreshWithActionHandler:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakself requestHomeData];
+        });
+    }];
 }
 
 #pragma mark 获取首页数据
 - (void)requestHomeData
 {
     [self.manager getHomePageInfoApp:[[LoginManager shareLoginManager] getStoreId] finishBlock:^(FirstMode *mode) {
+        [self.scrollView.pullToRefreshView stopAnimating];
         if(mode)
         {
             self.thirdZRLSValue_Label.text = mode.homeInfoMode.strPreviousDayTotal;
@@ -102,6 +110,7 @@
         }
     }];
     [self.manager getSaleSrlStatisticsApp:self.strStartTime endDate:self.strEndTime finishBlock:^(FirstMode *mode) {
+        [self.scrollView.pullToRefreshView stopAnimating];
         if(mode)
         {
             
@@ -111,6 +120,7 @@
         }
     }];
     [self.manager getSummaryStoreStock:[[LoginManager shareLoginManager] getStoreId] finishBlock:^(FirstMode *mode) {
+        [self.scrollView.pullToRefreshView stopAnimating];
         if(mode)
         {
             self.middleZKCValue_Label.text = mode.sumMode.strStockQty;
