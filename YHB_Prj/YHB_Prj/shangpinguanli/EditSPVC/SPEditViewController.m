@@ -292,7 +292,8 @@ typedef NS_ENUM(NSInteger, FieldType) {
     [dict setObject:_myMode.strId forKey:@"id"];
     [dict setObject:[_myMode.strProductName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:@"product_name"];
     [dict setObject:_myMode.strProductCode forKey:@"product_code"];
-    [dict setObject:_myMode.strBuyingPrice forKey:@"buying_price"];
+    NSString *jj = [self isNotEmpty:self.textfieldjj.text]?self.textfieldjj.text:@"0";
+    [dict setObject:jj forKey:@"buying_price"];
     [dict setObject:_myMode.strSalePrice forKey:@"sale_price"];
     [dict setObject:_myMode.strIsScore forKey:@"is_score"];
     [dict setObject:_myMode.strSaleUnit forKey:@"sale_unit"];
