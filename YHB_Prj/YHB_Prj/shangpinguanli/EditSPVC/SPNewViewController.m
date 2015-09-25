@@ -13,6 +13,7 @@
 #import "SPManager.h"
 #import "NetManager.h"
 #import "SPKCViewController.h"
+#import "DJScanViewController.h"
 
 typedef NS_ENUM(NSInteger, FieldType) {
     FieldTypetm,
@@ -27,7 +28,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
     FieldTypejf
 };
 
-@interface SPNewViewController ()<UIScrollViewDelegate, UIActionSheetDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>//UITableViewDataSource,UITableViewDelegate>
+@interface SPNewViewController ()<UIScrollViewDelegate, UIActionSheetDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,DJScanDelegate>//UITableViewDataSource,UITableViewDelegate>
 {
     NSString *_cid;
     NSString *_supid;
@@ -243,7 +244,15 @@ typedef NS_ENUM(NSInteger, FieldType) {
 - (void)touchtm
 {
     [self.view endEditing:YES];
-    MLOG(@"%s", __func__);
+    DJScanViewController *vc=  [[DJScanViewController alloc] init];
+    vc.delegate = self;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)scanController:(UIViewController *)vc didScanedAndTransToMessage:(NSString *)message
+{
+    MLOG(@"%@",message);
+    self.textfieldtm.text = message;
 }
 
 - (void)touchkc
@@ -318,7 +327,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
 
 - (BOOL)isAllOK
 {
-    if (![self isAllNum1:self.textfieldtm.text] || ![self isNotEmpty:self.textfieldpm.text])
+    if (![self isAllNum1:self.textfieldtm.text] || ![self isNotEmpty:self.textfieldtm.text])
     {
         [SVProgressHUD showErrorWithStatus:@"请输入正确条码" cover:YES offsetY:kMainScreenHeight/2.0];
         return NO;
@@ -333,11 +342,11 @@ typedef NS_ENUM(NSInteger, FieldType) {
         [SVProgressHUD showErrorWithStatus:@"请选择商品分类" cover:YES offsetY:kMainScreenHeight/2.0];
         return NO;
     }
-    else if(![self isPureFloat:self.textfieldjj.text])
-    {
-        [SVProgressHUD showErrorWithStatus:@"请输入正确进价" cover:YES offsetY:kMainScreenHeight/2.0];
-        return NO;
-    }
+//    else if(![self isPureFloat:self.textfieldjj.text])
+//    {
+//        [SVProgressHUD showErrorWithStatus:@"请输入正确进价" cover:YES offsetY:kMainScreenHeight/2.0];
+//        return NO;
+//    }
     else if(![self isPureFloat:self.textfieldsj.text])
     {
         [SVProgressHUD showErrorWithStatus:@"请输入正确售价" cover:YES offsetY:kMainScreenHeight/2.0];

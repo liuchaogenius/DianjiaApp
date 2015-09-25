@@ -41,6 +41,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *dianmingAndKuncunLabel;
 @property (strong, nonatomic) SPGLProductMode *productMode;
 @property (strong, nonatomic) SPGLManager *manager;
+
+@property (strong, nonatomic) void(^changeBlock)(void);
 @end
 
 @implementation SPGLProductDetail
@@ -63,12 +65,7 @@
     [self.scrollerview setContentSize:CGSizeMake(kMainScreenWidth, self.dianmingAndKuncunLabel.bottom+20)];
     flowView = [[SBPageFlowView alloc] initWithFrame:CGRectMake(0, 0, self.headImgScrollview.width, self.headImgScrollview.height)];
     [self.headImgScrollview addSubview:flowView];
-    self.chanpinmaLabel.text = self.productMode.strProductCode;
-    self.pinmingLabel.text = self.productMode.strProductName;
-    self.jinjiaLabel.text = self.productMode.strBuyingPrice;
-    self.kucunLabel.text = self.productMode.strStayQty;
-    self.shoujiaLabel.text = self.productMode.strSalePrice;
-    self.dianmingAndKuncunLabel.text = [NSString stringWithFormat:@"    %@：库存 %@",self.productMode.strClsName,self.productMode.strStockQty];
+    [self reloadView];
     
     [self.xiugaishangpinBT addTarget:self action:@selector(touchXiugai) forControlEvents:UIControlEventTouchUpInside];
     [self.shangchuantupianBT addTarget:self action:@selector(touchShangchuan) forControlEvents:UIControlEventTouchUpInside];
@@ -78,9 +75,22 @@
     [self.xslsBT addTarget:self action:@selector(touchXSLS) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (void)reloadView
+{
+    self.chanpinmaLabel.text = self.productMode.strProductCode;
+    self.pinmingLabel.text = self.productMode.strProductName;
+    self.jinjiaLabel.text = self.productMode.strBuyingPrice;
+    self.kucunLabel.text = self.productMode.strStayQty;
+    self.shoujiaLabel.text = self.productMode.strSalePrice;
+    self.dianmingAndKuncunLabel.text = [NSString stringWithFormat:@"    %@：库存 %@",self.productMode.strClsName,self.productMode.strStockQty];
+}
+
 - (void)touchXiugai
 {
-    SPEditViewController *vc = [[SPEditViewController alloc] initWithMode:_productMode];
+    SPEditViewController *vc = [[SPEditViewController alloc] initWithMode:_productMode changeBlock:^{
+        [self reloadView];
+        _changeBlock();
+    }];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -155,10 +165,11 @@
 }
 
 #pragma mark 设置初始化数据
-- (void)setInitData:(SPGLManager *)aManager mode:(SPGLProductMode *)aMode
+- (void)setInitData:(SPGLManager *)aManager mode:(SPGLProductMode *)aMode changeBlock:(void(^)(void))aChangeBlock
 {
     self.manager = aManager;
     self.productMode = aMode;
+    _changeBlock = aChangeBlock;
 }
 #pragma mark SBPage datasource
 - (void)didReloadData:(UIView *)cell cellForPageAtIndex:(NSInteger)index

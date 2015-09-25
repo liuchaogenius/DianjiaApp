@@ -12,6 +12,7 @@
 #import "SupplierMode.h"
 #import "SPGLCategoryMode.h"
 #import "SPManager.h"
+#import "DJScanViewController.h"
 
 typedef NS_ENUM(NSInteger, FieldType) {
     FieldTypetm,
@@ -26,7 +27,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
     FieldTypejf
 };
 
-@interface SPEditViewController ()<UIScrollViewDelegate, UIActionSheetDelegate>
+@interface SPEditViewController ()<UIScrollViewDelegate, UIActionSheetDelegate,DJScanDelegate>
 {
     NSString *_cid;
     NSString *_supid;
@@ -59,17 +60,20 @@ typedef NS_ENUM(NSInteger, FieldType) {
 @property(nonatomic,strong) SPManager *manager;
 
 @property(nonatomic,strong) UITapGestureRecognizer *tapGR;
+
+@property(nonatomic,strong) void(^changeBlock)(void);
 @end
 
 @implementation SPEditViewController
 
-- (instancetype)initWithMode:(SPGLProductMode *)aMode
+- (instancetype)initWithMode:(SPGLProductMode *)aMode changeBlock:(void(^)(void))aChangeBlock
 {
     if (self=[super init])
     {
         _myMode = aMode;
         if (aMode.strCid) _cid = aMode.strCid;
         if (aMode.strSupid) _supid = aMode.strSupid;
+        _changeBlock = aChangeBlock;
     }
     return self;
 }
@@ -211,7 +215,15 @@ typedef NS_ENUM(NSInteger, FieldType) {
 - (void)touchtm
 {
     [self.view endEditing:YES];
-    MLOG(@"%s", __func__);
+    DJScanViewController *vc=  [[DJScanViewController alloc] init];
+    vc.delegate = self;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)scanController:(UIViewController *)vc didScanedAndTransToMessage:(NSString *)message
+{
+    MLOG(@"%@",message);
+    self.textfieldtm.text = message;
 }
 
 - (void)touchView
@@ -228,6 +240,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
             if ([resultCode isEqualToString:@"1"])
             {
                 [SVProgressHUD showSuccessWithStatus:@"修改成功" cover:YES offsetY:kMainScreenHeight/2.0];
+                _changeBlock();
                 [self.navigationController popViewControllerAnimated:YES];
             }
             else [SVProgressHUD showErrorWithStatus:@"修改失败" cover:YES offsetY:kMainScreenHeight/2.0];

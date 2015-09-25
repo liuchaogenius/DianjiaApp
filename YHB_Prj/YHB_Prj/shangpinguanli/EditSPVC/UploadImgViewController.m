@@ -58,13 +58,22 @@
 //上传按钮事件
 - (void)touchOk
 {
-    [NetManager uploadImgArry:_photoArr parameters:nil apiName:@"updateProductPicApp" uploadUrl:nil uploadimgName:nil progressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-        
-    } succ:^(NSDictionary *successDict) {
-        MLOG(@"%@", successDict);
-    } failure:^(NSDictionary *failDict, NSError *error) {
-        
-    }];
+    if (_photoArr.count>0)
+    {
+        [NetManager uploadImgArry:_photoArr parameters:nil apiName:@"updateProductPicApp" uploadUrl:nil uploadimgName:nil progressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+            
+        } succ:^(NSDictionary *successDict) {
+            NSString *msg = successDict[@"msg"];
+            if ([msg isEqualToString:@"success"])
+            {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            else [SVProgressHUD showErrorWithStatus:@"上传失败" cover:YES offsetY:kMainScreenHeight/2.0];
+        } failure:^(NSDictionary *failDict, NSError *error) {
+            
+        }];
+    }
+    else [SVProgressHUD showErrorWithStatus:@"请添加图片" cover:YES offsetY:kMainScreenHeight/2.0];
 }
 
 - (void)reloadView

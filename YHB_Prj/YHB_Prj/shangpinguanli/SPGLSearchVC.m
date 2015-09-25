@@ -178,7 +178,13 @@
             } canNull:YES];
             [self.navigationController pushViewController:vc animated:YES];
         }
-        else [self pushXIBName:@"SPGLProductDetail" animated:YES selector:@"setInitData:mode:" param:self.manager,mode,nil];
+        else
+        {
+            void(^changeBlock)(void) = ^(){
+                [self.tableview reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            };
+            [self pushXIBName:@"SPGLProductDetail" animated:YES selector:@"setInitData:mode:changeBlock:" param:self.manager,mode,changeBlock,nil];
+        }
     }
     
     

@@ -44,6 +44,7 @@
     _tvkc = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64)];
     _tvkc.delegate =self;
     _tvkc.dataSource =self;
+    _tvkc.tableFooterView = [UIView new];
 //    _tvkc.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tvkc];
     

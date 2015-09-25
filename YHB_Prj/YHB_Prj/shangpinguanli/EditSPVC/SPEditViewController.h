@@ -10,6 +10,6 @@
 @class SPGLProductMode;
 @interface SPEditViewController : BaseViewController
 
-- (instancetype)initWithMode:(SPGLProductMode *)aMode;
+- (instancetype)initWithMode:(SPGLProductMode *)aMode changeBlock:(void(^)(void))aChangeBlock;
 
 @end

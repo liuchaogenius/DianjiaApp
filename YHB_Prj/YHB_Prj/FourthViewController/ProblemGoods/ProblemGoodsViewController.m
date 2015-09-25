@@ -114,7 +114,9 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     SPGLProductMode *mode = _arrData[indexPath.row];
-    SPEditViewController *vc = [[SPEditViewController alloc] initWithMode:mode];
+    SPEditViewController *vc = [[SPEditViewController alloc] initWithMode:mode changeBlock:^{
+        [_tvGood reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
