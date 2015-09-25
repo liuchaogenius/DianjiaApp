@@ -88,6 +88,7 @@
             }
             else
             {
+                [NotifyFactoryObject postNotifyMessage:kLoginSuccessMessae param:nil];
                 [self dismissViewControllerAnimated:YES completion:^{
                     
                 }];

@@ -63,11 +63,15 @@ typedef enum : NSUInteger {
 
 @implementation FourthViewController
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
-    [self reloadView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -154,6 +158,8 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self settitleLabel:@"我的"];
+    
+    [NotifyFactoryObject registerLoginSuccMsgNotify:self action:@selector(reloadView)];
     
     [self reloadView];
     
