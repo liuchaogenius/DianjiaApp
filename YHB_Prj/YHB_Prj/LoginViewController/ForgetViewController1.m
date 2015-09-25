@@ -7,6 +7,7 @@
 //
 
 #import "ForgetViewController1.h"
+#import "ForgetViewController2.h"
 #import "JKCountDownButton.h"
 #import "NetManager.h"
 
@@ -49,6 +50,7 @@
     _phoneTF = [[UITextField alloc] initWithFrame:CGRectMake(20, label.bottom+20, kMainScreenWidth-40, 16)];
     _phoneTF.font = kFont12;
     _phoneTF.placeholder = @"请输入已绑定的手机号码";
+    _phoneTF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     [self.view addSubview:_phoneTF];
     
     UIView *lineView1 = [[UIView alloc] initWithFrame:CGRectMake(_phoneTF.left-5, _phoneTF.bottom+1, _phoneTF.width+6, 1)];
@@ -58,6 +60,7 @@
     _yanTF = [[UITextField alloc] initWithFrame:CGRectMake(20, lineView1.bottom+20, kMainScreenWidth-40-120, 16)];
     _yanTF.font = kFont12;
     _yanTF.placeholder = @"请输入验证码";
+    _yanTF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     [self.view addSubview:_yanTF];
     
     UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(_yanTF.left-5, _yanTF.bottom+1, _yanTF.width+6, 1)];
@@ -72,7 +75,7 @@
     [_countBtn addToucheHandler:^(JKCountDownButton *sender, NSInteger tag) {
         NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:0];
         [dict setObject:weakSelf.phoneTF.text forKey:@"smsTo"];
-        [dict setObject:@0 forKey:@"smsCheckType"];
+        [dict setObject:@1 forKey:@"smsCheckType"];
         [dict setObject:@2 forKey:@"smsType"];
         [NetManager requestWith:dict apiName:@"djSMSSendVerCode" method:@"POST" succ:^(NSDictionary *successDict) {
             NSString *msg = successDict[@"msg"];
@@ -87,8 +90,34 @@
     }];
     [self.view addSubview:_countBtn];
     
-    _okBtn = [[UIButton alloc] initWithFrame:CGRectMake((kMainScreenWidth-100)/2.0, lineView2.bottom+20, 100, 20)];
+    _okBtn = [[UIButton alloc] initWithFrame:CGRectMake((kMainScreenWidth-150)/2.0, lineView2.bottom+30, 150, 30)];
+    _okBtn.layer.cornerRadius = 2.5;
+    _okBtn.layer.borderColor = [KColor CGColor];
+    _okBtn.layer.borderWidth = 1;
+    [_okBtn setTitle:@"下一步" forState:UIControlStateNormal];
+    _okBtn.titleLabel.font = kFont12;
+    [_okBtn setTitleColor:KColor forState:UIControlStateNormal];
+    [_okBtn addTarget:self action:@selector(touchOk) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_okBtn];
+}
+
+- (void)touchOk
+{
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:0];
+    [dict setObject:_phoneTF.text forKey:@"phone"];
+    [dict setObject:_yanTF.text forKey:@"verCode"];
+    [dict setObject:@2 forKey:@"smsType"];
+    [NetManager requestWith:dict apiName:@"appDoCheckSmsVerCode" method:@"POST" succ:^(NSDictionary *successDict) {
+        NSString *msg = successDict[@"msg"];
+        if ([msg isEqualToString:@"success"])
+        {
+            ForgetViewController2 *vc = [[ForgetViewController2 alloc] initWithDict:dict];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else [SVProgressHUD showErrorWithStatus:@"验证码错误" cover:YES offsetY:kMainScreenHeight/2.0];
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        
+    }];
 }
 
 - (void)startBtn:(JKCountDownButton *)sender

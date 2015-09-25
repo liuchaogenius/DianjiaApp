@@ -10,4 +10,6 @@
 
 @interface ForgetViewController2 : BaseViewController
 
+- (instancetype)initWithDict:(NSMutableDictionary *)aDict;
+
 @end
