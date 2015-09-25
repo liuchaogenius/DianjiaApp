@@ -8,7 +8,15 @@
 
 #import "FirstVCManager.h"
 #import "NetManager.h"
+#import "LSMode.h"
+#import "LSDetailMode.h"
 
+@interface FirstVCManager()
+{
+    NSString *strStartTime;
+    NSString *strEndTime;
+}
+@end
 
 @implementation FirstVCManager
 
@@ -110,4 +118,75 @@
     }];
 }
 
+- (void)setStartTime:(NSString *)aStartTime
+{
+    strStartTime = aStartTime;
+}
+
+- (void)setEndTime:(NSString *)aEndTime
+{
+    strEndTime = aEndTime;
+}
+//获取销售流水
+-(void)getSaleSrlPageApp:(void(^)(LSModeList *list))aFinishBlock
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+    if(strStartTime)
+    {
+        [dict setValue:strStartTime forKey:@"startDate"];
+    }
+    else
+    {
+        [dict setValue:@"0" forKey:@"startDate"];
+    }
+    if(strEndTime)
+    {
+        [dict setValue:strEndTime forKey:@"endDate"];
+    }
+    [dict setValue:@"false" forKey:@"needPage"];
+    [dict setValue:[NSNumber numberWithInt:0] forKey:@"pageNo"];
+    [dict setValue:[NSNumber numberWithInt:20] forKey:@"pageSize"];
+    
+    [NetManager requestWith:dict apiName:@"getSaleSrlPageApp" method:@"POST" succ:^(NSDictionary *successDict) {
+        MLOG(@"%@",successDict);
+        NSDictionary *resultDict = [successDict objectForKey:@"result"];
+        if(resultDict)
+        {
+            LSModeList *mlist = [[LSModeList alloc] init];
+            [mlist unPacketModeData:resultDict];
+            aFinishBlock(mlist);
+        }
+        else
+        {
+            aFinishBlock(nil);
+        }
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        aFinishBlock(nil);
+    }];
+}
+
+//查询销售明细
+- (void)getSaleSrlDetailByApp:(NSString *)aSaleId block:(void(^)(LSDetailModeList *list))aFinishBlock
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+    if(aSaleId)
+    {
+        [dict setValue:aSaleId forKey:@"saleId"];
+    }
+    [NetManager requestWith:dict apiName:@"getSaleSrlDetailByApp" method:@"post" succ:^(NSDictionary *successDict) {
+        MLOG(@"%@",successDict);
+        if(successDict && [successDict objectForKey:@"result"])
+        {
+            LSDetailModeList *dModeList = [[LSDetailModeList alloc] init];
+            [dModeList unPacketData:successDict];
+            aFinishBlock(dModeList);
+        }
+        else
+        {
+            aFinishBlock(nil);
+        }
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        aFinishBlock(nil);
+    }];
+}
 @end

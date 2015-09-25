@@ -45,6 +45,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *bottom_hygl_BT;
 @property (strong, nonatomic) IBOutlet UIButton *bottom_wydh_BT;
 @property (strong, nonatomic) IBOutlet UIButton *bottom_gdcx_BT;
+@property (strong, nonatomic) IBOutlet UIButton *head_push_lsvc_bt;
 
 @property (strong, nonatomic) DateSelectVC *dateVC;
 @property (strong, nonatomic) FirstVCManager *manager;
@@ -60,7 +61,7 @@
     weakself = self;
     self.strStartTime = @"0";
     self.strEndTime = nil;
-    [self settitleLabel:@"首页test"];
+    [self settitleLabel:@"全部店铺"];
     self.manager = [[FirstVCManager alloc] init];
     [self showSelectStoreButton];
     CGFloat height = self.bottom_zxdd_BT.bottom;
@@ -78,6 +79,7 @@
     [self.bottom_spgl_BT addTarget:self action:@selector(spgl_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_wydh_BT addTarget:self action:@selector(wyjn_buttonItem) forControlEvents:UIControlEventTouchUpInside];
     [self.bottom_zxdd_BT addTarget:self action:@selector(zxdg_ButtonItem) forControlEvents:UIControlEventTouchUpInside];
+    [self.head_push_lsvc_bt addTarget:self action:@selector(pushXSLSVCBTItem) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -89,12 +91,17 @@
         [self settitleLabel:selectStore.strStoreName];
         [self requestHomeData];
     }
-    WS(weakself);
+//    WS(weakself);
     [self.scrollView addPullToRefreshWithActionHandler:^{
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [weakself requestHomeData];
         });
     }];
+}
+
+- (void)pushXSLSVCBTItem
+{
+    [self pushXIBName:@"FXSLSViewcontroller" animated:YES selector:nil param:nil];
 }
 
 #pragma mark 获取首页数据

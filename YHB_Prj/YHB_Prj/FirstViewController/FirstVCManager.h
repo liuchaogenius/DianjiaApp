@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "FirstMode.h"
+@class LSModeList;
+@class LSDetailModeList;
 
 @interface FirstVCManager : NSObject
 @property (nonatomic, strong) FirstMode *fMode;
@@ -25,5 +27,11 @@
 - (void)getHomePageInfoApp:(NSString *)aStoreId
                finishBlock:(void(^)(FirstMode *mode))aFinishBlock;
 
-- (void)uploadImg;
+- (void)setStartTime:(NSString *)aStartTime;
+
+- (void)setEndTime:(NSString *)aEndTime;
+
+-(void)getSaleSrlPageApp:(void(^)(LSModeList *list))aFinishBlock;
+
+- (void)getSaleSrlDetailByApp:(NSString *)aSaleId block:(void(^)(LSDetailModeList *list))aFinishBlock;
 @end

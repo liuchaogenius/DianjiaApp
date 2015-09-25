@@ -202,6 +202,7 @@
         if (!cell) {
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"KCYJCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
 
         if(indexPath.row< self.kcyjMutArry.count){
@@ -216,6 +217,7 @@
         if (!cell) {
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ZXBJCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
 
         if(indexPath.row< self.zxyjMutArry.count){
@@ -231,6 +233,7 @@
         if (!cell) {
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ZCBCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         
         if(indexPath.row< self.kcyjMutArry.count){
