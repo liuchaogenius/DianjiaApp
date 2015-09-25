@@ -11,6 +11,7 @@
 #import "NetManager.h"
 #import "FBViewController.h"
 #import "AboutUsViewController.h"
+#import "AppDelegate.h"
 
 typedef NS_ENUM(NSInteger, cellType){
     cellTypeAbout=0,
@@ -61,7 +62,8 @@ typedef NS_ENUM(NSInteger, cellType){
 
 - (void)touchLogout
 {
-    NSLog(@"%s", __func__);
+    [self.navigationController popViewControllerAnimated:NO];
+    [[AppDelegate shareAppdelegate] logout];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

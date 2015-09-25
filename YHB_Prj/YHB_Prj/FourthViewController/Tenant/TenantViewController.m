@@ -57,7 +57,8 @@ typedef enum : NSUInteger {
     [self.view addSubview:_bgScrollView];
     
     _titleArray = @[@"商户名称:",@"昵称:",@"联系人:",@"联系电话:",@"电子邮件",@"商户地址:",@"所属行业:",@"注册日期:"];
-    NSArray *contentArray = @[myMode.strCompanyName,myMode.strNickName,myMode.strUname,myMode.strPhone,myMode.strEmail,myMode.strContactAddr,myMode.strIndustryName,myMode.strAddDate];
+    NSString *comName = myMode.strCompanyName?myMode.strCompanyName:@"";
+    NSArray *contentArray = @[comName,myMode.strNickName,myMode.strUname,myMode.strPhone,myMode.strEmail,myMode.strContactAddr,myMode.strIndustryName,myMode.strAddDate];
     
     CGFloat endHeight = 0;
     for (int i=0; i<_titleArray.count; i++)

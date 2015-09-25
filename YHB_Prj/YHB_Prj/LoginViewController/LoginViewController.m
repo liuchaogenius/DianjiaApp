@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "LoginManager.h"
 #import "AppDelegate.h"
+#import "ForgetViewController1.h"
 #define kUserInputTFTag 0
 #define kPassInputTFTag 1
 @interface LoginViewController ()
@@ -22,6 +23,12 @@
 @end
 
 @implementation LoginViewController
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    self.navigationController.navigationBarHidden = YES;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -98,7 +105,8 @@
 #pragma mark 忘记密码按钮点击事件
 - (void)forgetPassBTItem:(UIButton *)aBT
 {
-    
+    ForgetViewController1 *vc= [[ForgetViewController1 alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

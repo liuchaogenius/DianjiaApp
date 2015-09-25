@@ -96,6 +96,9 @@
 		ABAAFB6F1B996B250012D1C6 /* DJYDCXRows.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAAFB6C1B996B250012D1C6 /* DJYDCXRows.m */; };
 		ABAE34A11BA0109C00221980 /* ScanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAE34A01BA0109C00221980 /* ScanVC.m */; };
 		ABBC57E81BB53196002A07D4 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC57E71BB53196002A07D4 /* AboutUsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		ABBC57EB1BB55980002A07D4 /* ForgetViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC57EA1BB55980002A07D4 /* ForgetViewController1.m */; settings = {ASSET_TAGS = (); }; };
+		ABBC57EE1BB5598D002A07D4 /* ForgetViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC57ED1BB5598D002A07D4 /* ForgetViewController2.m */; settings = {ASSET_TAGS = (); }; };
+		ABBC57F21BB55D11002A07D4 /* JKCountDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC57F11BB55D11002A07D4 /* JKCountDownButton.m */; settings = {ASSET_TAGS = (); }; };
 		ABDDB3711BA2CF4000DCD659 /* JHLSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB3701BA2CF4000DCD659 /* JHLSViewController.m */; };
 		ABDDB3751BA3B1ED00DCD659 /* JHLSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB3731BA3B1ED00DCD659 /* JHLSTableViewCell.m */; };
 		ABDDB3761BA3B1ED00DCD659 /* JHLSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABDDB3741BA3B1ED00DCD659 /* JHLSTableViewCell.xib */; };
@@ -466,6 +469,12 @@
 		ABAE34A01BA0109C00221980 /* ScanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanVC.m; sourceTree = "<group>"; };
 		ABBC57E61BB53196002A07D4 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		ABBC57E71BB53196002A07D4 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		ABBC57E91BB55980002A07D4 /* ForgetViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetViewController1.h; sourceTree = "<group>"; };
+		ABBC57EA1BB55980002A07D4 /* ForgetViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetViewController1.m; sourceTree = "<group>"; };
+		ABBC57EC1BB5598D002A07D4 /* ForgetViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetViewController2.h; sourceTree = "<group>"; };
+		ABBC57ED1BB5598D002A07D4 /* ForgetViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetViewController2.m; sourceTree = "<group>"; };
+		ABBC57F01BB55D11002A07D4 /* JKCountDownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKCountDownButton.h; sourceTree = "<group>"; };
+		ABBC57F11BB55D11002A07D4 /* JKCountDownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKCountDownButton.m; sourceTree = "<group>"; };
 		ABDDB36F1BA2CF4000DCD659 /* JHLSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLSViewController.h; sourceTree = "<group>"; };
 		ABDDB3701BA2CF4000DCD659 /* JHLSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLSViewController.m; sourceTree = "<group>"; };
 		ABDDB3721BA3B1ED00DCD659 /* JHLSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLSTableViewCell.h; sourceTree = "<group>"; };
@@ -1214,6 +1223,15 @@
 			path = ScanVC;
 			sourceTree = "<group>";
 		};
+		ABBC57EF1BB55D11002A07D4 /* JKCountDownButton */ = {
+			isa = PBXGroup;
+			children = (
+				ABBC57F01BB55D11002A07D4 /* JKCountDownButton.h */,
+				ABBC57F11BB55D11002A07D4 /* JKCountDownButton.m */,
+			);
+			path = JKCountDownButton;
+			sourceTree = "<group>";
+		};
 		ABEF1DA41B929D4100C1C2EA /* SupplierDetailVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1367,6 +1385,7 @@
 		FF2A6C041A0F39E3001607AC /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				ABBC57EF1BB55D11002A07D4 /* JKCountDownButton */,
 				FF3C34E41BA3DB98006766E9 /* UIAlertView+Block */,
 				AB25790F1B8F02010015039A /* IQQKeyBoardManager */,
 				FF4DFCE81B856B9600617660 /* serilzerFile */,
@@ -1780,6 +1799,10 @@
 				FF5C87051B82FE5200F79EC1 /* LoginViewController.h */,
 				FF5C87061B82FE5200F79EC1 /* LoginViewController.m */,
 				FF5C87071B82FE5200F79EC1 /* LoginViewController.xib */,
+				ABBC57E91BB55980002A07D4 /* ForgetViewController1.h */,
+				ABBC57EA1BB55980002A07D4 /* ForgetViewController1.m */,
+				ABBC57EC1BB5598D002A07D4 /* ForgetViewController2.h */,
+				ABBC57ED1BB5598D002A07D4 /* ForgetViewController2.m */,
 				FF5C87251B830F3000F79EC1 /* LoginManager.h */,
 				FF5C87261B830F3000F79EC1 /* LoginManager.m */,
 				FF4DFCF81B856C2B00617660 /* LoginMode.h */,
@@ -2214,6 +2237,7 @@
 				FF5C86F91B81B72400F79EC1 /* MASConstraint.m in Sources */,
 				FF5CC6FA1B93EE5300F55713 /* RKSPCell.m in Sources */,
 				FFD26CDE1B8B0B4E0003F491 /* KCYJManager.m in Sources */,
+				ABBC57EE1BB5598D002A07D4 /* ForgetViewController2.m in Sources */,
 				FF2A6C021A0F398D001607AC /* BaseViewController.m in Sources */,
 				ABEF1DAB1B92A18E00C1C2EA /* ClerkDetailViewController.m in Sources */,
 				FF2A6C6C1A0F3B7B001607AC /* NSData+ImageContentType.m in Sources */,
@@ -2238,6 +2262,7 @@
 				5B1F7FAD1B91CEB100763059 /* DJProductCheckSrlResult.m in Sources */,
 				FF5C871E1B83024C00F79EC1 /* FMDatabasePool.m in Sources */,
 				FFF391951B846F58007DC652 /* AFHTTPRequestOperationManager.m in Sources */,
+				ABBC57F21BB55D11002A07D4 /* JKCountDownButton.m in Sources */,
 				5B1F7F951B8F6AAA00763059 /* DJStoryboadManager.m in Sources */,
 				FF012FAF1B8EB92C00AE563C /* HYGLViewController.m in Sources */,
 				FF357C881BA021E400DFCAC0 /* SPGLCategoryMode.m in Sources */,
@@ -2281,6 +2306,7 @@
 				FF012FAD1B8EB92C00AE563C /* HYLSXFCell.m in Sources */,
 				FF5C87241B83025600F79EC1 /* YTKKeyValueStore.m in Sources */,
 				FF2A6C3E1A0F3B66001607AC /* UIViewAdditions.m in Sources */,
+				ABBC57EB1BB55980002A07D4 /* ForgetViewController1.m in Sources */,
 				5B54BA1D1B9213A9002098A4 /* DJProductSearchBar.m in Sources */,
 				ABDDB3791BA3BCDA00DCD659 /* UploadImgViewController.m in Sources */,
 				FF3C20011A2EE6D30081D3C7 /* LSNavigationController.m in Sources */,

@@ -22,6 +22,7 @@
 #import "CLTableViewCell.h"
 #import "LoginMode.h"
 
+
 #define userFace @"userFace"
 
 static const CGFloat storeTVWidth = 100;
@@ -66,6 +67,7 @@ typedef enum : NSUInteger {
 {
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
+    [self reloadView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -75,10 +77,8 @@ typedef enum : NSUInteger {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self settitleLabel:@"我的"];
-    
+- (void)reloadView
+{
     //设置页面的view宽度
     viewWidth = kMainScreenWidth;
     
@@ -95,7 +95,8 @@ typedef enum : NSUInteger {
     
     CGFloat originX = 15;
     CGFloat interval = 10;
-    NSString *comStr = [NSString stringWithFormat:@"公司名称:%@", mode.strCompanyName];
+    NSString *comName =mode.strCompanyName?mode.strCompanyName:@"";
+    NSString *comStr = [NSString stringWithFormat:@"公司名称:%@", comName];
     kCreateLabel(_userComLabel, CGRectMake(originX, topImgViewH-30, viewWidth-2*originX, 17), 14, [UIColor whiteColor], comStr);
     [_topImgView addSubview:_userComLabel];
     
@@ -148,6 +149,13 @@ typedef enum : NSUInteger {
     [_userImgBtn addTarget:self action:@selector(plusImageClicked) forControlEvents:UIControlEventTouchUpInside];
     _topImgView.userInteractionEnabled = YES;
     [_topImgView addSubview:_userImgBtn];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self settitleLabel:@"我的"];
+    
+    [self reloadView];
     
     _mineTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, kMainScreenHeight-64-49)];
     _mineTableView.delegate = self;

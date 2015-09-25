@@ -53,16 +53,18 @@
 
 - (void)setLoginViewController
 {
-    self.window.rootViewController = [[FactoryModel shareFactoryModel] getloginViewController];
+    LSNavigationController *nav = [[LSNavigationController alloc] initWithRootViewController:[[FactoryModel shareFactoryModel] getloginViewController]];
+    self.window.rootViewController = nav;
 }
 
 - (void)logout
 {
     LoginViewController *lvc =  (LoginViewController *)[[FactoryModel shareFactoryModel] getloginViewController];
     [lvc logOut];
+    LSNavigationController *nav = [[LSNavigationController alloc] initWithRootViewController:lvc];
     if(rootvc)
     {
-        [rootvc presentViewController:lvc animated:YES completion:^{
+        [rootvc presentViewController:nav animated:YES completion:^{
             
         }];
     }
