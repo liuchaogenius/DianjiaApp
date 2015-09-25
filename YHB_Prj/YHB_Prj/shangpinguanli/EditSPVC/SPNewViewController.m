@@ -183,7 +183,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
         //        }
         if (i==FieldTypetm)
         {
-            _btntm = [[UIButton alloc] initWithFrame:CGRectMake(lineView.right+5, imgView.top+3, 19, 14)];
+            _btntm = [[UIButton alloc] initWithFrame:CGRectMake(lineView.right+1, imgView.top+1, 25, 18)];
             [_btntm setImage:[UIImage imageNamed:@"sp_sao"] forState:UIControlStateNormal];
             [_btntm addTarget:self action:@selector(touchtm) forControlEvents:UIControlEventTouchUpInside];
             [_bgScrollView addSubview:_btntm];
@@ -276,6 +276,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
                 [SVProgressHUD showSuccessWithStatus:@"发布成功" cover:YES offsetY:kMainScreenHeight/2.0];
 #warning 上传图片 
                 //_photoArr
+                [self.navigationController popViewControllerAnimated:YES];
             }
             else [SVProgressHUD showErrorWithStatus:@"发布失败" cover:YES offsetY:kMainScreenHeight/2.0];
         }];

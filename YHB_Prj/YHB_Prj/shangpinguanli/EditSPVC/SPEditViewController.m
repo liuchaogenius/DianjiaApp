@@ -166,7 +166,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
         //        }
         if (i==FieldTypetm)
         {
-            _btntm = [[UIButton alloc] initWithFrame:CGRectMake(lineView.right+5, imgView.top+3, 19, 14)];
+            _btntm = [[UIButton alloc] initWithFrame:CGRectMake(lineView.right+1, imgView.top+1, 25, 18)];
             [_btntm setImage:[UIImage imageNamed:@"sp_sao"] forState:UIControlStateNormal];
             [_btntm addTarget:self action:@selector(touchtm) forControlEvents:UIControlEventTouchUpInside];
             [_bgScrollView addSubview:_btntm];
