@@ -95,6 +95,7 @@
 		ABAAFB6E1B996B250012D1C6 /* DJYDCXResult.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAAFB6A1B996B250012D1C6 /* DJYDCXResult.m */; };
 		ABAAFB6F1B996B250012D1C6 /* DJYDCXRows.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAAFB6C1B996B250012D1C6 /* DJYDCXRows.m */; };
 		ABAE34A11BA0109C00221980 /* ScanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAE34A01BA0109C00221980 /* ScanVC.m */; };
+		ABBC57E81BB53196002A07D4 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC57E71BB53196002A07D4 /* AboutUsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		ABDDB3711BA2CF4000DCD659 /* JHLSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB3701BA2CF4000DCD659 /* JHLSViewController.m */; };
 		ABDDB3751BA3B1ED00DCD659 /* JHLSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB3731BA3B1ED00DCD659 /* JHLSTableViewCell.m */; };
 		ABDDB3761BA3B1ED00DCD659 /* JHLSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABDDB3741BA3B1ED00DCD659 /* JHLSTableViewCell.xib */; };
@@ -453,6 +454,8 @@
 		ABAAFB6C1B996B250012D1C6 /* DJYDCXRows.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJYDCXRows.m; sourceTree = "<group>"; };
 		ABAE349F1BA0109C00221980 /* ScanVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanVC.h; sourceTree = "<group>"; };
 		ABAE34A01BA0109C00221980 /* ScanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanVC.m; sourceTree = "<group>"; };
+		ABBC57E61BB53196002A07D4 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
+		ABBC57E71BB53196002A07D4 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		ABDDB36F1BA2CF4000DCD659 /* JHLSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLSViewController.h; sourceTree = "<group>"; };
 		ABDDB3701BA2CF4000DCD659 /* JHLSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHLSViewController.m; sourceTree = "<group>"; };
 		ABDDB3721BA3B1ED00DCD659 /* JHLSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHLSTableViewCell.h; sourceTree = "<group>"; };
@@ -1157,6 +1160,8 @@
 				AB9F43EB1B92E58400914C85 /* SetTableViewCell.m */,
 				ABE71E221B9C32E2000651A9 /* FBViewController.h */,
 				ABE71E231B9C32E2000651A9 /* FBViewController.m */,
+				ABBC57E61BB53196002A07D4 /* AboutUsViewController.h */,
+				ABBC57E71BB53196002A07D4 /* AboutUsViewController.m */,
 			);
 			path = SettingVC;
 			sourceTree = "<group>";
@@ -2211,6 +2216,7 @@
 				FFF3919B1B846F58007DC652 /* AFURLResponseSerialization.m in Sources */,
 				AB25793C1B8F02010015039A /* IQTextView.m in Sources */,
 				ABDDB3841BA4190B00DCD659 /* JHLSMode.m in Sources */,
+				ABBC57E81BB53196002A07D4 /* AboutUsViewController.m in Sources */,
 				FF357CBA1BA2B56100DFCAC0 /* WYJHSXViewcontroller.m in Sources */,
 				FF4DFD081B85B21C00617660 /* NSDateTool.m in Sources */,
 				ABFAB0EC1BA1C0DE009D8654 /* SPEditViewController.m in Sources */,

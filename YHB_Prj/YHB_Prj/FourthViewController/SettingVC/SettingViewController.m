@@ -10,11 +10,12 @@
 #import "SetTableViewCell.h"
 #import "NetManager.h"
 #import "FBViewController.h"
+#import "AboutUsViewController.h"
 
 typedef NS_ENUM(NSInteger, cellType){
     cellTypeAbout=0,
-    cellTypeRecommend,
-    cellTypeFeedBack,
+//    cellTypeRecommend,
+//    cellTypeFeedBack,
     cellTypeCheckNew
 };
 
@@ -33,7 +34,7 @@ typedef NS_ENUM(NSInteger, cellType){
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _titleArray = @[@"关于我们",@"推荐给朋友",@"意见反馈",@"检查新版本"];
+    _titleArray = @[@"关于我们",@"检查新版本"];//,@"意见反馈",@"推荐给朋友"
     
     _setTV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64)];
     _setTV.delegate = self;
@@ -65,7 +66,7 @@ typedef NS_ENUM(NSInteger, cellType){
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return _titleArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -86,17 +87,32 @@ typedef NS_ENUM(NSInteger, cellType){
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     switch (indexPath.row) {
         case cellTypeAbout:
-            
-            break;
-        case cellTypeRecommend:
-            
-            break;
-        case cellTypeFeedBack:
         {
-            FBViewController *vc = [[FBViewController alloc] init];
+            AboutUsViewController *vc = [[AboutUsViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
+//        case cellTypeRecommend:
+//        {
+////            NSString *textToShare = @"请大家登录《iOS云端与网络通讯》服务网站。";
+////            UIImage *imageToShare = [UIImage imageNamed:@"login_icon"];
+//            NSURL *urlToShare = [NSURL URLWithString:@"http://www.dianjia001.com"];
+//            NSArray *activityItems = @[urlToShare];//textToShare, imageToShare,
+//            
+//            UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems
+//                                                                                    applicationActivities:nil];
+//            //不出现在活动项目
+//            activityVC.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard,
+//                                                 UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll];
+//            [self presentViewController:activityVC animated:TRUE completion:nil];
+//            break;
+//        }
+//        case cellTypeFeedBack:
+//        {
+//            FBViewController *vc = [[FBViewController alloc] init];
+//            [self.navigationController pushViewController:vc animated:YES];
+//            break;
+//        }
         case cellTypeCheckNew:
         {
             [SVProgressHUD show:YES offsetY:kMainScreenHeight/2.0];
