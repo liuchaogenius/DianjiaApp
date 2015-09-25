@@ -105,11 +105,13 @@
 
 - (NSString *)getUserToken
 {
+    if(!strUserToken) strUserToken = @"barcodescan.chinascrm.com";
     return strUserToken;
 }
 
 - (NSString*)getStroeID //StoreID这个是你本地选择门店后变动的值
 {
+    if (!strStroreID) strStroreID = @"-8712";
     return strStroreID;
 }
 
@@ -146,6 +148,7 @@
     dict = [NSMutableDictionary dictionaryWithDictionary:aDict];
     [dict setValue:param forKey:@"S3CAPI"];
     
+    MLOG(@"%@", dict);
     [NetManager setRequestHeadValue:manager];
     NSString *method = [aMethod uppercaseString];
     if([kBaseUrl compare:@"https://api.chinascrm.com/sapi4app.html"] == 0)
