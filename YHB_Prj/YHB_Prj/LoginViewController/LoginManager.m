@@ -90,6 +90,16 @@
     }];
 }
 
+- (void)logout
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"usertoken"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userid"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    SCach *cach = [SCach shareInstance];
+    [cach removeFileData:@"loginMode" filePath:nil];
+}
+
 - (void)saveUserId:(NSString *)aUserId
 {
     self.strUserId = aUserId;

@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *loginBT;
 @property (nonatomic, strong) NSString *strUserNick;
 @property (nonatomic, strong) NSString *strPasswork;
+@property (nonatomic, assign) BOOL islogOut;
 @end
 
 @implementation LoginViewController
@@ -74,9 +75,25 @@
     [login login_request:@"test" pass:@"1213" retblock:^(BOOL ret) {
         if(ret == YES)
         {
-            [[AppDelegate shareAppdelegate] changeWindowRootviewcontroller];
+            if(self.islogOut == NO)
+            {
+                [[AppDelegate shareAppdelegate] changeWindowRootviewcontroller];
+            }
+            else
+            {
+                [self dismissViewControllerAnimated:YES completion:^{
+                    
+                }];
+            }
         }
     }];
+}
+
+- (void)logOut
+{
+    LoginManager *login = [LoginManager shareLoginManager];
+    [login logout];
+    self.islogOut = YES;
 }
 #pragma mark 忘记密码按钮点击事件
 - (void)forgetPassBTItem:(UIButton *)aBT

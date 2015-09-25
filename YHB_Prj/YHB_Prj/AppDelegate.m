@@ -10,7 +10,7 @@
 #import "RootTabBarController.h"
 #import "FactoryModel.h"
 #import "LoginManager.h"
-
+#import "LoginViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -54,7 +54,18 @@
 - (void)setLoginViewController
 {
     self.window.rootViewController = [[FactoryModel shareFactoryModel] getloginViewController];
-    
+}
+
+- (void)logout
+{
+    LoginViewController *lvc =  (LoginViewController *)[[FactoryModel shareFactoryModel] getloginViewController];
+    [lvc logOut];
+    if(rootvc)
+    {
+        [rootvc presentViewController:lvc animated:YES completion:^{
+            
+        }];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

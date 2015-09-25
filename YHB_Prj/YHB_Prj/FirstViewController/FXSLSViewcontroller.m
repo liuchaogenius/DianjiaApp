@@ -11,6 +11,7 @@
 #import "LSMode.h"
 #import "LSCell.h"
 #import "DateSelectVC.h"
+#import "SVProgressHUD.h"
 
 @interface FXSLSViewcontroller ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic)FirstVCManager *manager;
@@ -46,15 +47,17 @@
     self.strStartTime = @"0";
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
-
+    [self.dateBT addTarget:self action:@selector(dateBtItem) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [SVProgressHUD showWithStatus:kLoadingText cover:NO offsetY:64];
     [self requestHeadData];
     WS(weakself);
     [self.manager getSaleSrlPageApp:^(LSModeList *list) {
+        [SVProgressHUD dismiss];
         if(list && list.modeArry && list.modeArry.count > 0)
         {
             weakself.modeArry = list.modeArry;
@@ -65,7 +68,36 @@
 #pragma mark 添加日期bt时间
 - (void)dateBtItem
 {
-#warning 添加日期事件
+    WS(weakself);
+    DateSelectVC *dvc = (DateSelectVC *)[self pushXIBName:@"DateSelectVC" animated:YES selector:nil param:nil];
+    [dvc getUserSetTimer:^(NSString *sTimer, NSString *eTimer, NSString *ssTimer, NSString *seTimer, int btid) {
+        if(btid>=0)
+        {
+            [weakself.manager setStartTime:[NSString stringWithFormat:@"%d",btid]];
+            weakself.dateLabel.text = seTimer;
+        }
+        else
+        {
+            weakself.dateLabel.text = [NSString stringWithFormat:@"%@--%@",ssTimer,seTimer];
+            [weakself.manager setStartTime:sTimer];
+            [weakself.manager setEndTime:eTimer];
+        }
+        [SVProgressHUD showWithStatus:kLoadingText cover:NO offsetY:64];
+        [self requestHeadData];
+        [self refresList];
+    }];
+}
+- (void)refresList
+{
+    WS(weakself);
+    [self.manager getSaleSrlPageApp:^(LSModeList *list) {
+        [SVProgressHUD dismiss];
+        if(list && list.modeArry && list.modeArry.count > 0)
+        {
+            weakself.modeArry = list.modeArry;
+            [weakself.tableview reloadData];
+        }
+    }];
 }
 #pragma mark 请求头部数据
 - (void)requestHeadData

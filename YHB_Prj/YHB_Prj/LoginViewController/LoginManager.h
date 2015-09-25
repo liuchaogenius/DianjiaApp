@@ -34,6 +34,8 @@
 
 - (NSString *)getCurrentStoreName;
 
+- (void)logout;
+
 @property (nonatomic, strong) StoreMode *currentSelectStore;
 
 @end

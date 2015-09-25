@@ -14,5 +14,6 @@
 @property (strong, nonatomic) RootTabBarController *rootvc;
 - (void)changeWindowRootviewcontroller;
 + (AppDelegate *)shareAppdelegate;
+- (void)logout;
 @end
 
