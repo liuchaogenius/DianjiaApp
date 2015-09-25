@@ -58,54 +58,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YHB_Prj/FirstViewController/FirstVCManager.m"
-            timestampString = "464868897.627828"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "-getSaleSrlPageApp:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[FirstVCManager getSaleSrlPageApp:]"
-                  moduleName = "YHB_Prj"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "464868901.63534"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "150"
-                  endingLineNumber = "150"
-                  offsetFromSymbolStart = "734">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__36-[FirstVCManager getSaleSrlPageApp:]_block_invoke"
-                  moduleName = "YHB_Prj"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "464868901.635617"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "150"
-                  endingLineNumber = "150"
-                  offsetFromSymbolStart = "64">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YHB_Prj/FirstViewController/FirstVCManager.m"
             timestampString = "464868906.916728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -122,7 +74,7 @@
                   moduleName = "YHB_Prj"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "464868910.920412"
+                  timestampString = "464879700.154147"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "176"
@@ -137,155 +89,11 @@
                   moduleName = "YHB_Prj"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "464868910.92069"
+                  timestampString = "464879700.154511"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "176"
                   endingLineNumber = "176"
-                  offsetFromSymbolStart = "64">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YHB_Prj/FirstViewController/FirstVCManager.m"
-            timestampString = "464868911.8142"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "-getHomePageInfoApp:finishBlock:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[FirstVCManager getHomePageInfoApp:finishBlock:]"
-                  moduleName = "YHB_Prj"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "464868915.820661"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
-                  offsetFromSymbolStart = "222">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__49-[FirstVCManager getHomePageInfoApp:finishBlock:]_block_invoke"
-                  moduleName = "YHB_Prj"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "464868915.821013"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
-                  offsetFromSymbolStart = "64">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YHB_Prj/FirstViewController/FirstVCManager.m"
-            timestampString = "464868914.224051"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "-getSummaryStoreStock:finishBlock:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[FirstVCManager getSummaryStoreStock:finishBlock:]"
-                  moduleName = "YHB_Prj"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "464868923.839754"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "222">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__51-[FirstVCManager getSummaryStoreStock:finishBlock:]_block_invoke"
-                  moduleName = "YHB_Prj"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "464868923.840361"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "64">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YHB_Prj/FirstViewController/FirstVCManager.m"
-            timestampString = "464868916.231775"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "-getSaleSrlStatisticsApp:endDate:finishBlock:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[FirstVCManager getSaleSrlStatisticsApp:endDate:finishBlock:]"
-                  moduleName = "YHB_Prj"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "464868923.848353"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "308">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__62-[FirstVCManager getSaleSrlStatisticsApp:endDate:finishBlock:]_block_invoke"
-                  moduleName = "YHB_Prj"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "464868923.84892"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
                   offsetFromSymbolStart = "64">
                </Location>
             </Locations>

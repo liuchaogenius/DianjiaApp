@@ -94,13 +94,13 @@
 {
     MLOG(@"shouldtabsel = %lu", (unsigned long)tabBarController.selectedIndex);
     
-    if(tabBarController.selectedIndex == 1 || tabBarController.selectedIndex == 2)
-    {
-//        [SVProgressHUD showSuccessWithStatus:@"敬请期待" duration:1 cover:NO offsetY:64];
-//        tabBarController.selectedIndex = oldSelectIndex;
-//        return NO;
-    }
-    else
+//    if(tabBarController.selectedIndex == 1 || tabBarController.selectedIndex == 2)
+//    {
+////        [SVProgressHUD showSuccessWithStatus:@"敬请期待" duration:1 cover:NO offsetY:64];
+////        tabBarController.selectedIndex = oldSelectIndex;
+////        return NO;
+//    }
+//    else
     {
         oldSelectIndex = tabBarController.selectedIndex;
     }
@@ -111,11 +111,11 @@
 {
     MLOG(@"tabsel = %ld", (unsigned long)tabBarController.selectedIndex);
     newSelectIndex = tabBarController.selectedIndex;
-    if(tabBarController.selectedIndex == 1 || tabBarController.selectedIndex == 2)
-    {
-        [SVProgressHUD showSuccessWithStatus:@"敬请期待" duration:1.0f cover:NO offsetY:64];
-        tabBarController.selectedIndex = oldSelectIndex;
-    }
+//    if(tabBarController.selectedIndex == 1 || tabBarController.selectedIndex == 2)
+//    {
+//        [SVProgressHUD showSuccessWithStatus:@"敬请期待" duration:1.0f cover:NO offsetY:64];
+//        tabBarController.selectedIndex = oldSelectIndex;
+//    }
 }
 
 
