@@ -177,7 +177,7 @@ typedef NS_ENUM(int, dateBtTag)
 - (void)onDatePickerValueChanged:(UIDatePicker *)aDatePicker
 {
     btTag = -1;
-    if(aDatePicker.tag == 0)
+    if(aDatePicker.tag == 0) //start
     {
         NSDate *select = [aDatePicker date]; // 获取被选中的时间
         startDate = [NSDateTool dateToNSString:select formate:@"yyyy-MM-dd"];
@@ -205,7 +205,7 @@ typedef NS_ENUM(int, dateBtTag)
         }
         showEndDate = [NSDateTool dateToNSString:select formate:@"yyyy-MM-dd"];
         
-        NSDate *selectstart = [aDatePicker date]; // 获取被选中的时间
+        NSDate *selectstart = [self.dateStart_Pick date]; // 获取被选中的时间
         startDate = [NSDateTool dateToNSString:selectstart formate:@"yyyy-MM-dd"];
         if(startDate)
         {

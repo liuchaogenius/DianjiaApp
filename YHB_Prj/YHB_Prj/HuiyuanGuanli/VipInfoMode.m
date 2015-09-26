@@ -55,7 +55,7 @@
     AssignMentID(self.strVipPhone, [aDataDict objectForKey:@"vip_phone"]);
     
     AssignMentID(self.strVipScore, [aDataDict objectForKey:@"vip_score"]);
-    BaseLongLongToNSString(self.strVipScore);
+    BaseIntToNSString(self.strVipScore);
     
     AssignMentID(self.strVipSex, [aDataDict objectForKey:@"vip_sex"]);
     if([self.strVipSex intValue] == 1)

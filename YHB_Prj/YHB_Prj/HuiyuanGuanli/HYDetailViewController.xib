@@ -16,7 +16,6 @@
                 <outlet property="headImgView" destination="Q24-rv-Sz8" id="CoD-5d-7LT"/>
                 <outlet property="headview" destination="YEz-p6-2QS" id="A4I-XV-rNq"/>
                 <outlet property="jifenLabel" destination="kBK-cb-IDE" id="Xrb-go-FOO"/>
-                <outlet property="jifenduihuanBT" destination="vr1-NF-5bL" id="nKf-W2-TeJ"/>
                 <outlet property="middleview" destination="C5z-sC-otM" id="PkK-Pp-Nr5"/>
                 <outlet property="nameLabel" destination="7Pb-Z8-Xy9" id="ZIe-SS-6fw"/>
                 <outlet property="oneMothSaleRemark" destination="lKO-r1-7Gi" id="SaP-yq-5jj"/>
@@ -97,43 +96,29 @@
                     <rect key="frame" x="0.0" y="133" width="320" height="61"/>
                     <subviews>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHo-aE-CW0">
-                            <rect key="frame" x="102" y="0.0" width="1" height="60"/>
+                            <rect key="frame" x="160" y="0.0" width="1" height="60"/>
                             <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ab-bV-4hi">
-                            <rect key="frame" x="0.0" y="0.0" width="88" height="60"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <inset key="titleEdgeInsets" minX="-12" minY="25" maxX="0.0" maxY="0.0"/>
-                            <inset key="imageEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="22"/>
-                            <state key="normal" title="拨打电话" image="hyd_phone_icon">
-                                <color key="titleColor" red="0.25713045629999998" green="0.25713045629999998" blue="0.25713045629999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vr1-NF-5bL">
-                            <rect key="frame" x="224" y="1" width="88" height="60"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <inset key="titleEdgeInsets" minX="-12" minY="25" maxX="0.0" maxY="0.0"/>
-                            <inset key="imageEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="22"/>
-                            <state key="normal" title="积分兑换" image="hyd_jifenduihuan_icon">
-                                <color key="titleColor" red="0.25713045629999998" green="0.25713045629999998" blue="0.25713045629999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoY-kr-kgw">
-                            <rect key="frame" x="116" y="1" width="88" height="60"/>
+                            <rect key="frame" x="200" y="1" width="88" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <inset key="titleEdgeInsets" minX="-12" minY="25" maxX="0.0" maxY="0.0"/>
-                            <inset key="imageEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="22"/>
+                            <inset key="imageEdgeInsets" minX="33" minY="0.0" maxX="-10" maxY="22"/>
                             <state key="normal" title="发送短信" image="hyd_sms_icon">
                                 <color key="titleColor" red="0.25713045629999998" green="0.25713045629999998" blue="0.25713045629999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zJv-3L-eTL">
-                            <rect key="frame" x="215" y="1" width="1" height="60"/>
-                            <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
-                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ab-bV-4hi">
+                            <rect key="frame" x="35" y="0.0" width="88" height="60"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <inset key="titleEdgeInsets" minX="-12" minY="25" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="30" minY="0.0" maxX="-10" maxY="22"/>
+                            <state key="normal" title="拨打电话" image="hyd_phone_icon">
+                                <color key="titleColor" red="0.25713045629999998" green="0.25713045629999998" blue="0.25713045629999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.81693124073121681" green="0.81693124073121681" blue="0.81693124073121681" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
@@ -242,7 +227,6 @@
         <image name="hyd_add_icon" width="10" height="10"/>
         <image name="hyd_birthday_icon" width="10" height="10"/>
         <image name="hyd_head_default" width="49" height="48"/>
-        <image name="hyd_jifenduihuan_icon" width="16" height="14"/>
         <image name="hyd_phone_icon" width="16" height="16"/>
         <image name="hyd_phone_num_icon" width="8" height="10"/>
         <image name="hyd_sex_icon" width="9" height="10"/>

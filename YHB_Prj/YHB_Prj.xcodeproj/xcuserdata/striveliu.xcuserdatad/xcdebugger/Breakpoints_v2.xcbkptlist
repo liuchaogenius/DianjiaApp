@@ -58,6 +58,54 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YHB_Prj/FirstViewController/FirstVCManager.m"
+            timestampString = "464868897.627828"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "-getSaleSrlPageApp:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FirstVCManager getSaleSrlPageApp:]"
+                  moduleName = "YHB_Prj"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
+                  timestampString = "464925595.818745"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "150"
+                  endingLineNumber = "150"
+                  offsetFromSymbolStart = "734">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__36-[FirstVCManager getSaleSrlPageApp:]_block_invoke"
+                  moduleName = "YHB_Prj"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
+                  timestampString = "464925595.819135"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "150"
+                  endingLineNumber = "150"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YHB_Prj/FirstViewController/FirstVCManager.m"
             timestampString = "464868906.916728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -74,7 +122,7 @@
                   moduleName = "YHB_Prj"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "464879700.154147"
+                  timestampString = "464925595.821077"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "176"
@@ -89,7 +137,7 @@
                   moduleName = "YHB_Prj"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "464879700.154511"
+                  timestampString = "464925595.821465"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "176"
@@ -97,6 +145,70 @@
                   offsetFromSymbolStart = "64">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YHB_Prj/KucunyujingVC/KCYJViewController.m"
+            timestampString = "464926898.927144"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "-zkcBTItem"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[KCYJViewController zkcBTItem]"
+                  moduleName = "YHB_Prj"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/KucunyujingVC/KCYJViewController.m"
+                  timestampString = "464926898.940448"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "658">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__31-[KCYJViewController zkcBTItem]_block_invoke"
+                  moduleName = "YHB_Prj"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/KucunyujingVC/KCYJViewController.m"
+                  timestampString = "464926898.940716"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "26">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YHB_Prj/KucunyujingVC/KCYJManager.m"
+            timestampString = "464926922.982774"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-getStoreStockByStoreCount:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

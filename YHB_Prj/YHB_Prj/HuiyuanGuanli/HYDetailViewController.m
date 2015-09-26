@@ -86,9 +86,9 @@
     self.birthdayLabel.text = self.mode.strVipBirethday;
     self.sexLabel.text = self.mode.strVipSex;
     self.addressLabel.text = self.mode.strVipAddr;
-#ifdef DEBUG
-    [self.chakanlishiBT addTarget:self action:@selector(pushHistoryOrderVC) forControlEvents:UIControlEventTouchUpInside];
-#endif
+//#ifdef DEBUG
+//    [self.chakanlishiBT addTarget:self action:@selector(pushHistoryOrderVC) forControlEvents:UIControlEventTouchUpInside];
+//#endif
     if(self.mode.isHasRemark)
     {
         self.oneMothSaleRemark.text = @"有记录";
