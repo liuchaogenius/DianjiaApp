@@ -10,6 +10,6 @@
 
 @interface UploadImgViewController : BaseViewController
 
-- (instancetype)initWithUploadImgCount:(int)aCount;
+- (instancetype)initWithUploadImgCount:(int)aCount andId:(NSString *)aId;
 
 @end

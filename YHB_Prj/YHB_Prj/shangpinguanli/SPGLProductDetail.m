@@ -103,7 +103,7 @@
     }
     else
     {
-        UploadImgViewController *vc = [[UploadImgViewController alloc] initWithUploadImgCount:count];
+        UploadImgViewController *vc = [[UploadImgViewController alloc] initWithUploadImgCount:count andId:_productMode.strId];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

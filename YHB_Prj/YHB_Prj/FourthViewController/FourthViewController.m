@@ -471,7 +471,7 @@ typedef enum : NSUInteger {
     [[SDImageCache sharedImageCache] storeImage:image
                                          forKey:userFace
                                          toDisk:YES];
-    [NetManager uploadImg:image parameters:nil apiName:@"uploadUserFacePic" uploadUrl:nil uploadimgName:nil progressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+    [NetManager uploadImg:image parameters:@{@"id":[[LoginManager shareLoginManager] getUserId]} apiName:@"uploadUserFacePic" uploadUrl:nil uploadimgName:nil progressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
         MLOG(@"%f", (float)totalBytesExpectedToWrite/totalBytesWritten);
     } succ:^(NSDictionary *successDict) {
         MLOG(@"1");

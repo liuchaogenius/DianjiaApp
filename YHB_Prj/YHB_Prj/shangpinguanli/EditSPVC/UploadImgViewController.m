@@ -19,15 +19,17 @@
 @property(nonatomic,strong) UIView *bgView;
 @property(nonatomic,strong) NSMutableArray *photoArr;
 @property(nonatomic,strong) UIButton *btnOk;
+@property(nonatomic,copy) NSString *myId;
 @end
 
 @implementation UploadImgViewController
 
-- (instancetype)initWithUploadImgCount:(int)aCount
+- (instancetype)initWithUploadImgCount:(int)aCount andId:(NSString *)aId
 {
     if (self=[super init])
     {
         countNeedToUpload = aCount;
+        _myId = aId;
     }
     return self;
 }
@@ -60,9 +62,13 @@
 {
     if (_photoArr.count>0)
     {
-        [NetManager uploadImgArry:_photoArr parameters:nil apiName:@"updateProductPicApp" uploadUrl:nil uploadimgName:nil progressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
+        self.btnOk.enabled = NO;
+        [SVProgressHUD showWithStatus:@"上传中" cover:YES offsetY:kMainScreenHeight/2.0];
+        [NetManager uploadImgArry:_photoArr parameters:@{@"id":_myId} apiName:@"updateProductPicApp" uploadUrl:nil uploadimgName:nil progressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
             
         } succ:^(NSDictionary *successDict) {
+            [SVProgressHUD dismiss];
+            self.btnOk.enabled = YES;
             NSString *msg = successDict[@"msg"];
             if ([msg isEqualToString:@"success"])
             {
@@ -70,7 +76,8 @@
             }
             else [SVProgressHUD showErrorWithStatus:@"上传失败" cover:YES offsetY:kMainScreenHeight/2.0];
         } failure:^(NSDictionary *failDict, NSError *error) {
-            
+            self.btnOk.enabled = YES;
+            [SVProgressHUD dismiss];
         }];
     }
     else [SVProgressHUD showErrorWithStatus:@"请添加图片" cover:YES offsetY:kMainScreenHeight/2.0];
