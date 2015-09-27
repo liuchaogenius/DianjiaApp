@@ -104,7 +104,15 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="148.5" y="278.5"/>
+            <connections>
+                <outlet property="dianmingValue" destination="R3N-Y4-6Uv" id="sR4-dD-8H6"/>
+                <outlet property="dqkcValue" destination="X3U-fI-66K" id="uC8-t8-x97"/>
+                <outlet property="pinmingValue" destination="chN-5L-vlR" id="Exx-rJ-3O5"/>
+                <outlet property="xsslValue" destination="ywH-lH-Ml6" id="d9R-5o-DWH"/>
+                <outlet property="xszlValue" destination="Ccw-Fg-l2i" id="NFZ-CA-52G"/>
+                <outlet property="yjswValue" destination="mzH-co-cnJ" id="CqL-dd-g1Z"/>
+            </connections>
+            <point key="canvasLocation" x="25.5" y="282.5"/>
         </tableViewCell>
     </objects>
 </document>

@@ -30,7 +30,7 @@
     self.xsslValue.text = aMode.strSaleRate;
     self.xszlValue.text = aMode.strSaleNum;
     self.yjswValue.text = aMode.strSaleDays;
-    self.zcbValue.text = aMode.strSumStockMoney;
+    self.zcbValue.text = aMode.strStockMoney;
 }
 
 - (void)resetview
