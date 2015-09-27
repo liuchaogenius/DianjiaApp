@@ -205,7 +205,8 @@
     }
     isShowSLBT = YES;
     UIImage *img = [UIImage imageNamed:@"selectStorelist_bt"];
-    self.storeListBT = [[UIButton alloc] initWithFrame:CGRectMake(titleLabel.right+5, (44-img.size.height)/2, 44, 44)];
+//    self.storeListBT = [[UIButton alloc] initWithFrame:CGRectMake(titleLabel.right+5, (44-img.size.height)/2, 44, 44)];
+    self.storeListBT = [[UIButton alloc] initWithFrame:CGRectMake(kMainScreenWidth-100., (44-img.size.height)/2, 44, 44)];
     [self.storeListBT setImage:img forState:UIControlStateNormal];
     self.storeListBT.tag = 101010;
     [self.storeListBT addTarget:self action:@selector(showStoreview) forControlEvents:UIControlEventTouchUpInside];

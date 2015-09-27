@@ -58,11 +58,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self showSelectStoreButton];
-    [self settitleLabel:[LoginManager shareLoginManager].currentSelectStore ? [LoginManager shareLoginManager].currentSelectStore.strStoreName : @"全部门店"];
     [self addTableViewTragWithTableView:self.tableView];
     [self getDataWithIsFirst:YES];
     [self setExtraCellLineHidden:self.tableView];
     [self initailCheckCartButton];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self settitleLabel:[LoginManager shareLoginManager].currentSelectStore ? [LoginManager shareLoginManager].currentSelectStore.strStoreName : @"全部门店"];
 }
 
 - (void)initailCheckCartButton {
