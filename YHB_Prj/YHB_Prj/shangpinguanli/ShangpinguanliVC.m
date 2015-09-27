@@ -13,6 +13,7 @@
 #import "SPGLSearchVC.h"
 #import "SPNewViewController.h"
 #import "WYJHMode.h"
+#import "DJProductSearchBar.h"
 
 @interface ShangpinguanliVC ()
 {
@@ -22,8 +23,9 @@
     NSMutableArray *currentIndexArry;
      DJScanViewController *svc;
 }
-@property (strong, nonatomic) IBOutlet UIButton *searchBt;
-@property (strong, nonatomic) IBOutlet UIButton *scanButton;
+
+@property (weak, nonatomic) IBOutlet DJProductSearchBar *searchBar;
+
 @property (strong, nonatomic) IBOutlet UITableView *sectionTableview;
 @property (strong, nonatomic) IBOutlet UITableView *indexTableview;
 @property (nonatomic, strong) SPGLManager *manager;
@@ -80,8 +82,12 @@
     [_addBtn addTarget:self action:@selector(touchAdd) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_addBtn];
     
-    [self.scanButton addTarget:self action:@selector(pushScanView) forControlEvents:UIControlEventTouchUpInside];
-    [self.searchBt addTarget:self action:@selector(pushSearchVc) forControlEvents:UIControlEventTouchUpInside];
+    __weak typeof(self) weakself = self;
+    [self.searchBar setNeedShowSearchVCHandler:^{
+        [weakself pushSearchVc];
+    } andShowScanVCHandler:^{
+        [weakself pushScanView];
+    }];
     
 }
 
