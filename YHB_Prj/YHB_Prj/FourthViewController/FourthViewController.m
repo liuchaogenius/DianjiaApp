@@ -127,13 +127,13 @@ typedef enum : NSUInteger {
     CGFloat imgWidth = 59;
     _userImgBtn = [[UIButton alloc] initWithFrame:CGRectMake(originX, _userNameLabel.top-50-imgWidth, imgWidth, imgWidth)];
     [_userImgBtn setImage:[UIImage imageNamed:@"mine_icon_1"] forState:UIControlStateNormal];
-    if ([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:userFace])
-    {
+//    if ([[SDImageCache sharedImageCache] imageFromDiskCacheForKey:userFace])
+//    {
         UIImage *image = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:userFace];
         [_userImgBtn setImage:image forState:UIControlStateNormal];
-    }
-    else
-    {
+//    }
+//    else
+//    {
         SDWebImageManager *manager = [SDWebImageManager sharedManager];
         NSString *imgUrl = [NSString stringWithFormat:@"%@%@", mode.strFaceDomain,mode.strFaceUrl];
         [manager downloadImageWithURL:[NSURL URLWithString:imgUrl]
@@ -142,12 +142,12 @@ typedef enum : NSUInteger {
                              } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                                  if (image) {
                                      [[SDImageCache sharedImageCache] storeImage:image
-                                                                          forKey:userStr
+                                                                          forKey:userFace
                                                                           toDisk:YES];
                                      [_userImgBtn setImage:image forState:UIControlStateNormal];
                                  }
                              }];
-    }
+//    }
     _userImgBtn.layer.cornerRadius = imgWidth/2.0;
     _userImgBtn.layer.masksToBounds = YES;
     [_userImgBtn addTarget:self action:@selector(plusImageClicked) forControlEvents:UIControlEventTouchUpInside];
