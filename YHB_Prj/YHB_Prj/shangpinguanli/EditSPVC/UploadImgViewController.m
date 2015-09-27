@@ -20,16 +20,18 @@
 @property(nonatomic,strong) NSMutableArray *photoArr;
 @property(nonatomic,strong) UIButton *btnOk;
 @property(nonatomic,copy) NSString *myId;
+@property(nonatomic,strong) void(^ myBlock)(NSArray *);
 @end
 
 @implementation UploadImgViewController
 
-- (instancetype)initWithUploadImgCount:(int)aCount andId:(NSString *)aId
+- (instancetype)initWithUploadImgCount:(int)aCount andId:(NSString *)aId andChangeBlock:(void (^)(NSArray *))aBlock
 {
     if (self=[super init])
     {
         countNeedToUpload = aCount;
         _myId = aId;
+        _myBlock = aBlock;
     }
     return self;
 }
@@ -72,6 +74,7 @@
             NSString *msg = successDict[@"msg"];
             if ([msg isEqualToString:@"success"])
             {
+                _myBlock(_photoArr);
                 [self.navigationController popViewControllerAnimated:YES];
             }
             else [SVProgressHUD showErrorWithStatus:@"上传失败" cover:YES offsetY:kMainScreenHeight/2.0];

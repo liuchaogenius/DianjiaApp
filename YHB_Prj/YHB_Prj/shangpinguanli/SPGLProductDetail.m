@@ -103,7 +103,9 @@
     }
     else
     {
-        UploadImgViewController *vc = [[UploadImgViewController alloc] initWithUploadImgCount:count andId:_productMode.strId];
+        UploadImgViewController *vc = [[UploadImgViewController alloc] initWithUploadImgCount:count andId:_productMode.strId andChangeBlock:^(NSArray *aPhotoArr) {
+#warning 更新上传图片
+        }];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
