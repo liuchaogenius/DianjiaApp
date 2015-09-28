@@ -474,6 +474,11 @@
         UIImageWriteToSavedPhotosAlbum(oriImage, self,selectorToCall, NULL);
     }
     self.didanImage = image;
+    [NetManager uploadImg:image parameters:@{@"id":_modeList.strId} apiName:@"uploadStockSrlPic" uploadUrl:nil uploadimgName:nil progressBlock:nil succ:^(NSDictionary *successDict) {
+        
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        
+    }];
     [picker dismissViewControllerAnimated:YES completion:^{
         [self.didanBT setTitle:@"查看底单" forState:UIControlStateNormal];
 //        [self.didanBT setImage:self.didanImage forState:UIControlStateNormal];
