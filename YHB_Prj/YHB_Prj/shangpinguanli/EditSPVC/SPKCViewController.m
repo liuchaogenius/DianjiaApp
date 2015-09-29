@@ -13,13 +13,13 @@
 
 @interface SPKCViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong) UITableView *tvkc;
-@property(nonatomic,strong) void(^ myBlock)(int);
+@property(nonatomic,strong) void(^ myBlock)(NSArray *);
 @property(nonatomic,strong) NSArray *dataArr;
 @end
 
 @implementation SPKCViewController
 
-- (instancetype)initWithBlock:(void (^)(int))aBlock
+- (instancetype)initWithBlock:(void (^)(NSArray *))aBlock
 {
     if (self =[super init])
     {
@@ -57,19 +57,36 @@
     return[scan scanInt:&val] && [scan isAtEnd];
 }
 
+- (BOOL)isPureFloat:(NSString*)string{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    float val;
+    return[scan scanFloat:&val] && [scan isAtEnd];
+}
+
 - (void)touchOk
 {
-    int allCount = 0;
+    NSMutableArray *resultArr = [NSMutableArray arrayWithCapacity:0];
+    int j=0;
     for (int i=0; i<_dataArr.count; i++)
     {
         SPKCTableViewCell *cell = (SPKCTableViewCell *)[_tvkc cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-        if (cell.countTf.text)
+        if (cell.countTf.text && [self isPureFloat:cell.countTf.text])
         {
-            allCount+=[cell.countTf.text intValue];
+            j++;
+            StoreMode *mode = _dataArr[i];
+            NSString *strid = mode.strId;
+            NSString *count = cell.countTf.text;
+            NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:strid,@"sid",count,@"stockQty", nil];
+            [resultArr addObject:dict];
         }
+        else break;
     }
-    _myBlock(allCount);
-    [self.navigationController popViewControllerAnimated:YES];
+    if (j==_dataArr.count)
+    {
+        _myBlock(resultArr);
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else [SVProgressHUD showErrorWithStatus:@"输入有误" cover:YES offsetY:kMainScreenHeight/2.0];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

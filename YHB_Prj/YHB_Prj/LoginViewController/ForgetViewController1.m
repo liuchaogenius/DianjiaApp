@@ -73,6 +73,7 @@
     [_countBtn setTitle:@"点击获取验证码" forState:UIControlStateNormal];
     __weak ForgetViewController1 *weakSelf = self;
     [_countBtn addToucheHandler:^(JKCountDownButton *sender, NSInteger tag) {
+        [weakSelf.view endEditing:YES];
         NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:0];
         [dict setObject:weakSelf.phoneTF.text forKey:@"smsTo"];
         [dict setObject:@1 forKey:@"smsCheckType"];

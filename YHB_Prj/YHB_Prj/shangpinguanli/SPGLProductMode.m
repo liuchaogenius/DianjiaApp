@@ -60,7 +60,7 @@
     AssignMentID(self.strStayQty, [aDataDict objectForKey:@"sstay_qty"]);
     BaseIntToNSString(self.strStayQty);
     AssignMentID(self.strStockQty, [aDataDict objectForKey:@"stockQty"]);
-    BaseIntToNSString(self.strStockQty);
+    BaseFloadToNSString(self.strStockQty);
     AssignMentID(self.strSysPid, [aDataDict objectForKey:@"sysPid"]);
     BaseIntToNSString(self.strSysPid);
     AssignMentID(self.strUid, [aDataDict objectForKey:@"uid"]);

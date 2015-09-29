@@ -27,7 +27,7 @@
     
     self.pinming.text = aMode.strProductName;
     self.jinjiaLabel.text = aMode.strBuyingPrice;
-    self.kucunlabel.text = aMode.strStayQty;
+    self.kucunlabel.text = [NSString stringWithFormat:@"%.2f", [aMode.strStockQty floatValue]];
     self.shoujiaLabel.text = aMode.strSalePrice;
     self.zhekouLabel.text = aMode.strSaleUnit;
 }

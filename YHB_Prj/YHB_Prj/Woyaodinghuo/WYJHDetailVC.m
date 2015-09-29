@@ -213,6 +213,9 @@
                 [_xiugaiBT setTitle:@"修改" forState:UIControlStateNormal];
                 [_tempTopView removeFromSuperview];
                 [self.tableview setEditing:NO animated:NO];
+                
+                _isEdit = !_isEdit;
+                [self changejieqingBT];
             }
             else [SVProgressHUD showErrorWithStatus:@"修改错误" cover:YES offsetY:kMainScreenHeight/2.0];
         }failure:^(NSDictionary *failDict, NSError *error) {
@@ -240,10 +243,10 @@
         
         [self.tableview setEditing:YES animated:NO];
         [_xiugaiBT setTitle:@"完成" forState:UIControlStateNormal];
+        
+        _isEdit = !_isEdit;
+        [self changejieqingBT];
     }
-    
-    _isEdit = !_isEdit;
-    [self changejieqingBT];
 }
 
 - (void)touchSearch

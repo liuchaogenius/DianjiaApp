@@ -10,6 +10,6 @@
 
 @interface SPKCViewController : BaseViewController
 
-- (instancetype)initWithBlock:(void(^)(int))aBlock;
+- (instancetype)initWithBlock:(void (^)(NSArray *))aBlock;
 
 @end

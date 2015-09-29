@@ -80,7 +80,7 @@
     self.chanpinmaLabel.text = self.productMode.strProductCode;
     self.pinmingLabel.text = self.productMode.strProductName;
     self.jinjiaLabel.text = self.productMode.strBuyingPrice;
-    self.kucunLabel.text = self.productMode.strStayQty;
+    self.kucunLabel.text = self.productMode.strStockQty;
     self.shoujiaLabel.text = self.productMode.strSalePrice;
     self.dianmingAndKuncunLabel.text = [NSString stringWithFormat:@"    %@：库存 %@",self.productMode.strClsName,self.productMode.strStockQty];
 }

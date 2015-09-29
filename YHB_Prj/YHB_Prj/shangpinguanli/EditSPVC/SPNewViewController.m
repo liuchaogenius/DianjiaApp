@@ -76,6 +76,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
 @property(nonatomic,strong) SPKCViewController *kcvc;
 
 @property(nonatomic,strong) NSMutableArray *picArray;
+@property(nonatomic,strong) NSArray *resultArr;
 @end
 
 @implementation SPNewViewController
@@ -365,14 +366,19 @@ typedef NS_ENUM(NSInteger, FieldType) {
     if (_cid)
     {
         [dict setObject:_cid forKey:@"cid"];
-        [dict setObject:self.btnfl.titleLabel.text forKey:@"cls_name"];
+        [dict setObject:[self.btnfl.titleLabel.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:@"cls_name"];
     }
     if (_supid)
     {
         [dict setObject:_supid forKey:@"sup_id"];
         [dict setObject:self.btngy.titleLabel.text forKey:@"sup_name"];
     }
-    [dict setObject:self.textfieldpm.text forKey:@"product_name"];
+    NSString *kc = _btnkc.titleLabel.text?_btnkc.titleLabel.text:@"0";
+    [dict setObject:kc forKey:@"stock"];
+    if (![kc isEqualToString:@"0"]) {
+        [dict setObject:_resultArr forKey:@"pStockList"];
+    }
+    [dict setObject:[self.textfieldpm.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:@"product_name"];
     [dict setObject:self.textfieldtm.text forKey:@"product_code"];
     NSString *jj = [self isNotEmpty:self.textfieldjj.text]?self.textfieldjj.text:@"0";
     [dict setObject:jj forKey:@"buying_price"];
@@ -643,8 +649,14 @@ typedef NS_ENUM(NSInteger, FieldType) {
 - (SPKCViewController *)kcvc
 {
     if (!_kcvc) {
-        _kcvc= [[SPKCViewController alloc] initWithBlock:^(int count) {
-            [self.btnkc setTitle:[NSString stringWithFormat:@"%d", count] forState:UIControlStateNormal];
+        _kcvc= [[SPKCViewController alloc] initWithBlock:^(NSArray *aArr) {
+            float allCount = 0;
+            for (NSDictionary *dict in aArr)
+            {
+                allCount += [dict[@"stockQty"] floatValue];
+            }
+            _resultArr = aArr;
+            [self.btnkc setTitle:[NSString stringWithFormat:@"%.2f", allCount] forState:UIControlStateNormal];
             [self.btnkc setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         }];
     }
