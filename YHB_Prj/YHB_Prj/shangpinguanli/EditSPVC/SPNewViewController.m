@@ -74,6 +74,8 @@ typedef NS_ENUM(NSInteger, FieldType) {
 //@property(nonatomic,strong) UIView *bgkc;
 //@property(nonatomic,strong) UIView *maskingView;
 @property(nonatomic,strong) SPKCViewController *kcvc;
+
+@property(nonatomic,strong) NSMutableArray *picArray;
 @end
 
 @implementation SPNewViewController
@@ -82,6 +84,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
     [super viewDidLoad];
     self.title = @"新增商品";
     self.view.backgroundColor = [UIColor whiteColor];
+    _picArray = [NSMutableArray arrayWithCapacity:0];
     
     _isHide = YES;
     
@@ -270,13 +273,73 @@ typedef NS_ENUM(NSInteger, FieldType) {
     NSDictionary *dict = [self getDict];
     if (dict)
     {
+        self.btnOK.enabled = NO;
+        [SVProgressHUD showWithStatus:@"上传商品中" cover:YES offsetY:kMainScreenHeight/2.0];
         [self.manager saveOrUpdateDict:dict finishBlock:^(NSString *resultCode) {
             if (resultCode)
             {
-                [SVProgressHUD showSuccessWithStatus:@"发布成功" cover:YES offsetY:kMainScreenHeight/2.0];
-#warning 上传图片 
-                //_photoArr
-                [self.navigationController popViewControllerAnimated:YES];
+                if (_photoArr.count>0)
+                {
+                    [SVProgressHUD showWithStatus:@"上传图片中" cover:YES offsetY:kMainScreenHeight/2.0];
+                    int count = (int)_photoArr.count;
+                    __block int chuanOK=0;
+                    for (int i=0; i<count; i++)
+                    {
+                        [NetManager uploadImgArry:@[_photoArr[i]] parameters:@{@"id":resultCode} apiName:@"uploadProductPic" uploadUrl:nil uploadimgName:nil progressBlock:nil succ:^(NSDictionary *successDict) {
+                            NSString *msg = successDict[@"msg"];
+                            MLOG(@"%@", successDict);
+                            if ([msg isEqualToString:@"success"])
+                            {
+                                chuanOK++;
+                                NSDictionary *temDict = successDict[@"result"];
+                                
+                                NSString *domain = temDict[@"picDomain"];
+                                NSString *picName = temDict[@"picName"];
+                                NSString *url = [temDict[@"picUrl"] stringByAppendingString:picName];
+                                NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+                                [dict setObject:url forKey:@"pic_url"];
+                                [dict setObject:domain forKey:@"pic_domain"];
+                                [dict setObject:resultCode forKey:@"pid"];
+                                [_picArray addObject:dict];
+                                
+                                if (chuanOK==count)
+                                {
+                                    [NetManager requestWith:@{@"id":resultCode,@"picList":_picArray} apiName:@"updateProductPicApp" method:@"POST" succ:^(NSDictionary *successDict) {
+                                        NSString *msg = successDict[@"msg"];
+                                        if ([msg isEqualToString:@"success"])
+                                        {
+                                            [SVProgressHUD showSuccessWithStatus:@"商品发布成功" cover:YES offsetY:kMainScreenHeight/2.0];
+                                            [self.navigationController popViewControllerAnimated:YES];
+                                        }
+                                        else
+                                        {
+                                            self.btnOK.enabled = YES;
+                                            [SVProgressHUD showErrorWithStatus:@"上传失败" cover:YES offsetY:kMainScreenHeight/2.0];
+                                        }
+                                    } failure:^(NSDictionary *failDict, NSError *error) {
+                                        self.btnOK.enabled = YES;
+                                        [SVProgressHUD showErrorWithStatus:@"上传失败" cover:YES offsetY:kMainScreenHeight/2.0];
+                                    }];
+                                }
+                                
+                            }
+                            else
+                            {
+                                self.btnOK.enabled = YES;
+                                [SVProgressHUD showErrorWithStatus:@"上传失败" cover:YES offsetY:kMainScreenHeight/2.0];
+                            }
+                        } failure:^(NSDictionary *failDict, NSError *error) {
+                            self.btnOK.enabled = YES;
+                            [SVProgressHUD dismiss];
+                        }];
+                    }
+
+                }
+                else
+                {
+                    [SVProgressHUD showSuccessWithStatus:@"商品发布成功" cover:YES offsetY:kMainScreenHeight/2.0];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
             }
             else [SVProgressHUD showErrorWithStatus:@"发布失败" cover:YES offsetY:kMainScreenHeight/2.0];
         }];
@@ -615,6 +678,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
 
 - (void)addPhoto
 {
+    [self.view endEditing:YES];
     UIActionSheet *sheet;
     
     // 判断是否支持相机
