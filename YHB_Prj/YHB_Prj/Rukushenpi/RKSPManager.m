@@ -26,15 +26,15 @@
 {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:0];
     [dict setValue:[NSNumber numberWithInt:selId] forKey:@"sid"];
-    if(selId == 1)
+    if(selId == enum_weishenhe)
     {
         [dict setValue:[NSNumber numberWithInt:stockSrlCurrentPage_1] forKey:@"pageNo"];
     }
-    else if(selId == 2)
+    else if(selId == enum_yishenhe)
     {
         [dict setValue:[NSNumber numberWithInt:stockSrlCurrentPage_2] forKey:@"pageNo"];
     }
-    else if(selId == -1)
+    else if(selId == enum_all)
     {
         [dict setValue:[NSNumber numberWithInt:stockSrlCurrentPage__1] forKey:@"pageNo"];
     }
@@ -62,15 +62,15 @@
             RKSPModeListList *llist = [[RKSPModeListList alloc] init];
             [llist unPacketData:dict];
             aFinishBlock(llist);
-            if(selId == 1)
+            if(selId == enum_weishenhe)
             {
                 stockSrlCurrentPage_1++;
             }
-            else if(selId == 2)
+            else if(selId == enum_yishenhe)
             {
                 stockSrlCurrentPage_2++;
             }
-            else if(selId == -1)
+            else if(selId == enum_all)
             {
                 stockSrlCurrentPage__1++;
             }

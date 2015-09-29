@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 @class RKSPModeListList;
+typedef NS_ENUM(NSInteger, rukuDataType) {
+    enum_weishenhe=1,
+    enum_yishenhe=2,
+    enum_all=-1,
+};
 @interface RKSPManager : NSObject
 
 - (void)appGetProductStockSrl:(int)selId finishBlock:(void(^)(RKSPModeListList *llist))aFinishBlock;

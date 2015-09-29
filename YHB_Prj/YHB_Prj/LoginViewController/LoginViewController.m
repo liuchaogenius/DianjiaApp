@@ -42,7 +42,7 @@
     self.passInputTF.leftView = [self textfieldLeftView:@"login_pass_icon"];
     self.passInputTF.tag = kPassInputTFTag;
     self.passInputTF.delegate = self;
-    
+    self.passInputTF.secureTextEntry = YES;
     [self.loginBT addTarget:self action:@selector(loginBTItem:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.forgetPassBT addTarget:self action:@selector(forgetPassBTItem:) forControlEvents:UIControlEventTouchUpInside];

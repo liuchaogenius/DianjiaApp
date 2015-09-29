@@ -90,9 +90,15 @@
     [dict setValue:self.modeList.strId forKey:@"id"];
     [NetManager requestWith:dict apiName:@"appDelProductStock" method:@"POST" succ:^(NSDictionary *successDict) {
         self.finishBlock(type_shenhe_clear);
+        [self popviewcontroller];
     } failure:^(NSDictionary *failDict, NSError *error) {
         
     }];
+}
+
+- (void)popviewcontroller
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark 审核通过和清除的回调
@@ -104,7 +110,7 @@
 #pragma mark - UITableViewDataSource
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 21.0f;
+    return 67.0f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView

@@ -37,7 +37,7 @@
     if(self=[super initWithNibName:nibNameOrNil bundle:nil])
     {
         self.hidesBottomBarWhenPushed = YES;
-        self.selType = 1;
+        self.selType = enum_weishenhe;
         self.manager = [[RKSPManager alloc] init];
         self.yishenheArry = [NSMutableArray arrayWithCapacity:0];
         self.weishenheArry = [NSMutableArray arrayWithCapacity:0];
@@ -69,7 +69,7 @@
 #pragma mark 顶部按钮点击事件
 - (void)weishenheBTItem
 {
-    self.selType = 1;//未审核
+    self.selType = enum_weishenhe;//未审核
     [self.weishenheBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
     [self.yishenheBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
@@ -91,7 +91,7 @@
 }
 - (void)yishenheBTItem
 {
-    self.selType = 2;//已审核
+    self.selType = enum_yishenhe;//已审核
     [self.weishenheBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.yishenheBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
     [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
@@ -113,7 +113,7 @@
 }
 - (void)quanBTItem
 {
-    self.selType = -1;//全部
+    self.selType = enum_all;//全部
     [self.weishenheBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.yishenheBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
@@ -360,6 +360,7 @@
                [list.rksModeArry removeObjectAtIndex:indexPath.row];
                if(list.rksModeArry.count == 0)
                {
+                   [temarry removeObject:list];
                    [temarry removeObject:list];
                    [tableView beginUpdates];
                    [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];

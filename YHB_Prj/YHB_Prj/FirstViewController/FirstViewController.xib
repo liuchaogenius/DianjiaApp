@@ -333,7 +333,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <inset key="titleEdgeInsets" minX="-17" minY="0.0" maxX="0.0" maxY="-24"/>
                             <inset key="imageEdgeInsets" minX="22" minY="0.0" maxX="6" maxY="20"/>
-                            <state key="normal" title="挂单查询" image="home_gdcx_icon">
+                            <state key="normal" title="赊账查询" image="home_gdcx_icon">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
