@@ -18,6 +18,20 @@
     return self;
 }
 
+- (void)unPacketAllStoreList:(NSArray *)arry
+{
+    [self.storeAndAllList removeAllObjects];
+    if(arry && arry.count > 0)
+    {
+        for(NSDictionary *storeDict in arry)
+        {
+            StoreMode *sMode = [[StoreMode alloc] init];
+            [sMode unPacketData:storeDict];
+            [self.storeAndAllList addObject:sMode];
+        }
+    }
+}
+
 - (void)unPacketData:(NSDictionary *)aDataDict
 {
     
@@ -85,16 +99,6 @@
     }
 }
 
-- (void)unPacketAllStoreList:(NSArray *)arry
-{
-    [self.storeAndAllList removeAllObjects];
-    for(NSDictionary *storeDict in arry)
-    {
-        StoreMode *sMode = [[StoreMode alloc] init];
-        [sMode unPacketData:storeDict];
-        [self.storeAndAllList addObject:sMode];
-    }
-}
 @end
 
 
