@@ -32,6 +32,8 @@
 
 - (NSArray *)getStoreList;
 
+- (NSArray *)getStoreAndAllList;//返回带有全部店铺的list；
+
 - (NSString *)getCurrentStoreName;
 
 - (void)logout;

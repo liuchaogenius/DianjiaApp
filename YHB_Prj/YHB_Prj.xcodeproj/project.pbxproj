@@ -276,6 +276,11 @@
 		FFDF03A41BB5407F00B6DB80 /* FXSLSDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFDF03A21BB5407F00B6DB80 /* FXSLSDetailViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		FFDF03A81BB5421200B6DB80 /* LSDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDF03A61BB5421200B6DB80 /* LSDetailCell.m */; settings = {ASSET_TAGS = (); }; };
 		FFDF03A91BB5421200B6DB80 /* LSDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFDF03A71BB5421200B6DB80 /* LSDetailCell.xib */; settings = {ASSET_TAGS = (); }; };
+		FFF387DC1BBB869A00AE903C /* JCCXDetailMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF387DB1BBB869A00AE903C /* JCCXDetailMode.m */; settings = {ASSET_TAGS = (); }; };
+		FFF387E01BBB892100AE903C /* JCCXDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF387DE1BBB892100AE903C /* JCCXDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		FFF387E11BBB892100AE903C /* JCCXDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFF387DF1BBB892100AE903C /* JCCXDetailViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		FFF387EA1BBB8D7F00AE903C /* JCCXDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF387E81BBB8D7F00AE903C /* JCCXDetailCell.m */; settings = {ASSET_TAGS = (); }; };
+		FFF387EB1BBB8D7F00AE903C /* JCCXDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFF387E91BBB8D7F00AE903C /* JCCXDetailCell.xib */; settings = {ASSET_TAGS = (); }; };
 		FFF391941B846F58007DC652 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF3917D1B846F58007DC652 /* AFHTTPRequestOperation.m */; };
 		FFF391951B846F58007DC652 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF3917F1B846F58007DC652 /* AFHTTPRequestOperationManager.m */; };
 		FFF391961B846F58007DC652 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF391811B846F58007DC652 /* AFHTTPSessionManager.m */; };
@@ -802,6 +807,14 @@
 		FFDF03A51BB5421200B6DB80 /* LSDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSDetailCell.h; sourceTree = "<group>"; };
 		FFDF03A61BB5421200B6DB80 /* LSDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSDetailCell.m; sourceTree = "<group>"; };
 		FFDF03A71BB5421200B6DB80 /* LSDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSDetailCell.xib; sourceTree = "<group>"; };
+		FFF387DA1BBB869A00AE903C /* JCCXDetailMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCXDetailMode.h; sourceTree = "<group>"; };
+		FFF387DB1BBB869A00AE903C /* JCCXDetailMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCXDetailMode.m; sourceTree = "<group>"; };
+		FFF387DD1BBB892100AE903C /* JCCXDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCXDetailViewController.h; sourceTree = "<group>"; };
+		FFF387DE1BBB892100AE903C /* JCCXDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCXDetailViewController.m; sourceTree = "<group>"; };
+		FFF387DF1BBB892100AE903C /* JCCXDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JCCXDetailViewController.xib; sourceTree = "<group>"; };
+		FFF387E71BBB8D7F00AE903C /* JCCXDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCXDetailCell.h; sourceTree = "<group>"; };
+		FFF387E81BBB8D7F00AE903C /* JCCXDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCXDetailCell.m; sourceTree = "<group>"; };
+		FFF387E91BBB8D7F00AE903C /* JCCXDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JCCXDetailCell.xib; sourceTree = "<group>"; };
 		FFF3917C1B846F58007DC652 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		FFF3917D1B846F58007DC652 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		FFF3917E1B846F58007DC652 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -1900,6 +1913,14 @@
 				FF5CC70E1B9420E000F55713 /* JCCXCell.xib */,
 				FF5CC7141B94264D00F55713 /* JCCXMode.h */,
 				FF5CC7151B94264D00F55713 /* JCCXMode.m */,
+				FFF387DA1BBB869A00AE903C /* JCCXDetailMode.h */,
+				FFF387DB1BBB869A00AE903C /* JCCXDetailMode.m */,
+				FFF387DD1BBB892100AE903C /* JCCXDetailViewController.h */,
+				FFF387DE1BBB892100AE903C /* JCCXDetailViewController.m */,
+				FFF387DF1BBB892100AE903C /* JCCXDetailViewController.xib */,
+				FFF387E71BBB8D7F00AE903C /* JCCXDetailCell.h */,
+				FFF387E81BBB8D7F00AE903C /* JCCXDetailCell.m */,
+				FFF387E91BBB8D7F00AE903C /* JCCXDetailCell.xib */,
 			);
 			path = Jicunchaxun;
 			sourceTree = "<group>";
@@ -2111,6 +2132,7 @@
 				5B1F7F8F1B8F686700763059 /* ProductCheck.storyboard in Resources */,
 				FF357CB61BA2AABD00DFCAC0 /* WYJHListCell.xib in Resources */,
 				FF5CC6FF1B93EE5300F55713 /* RukuDetailCell.xib in Resources */,
+				FFF387E11BBB892100AE903C /* JCCXDetailViewController.xib in Resources */,
 				FF012FB21B8EB92C00AE563C /* HYDetailViewController.xib in Resources */,
 				FFD26CE61B8B1BC50003F491 /* KCYJCell.xib in Resources */,
 				FF357CBB1BA2B56100DFCAC0 /* WYJHSXViewcontroller.xib in Resources */,
@@ -2121,6 +2143,7 @@
 				FFDF03991BB4F49200B6DB80 /* LSCell.xib in Resources */,
 				ABDDB3761BA3B1ED00DCD659 /* JHLSTableViewCell.xib in Resources */,
 				FFD26CEB1B8C1B3B0003F491 /* KCYJViewController.xib in Resources */,
+				FFF387EB1BBB8D7F00AE903C /* JCCXDetailCell.xib in Resources */,
 				FF357CC01BA2C30900DFCAC0 /* WYJHDetailVC.xib in Resources */,
 				FF357C951BA052F500DFCAC0 /* SPGLSearchCell.xib in Resources */,
 				FF5CC7101B9420E000F55713 /* JCCXCell.xib in Resources */,
@@ -2264,6 +2287,7 @@
 				FFF391951B846F58007DC652 /* AFHTTPRequestOperationManager.m in Sources */,
 				ABBC57F21BB55D11002A07D4 /* JKCountDownButton.m in Sources */,
 				5B1F7F951B8F6AAA00763059 /* DJStoryboadManager.m in Sources */,
+				FFF387DC1BBB869A00AE903C /* JCCXDetailMode.m in Sources */,
 				FF012FAF1B8EB92C00AE563C /* HYGLViewController.m in Sources */,
 				FF357C881BA021E400DFCAC0 /* SPGLCategoryMode.m in Sources */,
 				FFDF03981BB4F49200B6DB80 /* LSCell.m in Sources */,
@@ -2314,6 +2338,7 @@
 				FF5C871B1B83024C00F79EC1 /* README.markdown in Sources */,
 				FF5CC7001B93EE5300F55713 /* RukuDetailViewController.m in Sources */,
 				AB2579401B8F02010015039A /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				FFF387EA1BBB8D7F00AE903C /* JCCXDetailCell.m in Sources */,
 				5B1F7F921B8F690400763059 /* DJProductCheckVC.m in Sources */,
 				AB311F9D1B9BFCEE0070784E /* PGResult.m in Sources */,
 				FF5C86F81B81B72400F79EC1 /* MASCompositeConstraint.m in Sources */,
@@ -2356,6 +2381,7 @@
 				AB311F941B9BE0100070784E /* ProblemGoodsManager.m in Sources */,
 				FF2A6C991A0F3D1C001607AC /* ThirdViewController.m in Sources */,
 				FF5CC70A1B93FA0B00F55713 /* JCCXViewController.m in Sources */,
+				FFF387E01BBB892100AE903C /* JCCXDetailViewController.m in Sources */,
 				AB311F8C1B9BDBFE0070784E /* ProblemGoodsViewController.m in Sources */,
 				ABFAB0E51BA1ABCD009D8654 /* PGProductList.m in Sources */,
 				ABAAFB6F1B996B250012D1C6 /* DJYDCXRows.m in Sources */,

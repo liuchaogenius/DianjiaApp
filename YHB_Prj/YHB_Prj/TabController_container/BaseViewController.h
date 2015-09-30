@@ -40,6 +40,8 @@
 - (void)popView:(UIView*)aView completeBlock:(void(^)(BOOL isComplete))aCompleteblock;
 
 - (void)showSelectStoreButton;
+
+- (void)setShowAllStoreList:(BOOL)aIsShowAll;
 /**
  *  需要显示店铺列表的需要重写这个方法
  */

@@ -10,7 +10,7 @@
 #import "NetManager.h"
 #import "LoginManager.h"
 #import "JCCXMode.h"
-
+#import "JCCXDetailMode.h"
 @interface JCCXManager()
 {
     int currentPage_1;
@@ -82,6 +82,42 @@
     } failure:^(NSDictionary *failDict, NSError *error) {
         aFinishBlock(nil);
     }];
+}
+
+- (void)appGetProductStayDetail:(NSString *)aStayId finishBlock:(void(^)(JCCXDetailModeList *list))aFinishBlock
+{
+    if(aStayId)
+    {
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+        [dict setValue:aStayId forKey:@"stayId"];
+        [NetManager requestWith:dict apiName:@"appGetProductStayDetail" method:@"post" succ:^(NSDictionary *successDict) {
+            MLOG(@"%@",successDict);
+            if(successDict)
+            {
+                NSArray *arry = [successDict objectForKey:@"result"];
+                if(arry && arry.count>0)
+                {
+                    JCCXDetailModeList *list = [[JCCXDetailModeList alloc] init];
+                    [list unPacketData:arry];
+                    aFinishBlock(list);
+                }
+                else
+                {
+                    aFinishBlock(nil);
+                }
+            }
+            else
+            {
+                aFinishBlock(nil);
+            }
+        } failure:^(NSDictionary *failDict, NSError *error) {
+            aFinishBlock(nil);
+        }];
+    }
+    else
+    {
+        aFinishBlock(nil);
+    }
 }
 
 - (void)setCurrentVipid:(NSString *)aVipId

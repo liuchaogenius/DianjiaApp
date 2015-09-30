@@ -32,7 +32,9 @@
 @property (nonatomic, strong) NSString *strUname;
 @property (nonatomic, strong) NSString *strUserCore;
 @property (nonatomic, strong) NSMutableArray *storeList;
+@property (nonatomic, strong) NSMutableArray *storeAndAllList;
 - (void)unPacketData:(NSDictionary *)aDataDict;
+- (void)unPacketAllStoreList:(NSArray *)arry;
 @end
 
 

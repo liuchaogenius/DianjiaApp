@@ -44,6 +44,7 @@
                 StoreMode *sm = [self.logMode.storeList objectAtIndex:0];
                 [self setNetWorkStoreId:sm.strId];
                 [self setCurrentStoreName:sm.strStoreName];
+                [self iosAppGetStoreList];
             }
         }];
     }
@@ -80,6 +81,7 @@
             StoreMode *sm = [self.logMode.storeList objectAtIndex:0];
             [self setCurrentStoreName:sm.strStoreName];
             [self setNetWorkStoreId:sm.strId];
+            [self iosAppGetStoreList];
             [[SCach shareInstance] setAsynValue:self.logMode key:@"loginMode" isMemeory:NO filePath:nil block:^(bool isResult) {
                 
             }];
@@ -87,6 +89,23 @@
         aBlock(YES);
     } failure:^(NSDictionary *failDict, NSError *error) {
         aBlock(NO);
+    }];
+}
+
+- (void)iosAppGetStoreList
+{
+    [NetManager requestWith:nil apiName:@"iosAppGetStoreList" method:@"POST" succ:^(NSDictionary *successDict) {
+        MLOG(@"%@",successDict);
+        NSArray *arry = [successDict objectForKey:@"result"];
+        if(arry && arry.count > 0)
+        {
+            if(self.logMode)
+            {
+                [self.logMode unPacketAllStoreList:arry];
+            }
+        }
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        
     }];
 }
 
@@ -156,6 +175,11 @@
 - (NSArray *)getStoreList
 {
     return self.logMode.storeList;
+}
+
+- (NSArray *)getStoreAndAllList
+{
+    return self.logMode.storeAndAllList;
 }
 
 - (LoginMode *)getLoginMode

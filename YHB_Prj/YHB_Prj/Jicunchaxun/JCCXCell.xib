@@ -115,7 +115,7 @@
                 <outlet property="vipNameLabel" destination="55E-hf-e6d" id="f6k-CE-5xT"/>
                 <outlet property="vipNumLabel" destination="fmx-Sn-Tyw" id="vRp-HP-gt7"/>
             </connections>
-            <point key="canvasLocation" x="-40" y="333"/>
+            <point key="canvasLocation" x="76" y="345"/>
         </tableViewCell>
     </objects>
 </document>

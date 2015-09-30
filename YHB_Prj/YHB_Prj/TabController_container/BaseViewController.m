@@ -16,6 +16,7 @@
     UILabel *titleLabel;
     BOOL isShowStorelist;
     BOOL isShowSLBT;
+    BOOL isShowAllStroeList;
 }
 @end
 
@@ -213,6 +214,11 @@
     [self.navigationController.view addSubview:self.storeListBT];
 }
 
+- (void)setShowAllStoreList:(BOOL)aIsShowAll
+{
+    isShowAllStroeList = aIsShowAll;
+}
+
 - (void)showStoreview
 {
     if(isShowStorelist == NO)
@@ -220,7 +226,14 @@
         isShowStorelist = YES;
         self.sview = [[StoreListView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, 150)];
         [self.view addSubview:self.sview];
-        [self.sview setStoreList:[[LoginManager shareLoginManager] getStoreList]];
+        if(isShowAllStroeList == YES)
+        {
+            [self.sview setStoreList:[[LoginManager shareLoginManager] getStoreAndAllList]];
+        }
+        else
+        {
+            [self.sview setStoreList:[[LoginManager shareLoginManager] getStoreList]];
+        }
         [self obserStoreviewResult];
     }
     else

@@ -13,6 +13,7 @@
 {
     if(self = [super init]){
         self.storeList = [NSMutableArray arrayWithCapacity:0];
+        self.storeAndAllList = [NSMutableArray arrayWithCapacity:0];
     }
     return self;
 }
@@ -81,6 +82,17 @@
             [sMode unPacketData:storeDict];
             [self.storeList addObject:sMode];
         }
+    }
+}
+
+- (void)unPacketAllStoreList:(NSArray *)arry
+{
+    [self.storeAndAllList removeAllObjects];
+    for(NSDictionary *storeDict in arry)
+    {
+        StoreMode *sMode = [[StoreMode alloc] init];
+        [sMode unPacketData:storeDict];
+        [self.storeAndAllList addObject:sMode];
     }
 }
 @end

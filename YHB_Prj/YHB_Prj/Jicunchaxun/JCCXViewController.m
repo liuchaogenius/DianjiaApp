@@ -129,6 +129,16 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row < self.modeList.modeList.count)
+    {
+        JCCXMode *mode = [self.modeList.modeList objectAtIndex:indexPath.row];
+//        [self.manager appGetProductStayDetail:mode.strStayId];
+        [self pushXIBName:@"JCCXDetailViewController" animated:YES selector:@"setStayId:" param:mode.strStayId,nil];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -64,6 +64,7 @@
     [self settitleLabel:@"全部店铺"];
     self.manager = [[FirstVCManager alloc] init];
     [self showSelectStoreButton];
+    [self setShowAllStoreList:YES];
     CGFloat height = self.bottom_zxdd_BT.bottom;
     
     [self.scrollView setContentSize:CGSizeMake(kMainScreenWidth, height+20)];
