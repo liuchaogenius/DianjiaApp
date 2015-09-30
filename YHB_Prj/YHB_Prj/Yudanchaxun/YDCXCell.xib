@@ -120,6 +120,7 @@
                 <outlet property="labelNum" destination="tFh-d6-Iwb" id="xb7-y3-b3A"/>
                 <outlet property="labelOdd" destination="QJL-UZ-lpL" id="fcr-El-vGw"/>
                 <outlet property="labelProfit" destination="7Km-Ta-rbI" id="aB5-as-75r"/>
+                <outlet property="labelProfitDes" destination="BUm-ac-9oA" id="soF-6G-Vhb"/>
                 <outlet property="labelTime" destination="Foi-40-xgf" id="s5U-4A-9VH"/>
                 <outlet property="labelType" destination="8HM-2G-yxO" id="Yei-mz-EmV"/>
                 <outlet property="lableName" destination="kG3-ca-2jQ" id="hsI-Gb-VBY"/>

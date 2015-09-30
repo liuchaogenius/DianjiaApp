@@ -84,9 +84,9 @@
 #pragma mark 点击筛选按钮
 - (void)shuaixuanBTItem
 {
-    [self.weiquwanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
-    [self.yiquwanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
-    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+//    [self.weiquwanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+//    [self.yiquwanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+//    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
     JCCXSXViewController *svc = (JCCXSXViewController *)[self pushXIBName:@"JCCXSXViewController" animated:YES selector:@"setJCCXManager:" param:self.manager,nil];
     [svc setOKButtonFinishBlock:^{
         [self weiquwanBTItem];

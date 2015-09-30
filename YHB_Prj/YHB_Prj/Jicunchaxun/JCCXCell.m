@@ -27,8 +27,8 @@
     self.vipNameLabel.text = aMode.strVipName;
     self.pinmingLabel.text = aMode.strProductName;
     self.dianmingLabel.text = aMode.strStoreName;
-    self.dqkcCountLabel.text = aMode.strSrplusSum;
-    self.qhzlCountLabel.text = aMode.strSurplusNum;
+    self.dqkcCountLabel.text = aMode.strSurplusNum;
+    self.qhzlCountLabel.text = aMode.strTakeNum;
     self.qhsjLabel.text = aMode.strOrderTimer;
 }
 

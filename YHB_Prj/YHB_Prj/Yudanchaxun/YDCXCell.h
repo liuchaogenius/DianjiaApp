@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *labelMoney;
 @property (strong, nonatomic) IBOutlet UILabel *labelProfit;
 @property (strong, nonatomic) IBOutlet UILabel *labelType;
+@property (strong, nonatomic) IBOutlet UILabel *labelProfitDes;
 
 + (CGFloat)heightForCell;
 - (void)setCellWithMode:(DJYDCXRows *)aMode;

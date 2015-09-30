@@ -28,9 +28,20 @@
     NSString *proStr;
     if ([aMode.profitMoney isKindOfClass:[NSString class]]) proStr = aMode.profitMoney;
     else proStr = [NSString stringWithFormat:@"%@", aMode.profitMoney];
-    self.labelProfit.text = proStr;
+    
     self.labelTime.text = aMode.orderTime;
     NSString *typeStr = aMode.status==1?@"未结清":@"已结清";
+    if(aMode.status == 1)
+    {
+        self.labelProfitDes.hidden = YES;
+        self.labelProfit.hidden = YES;
+    }
+    else
+    {
+        self.labelProfitDes.hidden = NO;
+        self.labelProfit.hidden = NO;
+        self.labelProfit.text = proStr;
+    }
     self.labelType.text = typeStr;
     self.lableName.text = aMode.vipName;
 }

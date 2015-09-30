@@ -25,7 +25,7 @@
     [self resetView];
     self.dianmingLabel.text = aMode.strStoreName;
     self.gongyingshangLabel.text = aMode.strSupName;
-    self.jinhuoPrice.text = aMode.strSalePrice;
+    self.jinhuoPrice.text = aMode.strStockPrice;
     self.descLabel.text = [NSString stringWithFormat:@"总计%@种商品，共%@件",aMode.strStayQty,aMode.strStockQty];
 }
 

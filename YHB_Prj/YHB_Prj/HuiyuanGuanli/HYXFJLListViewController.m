@@ -39,6 +39,11 @@
     [self settitleLabel:@"消费记录"];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [SVProgressHUD showWithStatus:kLoadingText cover:NO offsetY:64];
     [self.manager getVipSaleOneMonth:self.mode.strId finishBlock:^(HYGLDataModeList *mode) {
         [SVProgressHUD dismiss];
@@ -66,7 +71,6 @@
 - (void)setDetailData:(id)aMode
 {
     self.mode = aMode;
-
 }
 
 #pragma mark - UITableViewDataSource
@@ -82,7 +86,7 @@
         HYGLOneMothTimeList *timlist = [self.modeListArry objectAtIndex:section];
         NSString *time = timlist.strOrderTime;
         label.text =  [NSString stringWithFormat:@"   消费时间：%@",time];
-        label.backgroundColor = [UIColor grayColor];
+        label.backgroundColor = RGBCOLOR(229, 229, 229);
     }
     return label;
 }

@@ -329,7 +329,7 @@
 #pragma mark 发送短信
 - (void)sendMsgBTItem
 {
-    if(self.selectCellArry)
+    if(self.selectCellArry && self.selectCellArry.count > 0)
     {
         NSMutableArray *telArry = [NSMutableArray arrayWithCapacity:0];
         for(VipInfoMode *mode in self.selectCellArry)

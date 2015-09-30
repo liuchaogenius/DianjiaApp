@@ -24,7 +24,10 @@
 {
     self.dianmingLabel.text = aMode.strStoreName;
     self.jinjiaLabel.text = aMode.strStockPrice;
-    self.zongjiaLabel.text = aMode.strSalePrice;
+    CGFloat zongjia = [aMode.strStockNum intValue]*[aMode.strStockPrice floatValue];
+    NSString *strzj = nil;
+    kFloatToString(strzj, zongjia);
+    self.zongjiaLabel.text = strzj;
 }
 
 - (void)resetview

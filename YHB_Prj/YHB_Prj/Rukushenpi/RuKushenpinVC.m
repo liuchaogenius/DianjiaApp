@@ -239,7 +239,7 @@
         if(section < self.weishenheArry.count)
         {
             RKSPModeList *list = [self.weishenheArry objectAtIndex:section];
-            time = list.strStatusDesc;
+            status = list.strStatusDesc;
         }
     }
     else if(self.selType == 2)
@@ -259,7 +259,7 @@
         }
     }
     
-    labelStatus.text =  [NSString stringWithFormat:@"状态：%@",time];
+    labelStatus.text =  [NSString stringWithFormat:@"状态：%@",status];
     labelStatus.backgroundColor = [UIColor clearColor];
     [sectionHeadview addSubview:labelStatus];
     return sectionHeadview;

@@ -25,7 +25,7 @@
 - (void)appGetProductStockSrl:(int)selId finishBlock:(void(^)(RKSPModeListList *llist))aFinishBlock
 {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:0];
-    [dict setValue:[NSNumber numberWithInt:selId] forKey:@"sid"];
+    [dict setValue:[NSNumber numberWithInt:selId] forKey:@"status"];
     if(selId == enum_weishenhe)
     {
         [dict setValue:[NSNumber numberWithInt:stockSrlCurrentPage_1] forKey:@"pageNo"];
