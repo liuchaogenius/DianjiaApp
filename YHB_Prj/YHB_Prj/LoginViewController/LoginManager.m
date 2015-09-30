@@ -59,9 +59,15 @@
     [dict setValue:@"18066040008" forKey:@"userName"];
     [dict setValue:@"000000" forKey:@"userPassword"];
 #else
+    if(!aUserName || !aPass)
+    {
+        [SVProgressHUD showErrorWithStatus:@"请输入用户名或密码" duration:1.0f cover:NO offsetY:64];
+        return ;
+    }
     [dict setValue:aUserName forKey:@"userName"];
     [dict setValue:aPass forKey:@"userPassword"];
 #endif
+    
     [dict setValue:@"1" forKey:@"loginUserType"];
     [NetManager requestWith:dict apiName:@"loginApp" method:@"POST" succ:^(NSDictionary *successDict) {
         NSDictionary *resultDict = [successDict objectForKey:@"result"];
