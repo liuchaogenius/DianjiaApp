@@ -61,7 +61,7 @@
     weakself = self;
     self.strStartTime = @"0";
     self.strEndTime = nil;
-    [self settitleLabel:@"全部店铺"];
+    [self settitleLabel:@"全部门店"];
     self.manager = [[FirstVCManager alloc] init];
     [self showSelectStoreButton];
     [self setShowAllStoreList:YES];

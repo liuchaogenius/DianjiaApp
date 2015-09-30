@@ -102,6 +102,9 @@
             if(self.logMode)
             {
                 [self.logMode unPacketAllStoreList:arry];
+                [[SCach shareInstance] setAsynValue:self.logMode key:@"loginMode" isMemeory:NO filePath:nil block:^(bool isResult) {
+                    
+                }];
             }
         }
     } failure:^(NSDictionary *failDict, NSError *error) {
