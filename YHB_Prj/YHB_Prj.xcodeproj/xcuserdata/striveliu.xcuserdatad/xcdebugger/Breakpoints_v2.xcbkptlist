@@ -74,7 +74,7 @@
                   moduleName = "YHB_Prj"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "465359379.419723"
+                  timestampString = "465360651.47385"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "150"
@@ -89,7 +89,7 @@
                   moduleName = "YHB_Prj"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "465359379.420065"
+                  timestampString = "465360651.47419"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "150"
@@ -122,7 +122,7 @@
                   moduleName = "YHB_Prj"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "465359379.421915"
+                  timestampString = "465360651.475972"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "176"
@@ -137,7 +137,7 @@
                   moduleName = "YHB_Prj"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/FirstViewController/FirstVCManager.m"
-                  timestampString = "465359379.422272"
+                  timestampString = "465360651.476335"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "176"
@@ -186,7 +186,7 @@
                   moduleName = "YHB_Prj"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/Rukushenpi/RuKushenpinVC.m"
-                  timestampString = "465359379.425404"
+                  timestampString = "465360651.479287"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "123"
@@ -201,7 +201,7 @@
                   moduleName = "YHB_Prj"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/Rukushenpi/RuKushenpinVC.m"
-                  timestampString = "465359379.425688"
+                  timestampString = "465360651.479577"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "123"
@@ -234,7 +234,7 @@
                   moduleName = "YHB_Prj"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/Rukushenpi/RuKushenpinVC.m"
-                  timestampString = "465359379.427111"
+                  timestampString = "465360651.481046"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
@@ -249,7 +249,7 @@
                   moduleName = "YHB_Prj"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/striveliu/%E5%A4%96%E5%8C%85%E9%A1%B9%E7%9B%AE/%E8%91%A3%E9%94%8B/Dian+/DianjiaApp/YHB_Prj/YHB_Prj/Rukushenpi/RuKushenpinVC.m"
-                  timestampString = "465359379.4274"
+                  timestampString = "465360651.481327"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
@@ -297,13 +297,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YHB_Prj/Jicunchaxun/JCCXViewController.m"
-            timestampString = "465277354.007423"
+            filePath = "YHB_Prj/Jicunchaxun/JCCXSXViewController.m"
+            timestampString = "465360650.400972"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "-okButtonItem"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YHB_Prj/Jicunchaxun/JCCXSXViewController.m"
+            timestampString = "465360481.081017"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "-setOKButtonFinishBlock:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YHB_Prj/Jicunchaxun/JCCXSXViewController.m"
+            timestampString = "465360482.039987"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "-setYDCXManager:andPopBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

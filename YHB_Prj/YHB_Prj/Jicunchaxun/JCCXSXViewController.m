@@ -194,6 +194,24 @@
             [_YDCXmanager setCurrentVipid:_strVipeId];
         }
     }
+    if(self.manager)
+    {
+        if (self.strEndTime&& _strEndTime.length > 0)
+        {
+            isHaveChange = YES;
+            [self.manager setEndTime:_strEndTime];
+        }
+        if(self.strStartTime &&self.strStartTime.length>0)
+        {
+            isHaveChange = YES;
+            [self.manager setStartTime:self.strStartTime];
+        }
+        if(self.strVipeId)
+        {
+            isHaveChange = YES;
+            [self.manager setCurrentVipid:_strVipeId];
+        }
+    }
     if (_myPopBlock && isHaveChange==YES) {
         _myPopBlock();
     }
