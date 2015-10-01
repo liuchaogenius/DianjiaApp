@@ -14,5 +14,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *gongyingshangLabel;
 @property (strong, nonatomic) IBOutlet UILabel *jinhuoPrice;
 @property (strong, nonatomic) IBOutlet UILabel *descLabel;
-- (void)setCellData:(RKSPMode *)aMode;
+- (void)setCellData:(RKSPMode *)aMode zhongCount:(int)aCount;
 @end

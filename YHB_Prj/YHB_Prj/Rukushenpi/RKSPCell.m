@@ -20,13 +20,13 @@
     // Configure the view for the selected state
 }
 
-- (void)setCellData:(RKSPMode *)aMode
+- (void)setCellData:(RKSPMode *)aMode zhongCount:(int)aCount
 {
     [self resetView];
     self.dianmingLabel.text = aMode.strStoreName;
     self.gongyingshangLabel.text = aMode.strSupName;
     self.jinhuoPrice.text = aMode.strStockPrice;
-    self.descLabel.text = [NSString stringWithFormat:@"总计%@种商品，共%@件",aMode.strStayQty,aMode.strStockQty];
+    self.descLabel.text = [NSString stringWithFormat:@"总计%d种商品，共%@件",aCount,aMode.strStockNum];
 }
 
 - (void)resetView

@@ -299,7 +299,7 @@
         {
             RKSPModeList *list = [self.weishenheArry objectAtIndex:indexPath.section];
             RKSPMode *mode = [list.rksModeArry objectAtIndex:indexPath.row];
-            [cell setCellData:mode];
+            [cell setCellData:mode zhongCount:list.rksModeArry.count];
         }
     }
     else if(self.selType == 2)
@@ -308,7 +308,7 @@
         {
             RKSPModeList *list = [self.yishenheArry objectAtIndex:indexPath.section];
             RKSPMode *mode = [list.rksModeArry objectAtIndex:indexPath.row];
-            [cell setCellData:mode];
+            [cell setCellData:mode zhongCount:list.rksModeArry.count];
         }
     }
     else if(self.selType == -1)
@@ -317,7 +317,7 @@
         {
             RKSPModeList *list = [self.quanbuArry objectAtIndex:indexPath.section];
             RKSPMode *mode = [list.rksModeArry objectAtIndex:indexPath.row];
-            [cell setCellData:mode];
+            [cell setCellData:mode zhongCount:list.rksModeArry.count];
         }
     }
 }
