@@ -22,12 +22,10 @@
 
 - (void)setCellWithMode:(DJYDCXRows *)aMode
 {
-    self.labelMoney.text = [NSString stringWithFormat:@"%.2f", aMode.realMoney];
+    self.labelMoney.text = [NSString stringWithFormat:@"%.2f", [aMode.payrelMoney floatValue]];
     self.labelNum.text = [NSString stringWithFormat:@"%.f", aMode.rowsIdentifier];
     self.labelOdd.text = aMode.srl;
-    NSString *proStr;
-    if ([aMode.profitMoney isKindOfClass:[NSString class]]) proStr = aMode.profitMoney;
-    else proStr = [NSString stringWithFormat:@"%@", aMode.profitMoney];
+    NSString *proStr = [NSString stringWithFormat:@"%.2f", [aMode.profitMoney floatValue]];
     
     self.labelTime.text = aMode.orderTime;
     NSString *typeStr = aMode.status==1?@"未结清":@"已结清";

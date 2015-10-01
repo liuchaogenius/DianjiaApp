@@ -74,7 +74,7 @@
 
 - (void)weirukuBTItem
 {
-    self.selType = 1;//未入库
+    self.selType = 1;//未处理
     [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
     [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
@@ -100,7 +100,7 @@
 }
 - (void)yirukuBTItem
 {
-    self.selType = 2;//已入库
+    self.selType = 2;//未收货
     [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
     [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
@@ -126,7 +126,7 @@
 }
 - (void)quanBTItem
 {
-    self.selType = 0;//全部
+    self.selType = 0;//已收货
     [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
@@ -282,7 +282,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 67.0f;
+    return 104.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

@@ -26,17 +26,19 @@
 - (void)appGetStorageSrl:(int)selId finishBlock:(void(^)(WYJHModeRows *llist))aFinishBlock
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
-    [dict setValue:[NSNumber numberWithInt:selId] forKey:@"sid"];
+//    [dict setValue:[NSNumber numberWithInt:selId] forKey:@"sid"];
     if(selId == 1)
     {
         [dict setValue:[NSNumber numberWithInt:stockSrlCurrentPage_1] forKey:@"pageNo"];
     }
     else if(selId == 2)
     {
+        [dict setValue:@0 forKey:@"status"];
         [dict setValue:[NSNumber numberWithInt:stockSrlCurrentPage_2] forKey:@"pageNo"];
     }
     else if(selId == 0)
     {
+        [dict setValue:@1 forKey:@"status"];
         [dict setValue:[NSNumber numberWithInt:stockSrlCurrentPage__1] forKey:@"pageNo"];
     }
     [dict setValue:[NSNumber numberWithInt:20] forKey:@"pageSize"];

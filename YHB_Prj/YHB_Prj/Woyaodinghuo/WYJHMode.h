@@ -72,6 +72,10 @@
 
 @property (nonatomic, strong) NSString *strEmpStockId;
 
+@property(nonatomic,strong) NSString *strCounterfoilDomain;
+
+@property(nonatomic,strong) NSString *strCounterfoilUrl;
+
 @property (nonatomic, strong) NSMutableArray *modeListArry;
 @end
 

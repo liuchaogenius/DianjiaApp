@@ -90,6 +90,7 @@ static const CGFloat bottomViewHeight = 44;
                 {
                     [_currentArray addObjectsFromArray:resultArr];
                     [_tableviewYudan reloadData];
+                    [self reloadBottomView];
                 }
                 else [SVProgressHUD showErrorWithStatus:@"无数据" cover:YES offsetY:kMainScreenHeight/2.0];
                 [weakself.tableviewYudan.infiniteScrollingView stopAnimating];

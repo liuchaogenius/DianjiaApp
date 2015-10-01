@@ -117,6 +117,11 @@
     
     AssignMentID(self.strTotalRealPay, [aDataDict objectForKey:@"total_real_pay"]);
     BaseFloadToNSString(self.strTotalRealPay);
+    
+    AssignMentID(self.strCounterfoilDomain, [aDataDict objectForKey:@"counterfoil_domain"]);
+    
+    AssignMentID(self.strCounterfoilUrl, [aDataDict objectForKey:@"counterfoil_url"]);
+    
     NSArray *detailList = [aDataDict objectForKey:@"detailList"];
     if(detailList && detailList.count > 0)
     {
