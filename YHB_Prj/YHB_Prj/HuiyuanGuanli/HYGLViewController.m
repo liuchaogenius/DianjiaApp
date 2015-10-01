@@ -78,6 +78,7 @@
     if(isSelectAll == YES)
     {
         [self.quanxuanBT setImage:[UIImage imageNamed:@"hyList_icon"] forState:UIControlStateNormal];
+        [self.selectCellArry addObjectsFromArray:self.vipInfoArry];
     }
     else
     {
