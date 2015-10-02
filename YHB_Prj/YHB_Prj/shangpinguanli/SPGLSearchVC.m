@@ -13,8 +13,9 @@
 #import "DJCheckCartItemComponent.h"
 #import "WYJHMode.h"
 #import "WYJHEditViewController.h"
+#import "SPNewViewController.h"
 
-@interface SPGLSearchVC ()<DJProductCheckViewDataSoure>
+@interface SPGLSearchVC ()<DJProductCheckViewDataSoure,UIAlertViewDelegate>
 {
     NSString *cateId;
     int isGetNetdata; //1 分类id，2 条形码
@@ -66,6 +67,10 @@
             {
                 weakself.productList = aList;
                 [weakself.tableview reloadData];
+            }else {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"没有该商品，要添加商品吗？" message:@"是否添加？" delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+                alertView.tag = 101;
+                [alertView show];
             }
         }];
     }else {
@@ -304,6 +309,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView.tag == 101 && buttonIndex == 1) {
+        // add product
+        SPNewViewController *vc = [[SPNewViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
 /*
 #pragma mark - Navigation
 
