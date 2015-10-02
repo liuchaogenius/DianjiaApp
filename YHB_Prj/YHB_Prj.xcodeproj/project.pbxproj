@@ -24,8 +24,6 @@
 		5B54BA2B1B922676002098A4 /* DJCheckCartItemComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA2A1B922676002098A4 /* DJCheckCartItemComponent.m */; };
 		5B54BA351B922AED002098A4 /* DJCheckCartContexManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA341B922AED002098A4 /* DJCheckCartContexManager.m */; };
 		5B54BA381B922CB2002098A4 /* DJCheckCartContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA371B922CB2002098A4 /* DJCheckCartContext.m */; };
-		5B54BA3B1B92B0BC002098A4 /* DJCheckCartNetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA3A1B92B0BC002098A4 /* DJCheckCartNetService.m */; };
-		5B54BA3F1B92F9C0002098A4 /* DJCheckCartSubmitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA3E1B92F9C0002098A4 /* DJCheckCartSubmitRequest.m */; };
 		5B54BA421B9336C7002098A4 /* DJCheckCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA411B9336C7002098A4 /* DJCheckCartCell.m */; };
 		5B54BA481B9348FD002098A4 /* DJProductCheckViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B54BA471B9348FD002098A4 /* DJProductCheckViewManager.m */; };
 		5BA5AA311B98297400329677 /* DJScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA5AA301B98297400329677 /* DJScanViewController.m */; };
@@ -95,10 +93,10 @@
 		ABAAFB6E1B996B250012D1C6 /* DJYDCXResult.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAAFB6A1B996B250012D1C6 /* DJYDCXResult.m */; };
 		ABAAFB6F1B996B250012D1C6 /* DJYDCXRows.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAAFB6C1B996B250012D1C6 /* DJYDCXRows.m */; };
 		ABAE34A11BA0109C00221980 /* ScanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAE34A01BA0109C00221980 /* ScanVC.m */; };
-		ABBC57E81BB53196002A07D4 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC57E71BB53196002A07D4 /* AboutUsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		ABBC57EB1BB55980002A07D4 /* ForgetViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC57EA1BB55980002A07D4 /* ForgetViewController1.m */; settings = {ASSET_TAGS = (); }; };
-		ABBC57EE1BB5598D002A07D4 /* ForgetViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC57ED1BB5598D002A07D4 /* ForgetViewController2.m */; settings = {ASSET_TAGS = (); }; };
-		ABBC57F21BB55D11002A07D4 /* JKCountDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC57F11BB55D11002A07D4 /* JKCountDownButton.m */; settings = {ASSET_TAGS = (); }; };
+		ABBC57E81BB53196002A07D4 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC57E71BB53196002A07D4 /* AboutUsViewController.m */; };
+		ABBC57EB1BB55980002A07D4 /* ForgetViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC57EA1BB55980002A07D4 /* ForgetViewController1.m */; };
+		ABBC57EE1BB5598D002A07D4 /* ForgetViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC57ED1BB5598D002A07D4 /* ForgetViewController2.m */; };
+		ABBC57F21BB55D11002A07D4 /* JKCountDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC57F11BB55D11002A07D4 /* JKCountDownButton.m */; };
 		ABDDB3711BA2CF4000DCD659 /* JHLSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB3701BA2CF4000DCD659 /* JHLSViewController.m */; };
 		ABDDB3751BA3B1ED00DCD659 /* JHLSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDDB3731BA3B1ED00DCD659 /* JHLSTableViewCell.m */; };
 		ABDDB3761BA3B1ED00DCD659 /* JHLSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABDDB3741BA3B1ED00DCD659 /* JHLSTableViewCell.xib */; };
@@ -266,21 +264,21 @@
 		FFD26CF01B8C3F940003F491 /* ZXBJCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFD26CEE1B8C3F940003F491 /* ZXBJCell.xib */; };
 		FFD26CF41B8C546F0003F491 /* ZCBCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CF21B8C546F0003F491 /* ZCBCell.m */; };
 		FFD26CF51B8C546F0003F491 /* ZCBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFD26CF31B8C546F0003F491 /* ZCBCell.xib */; };
-		FFDF03931BB4E48F00B6DB80 /* FXSLSViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDF03911BB4E48F00B6DB80 /* FXSLSViewcontroller.m */; settings = {ASSET_TAGS = (); }; };
-		FFDF03941BB4E48F00B6DB80 /* FXSLSViewcontroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFDF03921BB4E48F00B6DB80 /* FXSLSViewcontroller.xib */; settings = {ASSET_TAGS = (); }; };
-		FFDF03981BB4F49200B6DB80 /* LSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDF03961BB4F49200B6DB80 /* LSCell.m */; settings = {ASSET_TAGS = (); }; };
-		FFDF03991BB4F49200B6DB80 /* LSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFDF03971BB4F49200B6DB80 /* LSCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FFDF039C1BB51BCA00B6DB80 /* LSMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDF039B1BB51BCA00B6DB80 /* LSMode.m */; settings = {ASSET_TAGS = (); }; };
-		FFDF039F1BB53D8300B6DB80 /* LSDetailMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDF039E1BB53D8300B6DB80 /* LSDetailMode.m */; settings = {ASSET_TAGS = (); }; };
-		FFDF03A31BB5407F00B6DB80 /* FXSLSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDF03A11BB5407F00B6DB80 /* FXSLSDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
-		FFDF03A41BB5407F00B6DB80 /* FXSLSDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFDF03A21BB5407F00B6DB80 /* FXSLSDetailViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		FFDF03A81BB5421200B6DB80 /* LSDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDF03A61BB5421200B6DB80 /* LSDetailCell.m */; settings = {ASSET_TAGS = (); }; };
-		FFDF03A91BB5421200B6DB80 /* LSDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFDF03A71BB5421200B6DB80 /* LSDetailCell.xib */; settings = {ASSET_TAGS = (); }; };
-		FFF387DC1BBB869A00AE903C /* JCCXDetailMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF387DB1BBB869A00AE903C /* JCCXDetailMode.m */; settings = {ASSET_TAGS = (); }; };
-		FFF387E01BBB892100AE903C /* JCCXDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF387DE1BBB892100AE903C /* JCCXDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
-		FFF387E11BBB892100AE903C /* JCCXDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFF387DF1BBB892100AE903C /* JCCXDetailViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		FFF387EA1BBB8D7F00AE903C /* JCCXDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF387E81BBB8D7F00AE903C /* JCCXDetailCell.m */; settings = {ASSET_TAGS = (); }; };
-		FFF387EB1BBB8D7F00AE903C /* JCCXDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFF387E91BBB8D7F00AE903C /* JCCXDetailCell.xib */; settings = {ASSET_TAGS = (); }; };
+		FFDF03931BB4E48F00B6DB80 /* FXSLSViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDF03911BB4E48F00B6DB80 /* FXSLSViewcontroller.m */; };
+		FFDF03941BB4E48F00B6DB80 /* FXSLSViewcontroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFDF03921BB4E48F00B6DB80 /* FXSLSViewcontroller.xib */; };
+		FFDF03981BB4F49200B6DB80 /* LSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDF03961BB4F49200B6DB80 /* LSCell.m */; };
+		FFDF03991BB4F49200B6DB80 /* LSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFDF03971BB4F49200B6DB80 /* LSCell.xib */; };
+		FFDF039C1BB51BCA00B6DB80 /* LSMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDF039B1BB51BCA00B6DB80 /* LSMode.m */; };
+		FFDF039F1BB53D8300B6DB80 /* LSDetailMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDF039E1BB53D8300B6DB80 /* LSDetailMode.m */; };
+		FFDF03A31BB5407F00B6DB80 /* FXSLSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDF03A11BB5407F00B6DB80 /* FXSLSDetailViewController.m */; };
+		FFDF03A41BB5407F00B6DB80 /* FXSLSDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFDF03A21BB5407F00B6DB80 /* FXSLSDetailViewController.xib */; };
+		FFDF03A81BB5421200B6DB80 /* LSDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDF03A61BB5421200B6DB80 /* LSDetailCell.m */; };
+		FFDF03A91BB5421200B6DB80 /* LSDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFDF03A71BB5421200B6DB80 /* LSDetailCell.xib */; };
+		FFF387DC1BBB869A00AE903C /* JCCXDetailMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF387DB1BBB869A00AE903C /* JCCXDetailMode.m */; };
+		FFF387E01BBB892100AE903C /* JCCXDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF387DE1BBB892100AE903C /* JCCXDetailViewController.m */; };
+		FFF387E11BBB892100AE903C /* JCCXDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFF387DF1BBB892100AE903C /* JCCXDetailViewController.xib */; };
+		FFF387EA1BBB8D7F00AE903C /* JCCXDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF387E81BBB8D7F00AE903C /* JCCXDetailCell.m */; };
+		FFF387EB1BBB8D7F00AE903C /* JCCXDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFF387E91BBB8D7F00AE903C /* JCCXDetailCell.xib */; };
 		FFF391941B846F58007DC652 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF3917D1B846F58007DC652 /* AFHTTPRequestOperation.m */; };
 		FFF391951B846F58007DC652 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF3917F1B846F58007DC652 /* AFHTTPRequestOperationManager.m */; };
 		FFF391961B846F58007DC652 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF391811B846F58007DC652 /* AFHTTPSessionManager.m */; };
@@ -337,11 +335,7 @@
 		5B54BA341B922AED002098A4 /* DJCheckCartContexManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJCheckCartContexManager.m; sourceTree = "<group>"; };
 		5B54BA361B922CB2002098A4 /* DJCheckCartContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJCheckCartContext.h; sourceTree = "<group>"; };
 		5B54BA371B922CB2002098A4 /* DJCheckCartContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJCheckCartContext.m; sourceTree = "<group>"; };
-		5B54BA391B92B0BC002098A4 /* DJCheckCartNetService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJCheckCartNetService.h; sourceTree = "<group>"; };
-		5B54BA3A1B92B0BC002098A4 /* DJCheckCartNetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJCheckCartNetService.m; sourceTree = "<group>"; };
 		5B54BA3C1B92B180002098A4 /* DJCheckCartPublic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DJCheckCartPublic.h; sourceTree = "<group>"; };
-		5B54BA3D1B92F9C0002098A4 /* DJCheckCartSubmitRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJCheckCartSubmitRequest.h; sourceTree = "<group>"; };
-		5B54BA3E1B92F9C0002098A4 /* DJCheckCartSubmitRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJCheckCartSubmitRequest.m; sourceTree = "<group>"; };
 		5B54BA401B9336C7002098A4 /* DJCheckCartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJCheckCartCell.h; sourceTree = "<group>"; };
 		5B54BA411B9336C7002098A4 /* DJCheckCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJCheckCartCell.m; sourceTree = "<group>"; };
 		5B54BA461B9348FD002098A4 /* DJProductCheckViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProductCheckViewManager.h; sourceTree = "<group>"; };
@@ -922,7 +916,6 @@
 		5B54BA211B9225E3002098A4 /* CheckCart */ = {
 			isa = PBXGroup;
 			children = (
-				5B54BA2F1B9226BE002098A4 /* Service */,
 				5B54BA2D1B922698002098A4 /* Processor */,
 				5B54BA2C1B922683002098A4 /* Interface */,
 				5B54BA251B92260C002098A4 /* Model */,
@@ -958,17 +951,6 @@
 				5B54BA371B922CB2002098A4 /* DJCheckCartContext.m */,
 			);
 			name = Processor;
-			sourceTree = "<group>";
-		};
-		5B54BA2F1B9226BE002098A4 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				5B54BA391B92B0BC002098A4 /* DJCheckCartNetService.h */,
-				5B54BA3A1B92B0BC002098A4 /* DJCheckCartNetService.m */,
-				5B54BA3D1B92F9C0002098A4 /* DJCheckCartSubmitRequest.h */,
-				5B54BA3E1B92F9C0002098A4 /* DJCheckCartSubmitRequest.m */,
-			);
-			name = Service;
 			sourceTree = "<group>";
 		};
 		5BA5AA2E1B98293600329677 /* Scan */ = {
@@ -2303,7 +2285,6 @@
 				FF5C86DE1B818BE700F79EC1 /* SSWAnimator.m in Sources */,
 				FFF3919E1B846F58007DC652 /* NetManager.m in Sources */,
 				FF357CA01BA1310300DFCAC0 /* SBPageFlowView.m in Sources */,
-				5B54BA3F1B92F9C0002098A4 /* DJCheckCartSubmitRequest.m in Sources */,
 				ABDDB3801BA3C2E300DCD659 /* XSLSTableViewCell.m in Sources */,
 				FF2A6C7A1A0F3B7B001607AC /* UIView+WebCacheOperation.m in Sources */,
 				AB25793E1B8F02010015039A /* IQTitleBarButtonItem.m in Sources */,
@@ -2362,7 +2343,6 @@
 				AB311F9E1B9BFCEE0070784E /* PGRows.m in Sources */,
 				FF2A6C711A0F3B7B001607AC /* SDWebImageDownloaderOperation.m in Sources */,
 				ABDDB3711BA2CF4000DCD659 /* JHLSViewController.m in Sources */,
-				5B54BA3B1B92B0BC002098A4 /* DJCheckCartNetService.m in Sources */,
 				5B1F7F991B8F73C000763059 /* CALayer+CCAddition.m in Sources */,
 				FF012FAB1B8EB92C00AE563C /* HYXFJLListViewController.m in Sources */,
 				AB79DB591B93FF6000CC1894 /* ChooseBtn.m in Sources */,

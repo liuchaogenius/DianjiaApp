@@ -30,7 +30,7 @@
  *  success
  *  failure
  */
-+ (void)requestWith:(NSDictionary *)aDict
++ (void)requestWith:(id)aDict
             apiName:(NSString *)aApiName
              method:(NSString *)aMethod
                succ:(SUCCESSBLOCK)success
@@ -44,12 +44,6 @@
     progressBlock:(PROGRESSBLOCK)block
              succ:(SUCCESSBLOCK)success
           failure:(FAILUREBLOCK)failure;
-
-+ (void)requestWithData:(id)aData
-            apiName:(NSString *)aApiName
-             method:(NSString *)aMethod
-               succ:(SUCCESSBLOCK)success
-            failure:(FAILUREBLOCK)failure;
 
 + (void)uploadImgArry:(NSArray*)aImgArry
            parameters:(NSDictionary*)aParam

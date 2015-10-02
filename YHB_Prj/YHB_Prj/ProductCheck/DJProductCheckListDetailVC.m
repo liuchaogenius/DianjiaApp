@@ -88,7 +88,7 @@ typedef NS_ENUM(NSUInteger, DJProductCheckDetailType) {
     DJProductCheckListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"List" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     DJProductCheckDetail *detail = self.currentProductDetails[indexPath.row];
-    cell.detailTextLabel.text = detail.orderTime;
+    cell.dateLabel.text = detail.orderTime;
     cell.mainTitleLabel.text = detail.productName;
     cell.rightTextLabel.text = [NSString stringWithFormat:@"%ld",(NSInteger) detail.realQty];
     cell.middleTextLabel.text = [NSString stringWithFormat:@"%ld",(NSInteger)detail.stayQty];

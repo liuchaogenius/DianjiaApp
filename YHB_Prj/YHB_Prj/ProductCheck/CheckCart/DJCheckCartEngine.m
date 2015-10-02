@@ -8,7 +8,6 @@
 
 #import "DJCheckCartEngine.h"
 #import "DJCheckCartContexManager.h"
-#import "DJCheckCartNetService.h"
 #import "JSONKit.h"
 #import "DJProductCheckManager.h"
 #import "AFNetworking.h"

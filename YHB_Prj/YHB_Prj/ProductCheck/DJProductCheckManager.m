@@ -13,6 +13,7 @@
 #import "JSONKit.h"
 #import "DJCheckCartItemComponent.h"
 
+
 @implementation DJProductCheckManager
 + (void)getProductCheckSrlWithSid:(NSString *)sid
                           PageNum: (NSInteger)pageNum
@@ -113,9 +114,10 @@
     if (checks.count <= 0) {
         return;
     }
-    NSMutableDictionary *postDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:checks,@"List",nil];
+//    NSMutableDictionary *postDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:checks,@"NObj_ProductCheck",nil];
     
-    [NetManager requestWith:postDic apiName:@"appSubmitProductCheck" method:@"POST" succ:^(NSDictionary *successDict) {
+    
+    [NetManager requestWith:checks apiName:@"appSubmitProductCheck" method:@"POST" succ:^(NSDictionary *successDict) {
         NSLog(@"%@",successDict);
         if ([successDict[@"msg"] isEqualToString:@"success"]) {
             NSArray *result = successDict[@"result"];
@@ -133,6 +135,7 @@
             failHandler(@"");
         }
     }];
+    
 }
 
 
