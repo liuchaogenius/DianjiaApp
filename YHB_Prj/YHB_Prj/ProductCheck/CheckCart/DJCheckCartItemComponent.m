@@ -55,7 +55,7 @@
     data[@"stay_qty"] = @(self.stayQuanity);
 //    data[@"last_ck_time"] = self.lastCheckTime?:@"";
     data[@"chek_qty"] = @(self.checkQuanity);
-    data[@"check_name"] = self.checkName?:@"";
+    data[@"check_name"] = [(self.checkName?:@"") stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     return data;
 }
