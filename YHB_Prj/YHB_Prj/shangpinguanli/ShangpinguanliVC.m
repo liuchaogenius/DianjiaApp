@@ -133,12 +133,13 @@
     MLOG(@"%@",message);
     SPGLSearchVC *ssvc = [[SPGLSearchVC alloc] initWithNibName:@"SPGLSearchVC" bundle:nil];
     [ssvc setMnagerAndCode:self.manager procode:message];
-    NSMutableArray * viewControllers = [self.navigationController.viewControllers mutableCopy];
-    if (viewControllers.count > 1) {
-        [viewControllers removeLastObject];
-    }
-    [viewControllers addObject:ssvc];
-    [self.navigationController setViewControllers:viewControllers animated:YES];
+//    NSMutableArray * viewControllers = [self.navigationController.viewControllers mutableCopy];
+//    if (viewControllers.count > 1) {
+//        [viewControllers removeLastObject];
+//    }
+//    [viewControllers addObject:ssvc];
+//    [self.navigationController setViewControllers:viewControllers animated:YES];
+    [self.navigationController pushViewController:ssvc animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
