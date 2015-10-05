@@ -114,7 +114,13 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
     [dict setValue:aId forKey:@"id"];
     [NetManager requestWith:dict apiName:@"appAccountSupplierStorage" method:@"post" succ:^(NSDictionary *successDict) {
-        MLOG(@"%@",successDict);
+//MLOG(@"%@",successDict);
+        NSString *msg = successDict[@"msg"];
+        if ([msg isEqualToString:@"success"])
+        {
+            aFinishBlock(YES);
+        }
+        else aFinishBlock(NO);
     } failure:^(NSDictionary *failDict, NSError *error) {
         
     }];
@@ -127,7 +133,13 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
     [dict setValue:aId forKey:@"id"];
     [NetManager requestWith:dict apiName:@"appStorageStockSrl" method:@"post" succ:^(NSDictionary *successDict) {
-        MLOG(@"%@",successDict);
+//        MLOG(@"%@",successDict);
+        NSString *msg = successDict[@"msg"];
+        if ([msg isEqualToString:@"success"])
+        {
+            aFinishBlock(YES);
+        }
+        else aFinishBlock(NO);
     } failure:^(NSDictionary *failDict, NSError *error) {
         
     }];

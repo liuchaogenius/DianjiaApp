@@ -387,7 +387,12 @@
             mode = [list.modeListArry objectAtIndex:indexPath.row];
         }
     }
-    [self pushXIBName:@"WYJHDetailVC" animated:YES selector:@"setInitData:mode:modeList:" param:self.manager,mode,list,nil];
+    void(^changeBlock)(void) = ^(){
+        [self.quanbuArry insertObject:list atIndex:0];
+        [self.yishenheArry removeObject:list];
+        [_tableview reloadData];
+    };
+    [self pushXIBName:@"WYJHDetailVC" animated:YES selector:@"setInitData:mode:modeList:changeBlock:" param:self.manager,mode,list,changeBlock,nil];
 }
 
 - (void)didReceiveMemoryWarning {

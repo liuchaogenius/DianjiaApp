@@ -13,6 +13,7 @@
                 <outlet property="jinhuodanhaoLabel" destination="ze4-NQ-ONq" id="c9c-LW-D3V"/>
                 <outlet property="riqiLabel" destination="ICt-Dg-7tB" id="TFK-5g-FR3"/>
                 <outlet property="shouhuoBT" destination="Okw-MR-fAu" id="kOX-AY-Sxv"/>
+                <outlet property="shouhuojieqing" destination="LVY-y3-j72" id="usQ-1a-VdQ"/>
                 <outlet property="tableview" destination="keA-OC-9wA" id="bU8-hW-RML"/>
                 <outlet property="tvHeadView" destination="YEQ-3O-ht7" id="Qrf-9e-VJv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="KFt-83-2RX"/>
@@ -96,6 +97,13 @@
                     <rect key="frame" x="0.0" y="141" width="320" height="287"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVY-y3-j72">
+                    <rect key="frame" x="90" y="436" width="210" height="50"/>
+                    <state key="normal" title="结清" backgroundImage="gy_bt_style1">
+                        <color key="titleColor" red="1" green="0.63615492220000003" blue="0.17634948959999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pyc-qO-bBm">
                     <rect key="frame" x="17" y="436" width="65" height="50"/>
                     <state key="normal" title="无底单" backgroundImage="gy_bt_style1">
@@ -104,14 +112,14 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygk-hC-8rV">
-                    <rect key="frame" x="164" y="436" width="65" height="50"/>
+                    <rect key="frame" x="90" y="436" width="65" height="50"/>
                     <state key="normal" title="修改" backgroundImage="gy_bt_style1">
                         <color key="titleColor" red="1" green="0.63615492220000003" blue="0.17634948959999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axh-n5-flq">
-                    <rect key="frame" x="90" y="436" width="65" height="50"/>
+                    <rect key="frame" x="164" y="436" width="65" height="50"/>
                     <state key="normal" title="结清" backgroundImage="gy_bt_style1">
                         <color key="titleColor" red="1" green="0.63615492220000003" blue="0.17634948959999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -127,7 +135,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-24" y="233"/>
+            <point key="canvasLocation" x="-336" y="225"/>
         </view>
     </objects>
     <resources>

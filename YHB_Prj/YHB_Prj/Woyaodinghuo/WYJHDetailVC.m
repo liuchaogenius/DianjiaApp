@@ -13,6 +13,7 @@
 #import "WYJHDetailCell.h"
 #import "WYJHEditViewController.h"
 #import "NetManager.h"
+#import "SDWebImageManager.h"
 
 @interface WYJHDetailVC ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate>
 {
@@ -34,12 +35,15 @@
 @property (strong, nonatomic) WYJHModeList *modeList;
 @property (strong, nonatomic) WYJHManager *manager;
 //@property (strong, nonatomic) NSMutableArray *modeArry;
+@property (strong, nonatomic) IBOutlet UIButton *shouhuojieqing;
 
 @property (strong, nonatomic) UIImage *didanImage;
 
 @property(assign,nonatomic) BOOL isEdit;
 
 @property(nonatomic,strong) UIView *tempTopView;
+
+@property(nonatomic,strong) void(^changeBlock)(void);
 @end
 
 @implementation WYJHDetailVC
@@ -77,20 +81,47 @@
 
     [self changejieqingBT];
     
-    if([self.modeList.strStatus intValue] == 0)//未入库
+//    if([self.modeList.strStatus intValue] == 0)//未入库
+//    {
+//        self.xiugaiBT.hidden = NO;
+//        self.shouhuoBT.hidden = NO;
+//    }
+//    else
+    self.shouhuojieqing.hidden = YES;
+    if([self.modeList.strStatus intValue] !=0)//已入库
     {
-        self.xiugaiBT.hidden = NO;
-        self.shouhuoBT.hidden = NO;
+        self.xiugaiBT.hidden = YES;
+        self.shouhuoBT.hidden = YES;
+        self.jieqingBT.hidden = YES;
+        self.shouhuojieqing.hidden = NO;
     }
-    else if([self.modeList.strStatus intValue] == 1)//已入库
+    
+    if (self.modeList.strCounterfoilDomain.length>0 && self.modeList.strCounterfoilUrl.length>0)
     {
-        self.xiugaiBT.hidden = NO;
-        self.shouhuoBT.hidden = NO;
+        [self.didanBT setTitle:@"查看底单" forState:UIControlStateNormal];
     }
+    
     [self.jieqingBT addTarget:self action:@selector(jieqingBTItem) forControlEvents:UIControlEventTouchUpInside];
     [self.shouhuoBT addTarget:self action:@selector(shouhuoBTItem) forControlEvents:UIControlEventTouchUpInside];
     [self.xiugaiBT addTarget:self action:@selector(modifyBTItem) forControlEvents:UIControlEventTouchUpInside];
     [self.didanBT addTarget:self action:@selector(didanBTItem) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.shouhuojieqing setTitle:@"结清" forState:UIControlStateNormal];
+    if([self.modeList.strAccountType intValue] == 2)
+    {
+        [self.shouhuojieqing setTitle:@"已结" forState:UIControlStateNormal];
+    }
+    [self.shouhuojieqing addTarget:self action:@selector(jieqingBTItem) forControlEvents:UIControlEventTouchUpInside];
+    
+    if (self.modeList.strCounterfoilDomain.length>0 && self.modeList.strCounterfoilUrl.length>0)
+    {
+        //            [SVProgressHUD showWithStatus:@"正在加载图片" cover:YES offsetY:kMainScreenHeight/2.0];
+        NSURL *imgUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", self.modeList.strCounterfoilDomain, self.modeList.strCounterfoilUrl]];
+        [[SDWebImageManager sharedManager] downloadImageWithURL:imgUrl options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            self.didanImage = image;
+            //                [SVProgressHUD dismiss];
+        }];
+    }
     
     //self.tableview.tableHeaderView = [self getTVHeadView];
     self.tableview.delegate = self;
@@ -103,25 +134,26 @@
 {
     if (_isEdit==NO)
     {
+        self.jieqingBT.hidden = NO;
         [self.jieqingBT setTitle:@"结清" forState:UIControlStateNormal];
-        if([self.modeList.strAccountType intValue] == 1)//未计算
+        if([self.modeList.strAccountType intValue] == 2)
         {
-            self.jieqingBT.hidden = NO;
-        }
-        else if([self.modeList.strAccountType intValue] == 2)
-        {
-            self.jieqingBT.hidden = YES;
+            [self.jieqingBT setTitle:@"已结" forState:UIControlStateNormal];
         }
     }
     else
     {
         self.jieqingBT.hidden = NO;
-        [self.jieqingBT setTitle:@"上传底单" forState:UIControlStateNormal];
+        if (self.modeList.strCounterfoilDomain.length>0 && self.modeList.strCounterfoilUrl.length>0)
+        {
+            self.jieqingBT.hidden = YES;
+        }
+        else [self.jieqingBT setTitle:@"上传底单" forState:UIControlStateNormal];
     }
 }
 
 #pragma mark 初始化数据
-- (void)setInitData:(WYJHManager *)aManager mode:(WYJHMode *)aMode modeList:(WYJHModeList *)aList
+- (void)setInitData:(WYJHManager *)aManager mode:(WYJHMode *)aMode modeList:(WYJHModeList *)aList changeBlock:(void(^)(void))aChangeBlock
 {
     if(aManager)
     {
@@ -136,6 +168,10 @@
     {
         self.modeList = aList;
     }
+    if (aChangeBlock)
+    {
+        _changeBlock = aChangeBlock;
+    }
 }
 
 #pragma mark 结清
@@ -143,24 +179,30 @@
 {
     if (_isEdit==NO)
     {
-        UIAlertView *alertview = [[UIAlertView alloc] initWithMessage:@"确认结清货物？" cancelButtonTitle:@"取消" otherButtonTitle:@"确定"];
-        [alertview showUsingBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-            if(buttonIndex == 1)
-            {
-                [SVProgressHUD show:NO offsetY:0];
-                [self.manager appAccountSupplierStorage:self.modeList.strId finishBlock:^(BOOL ret) {
-                    if(ret)
-                    {
-                        [SVProgressHUD showWithStatus:@"结算完成" cover:NO offsetY:0];
-                        [SVProgressHUD dissmissAfter];
-                    }
-                    else
-                    {
-                        [SVProgressHUD dismiss];
-                    }
-                }];
-            }
-        }];
+        if ([self.modeList.strAccountType intValue] != 2)
+        {
+            UIAlertView *alertview = [[UIAlertView alloc] initWithMessage:@"确认结清货物？" cancelButtonTitle:@"取消" otherButtonTitle:@"确定"];
+            [alertview showUsingBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                if(buttonIndex == 1)
+                {
+                    [SVProgressHUD show:NO offsetY:0];
+                    [self.manager appAccountSupplierStorage:self.modeList.strId finishBlock:^(BOOL ret) {
+                        if(ret)
+                        {
+                            [SVProgressHUD showWithStatus:@"结算完成" cover:NO offsetY:0];
+                            self.modeList.strAccountType = @"2";
+                            [self.jieqingBT setTitle:@"已结" forState:UIControlStateNormal];
+                            [self.shouhuojieqing setTitle:@"已结" forState:UIControlStateNormal];
+                            [SVProgressHUD dissmissAfter];
+                        }
+                        else
+                        {
+                            [SVProgressHUD dismiss];
+                        }
+                    }];
+                }
+            }];
+        } else [SVProgressHUD showErrorWithStatus:@"已结算完成" cover:YES offsetY:kMainScreenHeight/2.0];
     }
     else
     {
@@ -171,9 +213,12 @@
 #pragma mark 底单
 - (void)didanBTItem
 {
-    if (self.didanImage)
+    if (_isEdit==NO)
     {
-        [self showImage:self.didanImage];
+        if (self.didanImage)
+        {
+            [self showImage:self.didanImage];
+        }
     }
 }
 
@@ -189,6 +234,9 @@
                     if(ret)
                     {
                         [SVProgressHUD showWithStatus:@"完成" cover:NO offsetY:0];
+                        self.modeList.strStatusStr = @"1";
+                        _changeBlock();
+                        [self.navigationController popViewControllerAnimated:YES];
                         [SVProgressHUD dissmissAfter];
                     }
                     else
@@ -205,7 +253,9 @@
 {
     if (_isEdit==YES)
     {
+        self.shouhuoBT.hidden=NO;
         NSMutableDictionary *dict = [self getModelDict];
+        
         [NetManager requestWith:dict apiName:@"appSubmitSupplierStorage" method:@"POST" succ:^(NSDictionary *successDict) {
             MLOG(@"%@", successDict[@"msg"]);
             if ([successDict[@"msg"] isEqualToString:@"success"])
@@ -224,6 +274,7 @@
     }
     else
     {
+        self.shouhuoBT.hidden=YES;
         _tempTopView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, kMainScreenWidth-20, 34)];
         _tempTopView.backgroundColor = [UIColor whiteColor];
         UIButton *searchBt = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, _tempTopView.width-50, _tempTopView.height)];
@@ -347,6 +398,12 @@
     [srlDict setValue:[_modeList.strStatusStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:@"statusStr"];
     [srlDict setValue:_modeList.strAccountType forKey:@"account_type"];
     [srlDict setValue:_modeList.strStockNum forKey:@"stock_num"];
+    
+    if (self.modeList.strCounterfoilDomain.length>0 && self.modeList.strCounterfoilUrl.length>0)
+    {
+        [srlDict setObject:_modeList.strCounterfoilUrl forKey:@"counterfoil_url"];
+        [srlDict setObject:_modeList.strCounterfoilDomain forKey:@"counterfoil_domain"];
+    }
 
     NSMutableArray *detailArray = [NSMutableArray arrayWithCapacity:0];
     for (WYJHMode *mode in _modeList.modeListArry)
@@ -478,7 +535,14 @@
     }
     self.didanImage = image;
     [NetManager uploadImg:image parameters:@{@"id":_modeList.strId} apiName:@"uploadStockSrlPic" uploadUrl:nil uploadimgName:nil progressBlock:nil succ:^(NSDictionary *successDict) {
-        
+        MLOG(@"%@", successDict);
+        NSString *msg = successDict[@"msg"];
+        if ([msg isEqualToString:@"success"])
+        {
+            NSDictionary *dict = successDict[@"result"];
+            _modeList.strCounterfoilDomain = dict[@"counterfoil_domain"];
+            _modeList.strCounterfoilUrl = dict[@"counterfoil_url"];
+        }
     } failure:^(NSDictionary *failDict, NSError *error) {
         
     }];
