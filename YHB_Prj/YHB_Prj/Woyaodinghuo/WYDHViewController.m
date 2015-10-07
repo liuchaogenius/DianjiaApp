@@ -208,14 +208,15 @@
 - (void)shaixuanBtItem
 {
 //    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
-    [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
-    [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    
 //    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_self"] forState:UIControlStateNormal];
     WYJHSXViewcontroller *sxvc = (WYJHSXViewcontroller*)[self pushXIBName:@"WYJHSXViewcontroller" animated:YES selector:@"setRKSPManager:" param:self.manager,nil];
     [sxvc setOKItemFinishCallback:^(BOOL ret) {
         [self.manager clearePageNo];
         [self.yishenheArry removeAllObjects];
         [self.quanbuArry removeAllObjects];
+        [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+        [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
         
 //        [self weirukuBTItem];
         [self.yirukouBT sendActionsForControlEvents:UIControlEventTouchUpInside];
