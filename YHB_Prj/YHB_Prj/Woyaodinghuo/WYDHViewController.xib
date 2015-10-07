@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -11,7 +11,6 @@
                 <outlet property="shaixuanBT" destination="U1S-8C-oik" id="0DS-HG-z62"/>
                 <outlet property="tableview" destination="MtM-fe-jAo" id="WBk-26-hTx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="weirukouBT" destination="euJ-uA-eLD" id="DLO-Ou-4cX"/>
                 <outlet property="yirukouBT" destination="61D-pT-DBp" id="dfN-jt-nhK"/>
             </connections>
         </placeholder>
@@ -23,18 +22,9 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zsy-vY-Bea">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="euJ-uA-eLD">
-                            <rect key="frame" x="0.0" y="3" width="80" height="38"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-2" maxY="0.0"/>
-                            <inset key="imageEdgeInsets" minX="-7" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="未处理" image="gy_yuan_sel">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBv-5c-Wzf">
-                            <rect key="frame" x="160" y="0.0" width="80" height="41"/>
+                            <rect key="frame" x="106" y="0.0" width="106" height="41"/>
+                            <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-2" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="-7" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -44,7 +34,8 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1S-8C-oik">
-                            <rect key="frame" x="240" y="3" width="80" height="36"/>
+                            <rect key="frame" x="212" y="3" width="106" height="36"/>
+                            <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-2" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="-7" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -54,7 +45,8 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61D-pT-DBp">
-                            <rect key="frame" x="80" y="3" width="80" height="36"/>
+                            <rect key="frame" x="0.0" y="3" width="106" height="36"/>
+                            <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="-2" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="-7" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -64,13 +56,16 @@
                             </state>
                         </button>
                     </subviews>
+                    <animations/>
                     <color key="backgroundColor" red="0.94391536769999995" green="0.94391536769999995" blue="0.94391536769999995" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="MtM-fe-jAo">
                     <rect key="frame" x="0.0" y="42" width="320" height="462"/>
+                    <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="63" y="233"/>
@@ -78,6 +73,5 @@
     </objects>
     <resources>
         <image name="gy_yuan_nor" width="16" height="16"/>
-        <image name="gy_yuan_sel" width="16" height="16"/>
     </resources>
 </document>

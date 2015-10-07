@@ -10,22 +10,25 @@
 #import "WYJHManager.h"
 #import "WYJHListCell.h"
 #import "WYJHSXViewcontroller.h"
+#import "SVPullToRefresh.h"
 
 @interface WYDHViewController ()
 {
     
 }
 @property (nonatomic, strong) WYJHManager *manager;
-@property (strong, nonatomic) IBOutlet UIButton *weirukouBT;
+//@property (strong, nonatomic) IBOutlet UIButton *weirukouBT;
 @property (strong, nonatomic) IBOutlet UIButton *yirukouBT;
 @property (strong, nonatomic) IBOutlet UIButton *quanbuBT;
 @property (strong, nonatomic) IBOutlet UIButton *shaixuanBT;
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
-@property (strong,nonatomic) NSMutableArray *weishenheArry;
+//@property (strong,nonatomic) NSMutableArray *weishenheArry;
 @property (strong,nonatomic) NSMutableArray *yishenheArry;
 @property (strong,nonatomic) NSMutableArray *quanbuArry;
 @property (strong, nonatomic) WYJHModeRows *modeRows;
 @property (assign, nonatomic) int selType;
+
+@property (strong,nonatomic) NSMutableArray *currentArray;
 @end
 
 @implementation WYDHViewController
@@ -36,10 +39,11 @@
     {
         self.hidesBottomBarWhenPushed = YES;
         self.manager = [[WYJHManager alloc] init];
-        self.selType = 1;
-        self.weishenheArry = [NSMutableArray arrayWithCapacity:0];
+        self.selType = 2;
+//        self.weishenheArry = [NSMutableArray arrayWithCapacity:0];
         self.yishenheArry = [NSMutableArray arrayWithCapacity:0];
         self.quanbuArry = [NSMutableArray arrayWithCapacity:0];
+        _currentArray = [NSMutableArray arrayWithCapacity:0];
     }
     return self;
 }
@@ -50,103 +54,152 @@
     [self settitleLabel:@"我要订货"];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
-    [self.weirukouBT addTarget:self action:@selector(weirukuBTItem) forControlEvents:UIControlEventTouchUpInside];
+//    [self.weirukouBT addTarget:self action:@selector(weirukuBTItem) forControlEvents:UIControlEventTouchUpInside];
     [self.yirukouBT addTarget:self action:@selector(yirukuBTItem) forControlEvents:UIControlEventTouchUpInside];
     [self.quanbuBT addTarget:self action:@selector(quanBTItem) forControlEvents:UIControlEventTouchUpInside];
     [self.shaixuanBT addTarget:self action:@selector(shaixuanBtItem) forControlEvents:UIControlEventTouchUpInside];
-    [self.manager appGetStorageSrl:self.selType finishBlock:^(WYJHModeRows *llist) {
-        if(llist)
-        {
-            self.modeRows = llist;
-            if(llist)
-            {
-                [self.weishenheArry addObjectsFromArray:llist.modeRowsArry];
-                [self.tableview reloadData];
-            }
-            [self.tableview reloadData];
-        }
-    }];
-    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+//    [self.manager appGetStorageSrl:self.selType finishBlock:^(WYJHModeRows *llist) {
+//        if(llist)
+//        {
+//            self.modeRows = llist;
+//            if(llist)
+//            {
+//                [self.yishenheArry addObjectsFromArray:llist.modeRowsArry];
+//                [self.tableview reloadData];
+//            }
+//            [self.tableview reloadData];
+//        }
+//    }];
+//    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
     [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
-    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+//    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+    
+    [self.yirukouBT sendActionsForControlEvents:UIControlEventTouchUpInside];
+    
+    [self addTableViewTrag];
 }
 
-- (void)weirukuBTItem
+#pragma mark 增加上拉下拉
+- (void)addTableViewTrag
 {
-    self.selType = 1;//未处理
-    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
-    [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
-    [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
-    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
-    if(self.weishenheArry.count == 0)
-    {
-        [self.manager appGetStorageSrl:self.selType finishBlock:^(WYJHModeRows *llist) {
-            if(llist)
-            {
-                [self.weishenheArry addObjectsFromArray:llist.modeRowsArry];
-                [self.tableview reloadData];
-            }
-            else
-            {
-                [self.tableview reloadData];
-            }
-        }];
-    }
-    else
-    {
-        [self.tableview reloadData];
-    }
+    __weak WYDHViewController *weakself = self;
+    
+    [weakself.tableview addInfiniteScrollingWithActionHandler:^{
+        if (_currentArray.count%20==0 && _currentArray.count!=0)
+        {
+            [self.manager appGetStorageSrl:self.selType finishBlock:^(WYJHModeRows *llist) {
+                if(llist)
+                {
+                    if(self.selType == 2)
+                    {
+                        [self.yishenheArry addObjectsFromArray:llist.modeRowsArry];
+                        _currentArray = self.yishenheArry;
+                    }
+                    else if(self.selType == 0)
+                    {
+                        [self.quanbuArry addObjectsFromArray:llist.modeRowsArry];
+                        _currentArray = self.quanbuArry;
+                    }
+                    [self.tableview reloadData];
+                    [weakself.tableview.infiniteScrollingView stopAnimating];
+                }
+                else
+                {
+                    [SVProgressHUD showErrorWithStatus:@"无数据" cover:YES offsetY:kMainScreenHeight/2.0];
+                    [weakself.tableview.infiniteScrollingView stopAnimating];
+                }
+            }];
+        }
+        else [weakself.tableview.infiniteScrollingView stopAnimating];
+    }];
 }
+
+//- (void)weirukuBTItem
+//{
+//    self.selType = 1;//未处理
+////    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
+//    [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+//    [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+//    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+//    if(self.weishenheArry.count == 0)
+//    {
+//        [self.manager appGetStorageSrl:self.selType finishBlock:^(WYJHModeRows *llist) {
+//            if(llist)
+//            {
+//                [self.weishenheArry addObjectsFromArray:llist.modeRowsArry];
+//                _currentArray = self.weishenheArry;
+//                [self.tableview reloadData];
+//            }
+//            else
+//            {
+//                _currentArray = self.weishenheArry;
+//                [self.tableview reloadData];
+//            }
+//        }];
+//    }
+//    else
+//    {
+//        _currentArray = self.weishenheArry;
+//        [self.tableview reloadData];
+//    }
+//}
 - (void)yirukuBTItem
 {
     self.selType = 2;//未收货
-    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+//    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
     [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
-    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+//    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     if(self.yishenheArry.count == 0)
     {
         [self.manager appGetStorageSrl:self.selType finishBlock:^(WYJHModeRows *llist) {
             if(llist)
             {
                 [self.yishenheArry addObjectsFromArray:llist.modeRowsArry];
+                _currentArray = self.yishenheArry;
                 [self.tableview reloadData];
             }
             else
             {
+                _currentArray = self.yishenheArry;
                 [self.tableview reloadData];
             }
         }];
     }
     else
     {
+        _currentArray = self.yishenheArry;
         [self.tableview reloadData];
     }
 }
 - (void)quanBTItem
 {
     self.selType = 0;//已收货
-    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+//    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
-    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+//    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     if(self.quanbuArry.count == 0)
     {
         [self.manager appGetStorageSrl:self.selType finishBlock:^(WYJHModeRows *llist) {
             if(llist)
             {
                 [self.quanbuArry addObjectsFromArray:llist.modeRowsArry];
+                _currentArray = self.quanbuArry;
                 [self.tableview reloadData];
             }
             else
             {
+                _currentArray = self.quanbuArry;
                 [self.tableview reloadData];
             }
         }];
     }
     else
     {
+        _currentArray = self.quanbuArry;
+
         [self.tableview reloadData];
     }
 }
@@ -154,17 +207,18 @@
 #pragma mark 删选BTItem
 - (void)shaixuanBtItem
 {
-    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
+//    [self.weirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.yirukouBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.quanbuBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
-    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_self"] forState:UIControlStateNormal];
+//    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_self"] forState:UIControlStateNormal];
     WYJHSXViewcontroller *sxvc = (WYJHSXViewcontroller*)[self pushXIBName:@"WYJHSXViewcontroller" animated:YES selector:@"setRKSPManager:" param:self.manager,nil];
     [sxvc setOKItemFinishCallback:^(BOOL ret) {
         [self.manager clearePageNo];
-        [self.weishenheArry removeAllObjects];
         [self.yishenheArry removeAllObjects];
         [self.quanbuArry removeAllObjects];
-        [self weirukuBTItem];
+        
+//        [self weirukuBTItem];
+        [self.yirukouBT sendActionsForControlEvents:UIControlEventTouchUpInside];
     }];
 }
 
@@ -172,11 +226,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     int count = 0;
-    if(self.selType == 1)
-    {
-        count = self.weishenheArry.count;
-    }
-    else if(self.selType == 2)
+//    if(self.selType == 1)
+//    {
+//        count = self.weishenheArry.count;
+//    }
+//    else
+        if(self.selType == 2)
     {
         count = self.yishenheArry.count;
     }
@@ -195,15 +250,16 @@
     NSString *time = nil;
     label.textColor = [UIColor blackColor];
     label.font = kFont12;
-    if(self.selType == 1)
-    {
-        if(section < self.weishenheArry.count)
-        {
-            WYJHModeList *list = [self.weishenheArry objectAtIndex:section];
-            time = list.strOrderTime;
-        }
-    }
-    else if(self.selType == 2)
+//    if(self.selType == 1)
+//    {
+//        if(section < self.weishenheArry.count)
+//        {
+//            WYJHModeList *list = [self.weishenheArry objectAtIndex:section];
+//            time = list.strOrderTime;
+//        }
+//    }
+//    else
+        if(self.selType == 2)
     {
         if(section < self.yishenheArry.count)
         {
@@ -228,22 +284,23 @@
     NSString *status = nil;
     labelStatus.textColor = [UIColor blackColor];
     labelStatus.font = kFont12;
-    if(self.selType == 1)
-    {
-        if(section < self.weishenheArry.count)
-        {
-            WYJHModeList *list = [self.weishenheArry objectAtIndex:section];
-            if([list.strAccountType intValue] == 1)//未计算
-            {
-                status = @"未结算";
-            }
-            else
-            {
-                status = @"已结算";
-            }
-        }
-    }
-    else if(self.selType == 2)
+//    if(self.selType == 1)
+//    {
+//        if(section < self.weishenheArry.count)
+//        {
+//            WYJHModeList *list = [self.weishenheArry objectAtIndex:section];
+//            if([list.strAccountType intValue] == 1)//未计算
+//            {
+//                status = @"未结算";
+//            }
+//            else
+//            {
+//                status = @"已结算";
+//            }
+//        }
+//    }
+//    else
+        if(self.selType == 2)
     {
         if(section < self.yishenheArry.count)
         {
@@ -330,16 +387,17 @@
 - (void)configureCell:(WYJHListCell *)cell
     forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(self.selType == 1)
-    {
-        if(indexPath.section < self.weishenheArry.count)
-        {
-            WYJHModeList *list = [self.weishenheArry objectAtIndex:indexPath.section];
-//            WYJHMode *mode = [list.modeListArry objectAtIndex:indexPath.row];
-            [cell setCellData:list];
-        }
-    }
-    else if(self.selType == 2)
+//    if(self.selType == 1)
+//    {
+//        if(indexPath.section < self.weishenheArry.count)
+//        {
+//            WYJHModeList *list = [self.weishenheArry objectAtIndex:indexPath.section];
+////            WYJHMode *mode = [list.modeListArry objectAtIndex:indexPath.row];
+//            [cell setCellData:list];
+//        }
+//    }
+//    else
+        if(self.selType == 2)
     {
         if(indexPath.section < self.yishenheArry.count)
         {
@@ -363,15 +421,16 @@
 {
     WYJHModeList *list = nil;
     WYJHMode *mode = nil;
-    if(self.selType == 1)
-    {
-        if(indexPath.section < self.weishenheArry.count)
-        {
-             list = [self.weishenheArry objectAtIndex:indexPath.section];
-             mode = [list.modeListArry objectAtIndex:indexPath.row];
-        }
-    }
-    else if(self.selType == 2)
+//    if(self.selType == 1)
+//    {
+//        if(indexPath.section < self.weishenheArry.count)
+//        {
+//             list = [self.weishenheArry objectAtIndex:indexPath.section];
+//             mode = [list.modeListArry objectAtIndex:indexPath.row];
+//        }
+//    }
+//    else
+        if(self.selType == 2)
     {
         if(indexPath.section < self.yishenheArry.count)
         {
