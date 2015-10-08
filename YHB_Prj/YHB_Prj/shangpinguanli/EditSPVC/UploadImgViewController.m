@@ -119,8 +119,8 @@
                             NSString *msg = successDict[@"msg"];
                             if ([msg isEqualToString:@"success"])
                             {
+                                [SVProgressHUD showSuccessWithStatus:@"上传成功" cover:YES offsetY:kMainScreenHeight/2.0];
                                 _myBlock(_addPicArray);
-                                [SVProgressHUD dismiss];
                                 [self.navigationController popViewControllerAnimated:YES];
                             }
                             else
@@ -146,7 +146,26 @@
             }];
         }
     }
-    else [SVProgressHUD showErrorWithStatus:@"请添加图片" cover:YES offsetY:kMainScreenHeight/2.0];
+    else{
+        [NetManager requestWith:@{@"id":_myId,@"picList":_picArray} apiName:@"updateProductPicApp" method:@"POST" succ:^(NSDictionary *successDict) {
+            NSString *msg = successDict[@"msg"];
+            if ([msg isEqualToString:@"success"])
+            {
+                _myBlock(_addPicArray);
+                [SVProgressHUD showSuccessWithStatus:@"修改成功" cover:YES offsetY:kMainScreenHeight/2.0];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            else
+            {
+                self.btnOk.enabled = YES;
+                [SVProgressHUD showErrorWithStatus:@"操作失败" cover:YES offsetY:kMainScreenHeight/2.0];
+            }
+        }failure:^(NSDictionary *failDict, NSError *error) {
+            self.btnOk.enabled = YES;
+            [SVProgressHUD dismiss];
+        }];
+
+    }
 }
 
 - (void)reloadView
