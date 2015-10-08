@@ -12,6 +12,7 @@
 @property (nonatomic, strong) NSString *strPicUrl;
 @property (nonatomic, strong) NSString *strPickDomain;
 @property (nonatomic, strong) NSString *strPic;
+@property (nonatomic, strong) UIImage *image;
 @end
 
 @interface SPGLProductMode : NSObject

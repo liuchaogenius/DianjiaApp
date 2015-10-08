@@ -19,7 +19,7 @@
 #import "DJProductCheckViewManager.h"
 #import "DJCheckCartItemComponent.h"
 
-@interface SPGLProductDetail ()<DJProductCheckViewDataSoure>
+@interface SPGLProductDetail ()<DJProductCheckViewDataSoure,SBPageFlowViewDataSource,SBPageFlowViewDelegate>
 {
     SBPageFlowView *flowView;
     BOOL _isChecked;
@@ -65,6 +65,9 @@
     [self.scrollerview setContentSize:CGSizeMake(kMainScreenWidth, self.dianmingAndKuncunLabel.bottom+20)];
     flowView = [[SBPageFlowView alloc] initWithFrame:CGRectMake(0, 0, self.headImgScrollview.width, self.headImgScrollview.height)];
     [self.headImgScrollview addSubview:flowView];
+    flowView.dataSource = self;
+    flowView.delegate =self;
+    [flowView reloadData];
     [self reloadView];
     
     [self.xiugaishangpinBT addTarget:self action:@selector(touchXiugai) forControlEvents:UIControlEventTouchUpInside];
@@ -104,7 +107,9 @@
     else
     {
         UploadImgViewController *vc = [[UploadImgViewController alloc] initWithUploadImgCount:count andId:_productMode.strId andChangeBlock:^(NSArray *aPhotoArr) {
-#warning 更新上传图片
+            [self.productMode.picList addObjectsFromArray:aPhotoArr];
+            [flowView reloadData];
+            _changeBlock();
         } andPicDict:_productMode.picList];
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -176,6 +181,11 @@
 #pragma mark SBPage datasource
 - (void)didReloadData:(UIView *)cell cellForPageAtIndex:(NSInteger)index
 {
+//    [cell removeSubviews];
+//    SPGLProductPicMode *mode = self.productMode.picList[index];
+//    UIImageView *imgView = [[UIImageView alloc] initWithFrame:cell.bounds];
+//    [imgView sd_setImageWithURL:[NSURL URLWithString:mode.strPicUrl]];
+//    [cell addSubview:imgView];
 }
 
 - (NSInteger)numberOfPagesInFlowView:(SBPageFlowView *)flowView
@@ -195,7 +205,8 @@
     {
         SPGLProductPicMode *pMode = [self.productMode.picList objectAtIndex:index];
         imgview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.headImgScrollview.width/3, self.headImgScrollview.height)];
-        [imgview sd_setImageWithURL:[NSURL URLWithString:pMode.strPic] placeholderImage:nil];
+        if (pMode.image) imgview.image = pMode.image;
+        else [imgview sd_setImageWithURL:[NSURL URLWithString:pMode.strPic] placeholderImage:nil];
     }
     return imgview;
 }

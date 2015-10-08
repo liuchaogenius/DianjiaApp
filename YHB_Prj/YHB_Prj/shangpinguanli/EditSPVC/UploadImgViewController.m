@@ -24,6 +24,9 @@
 @property(nonatomic,strong) void(^ myBlock)(NSArray *);
 
 @property(nonatomic,strong) NSMutableArray *picArray;
+
+@property(nonatomic,strong) NSMutableArray *addPicArray;
+
 @end
 
 @implementation UploadImgViewController
@@ -82,6 +85,7 @@
         __block int chuanOK=0;
         for (int i=0; i<count; i++)
         {
+            _addPicArray = [NSMutableArray arrayWithCapacity:0];
             [NetManager uploadImgArry:@[_photoArr[i]] parameters:@{@"id":_myId} apiName:@"uploadProductPic" uploadUrl:nil uploadimgName:nil progressBlock:nil succ:^(NSDictionary *successDict) {
                 NSString *msg = successDict[@"msg"];
                 MLOG(@"%@", successDict);
@@ -93,10 +97,18 @@
                     NSString *domain = temDict[@"picDomain"];
                     NSString *picName = temDict[@"picName"];
                     NSString *url = [temDict[@"picUrl"] stringByAppendingString:picName];
+                    
+                    SPGLProductPicMode *mode = [[SPGLProductPicMode alloc] init];
+                    mode.strPickDomain = domain;
+                    mode.strPicUrl = url;
+                    mode.strPic = [domain stringByAppendingString:url];
+                    mode.image = _photoArr[i];
+                    [_addPicArray addObject:mode];
+                    
                     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
                     [dict setObject:url forKey:@"pic_url"];
                     [dict setObject:domain forKey:@"pic_domain"];
-                    [dict setObject:_myId forKey:@"pid"];
+//                    [dict setObject:_myId forKey:@"pid"];
                     //                [dict setObject:picName forKey:@"picName"];
                     [_picArray addObject:dict];
                     
@@ -106,7 +118,7 @@
                             NSString *msg = successDict[@"msg"];
                             if ([msg isEqualToString:@"success"])
                             {
-                                _myBlock(_photoArr);
+                                _myBlock(_addPicArray);
                                 [SVProgressHUD dismiss];
                                 [self.navigationController popViewControllerAnimated:YES];
                             }
