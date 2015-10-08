@@ -204,9 +204,11 @@
     if(index < self.productMode.picList.count)
     {
         SPGLProductPicMode *pMode = [self.productMode.picList objectAtIndex:index];
-        imgview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.headImgScrollview.width/3, self.headImgScrollview.height)];
-        if (pMode.image) imgview.image = pMode.image;
-        else [imgview sd_setImageWithURL:[NSURL URLWithString:pMode.strPic] placeholderImage:nil];
+        imgview = [[UIImageView alloc] initWithFrame:CGRectMake(index*(self.headImgScrollview.width/3), 0, self.headImgScrollview.width/3, self.headImgScrollview.height)];
+        if (pMode.image)
+            imgview.image = pMode.image;
+        else
+            [imgview sd_setImageWithURL:[NSURL URLWithString:pMode.strPic] placeholderImage:nil];
     }
     return imgview;
 }
