@@ -56,8 +56,8 @@
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
 #ifdef DEBUG
-    [dict setValue:@"18066040008" forKey:@"userName"];
-    [dict setValue:@"000000" forKey:@"userPassword"];
+    [dict setValue:aUserName forKey:@"userName"];
+    [dict setValue:aPass forKey:@"userPassword"];
 #else
     if(!aUserName || !aPass)
     {

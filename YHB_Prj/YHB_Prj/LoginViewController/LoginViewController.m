@@ -79,7 +79,7 @@
 - (void)loginBTItem:(UIButton *)aBT
 {
     LoginManager *login = [LoginManager shareLoginManager];
-    [login login_request:@"test" pass:@"1213" retblock:^(BOOL ret) {
+    [login login_request:self.strUserNick pass:self.strPasswork retblock:^(BOOL ret) {
         if(ret == YES)
         {
             if(self.islogOut == NO)
