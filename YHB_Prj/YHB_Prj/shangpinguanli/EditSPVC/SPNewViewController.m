@@ -342,7 +342,11 @@ typedef NS_ENUM(NSInteger, FieldType) {
                     [self.navigationController popViewControllerAnimated:YES];
                 }
             }
-            else [SVProgressHUD showErrorWithStatus:@"发布失败" cover:YES offsetY:kMainScreenHeight/2.0];
+            else
+            {
+                self.btnOK.enabled = YES;
+                [SVProgressHUD showErrorWithStatus:@"发布失败" cover:YES offsetY:kMainScreenHeight/2.0];
+            }
         }];
     }
 }

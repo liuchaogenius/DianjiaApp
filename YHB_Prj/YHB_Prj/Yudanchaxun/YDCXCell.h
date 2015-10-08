@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *labelType;
 @property (strong, nonatomic) IBOutlet UILabel *labelProfitDes;
 
+@property (strong, nonatomic) IBOutlet UILabel *shifuLabel;
 + (CGFloat)heightForCell;
 - (void)setCellWithMode:(DJYDCXRows *)aMode;
 

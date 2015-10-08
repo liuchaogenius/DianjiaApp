@@ -22,10 +22,10 @@
 
 - (void)setCellWithMode:(DJYDCXRows *)aMode
 {
-    self.labelMoney.text = [NSString stringWithFormat:@"%.2f", [aMode.payrelMoney floatValue]];
+    self.labelMoney.text = [NSString stringWithFormat:@"￥%.2f", [aMode.payrelMoney floatValue]];
     self.labelNum.text = [NSString stringWithFormat:@"%.f", aMode.rowsIdentifier];
     self.labelOdd.text = aMode.srl;
-    NSString *proStr = [NSString stringWithFormat:@"%.2f", [aMode.profitMoney floatValue]];
+    NSString *proStr = [NSString stringWithFormat:@"￥%.2f", [aMode.profitMoney floatValue]];
     
     self.labelTime.text = aMode.orderTime;
     NSString *typeStr = aMode.status==1?@"未结清":@"已结清";
@@ -33,12 +33,14 @@
     {
         self.labelProfitDes.hidden = YES;
         self.labelProfit.hidden = YES;
+        self.shifuLabel.text = @"应付：";
     }
     else
     {
         self.labelProfitDes.hidden = NO;
         self.labelProfit.hidden = NO;
         self.labelProfit.text = proStr;
+        self.shifuLabel.text = @"实付：";
     }
     self.labelType.text = typeStr;
     self.lableName.text = aMode.vipName;
