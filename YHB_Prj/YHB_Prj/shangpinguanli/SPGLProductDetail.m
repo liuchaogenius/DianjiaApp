@@ -109,7 +109,8 @@
     NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
     for (int i=0; i<self.productMode.picList.count; i++)
     {
-        UIImageView * imgView = (UIImageView *)[flowView cellForItemAtCurrentIndex:i];
+        NSArray *subArr = adView.adScrollView.subviews;
+        UIImageView * imgView = (UIImageView *)[subArr objectAtIndex:i];
         if (imgView.image) {
             [arr addObject:imgView.image];
         }
