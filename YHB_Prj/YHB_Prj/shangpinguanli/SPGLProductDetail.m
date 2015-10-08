@@ -18,11 +18,12 @@
 #import "SPNewViewController.h"
 #import "DJProductCheckViewManager.h"
 #import "DJCheckCartItemComponent.h"
+#import "AdView.h"
 
-@interface SPGLProductDetail ()<DJProductCheckViewDataSoure,SBPageFlowViewDataSource,SBPageFlowViewDelegate>
+@interface SPGLProductDetail ()<DJProductCheckViewDataSoure>
 {
-    SBPageFlowView *flowView;
     BOOL _isChecked;
+    AdView * adView;
 }
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollerview;
 @property (strong, nonatomic) IBOutlet UIView *headImgScrollview;
@@ -41,7 +42,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *dianmingAndKuncunLabel;
 @property (strong, nonatomic) SPGLProductMode *productMode;
 @property (strong, nonatomic) SPGLManager *manager;
-
+@property (strong, nonatomic) NSMutableDictionary *deqCellDict;
 @property (strong, nonatomic) void(^changeBlock)(void);
 @end
 
@@ -62,12 +63,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self settitleLabel:@"商品详情"];
+    self.deqCellDict = [NSMutableDictionary dictionaryWithCapacity:0];
     [self.scrollerview setContentSize:CGSizeMake(kMainScreenWidth, self.dianmingAndKuncunLabel.bottom+20)];
-    flowView = [[SBPageFlowView alloc] initWithFrame:CGRectMake(0, 0, self.headImgScrollview.width, self.headImgScrollview.height)];
-    [self.headImgScrollview addSubview:flowView];
-    flowView.dataSource = self;
-    flowView.delegate =self;
-    [flowView reloadData];
+    [self createADView];
+
     [self reloadView];
     
     [self.xiugaishangpinBT addTarget:self action:@selector(touchXiugai) forControlEvents:UIControlEventTouchUpInside];
@@ -120,13 +119,39 @@
     {
         UploadImgViewController *vc = [[UploadImgViewController alloc] initWithUploadImgCount:3 andId:_productMode.strId andChangeBlock:^(NSArray *aPhotoArr) {
             self.productMode.picList = [aPhotoArr mutableCopy];
-            [flowView reloadData];
+            [self createADView];
             _changeBlock();
         } andPicDict:_productMode.picList imgArr:arr];
         [self.navigationController pushViewController:vc animated:YES];
     }
     
 //    }
+}
+
+- (void)createADView
+{
+    if(adView)
+    {
+        [adView removeFromSuperview];
+        adView = nil;
+    }
+    NSMutableArray *imgurlArry = [NSMutableArray arrayWithCapacity:0];
+    for(int i=0;i<self.productMode.picList.count;i++)
+    {
+        SPGLProductPicMode *mode = [self.productMode.picList objectAtIndex:i];
+        [imgurlArry addObject:mode.strPic];
+    }
+    adView = [AdView adScrollViewWithFrame:CGRectMake(0, 0, self.headImgScrollview.width, self.headImgScrollview.height)
+                              imageLinkURL:imgurlArry
+                       placeHoderImageName:@"placeHoder.jpg"
+                      pageControlShowStyle:UIPageControlShowStyleLeft];
+    adView.isNeedCycleRoll = NO;
+    adView.contentMode = UIViewContentModeScaleAspectFit;
+    adView.callBack = ^(NSInteger index,NSString * imageURL)
+    {
+        //NSLog(@"被点中图片的索引:%ld---地址:%@",index,imageURL);
+    };
+    [self.headImgScrollview addSubview:adView];
 }
 
 - (void)touchYPDM
@@ -191,40 +216,6 @@
     self.manager = aManager;
     self.productMode = aMode;
     _changeBlock = aChangeBlock;
-}
-#pragma mark SBPage datasource
-- (void)didReloadData:(UIView *)cell cellForPageAtIndex:(NSInteger)index
-{
-//    [cell removeSubviews];
-//    SPGLProductPicMode *mode = self.productMode.picList[index];
-//    UIImageView *imgView = [[UIImageView alloc] initWithFrame:cell.bounds];
-//    [imgView sd_setImageWithURL:[NSURL URLWithString:mode.strPicUrl]];
-//    [cell addSubview:imgView];
-}
-
-- (NSInteger)numberOfPagesInFlowView:(SBPageFlowView *)flowView
-{
-    return self.productMode.picList.count;
-}
-- (CGSize)sizeForPageInFlowView:(SBPageFlowView *)flowView
-{
-    return CGSizeMake(self.headImgScrollview.width/3, self.headImgScrollview.height);
-}
-
-// Reusable cells
-- (UIView *)flowView:(SBPageFlowView *)flowView cellForPageAtIndex:(NSInteger)index
-{
-    UIImageView *imgview = nil;
-    if(index < self.productMode.picList.count)
-    {
-        SPGLProductPicMode *pMode = [self.productMode.picList objectAtIndex:index];
-        imgview = [[UIImageView alloc] initWithFrame:CGRectMake(index*(self.headImgScrollview.width/3), 0, self.headImgScrollview.width/3, self.headImgScrollview.height)];
-        if (pMode.image)
-            imgview.image = pMode.image;
-        else
-            [imgview sd_setImageWithURL:[NSURL URLWithString:pMode.strPic] placeholderImage:nil];
-    }
-    return imgview;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -253,6 +253,7 @@
 		FF5CC71D1B99A45400F55713 /* JFB_First_Close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC71C1B99A45400F55713 /* JFB_First_Close@2x.png */; };
 		FF5CC7241B9A8D8C00F55713 /* JCCXSXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC7221B9A8D8C00F55713 /* JCCXSXViewController.m */; };
 		FF5CC7251B9A8D8C00F55713 /* JCCXSXViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC7231B9A8D8C00F55713 /* JCCXSXViewController.xib */; };
+		FFBBBFE31BC64D490052E198 /* AdView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBBBFE21BC64D490052E198 /* AdView.m */; settings = {ASSET_TAGS = (); }; };
 		FFD26CCE1B86D0D50003F491 /* FirstMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CCD1B86D0D50003F491 /* FirstMode.m */; };
 		FFD26CDE1B8B0B4E0003F491 /* KCYJManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CDD1B8B0B4E0003F491 /* KCYJManager.m */; };
 		FFD26CE11B8B10970003F491 /* KCYJMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CE01B8B10970003F491 /* KCYJMode.m */; };
@@ -767,6 +768,8 @@
 		FF5CC7211B9A8D8C00F55713 /* JCCXSXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCCXSXViewController.h; sourceTree = "<group>"; };
 		FF5CC7221B9A8D8C00F55713 /* JCCXSXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCCXSXViewController.m; sourceTree = "<group>"; };
 		FF5CC7231B9A8D8C00F55713 /* JCCXSXViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JCCXSXViewController.xib; sourceTree = "<group>"; };
+		FFBBBFE11BC64D490052E198 /* AdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdView.h; sourceTree = "<group>"; };
+		FFBBBFE21BC64D490052E198 /* AdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdView.m; sourceTree = "<group>"; };
 		FFD26CCC1B86D0D50003F491 /* FirstMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstMode.h; sourceTree = "<group>"; };
 		FFD26CCD1B86D0D50003F491 /* FirstMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstMode.m; sourceTree = "<group>"; };
 		FFD26CDC1B8B0B4E0003F491 /* KCYJManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCYJManager.h; sourceTree = "<group>"; };
@@ -1650,6 +1653,8 @@
 				FF357C9B1BA12D6E00DFCAC0 /* SPGLProductDetail.xib */,
 				FF357C9E1BA1310300DFCAC0 /* SBPageFlowView.h */,
 				FF357C9F1BA1310300DFCAC0 /* SBPageFlowView.m */,
+				FFBBBFE11BC64D490052E198 /* AdView.h */,
+				FFBBBFE21BC64D490052E198 /* AdView.m */,
 			);
 			path = shangpinguanli;
 			sourceTree = "<group>";
@@ -2159,6 +2164,7 @@
 				FFD26CEF1B8C3F940003F491 /* ZXBJCell.m in Sources */,
 				FF2A6C881A0F3B8A001607AC /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				FF357CBF1BA2C30900DFCAC0 /* WYJHDetailVC.m in Sources */,
+				FFBBBFE31BC64D490052E198 /* AdView.m in Sources */,
 				FFD26CCE1B86D0D50003F491 /* FirstMode.m in Sources */,
 				FF3C200B1A2F2B330081D3C7 /* NotifyFactoryObject.m in Sources */,
 				FF2A6C3A1A0F3B59001607AC /* NSData+Base64.m in Sources */,
