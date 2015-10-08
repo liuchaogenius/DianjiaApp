@@ -80,10 +80,11 @@
 
 - (void)reloadView
 {
+    self.zhekouLabel.text = [self.productMode.strActEnable isEqualToString:@"1"]?@"是":@"否";
     self.chanpinmaLabel.text = self.productMode.strProductCode;
     self.pinmingLabel.text = self.productMode.strProductName;
-    self.jinjiaLabel.text = self.productMode.strBuyingPrice;
-    self.kucunLabel.text = self.productMode.strStockQty;
+    self.jinjiaLabel.text = [NSString stringWithFormat:@"￥%.2f", [self.productMode.strBuyingPrice floatValue]];
+    self.kucunLabel.text = [NSString stringWithFormat:@"￥%.2f", [self.productMode.strStockQty floatValue]];
     self.shoujiaLabel.text = self.productMode.strSalePrice;
     self.dianmingAndKuncunLabel.text = [NSString stringWithFormat:@"    %@：库存 %@",self.productMode.strClsName,self.productMode.strStockQty];
 }
@@ -99,20 +100,33 @@
 
 - (void)touchShangchuan
 {
-    int count = 3-(int)_productMode.picList.count;
-    if (count==0)
+//    int count = 3-(int)_productMode.picList.count;
+//    if (count==0)
+//    {
+//        [SVProgressHUD showErrorWithStatus:@"商品图片已满3张" cover:YES offsetY:kMainScreenHeight/2.0];
+//    }
+//    else
+//    {
+    NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
+    for (int i=0; i<self.productMode.picList.count; i++)
     {
-        [SVProgressHUD showErrorWithStatus:@"商品图片已满3张" cover:YES offsetY:kMainScreenHeight/2.0];
+        UIImageView * imgView = (UIImageView *)[flowView cellForItemAtCurrentIndex:i];
+        if (imgView.image) {
+            [arr addObject:imgView.image];
+        }
+        else [SVProgressHUD showErrorWithStatus:@"请等待图片显示完毕" cover:YES offsetY:kMainScreenHeight/2.0];
     }
-    else
+    if (arr.count==self.productMode.picList.count)
     {
-        UploadImgViewController *vc = [[UploadImgViewController alloc] initWithUploadImgCount:count andId:_productMode.strId andChangeBlock:^(NSArray *aPhotoArr) {
-            [self.productMode.picList addObjectsFromArray:aPhotoArr];
+        UploadImgViewController *vc = [[UploadImgViewController alloc] initWithUploadImgCount:3 andId:_productMode.strId andChangeBlock:^(NSArray *aPhotoArr) {
+            self.productMode.picList = [aPhotoArr mutableCopy];
             [flowView reloadData];
             _changeBlock();
-        } andPicDict:_productMode.picList];
+        } andPicDict:_productMode.picList imgArr:arr];
         [self.navigationController pushViewController:vc animated:YES];
     }
+    
+//    }
 }
 
 - (void)touchYPDM

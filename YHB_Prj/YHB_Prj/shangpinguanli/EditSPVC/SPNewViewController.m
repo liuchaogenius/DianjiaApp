@@ -383,7 +383,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
     NSString *jj = [self isNotEmpty:self.textfieldjj.text]?self.textfieldjj.text:@"0";
     [dict setObject:jj forKey:@"buying_price"];
     [dict setObject:self.textfieldsj.text forKey:@"sale_price"];
-    [dict setObject:self.textfielddw.text forKey:@"sale_unit"];
+    [dict setObject:[self.textfielddw.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:@"sale_unit"];
     NSString *act;
     NSString *score;
     if ([self.btnzk.titleLabel.text isEqualToString:@"参加"]) act = @"1";

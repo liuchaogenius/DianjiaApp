@@ -77,7 +77,7 @@
     self.riqiLabel.text = _modeList.strOrderTime;
     self.gonghuoshangLabel.text = _modeList.strSupName;
     self.zongshuliangLabel.text = _modeList.strStockNum;
-    self.zongjineLabel.text = [NSString stringWithFormat:@"%.2f", [_modeList.strTotalRealPay floatValue]];
+    self.zongjineLabel.text = [NSString stringWithFormat:@"￥%.2f", [_modeList.strTotalRealPay floatValue]];
 
     [self changejieqingBT];
     
@@ -260,6 +260,7 @@
             MLOG(@"%@", successDict[@"msg"]);
             if ([successDict[@"msg"] isEqualToString:@"success"])
             {
+                [SVProgressHUD showSuccessWithStatus:@"修改成功" cover:YES offsetY:kMainScreenHeight/2.0];
                 [_xiugaiBT setTitle:@"修改" forState:UIControlStateNormal];
                 [_tempTopView removeFromSuperview];
                 [self.tableview setEditing:NO animated:NO];
@@ -369,14 +370,27 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MLOG(@"1213");
-    if(indexPath.row < self.modeList.modeListArry.count)
-    {
-        WYJHMode *mode = [self.modeList.modeListArry objectAtIndex:indexPath.row];
-        [self.manager appDeleteSupplierStorageSrl:mode.strId finishBlock:^(BOOL ret) {
-            
-        }];
-    }
+//    MLOG(@"1213");
+//    if(indexPath.row < self.modeList.modeListArry.count)
+//    {
+//        WYJHMode *mode = [self.modeList.modeListArry objectAtIndex:indexPath.row];
+//        [self.manager appDeleteSupplierStorageSrl:mode.strId finishBlock:^(BOOL ret) {
+//            
+//        }];
+//    }
+    WYJHMode *mode = [self.modeList.modeListArry objectAtIndex:indexPath.row];
+    _modeList.strStockNum = [NSString stringWithFormat:@"%d", (int)([_modeList.strStockNum floatValue]-[mode.strStockNum floatValue])];
+    
+    _modeList.strTotalRealPay = [NSString stringWithFormat:@"%f", [_modeList.strTotalRealPay floatValue]- [mode.strStockNum floatValue]*[mode.strStockPrice floatValue]];
+    [self.modeList.modeListArry removeObjectAtIndex:indexPath.row];
+    [self.tableview deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self.tableview reloadData];
+    MLOG(@"%@, %@", mode, _modeList);
+    self.zongshuliangLabel.text = _modeList.strStockNum;
+    self.zongjineLabel.text = [NSString stringWithFormat:@"%.2f", [_modeList.strTotalRealPay floatValue]];
+
+    _changeBlock();
 }
 
 - (NSMutableDictionary *)getModelDict

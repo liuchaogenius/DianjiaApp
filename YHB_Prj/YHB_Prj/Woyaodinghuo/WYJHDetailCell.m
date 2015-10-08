@@ -25,9 +25,9 @@
     [self resetView];
     self.pinmingLabel.text = mode.strProductName;
     self.dinghuoshuliangLabel.text = mode.strStockNum;
-    self.jinjiaLabel.text = [NSString stringWithFormat:@"%.2f", [mode.strStockPrice floatValue]];
+    self.jinjiaLabel.text = [NSString stringWithFormat:@"￥%.2f", [mode.strStockPrice floatValue]];
     self.kucunLabel.text = mode.strStockQty;
-    self.xiaojiLabel.text = mode.strShelfDys;
+    self.xiaojiLabel.text = [NSString stringWithFormat:@"￥%.2f", [mode.strStockPrice floatValue]*[mode.strStockNum floatValue]];
 }
 
 - (void)resetView

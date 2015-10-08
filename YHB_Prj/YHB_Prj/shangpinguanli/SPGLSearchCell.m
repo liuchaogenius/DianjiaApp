@@ -31,10 +31,16 @@
         [self.headUrl sd_setImageWithURL:[NSURL URLWithString:picurl] placeholderImage:nil];
     
     self.pinming.text = aMode.strProductName;
-    self.jinjiaLabel.text = aMode.strBuyingPrice;
+    
+    self.jinjiaLabel.textColor = KColor;
+    self.kucunlabel.textColor = KColor;
+    self.shoujiaLabel.textColor = KColor;
+    self.zhekouLabel.textColor = KColor;
+    
+    self.jinjiaLabel.text = [NSString stringWithFormat:@"￥%.2f", [aMode.strBuyingPrice floatValue]];
     self.kucunlabel.text = [NSString stringWithFormat:@"%.2f", [aMode.strStockQty floatValue]];
-    self.shoujiaLabel.text = aMode.strSalePrice;
-    self.zhekouLabel.text = aMode.strSaleUnit;
+    self.shoujiaLabel.text = [NSString stringWithFormat:@"￥%.2f%@", [aMode.strSalePrice floatValue], aMode.strSaleUnit];
+    self.zhekouLabel.text = [NSString stringWithFormat:@"%.1f", [aMode.strStayQty floatValue]];
 }
 - (void)resetView
 {

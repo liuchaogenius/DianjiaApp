@@ -237,7 +237,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
     if (dict)
     {
         [self.manager saveOrUpdateDict:dict finishBlock:^(NSString *resultCode) {
-            if ([resultCode isEqualToString:@"1"])
+            if (resultCode && [resultCode intValue]>0)
             {
                 [SVProgressHUD showSuccessWithStatus:@"修改成功" cover:YES offsetY:kMainScreenHeight/2.0];
                 _changeBlock();
@@ -296,7 +296,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
     [dict setObject:jj forKey:@"buying_price"];
     [dict setObject:_myMode.strSalePrice forKey:@"sale_price"];
     [dict setObject:_myMode.strIsScore forKey:@"is_score"];
-    [dict setObject:_myMode.strSaleUnit forKey:@"sale_unit"];
+    [dict setObject:[_myMode.strSaleUnit stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:@"sale_unit"];
     [dict setObject:_myMode.strActEnable forKey:@"act_enabled"];
     return [dict copy];
 }

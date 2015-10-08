@@ -31,22 +31,24 @@
 
 @implementation UploadImgViewController
 
-- (instancetype)initWithUploadImgCount:(int)aCount andId:(NSString *)aId andChangeBlock:(void(^)(NSArray *))aBlock andPicDict:(NSMutableArray *)aPicArr
+- (instancetype)initWithUploadImgCount:(int)aCount andId:(NSString *)aId andChangeBlock:(void(^)(NSArray *))aBlock andPicDict:(NSMutableArray *)aPicArr imgArr:(NSMutableArray *)aImgArr;
 {
     if (self=[super init])
     {
-        countNeedToUpload = aCount;
+        countNeedToUpload = 3;
         _myId = aId;
         _myBlock = aBlock;
         _picArray = [NSMutableArray arrayWithCapacity:0];
-        for (SPGLProductPicMode *mode in aPicArr)
-        {
-            NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
-            [dict setObject:mode.strPicUrl forKey:@"pic_url"];
-            [dict setObject:mode.strPickDomain forKey:@"pic_domain"];
-            [dict setObject:aId forKey:@"pid"];
-            [_picArray addObject:dict];
-        }
+//        for (SPGLProductPicMode *mode in aPicArr)
+//        {
+//            NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+//            [dict setObject:mode.strPicUrl forKey:@"pic_url"];
+//            [dict setObject:mode.strPickDomain forKey:@"pic_domain"];
+//            [dict setObject:aId forKey:@"pid"];
+//            [_picArray addObject:dict];
+//        }
+        _photoArr = [NSMutableArray arrayWithCapacity:0];
+        [_photoArr addObjectsFromArray:aImgArr];
     }
     return self;
 }
@@ -59,11 +61,8 @@
     interval = 15;
     imgWidth = (kMainScreenWidth-interval*4)/3.0;
     
-    _photoArr = [NSMutableArray arrayWithCapacity:0];
-    
     _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, interval, kMainScreenWidth, imgWidth)];
     [self.view addSubview:_bgView];
-    [self reloadView];
     
     CGFloat btnWidth = 240;
     _btnOk = [[UIButton alloc] initWithFrame:CGRectMake(kMainScreenWidth/2.0-btnWidth/2.0, kMainScreenHeight-64-60, btnWidth, 30)];
@@ -72,6 +71,8 @@
     _btnOk.titleLabel.font = kFont12;
     [_btnOk addTarget:self action:@selector(touchOk) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_btnOk];
+    
+    [self reloadView];
 }
 
 //上传按钮事件
