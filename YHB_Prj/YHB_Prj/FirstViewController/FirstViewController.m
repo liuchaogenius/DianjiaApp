@@ -92,10 +92,10 @@
         [self settitleLabel:selectStore.strStoreName];
         [self requestHomeData];
     }
-//    WS(weakself);
+    WS(weakself1);
     [self.scrollView addPullToRefreshWithActionHandler:^{
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [weakself requestHomeData];
+            [weakself1 requestHomeData];
         });
     }];
 }

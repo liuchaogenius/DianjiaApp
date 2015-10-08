@@ -271,12 +271,13 @@
 #pragma mark UISearchBar and UISearchDisplayController Delegate Methods
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    WS(weakself);
     [searchBar resignFirstResponder];
     [self.manager getProductListByKeywordApp:searchBar.text finishBlock:^(SPGLProductList *aList) {
         if(aList && aList.productList.count > 0)
         {
-            self.productList = aList;
-            [self.tableview reloadData];
+            weakself.productList = aList;
+            [weakself.tableview reloadData];
         }
     }];
 }
@@ -315,6 +316,13 @@
         SPNewViewController *vc = [[SPNewViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
+}
+
+- (void)dealloc
+{
+    self.tableview.delegate = nil;
+    self.tableview.dataSource = nil;
+    self.searchBar.delegate = nil;
 }
 /*
 #pragma mark - Navigation

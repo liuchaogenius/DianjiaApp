@@ -271,6 +271,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc
+{
+    self.sectionTableview.delegate = nil;
+    self.sectionTableview.dataSource = nil;
+}
 /*
 #pragma mark - Navigation
 
