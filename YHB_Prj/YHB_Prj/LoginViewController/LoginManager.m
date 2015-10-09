@@ -70,31 +70,36 @@
     
     [dict setValue:@"1" forKey:@"loginUserType"];
     [NetManager requestWith:dict apiName:@"loginApp" method:@"POST" succ:^(NSDictionary *successDict) {
-        NSDictionary *resultDict = [successDict objectForKey:@"result"];
-        if(resultDict)
+        NSString *msg = successDict[@"msg"];
+        if ([msg isEqualToString:@"success"])
         {
-            NSString *token = [resultDict objectForKey:@"token"];
-            [self saveUserToken:token];
-            NSString *uid = [resultDict objectForKey:@"uid"];
-            BaseIntToNSString(uid);
-            [self saveUserId:uid];
-            if(!self.logMode)
+            NSDictionary *resultDict = [successDict objectForKey:@"result"];
+            if(resultDict)
             {
-                self.logMode = [[LoginMode alloc] init];
+                NSString *token = [resultDict objectForKey:@"token"];
+                [self saveUserToken:token];
+                NSString *uid = [resultDict objectForKey:@"uid"];
+                BaseIntToNSString(uid);
+                [self saveUserId:uid];
+                if(!self.logMode)
+                {
+                    self.logMode = [[LoginMode alloc] init];
+                }
+                [self.logMode unPacketData:resultDict];
+                [self setNetWorkParam:self.strUserId userToke:self.strUserToken];
+                StoreMode *sm = [self.logMode.storeList objectAtIndex:0];
+                [self setCurrentStoreName:sm.strStoreName];
+                [self setNetWorkStoreId:sm.strId];
+                [self iosAppGetStoreList];
+                [[SCach shareInstance] setAsynValue:self.logMode key:@"loginMode" isMemeory:NO filePath:nil block:^(bool isResult) {
+                    
+                }];
             }
-            [self.logMode unPacketData:resultDict];
-            [self setNetWorkParam:self.strUserId userToke:self.strUserToken];
-            StoreMode *sm = [self.logMode.storeList objectAtIndex:0];
-            [self setCurrentStoreName:sm.strStoreName];
-            [self setNetWorkStoreId:sm.strId];
-            [self iosAppGetStoreList];
-            [[SCach shareInstance] setAsynValue:self.logMode key:@"loginMode" isMemeory:NO filePath:nil block:^(bool isResult) {
-                
-            }];
-        }
-        aBlock(YES);
+            aBlock(@"success");
+        }else aBlock(msg);
+        
     } failure:^(NSDictionary *failDict, NSError *error) {
-        aBlock(NO);
+        aBlock(@"登陆失败");
     }];
 }
 

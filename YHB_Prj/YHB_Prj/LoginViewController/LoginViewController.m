@@ -79,8 +79,8 @@
 - (void)loginBTItem:(UIButton *)aBT
 {
     LoginManager *login = [LoginManager shareLoginManager];
-    [login login_request:self.strUserNick pass:self.strPasswork retblock:^(BOOL ret) {
-        if(ret == YES)
+    [login login_request:self.strUserNick pass:self.strPasswork retblock:^(NSString* msg) {
+        if([msg isEqualToString:@"success"])
         {
             if(self.islogOut == NO)
             {
@@ -94,6 +94,7 @@
                 }];
             }
         }
+        else [SVProgressHUD showErrorWithStatus:msg cover:YES offsetY:kMainScreenHeight/2.0];
     }];
 }
 
