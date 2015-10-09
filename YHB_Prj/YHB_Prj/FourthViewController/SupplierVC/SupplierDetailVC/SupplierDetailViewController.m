@@ -77,7 +77,7 @@ typedef enum : NSUInteger {
     _bgScrollView.delegate = self;
     [self.view addSubview:_bgScrollView];
     
-    _titleArray = @[@"供货商名称:",@"联系人:",@"联系电话:",@"传真:",@"电子邮件:",@"商户地址:",@"备注:",@"添加日期:"];
+    _titleArray = @[@"供货商名称:",@"联系人:",@"联系电话:",@"传真:",@"电子邮件:",@"商户地址:",@"备注:"];//,@"添加日期:"];
     
     CGFloat endHeight = 0;
     for (int i=0; i<_titleArray.count; i++)

@@ -97,7 +97,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(GateTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    StoreMode *mode = _gateArr[indexPath.row];
+    StoreMode *mode = _gateArr[indexPath.section];
     [cell setCellWithMode:mode];
 }
 

@@ -308,7 +308,7 @@ typedef enum : NSUInteger {
     //    NSArray *contentArray = @[_myMode.strstore_name,_myMode.stremp_type_name,_myMode.strsid,_myMode.strpassword,_myMode.stremp_name,_myMode.strphone,_myMode.strbirthday,sex,_myMode.strweixin,_myMode.strqq];
     self.gateTextfield.text = _myMode.strstore_name;
     self.workTextfield.text = _myMode.stremp_type_name;
-    self.workIdTextfield.text = _myMode.strsid;
+    self.workIdTextfield.text = _myMode.strlogin_name;
     self.mimaTextfield.text = _myMode.strpassword;
     self.nameTextfield.text = _myMode.stremp_name;
     self.phoneTextfield.text = _myMode.strphone;

@@ -28,7 +28,7 @@
     self.phoneLabel.text = @"";
 
     self.nameLabel.text = aMode.stremp_name;
-    self.numLabel.text = aMode.strsid;
+    self.numLabel.text = aMode.strlogin_name;
     self.jobLabel.text = aMode.stremp_type_name;
     self.phoneLabel.text = aMode.strphone;
     self.locaLabel.text = aMode.strstore_name;
