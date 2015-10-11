@@ -17,7 +17,6 @@
 
 @interface ShangpinguanliVC ()
 {
-    int currentSectionIndex;
     int currentIndexPath;
     int oldSectionPath;
     NSMutableArray *currentIndexArry;
@@ -154,7 +153,7 @@
     }
     else
     {
-        SPGLCategoryMode *mode = [self.modeList.modeSectionArry objectAtIndex:currentSectionIndex];
+        SPGLCategoryMode *mode = [self.modeList.modeSectionArry objectAtIndex:currentIndexPath];
         [currentIndexArry removeAllObjects];
         for(SPGLCategoryMode *iMode in self.modeList.modeIndexArry)
         {

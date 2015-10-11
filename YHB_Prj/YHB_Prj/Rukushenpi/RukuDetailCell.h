@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @class RKSPMode;
 @interface RukuDetailCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *pinmingLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dianmingLabel;
 @property (strong, nonatomic) IBOutlet UILabel *jinjiaLabel;
 @property (strong, nonatomic) IBOutlet UILabel *zongjiaLabel;

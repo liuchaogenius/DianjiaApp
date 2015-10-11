@@ -42,7 +42,7 @@
     AssignMentID(self.strVipBirethday, [aDataDict objectForKey:@"vip_birthday"]);
     
     AssignMentID(self.strVipCode, [aDataDict objectForKey:@"vip_code"]);
-    BaseLongLongToNSString(self.strVipCode);
+    //BaseLongLongToNSString(self.strVipCode);
     
     AssignMentID(self.strVipDiscount, [aDataDict objectForKey:@"vip_discount"]);
     BaseFloadToNSString(self.strVipDiscount);

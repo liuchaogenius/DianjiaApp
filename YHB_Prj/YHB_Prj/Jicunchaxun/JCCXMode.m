@@ -53,7 +53,7 @@
     AssignMentID(self.strTotalNum, [aDataDict objectForKey:@"total_num"]);
     BaseIntToNSString(self.strTotalNum);
     AssignMentID(self.strVipCode, [aDataDict objectForKey:@"vip_code"]);
-    BaseLongLongToNSString(self.strVipCode);
+    //BaseLongLongToNSString(self.strVipCode);
     AssignMentID(self.strVipId, [aDataDict objectForKey:@"vip_id"]);
     BaseIntToNSString(self.strVipCode);
     AssignMentID(self.strVipName, [aDataDict objectForKey:@"vip_name"]);

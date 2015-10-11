@@ -56,6 +56,7 @@
     [self.yiquwanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_nor"] forState:UIControlStateNormal];
     [self.manager appGetProductStaySrl:1 finishBlock:^(JCCXModeList *list) {
+        [SVProgressHUD dismiss];
         if(list)
         {
             self.modeList = list;
@@ -89,6 +90,7 @@
 //    [self.shaixuanBT setImage:[UIImage imageNamed:@"gy_yuan_sel"] forState:UIControlStateNormal];
     JCCXSXViewController *svc = (JCCXSXViewController *)[self pushXIBName:@"JCCXSXViewController" animated:YES selector:@"setJCCXManager:" param:self.manager,nil];
     [svc setOKButtonFinishBlock:^{
+        [SVProgressHUD showWithStatus:@"筛选中..." cover:NO offsetY:64];
         [self weiquwanBTItem];
     }];
 }

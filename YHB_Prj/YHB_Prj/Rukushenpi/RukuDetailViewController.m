@@ -110,7 +110,7 @@
 #pragma mark - UITableViewDataSource
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 67.0f;
+    return 85.0f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
