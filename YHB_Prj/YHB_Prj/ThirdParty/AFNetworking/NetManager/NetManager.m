@@ -151,7 +151,7 @@
     MLOG(@"%@", dict);
     [NetManager setRequestHeadValue:manager];
     NSString *method = [aMethod uppercaseString];
-    if([kBaseUrl compare:@"https://api.chinascrm.com/sapi4app.html"] == 0)
+    if([kBaseUrl compare:@"https://api.dianjia001.com/sapi4app.html"] == 0)
     {
         manager.securityPolicy.allowInvalidCertificates = YES;
     }
@@ -284,7 +284,7 @@
     [dict setValue:param forKey:@"S3CAPI"];
     [manager.requestSerializer setValue:param forHTTPHeaderField:@"S3CAPI"];
     [NetManager setRequestHeadValue:manager];
-    if([kBaseUrl compare:@"https://api.chinascrm.com/sapi4app.html"] == 0)
+    if([kBaseUrl compare:@"https://api.dianjia001.com/sapi4app.html"] == 0)
     {
         manager.securityPolicy.allowInvalidCertificates = YES;
     }
@@ -320,7 +320,7 @@
     [dict setValue:param forKey:@"S3CAPI"];
     [manager.requestSerializer setValue:param forHTTPHeaderField:@"S3CAPI"];
     [NetManager setRequestHeadValue:manager];
-    if([kBaseUrl compare:@"https://api.chinascrm.com/sapi4app.html"] == 0)
+    if([kBaseUrl compare:@"https://api.dianjia001.com/sapi4app.html"] == 0)
     {
         manager.securityPolicy.allowInvalidCertificates = YES;
     }
