@@ -151,10 +151,12 @@
     MLOG(@"%@", dict);
     [NetManager setRequestHeadValue:manager];
     NSString *method = [aMethod uppercaseString];
-    if([kBaseUrl compare:@"https://api.dianjia001.com/sapi4app.html"] == 0)
-    {
-        manager.securityPolicy.allowInvalidCertificates = YES;
-    }
+//    if([kBaseUrl compare:@"https://api.dianjia001.com/sapi4app.html"] == 0)
+//    {
+//        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy defaultPolicy];
+//        securityPolicy.allowInvalidCertificates = YES;
+//        [AFHTTPRequestOperationManager manager].securityPolicy = securityPolicy;
+//    }
     if([method compare:@"POST"] == 0)
     {
         [manager POST:kBaseUrl parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {

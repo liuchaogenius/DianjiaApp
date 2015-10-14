@@ -15,5 +15,7 @@ typedef NS_ENUM(NSUInteger, SearchFrom) {
 
 @interface SPGLSearchVC : BaseViewController<UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate>
 @property (nonatomic, assign) SearchFrom serchFrom;
+@property(nonatomic, assign) BOOL isJumpFromPanDian;
+- (void)setMnager:(SPGLManager *)aManager;
 - (void)setMnagerAndCode:(SPGLManager *)aManager procode:(NSString *)aProcode;
 @end

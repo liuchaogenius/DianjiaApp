@@ -18,7 +18,10 @@
 #import "NSDateTool.h"
 #import "CALayer+CCAddition.h"
 #import "DJCheckCartPublic.h"
-
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#define AFNETWORKING_ALLOW_INVALID_SSL_CERTIFICATES
+#define _AFNETWORKING_ALLOW_INVALID_SSL_CERTIFICATES_
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 

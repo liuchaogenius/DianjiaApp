@@ -21,5 +21,9 @@
 // 条形码查询
 - (void)getProductListByCodeApp:(NSString*)aKeyword
                     finishBlock:(void(^)(SPGLProductList* aList))aFinishBlock;
+//盘点车进来后的搜索
+-(void)getProductListForCheck:(NSString*)aKeyword
+                          cid:(NSString *)aCid
+                  finishBlock:(void(^)(SPGLProductList* aList))aFinishBlock;
 
 @end

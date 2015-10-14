@@ -51,28 +51,58 @@
     if(isGetNetdata == 1)
     {
         [self.searchBar resignFirstResponder];
-        [self.manager getProductListByClsApp:cateId finishBlock:^(SPGLProductList *aList) {
-            if(aList && aList.productList.count > 0)
-            {
-                weakself.productList = aList;
-                [weakself.tableview reloadData];
-            }
-        }];
+        if(self.isJumpFromPanDian)
+        {
+            [self.manager getProductListForCheck:nil cid:cateId finishBlock:^(SPGLProductList *aList) {
+                if(aList && aList.productList.count > 0)
+                {
+                    weakself.productList = aList;
+                    [weakself.tableview reloadData];
+                }
+            }];
+        }
+        else
+        {
+            [self.manager getProductListByClsApp:cateId finishBlock:^(SPGLProductList *aList) {
+                if(aList && aList.productList.count > 0)
+                {
+                    weakself.productList = aList;
+                    [weakself.tableview reloadData];
+                }
+            }];
+        }
     }
     else if(isGetNetdata == 2)
     {
         [[self searchBar] resignFirstResponder];
-        [self.manager getProductListByCodeApp:cateId finishBlock:^(SPGLProductList *aList) {
-            if(aList && aList.productList.count > 0)
-            {
-                weakself.productList = aList;
-                [weakself.tableview reloadData];
-            }else {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"没有该商品，要添加商品吗？" message:@"是否添加？" delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
-                alertView.tag = 101;
-                [alertView show];
-            }
-        }];
+        if(self.isJumpFromPanDian)
+        {
+            [self.manager getProductListForCheck:nil cid:cateId finishBlock:^(SPGLProductList *aList) {
+                if(aList && aList.productList.count > 0)
+                {
+                    weakself.productList = aList;
+                    [weakself.tableview reloadData];
+                }else {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"没有该商品，要添加商品吗？" message:@"是否添加？" delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+                    alertView.tag = 101;
+                    [alertView show];
+                }
+            }];
+        }
+        else
+        {
+            [self.manager getProductListByCodeApp:cateId finishBlock:^(SPGLProductList *aList) {
+                if(aList && aList.productList.count > 0)
+                {
+                    weakself.productList = aList;
+                    [weakself.tableview reloadData];
+                }else {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"没有该商品，要添加商品吗？" message:@"是否添加？" delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+                    alertView.tag = 101;
+                    [alertView show];
+                }
+            }];
+        }
     }else {
         [self.searchBar becomeFirstResponder];
     }
@@ -102,19 +132,21 @@
 {
     self.manager = aManager;
 }
-- (void)setMnagerAndid:(SPGLManager *)aManager cateID:(NSString *)aCateId
+- (void)setMnagerAndid:(SPGLManager *)aManager cateID:(NSString *)aCateId fromJump:(NSNumber *)aIsJumpFromPandian
 {
     self.manager = aManager;
     cateId = aCateId;
     isGetNetdata = 1;
+    self.isJumpFromPanDian = [aIsJumpFromPandian boolValue];
 }
 
-- (void)setMnagerAndid:(SPGLManager *)aManager cateID:(NSString *)aCateId modeList:(WYJHModeList *)aModeList andChangeBlock:(void(^)(WYJHModeList *))aChangeBlock
+- (void)setMnagerAndid:(SPGLManager *)aManager cateID:(NSString *)aCateId modeList:(WYJHModeList *)aModeList fromJump:(NSNumber *)aIsJumpFromPandian andChangeBlock:(void(^)(WYJHModeList *))aChangeBlock
 {
     self.manager = aManager;
     cateId = aCateId;
     isGetNetdata = 1;
     _WYJHModeList = aModeList;
+    self.isJumpFromPanDian = [aIsJumpFromPandian boolValue];
     _changeBlock = aChangeBlock;
 }
 
@@ -273,13 +305,26 @@
 {
     WS(weakself);
     [searchBar resignFirstResponder];
-    [self.manager getProductListByKeywordApp:searchBar.text finishBlock:^(SPGLProductList *aList) {
-        if(aList && aList.productList.count > 0)
-        {
-            weakself.productList = aList;
-            [weakself.tableview reloadData];
-        }
-    }];
+    if(self.isJumpFromPanDian)
+    {
+        [self.manager getProductListForCheck:searchBar.text cid:nil finishBlock:^(SPGLProductList *aList) {
+            if(aList && aList.productList.count > 0)
+            {
+                weakself.productList = aList;
+                [weakself.tableview reloadData];
+            }
+        }];
+    }
+    else
+    {
+        [self.manager getProductListByKeywordApp:searchBar.text finishBlock:^(SPGLProductList *aList) {
+            if(aList && aList.productList.count > 0)
+            {
+                weakself.productList = aList;
+                [weakself.tableview reloadData];
+            }
+        }];
+    }
 }
 
 #pragma mark 返回

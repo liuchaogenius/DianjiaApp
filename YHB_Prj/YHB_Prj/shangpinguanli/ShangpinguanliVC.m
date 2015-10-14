@@ -117,7 +117,13 @@
 #pragma mark 进入搜索页面
 - (void)pushSearchVc
 {
-    [self pushXIBName:@"SPGLSearchVC" animated:YES selector:@"setMnager:" param:self.manager,nil];
+//    [self pushXIBName:@"SPGLSearchVC" animated:YES selector:@"setMnager:" param:self.manager,nil];
+    
+    SPGLSearchVC *ssvc = [[SPGLSearchVC alloc] initWithNibName:@"SPGLSearchVC" bundle:nil];
+    ssvc.isJumpFromPanDian = self.isJumpFromPanDian;
+    [ssvc setMnager:self.manager];
+
+    [self.navigationController pushViewController:ssvc animated:YES];
 }
 #pragma mark 进入扫描条形码页面
 - (void)pushScanView
@@ -131,6 +137,7 @@
 {
     MLOG(@"%@",message);
     SPGLSearchVC *ssvc = [[SPGLSearchVC alloc] initWithNibName:@"SPGLSearchVC" bundle:nil];
+    ssvc.isJumpFromPanDian = self.isJumpFromPanDian;
     [ssvc setMnagerAndCode:self.manager procode:message];
 //    NSMutableArray * viewControllers = [self.navigationController.viewControllers mutableCopy];
 //    if (viewControllers.count > 1) {
@@ -149,7 +156,7 @@
     int count = 0;
     if(tableView.tag == 10)
     {
-        count = self.modeList.modeSectionArry.count;
+        count = (int)self.modeList.modeSectionArry.count;
     }
     else
     {
@@ -253,9 +260,12 @@
         }
         else if(_changeBlock)
         {
-            [self pushXIBName:@"SPGLSearchVC" animated:YES selector:@"setMnagerAndid:cateID:modeList:andChangeBlock:" param:self.manager,mode.strId,_WYJHModeList,_changeBlock,nil];
+            [self pushXIBName:@"SPGLSearchVC" animated:YES selector:@"setMnagerAndid:cateID:modeList:fromJump:andChangeBlock:" param:self.manager,mode.strId,_WYJHModeList,[NSNumber numberWithBool:self.isJumpFromPanDian],_changeBlock,nil];
         }
-        else [self pushXIBName:@"SPGLSearchVC" animated:YES selector:@"setMnagerAndid:cateID:" param:self.manager,mode.strId,nil];
+        else
+        {
+            [self pushXIBName:@"SPGLSearchVC" animated:YES selector:@"setMnagerAndid:cateID:fromJump:" param:self.manager,mode.strId,[NSNumber numberWithBool:self.isJumpFromPanDian],nil];
+        }
     }
 }
 

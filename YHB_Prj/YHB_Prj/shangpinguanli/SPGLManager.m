@@ -8,6 +8,7 @@
 
 #import "SPGLManager.h"
 #import "NetManager.h"
+#import "LoginManager.h"
 
 @implementation SPGLManager
 - (void)getAllProductCls:(void(^)(SPGLCategoryIndexList *list))aFinishBlock
@@ -98,6 +99,41 @@
         [dict setValue:@"false" forKey:@"needPage"];
     }
     [NetManager requestWith:dict apiName:@"getProductListByCodeApp" method:@"post" succ:^(NSDictionary *successDict) {
+        MLOG(@"%@",successDict);
+        if([successDict objectForKey:@"result"])
+        {
+            SPGLProductList *list = [[SPGLProductList alloc] init];
+            [list unPacketData:[successDict objectForKey:@"result"]];
+            aFinishBlock(list);
+        }
+        else
+        {
+            aFinishBlock(nil);
+        }
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        aFinishBlock(nil);
+    }];
+}
+//从盘点车进来的搜索页面
+-(void)getProductListForCheck:(NSString*)aKeyword
+                          cid:(NSString *)aCid
+                  finishBlock:(void(^)(SPGLProductList* aList))aFinishBlock
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+    [dict setValue:[NSNumber numberWithInt:0] forKey:@"pageNo"];
+    [dict setValue:[NSNumber numberWithInt:20] forKey:@"pageSize"];
+    [dict setValue:@"false" forKey:@"needPage"];
+    if(aKeyword)
+    {
+        [dict setValue:aKeyword forKey:@"queryName"];
+    }
+    if(aCid)
+    {
+        [dict setValue:aCid forKey:@"queryCid"];
+    }
+    NSString *sid = [[LoginManager shareLoginManager] getStoreId];
+    [dict setValue:sid forKey:@"sid"];
+    [NetManager requestWith:dict apiName:@"getProductListForCheck" method:@"post" succ:^(NSDictionary *successDict) {
         MLOG(@"%@",successDict);
         if([successDict objectForKey:@"result"])
         {
