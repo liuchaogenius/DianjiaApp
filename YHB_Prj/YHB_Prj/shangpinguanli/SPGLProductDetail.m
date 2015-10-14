@@ -19,11 +19,23 @@
 #import "DJProductCheckViewManager.h"
 #import "DJCheckCartItemComponent.h"
 #import "AdView.h"
+#import "CLTableViewCell.h"
+#import "NetManager.h"
+#import "LoginMode.h"
 
-@interface SPGLProductDetail ()<DJProductCheckViewDataSoure>
+static const CGFloat storeTVWidth = 100;
+
+@interface SPGLProductDetail ()<DJProductCheckViewDataSoure,UITableViewDataSource,UITableViewDelegate>
 {
     BOOL _isChecked;
     AdView * adView;
+    
+    UIView *_maskingView;
+    UITapGestureRecognizer *_tapGR;
+    UITableView *_storeTV;
+    NSArray *_storeArr;
+    
+    NSDictionary *_storeDict;
 }
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollerview;
 @property (strong, nonatomic) IBOutlet UIView *headImgScrollview;
@@ -75,6 +87,9 @@
     [self.jhlsBT addTarget:self action:@selector(touchJHLS) forControlEvents:UIControlEventTouchUpInside];
     [self.pdspBT addTarget:self action:@selector(touchPDSP) forControlEvents:UIControlEventTouchUpInside];
     [self.xslsBT addTarget:self action:@selector(touchXSLS) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self createMaskingView];
+    [self touchMask];
 }
 
 - (void)reloadView
@@ -83,8 +98,8 @@
     self.chanpinmaLabel.text = self.productMode.strProductCode;
     self.pinmingLabel.text = self.productMode.strProductName;
     self.jinjiaLabel.text = [NSString stringWithFormat:@"￥%.2f", [self.productMode.strBuyingPrice floatValue]];
-    self.kucunLabel.text = [NSString stringWithFormat:@"￥%.2f", [self.productMode.strStockQty floatValue]];
-    self.shoujiaLabel.text = self.productMode.strSalePrice;
+    self.kucunLabel.text = [NSString stringWithFormat:@"%.2f", [self.productMode.strStockQty floatValue]];
+    self.shoujiaLabel.text = [NSString stringWithFormat:@"￥%.2f", [self.productMode.strSalePrice floatValue]];
     self.dianmingAndKuncunLabel.text = [NSString stringWithFormat:@"    %@：库存 %@",self.productMode.strClsName,self.productMode.strStockQty];
 }
 
@@ -165,8 +180,11 @@
 
 - (void)touchPDSP
 {
-    _isChecked = NO;
-    [[DJProductCheckViewManager sharedInstance] showCheckViewFromViewController:self withDataSource:self];
+    [self.view addSubview:_maskingView];
+    [self.view addSubview:_storeTV];
+    [_storeTV reloadData];
+//    _isChecked = NO;
+//    [[DJProductCheckViewManager sharedInstance] showCheckViewFromViewController:self withDataSource:self];
 }
 
 #pragma mark - check Delegate
@@ -181,20 +199,20 @@
 #pragma mark - adapter
 
 - (id<DJCheckCartItemComponent>)itemWithProductListModel: (SPGLProductMode *)mode {
-    id<DJCheckCartItemComponent> item = [[DJCheckCartItemComponent alloc] init];
+    id<DJCheckCartItemComponent> item = [[DJCheckCartItemComponent alloc] initWithData:_storeDict];
     
-    [item setSid:[[LoginManager shareLoginManager] getStoreId]];
-    [item setCheckId:[mode strCid]];
-    [item setProductId:[mode strId]];
-    [item setProductCode:[mode strProductCode]];
-    [item setProductName:[mode strProductName]];
-    //    item setStoreStockId:[mode strst]
-    [item setStockQuanity:[[mode strStockQty] integerValue]];
-    [item setStayQuanity:[[mode strStayQty] integerValue]];
-    //    item setCheckQuanity:
-    [item setLastCheckTime:[mode strCheckLasttime]];
-    [item setCheckState:DJCheckItemStateNotCheck];
-    [item setCheckName:[[[LoginManager shareLoginManager] getLoginMode] strUname]];
+//    [item setSid:[[LoginManager shareLoginManager] getStoreId]];
+//    [item setCheckId:[mode strCid]];
+//    [item setProductId:[mode strId]];
+//    [item setProductCode:[mode strProductCode]];
+//    [item setProductName:[mode strProductName]];
+//    //    item setStoreStockId:[mode strst]
+//    [item setStockQuanity:[[mode strStockQty] integerValue]];
+//    [item setStayQuanity:[[mode strStayQty] integerValue]];
+//    //    item setCheckQuanity:
+//    [item setLastCheckTime:[mode strCheckLasttime]];
+//    [item setCheckState:DJCheckItemStateNotCheck];
+//    [item setCheckName:[[[LoginManager shareLoginManager] getLoginMode] strUname]];
     
     return item;
 }
@@ -218,6 +236,99 @@
     self.productMode = aMode;
     _changeBlock = aChangeBlock;
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+
+        return _storeArr.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+        return 30;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+        static NSString *clcellId = @"clCell";
+        CLTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:clcellId];
+        if (!cell)
+        {
+            cell = [[CLTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:clcellId andWidth:storeTVWidth];
+            cell.titleLabel.font = kFont12;
+        }
+        StoreMode *mode = _storeArr[indexPath.row];
+        cell.titleLabel.text = mode.strStoreName;
+        return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    StoreMode *mode = _storeArr[indexPath.row];
+    [self getProductSid:mode.strId andProductId:self.productMode.strId];
+}
+
+- (void)createMaskingView
+{
+    _maskingView = [[UIView alloc] initWithFrame:self.view.bounds];
+    _maskingView.backgroundColor = [UIColor blackColor];
+    _maskingView.alpha = 0.3;
+    _tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchMask)];
+    [_maskingView addGestureRecognizer:_tapGR];
+    [self.view addSubview:_maskingView];
+    
+    LoginManager *loManager = [LoginManager shareLoginManager];
+    _storeArr = [loManager getStoreList];
+    
+    CGFloat cellHeight = 30;
+    CGFloat storeTVHeight = cellHeight*_storeArr.count>120?120:cellHeight*_storeArr.count;
+    _storeTV = [[UITableView alloc] initWithFrame:CGRectMake(kMainScreenWidth/2.0-storeTVWidth/2.0, _maskingView.height/2.0-storeTVHeight/2.0, storeTVWidth, storeTVHeight)];
+    _storeTV.delegate =self;
+    _storeTV.dataSource = self;
+    _storeTV.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _storeTV.tableFooterView = [UIView new];
+    [self.view addSubview:_storeTV];
+}
+
+- (void)touchMask
+{
+    [_storeTV removeFromSuperview];
+    [_maskingView removeFromSuperview];
+}
+
+- (void)getProductSid:(NSString *)aSid andProductId:(NSString *)aPid
+{
+    _maskingView.userInteractionEnabled = NO;
+    _storeTV.userInteractionEnabled = NO;
+    [SVProgressHUD show:YES offsetY:kMainScreenHeight/2.0];
+    [NetManager requestWith:@{@"sid":aSid,@"productId":aPid} apiName:@"getProductBySidForCheck" method:@"POST" succ:^(NSDictionary *successDict) {
+        MLOG(@"%@", successDict);
+        NSString *msg = successDict[@"msg"];
+        _maskingView.userInteractionEnabled = YES;
+        _storeTV.userInteractionEnabled = YES;
+        [self touchMask];
+        if ([msg isEqualToString:@"success"])
+        {
+            [SVProgressHUD dismiss];
+            _storeDict = successDict[@"result"];
+            _isChecked = NO;
+            [[DJProductCheckViewManager sharedInstance] showCheckViewFromViewController:self withDataSource:self];
+        }
+        else
+        {
+            [SVProgressHUD showErrorWithStatus:msg cover:YES offsetY:kMainScreenHeight];
+        }
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        _maskingView.userInteractionEnabled = YES;
+        _storeTV.userInteractionEnabled = YES;
+        [self touchMask];
+        [SVProgressHUD showErrorWithStatus:@"获取数据失败" cover:YES offsetY:kMainScreenHeight];
+    }];
+}
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
