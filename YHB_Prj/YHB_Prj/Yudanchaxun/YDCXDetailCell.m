@@ -26,7 +26,7 @@
     self.labelName.text = aMode.productName;
     self.labelNum.text = [NSString stringWithFormat:@"%.f", aMode.saleNum];
     self.labelPri.text = [NSString stringWithFormat:@"%.2f", aMode.salePrice];
-    self.labelSum.text = [NSString stringWithFormat:@"%.2f", aMode.payableMoney];
+    self.labelSum.text = [NSString stringWithFormat:@"￥%.2f", [aMode.realMoney floatValue]];
     self.labelZhe.text = [NSString stringWithFormat:@"%.2f%%", aMode.discountRate];
 }
 

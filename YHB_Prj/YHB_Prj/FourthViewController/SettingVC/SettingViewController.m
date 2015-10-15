@@ -45,9 +45,9 @@ typedef NS_ENUM(NSInteger, cellType){
     
     CGFloat cellH = [SetTableViewCell heightForSetCell];
     UIColor *btnColor = KColor;
-    CGFloat btnWidth = 200;
-    UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64-4*cellH)];
-    _logoutBtn = [[UIButton alloc] initWithFrame:CGRectMake((kMainScreenWidth-btnWidth)/2.0, tableFooterView.bottom-40-50, btnWidth, 40)];
+    CGFloat btnWidth = 260;
+    UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64-2*cellH)];
+    _logoutBtn = [[UIButton alloc] initWithFrame:CGRectMake((kMainScreenWidth-btnWidth)/2.0, tableFooterView.bottom-40-20, btnWidth, 40)];
     [_logoutBtn addTarget:self action:@selector(touchLogout) forControlEvents:UIControlEventTouchDown];
     [_logoutBtn setTitleColor:btnColor forState:UIControlStateNormal];
     _logoutBtn.layer.borderColor = [btnColor CGColor];
