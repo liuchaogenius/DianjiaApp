@@ -51,6 +51,11 @@
     return self;
 }
 
+- (void)setIsFromProductCheckCart:(BOOL)isFromProductCheckCart {
+    _isFromProductCheckCart = isFromProductCheckCart;
+    _isJumpFromPanDian = _isFromProductCheckCart;
+}
+
 - (void)setModeList:(WYJHModeList *)aList andChangeBlock:(void(^)(WYJHModeList *))aBlock
 {
     _changeBlock = aBlock;
