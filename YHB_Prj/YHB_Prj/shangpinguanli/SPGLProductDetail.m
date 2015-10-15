@@ -108,7 +108,7 @@ static const CGFloat storeTVWidth = 100;
     SPEditViewController *vc = [[SPEditViewController alloc] initWithMode:_productMode changeBlock:^{
         [self reloadView];
         _changeBlock();
-    }];
+    } needDelete:NO];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -14,6 +14,9 @@
 #import "NetManager.h"
 #import "SPKCViewController.h"
 #import "DJScanViewController.h"
+#import "SPEditViewController.h"
+#import "NetManager.h"
+#import "SPGLProductMode.h"
 
 typedef NS_ENUM(NSInteger, FieldType) {
     FieldTypetm,
@@ -257,6 +260,23 @@ typedef NS_ENUM(NSInteger, FieldType) {
 {
     MLOG(@"%@",message);
     self.textfieldtm.text = message;
+    
+    [NetManager requestWith:@{@"queryName":message} apiName:@"getProductByBarcode" method:@"POST" succ:^(NSDictionary *successDict) {
+        MLOG(@"%@", successDict);
+        NSString *msg = successDict[@"msg"];
+        if ([msg isEqualToString:@"success"])
+        {
+            [SVProgressHUD showWithStatus:@"已存在此商品" cover:YES offsetY:kMainScreenHeight/2.0];
+            NSArray *resultArr = successDict[@"result"];
+            NSDictionary *spDict = resultArr[0];
+            SPGLProductMode *spMode = [[SPGLProductMode alloc] init];
+            [spMode unPacketData:spDict];
+            SPEditViewController *vc = [[SPEditViewController alloc] initWithMode:spMode changeBlock:nil needDelete:YES];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    } failure:^(NSDictionary *failDict, NSError *error) {
+        
+    }];
 }
 
 - (void)touchkc

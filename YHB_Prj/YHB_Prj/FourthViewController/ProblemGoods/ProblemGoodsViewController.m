@@ -116,7 +116,7 @@
     SPGLProductMode *mode = _arrData[indexPath.row];
     SPEditViewController *vc = [[SPEditViewController alloc] initWithMode:mode changeBlock:^{
         [_tvGood reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }];
+    } needDelete:NO];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

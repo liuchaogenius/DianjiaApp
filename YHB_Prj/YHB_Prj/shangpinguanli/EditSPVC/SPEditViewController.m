@@ -13,6 +13,7 @@
 #import "SPGLCategoryMode.h"
 #import "SPManager.h"
 #import "DJScanViewController.h"
+#import "SPNewViewController.h"
 
 typedef NS_ENUM(NSInteger, FieldType) {
     FieldTypetm,
@@ -31,6 +32,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
 {
     NSString *_cid;
     NSString *_supid;
+    BOOL _deleteBool;
 }
 
 @property(nonatomic,strong) SPGLProductMode *myMode;
@@ -66,7 +68,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
 
 @implementation SPEditViewController
 
-- (instancetype)initWithMode:(SPGLProductMode *)aMode changeBlock:(void(^)(void))aChangeBlock
+- (instancetype)initWithMode:(SPGLProductMode *)aMode changeBlock:(void (^)(void))aChangeBlock needDelete:(BOOL)aBool
 {
     if (self=[super init])
     {
@@ -74,6 +76,7 @@ typedef NS_ENUM(NSInteger, FieldType) {
         if (aMode.strCid) _cid = aMode.strCid;
         if (aMode.strSupid) _supid = aMode.strSupid;
         _changeBlock = aChangeBlock;
+        _deleteBool = aBool;
     }
     return self;
 }
@@ -84,6 +87,32 @@ typedef NS_ENUM(NSInteger, FieldType) {
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self createScrollView];
+    
+    if (_deleteBool==YES)
+    {
+        NSMutableArray *arr = [self.navigationController.viewControllers mutableCopy];
+        int index = -1;
+        for (int i=0; i<arr.count; i++)
+        {
+            UIViewController *vc = arr[i];
+            if ([vc isKindOfClass:[DJScanViewController class]])
+            {
+                index=i;
+            }
+        }
+        if (index!=-1) [arr removeObjectAtIndex:index];
+        index=-1;
+        for (int i=0; i<arr.count; i++)
+        {
+            UIViewController *vc = arr[i];
+            if ([vc isKindOfClass:[SPNewViewController class]])
+            {
+                index=i;
+            }
+        }
+        if (index!=-1) [arr removeObjectAtIndex:index];
+        self.navigationController.viewControllers = arr;
+    }
     
     _tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchView)];
     [_bgScrollView addGestureRecognizer:_tapGR];
@@ -112,6 +141,10 @@ typedef NS_ENUM(NSInteger, FieldType) {
     NSString *isAct = [_myMode.strActEnable intValue]==1?@"参加":@"不参加";
     NSString *isScore = [_myMode.strIsScore intValue]==1?@"是":@"否";
     NSString *supName = _myMode.strSupName?_myMode.strSupName:@"";
+    if (!_myMode.strSaleUnit)
+    {
+        _myMode.strSaleUnit = @"";
+    }
     _contentArray = @[_myMode.strProductCode,_myMode.strProductName,_myMode.strClsName,_myMode.strStockQty,_myMode.strBuyingPrice,_myMode.strSalePrice,_myMode.strSaleUnit,supName,isAct,isScore];
     
     CGFloat endHeight = 0;
