@@ -35,7 +35,7 @@ typedef NS_ENUM(NSInteger, cellType){
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _titleArray = @[@"关于我们",@"检查新版本"];//,@"意见反馈",@"推荐给朋友"
+    _titleArray = @[@"关于我们"];//,@"检查新版本"];//,@"意见反馈",@"推荐给朋友"
     
     _setTV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kMainScreenHeight-64)];
     _setTV.delegate = self;
