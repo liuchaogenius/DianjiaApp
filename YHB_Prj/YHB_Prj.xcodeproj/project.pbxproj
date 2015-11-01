@@ -253,7 +253,7 @@
 		FF5CC71D1B99A45400F55713 /* JFB_First_Close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC71C1B99A45400F55713 /* JFB_First_Close@2x.png */; };
 		FF5CC7241B9A8D8C00F55713 /* JCCXSXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5CC7221B9A8D8C00F55713 /* JCCXSXViewController.m */; };
 		FF5CC7251B9A8D8C00F55713 /* JCCXSXViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF5CC7231B9A8D8C00F55713 /* JCCXSXViewController.xib */; };
-		FFBBBFE31BC64D490052E198 /* AdView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBBBFE21BC64D490052E198 /* AdView.m */; settings = {ASSET_TAGS = (); }; };
+		FFBBBFE31BC64D490052E198 /* AdView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBBBFE21BC64D490052E198 /* AdView.m */; };
 		FFD26CCE1B86D0D50003F491 /* FirstMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CCD1B86D0D50003F491 /* FirstMode.m */; };
 		FFD26CDE1B8B0B4E0003F491 /* KCYJManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CDD1B8B0B4E0003F491 /* KCYJManager.m */; };
 		FFD26CE11B8B10970003F491 /* KCYJMode.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD26CE01B8B10970003F491 /* KCYJMode.m */; };
@@ -2500,6 +2500,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "YHB_Prj/YHB-Prefix.pch";
 				INFOPLIST_FILE = YHB_Prj/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
