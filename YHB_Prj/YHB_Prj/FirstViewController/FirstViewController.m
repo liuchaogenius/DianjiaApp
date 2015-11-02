@@ -22,6 +22,7 @@
     __weak FirstViewController *weakself;
 }
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIView *scrollHeadView;
 @property (strong, nonatomic) IBOutlet UILabel *headDate_Label;
 @property (strong, nonatomic) IBOutlet UIButton *head_rbt;
 @property (strong, nonatomic) IBOutlet UILabel *headYYEPrice_Label;
@@ -66,7 +67,10 @@
     [self showSelectStoreButton];
     [self setShowAllStoreList:YES];
     CGFloat height = self.bottom_zxdd_BT.bottom;
-    
+    UIImageView *imgview = [[UIImageView alloc] initWithFrame:self.scrollHeadView.bounds];
+    [imgview setImage:[UIImage imageNamed:@"home_head_bg"]];
+    [self.scrollView addSubview:imgview];
+    [self.scrollView sendSubviewToBack:imgview];
     [self.scrollView setContentSize:CGSizeMake(kMainScreenWidth, height+20)];
     
     [self.head_rbt addTarget:self action:@selector(head_rbtItem:) forControlEvents:UIControlEventTouchUpInside];
