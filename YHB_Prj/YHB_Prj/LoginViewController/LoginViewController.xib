@@ -20,34 +20,35 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login_icon" translatesAutoresizingMaskIntoConstraints="NO" id="MhJ-cQ-kpV">
-                    <rect key="frame" x="99" y="80" width="123" height="107"/>
+                    <rect key="frame" x="99" y="54" width="123" height="107"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="login_input_icon" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hBW-Fw-mpa">
-                    <rect key="frame" x="44" y="237" width="233" height="42"/>
+                    <rect key="frame" x="44" y="208" width="233" height="42"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvj-Ng-oyV">
-                    <rect key="frame" x="44" y="384" width="233" height="48"/>
+                    <rect key="frame" x="44" y="362" width="233" height="48"/>
                     <state key="normal" title="登录" backgroundImage="login_Button_bg">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="login_input_icon" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8FF-hZ-5TZ">
-                    <rect key="frame" x="44" y="313" width="233" height="42"/>
+                    <rect key="frame" x="44" y="285" width="233" height="42"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VP5-W1-uRm">
-                    <rect key="frame" x="109" y="463" width="102" height="30"/>
-                    <state key="normal" title="忘记密码？">
+                    <rect key="frame" x="109" y="436" width="102" height="30"/>
+                    <state key="normal" title="忘记密码?？">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="183" y="298"/>
         </view>
     </objects>
