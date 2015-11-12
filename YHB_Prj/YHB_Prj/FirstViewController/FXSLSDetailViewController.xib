@@ -22,7 +22,7 @@
             <subviews>
                 <view contentMode="scaleToFill" id="Fa4-UM-kaG">
                     <rect key="frame" x="0.0" y="416" width="320" height="88"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="原价：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lx9-pC-Fvm">
                             <rect key="frame" x="14" y="15" width="39" height="21"/>
